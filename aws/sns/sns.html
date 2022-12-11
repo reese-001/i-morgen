@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">sns</a>:overview</h2>
+       
+       
+        <p><strong><span style="font-size: 20px;">SNS</span></strong></p>
+        <ul>
+            <li><span style="font-size: 18px;">Message publishing and processing service (pubsub)</span></li>
+            <li><span style="font-size: 18px;">Allows fanout to millions of consumers (ie email, http endpoints, sqs, texting)</span></li>
+            <li><span style="font-size: 18px;">Fully managed and durable with automatic scaling</span>
+                <ul>
+                    <li><span style="font-size: 18px;">durable = message is guaranteed not be lost (note: this does not imply each subscriber will get the message)</span>
+                        <ul>
+                            <li><span style="font-size: 18px;">uses cross availability zone message storage</span></li>
+                        </ul>
+                    </li>
+                    <li><span style="font-size: 18px;">managed = no need for infra settings&nbsp;</span></li>
+                    <li><span style="font-size: 18px;">can send to valid AWS endpoints such as SQS and Lambda functions</span></li>
+                </ul>
+            </li>
+            <li><span style="font-size: 18px;">Security</span>
+                <ul>
+                    <li><span style="font-size: 18px;">can set topic policies to restrict who can publish and subscribe to a topic</span></li>
+                    <li><span style="font-size: 18px;">data encrypted at rest and in transit</span></li>
+                </ul>
+            </li>
+            <li><span style="font-size: 18px;">Two topics to understand</span>
+                <ul>
+                    <li><span style="font-size: 18px;">topics</span></li>
+                    <li><span style="font-size: 18px;">subscriptions</span></li>
+                </ul>
+            </li>
+            <li><span style="font-size: 18px;">Can be app -&gt; person or app -&gt; app</span>
+                <ul>
+                    <li><span style="font-size: 18px;">app -&gt; person: text</span></li>
+                    <li><span style="font-size: 18px;">app -&gt; app: asynch communication between systems</span></li>
+                </ul>
+            </li>
+            <li><a href="../../aws/images/sns_overview.png">Illustration</a></li>
+        </ul>
+      
+        <p><br></p>
+        <p><br></p>
+        <p><span style="font-size: 18px;"><br></span></p>
+        <p><br></p>
+    </body>
+</html>

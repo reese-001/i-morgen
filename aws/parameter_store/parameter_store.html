@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:parameter store</a></h2>
+
+        <p><strong><span style="font-size: 20px;">Parameter Store</span></strong></p>
+        <p><strong><span style="font-size: 18px;">What does it do?</span>&nbsp;</strong></p>
+        <ul>
+            <li>Secure, hierarchical storage for configuation data management and secrets management</li>
+            <ul>
+                <li>passwords</li>
+                <li>dataabase strings</li>
+                <li>license codes</li>
+            </ul>
+            <li>Store configuation data and secure strings in hierarchies and track versions</li>
+            <li>Can be encrypted via KMS</li>
+        </ul>
+
+        <p><strong><span style="font-size: 18px;">Creation Details</span>&nbsp;</strong></p>
+            <ul>
+                <li>Name: can be grouped into hierarchies. This enables you to fetch all parameters at specific levels</li>
+                <li>Tier: see table</li><br/>
+                <table border = "1">
+                    <tr>
+                        <td></td>
+                        <td>Standard</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td># of params/region</td>
+                        <td>10k</td>
+                        <td>100k</td>
+                    </tr>
+                    <tr>
+                        <td>param policies</td>
+                        <td>4kb</td>
+                        <td>8kb</td>
+                    </tr>
+                    <tr>
+                        <td>cost</td>
+                        <td>free</td>
+                        <td>$.05 per param per month</td>
+                    </tr>
+                </table><br/>
+                <li>Type</li>
+            </ul>
+
+            <p><strong><span style="font-size: 18px;">Parameter Policies</span>&nbsp;</strong></p>
+            <ul>
+                <li>Parameter Expiration</li>
+                <ul>
+                    <li>useful to force you to update or delete passwords</li>
+                    <li>"I want this to expire at this date and time</li>
+                    <li>ExpirationNotification can be set to notify prior to expiration </li>
+                    <li>NoChangeNotification informs if a paramater has not been modified in a specific time period</li>
+                </ul>
+                <li>Multiple policies can be applied per parameter</li>
+            </ul>
+        
+
+
+    </body>
+</html>

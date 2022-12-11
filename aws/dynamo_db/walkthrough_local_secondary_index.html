@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		<h2 style="color:#0A45A5;"><a href="../../aws/aws.html">aws</a>:<a href="index.html">dynamo db</a>:walkthrough local secondary index</h2>
+
+        <img src="../../aws/images/dynamo_subject_index_lsi.png">
+
+        <p><strong><span style="font-size: 20px;">Senario: Table is defined as shown. How to query Forum Name and Subject</span></strong></p>
+        <p><strong><span style="font-size: 18;">Option 1</span></strong></p>
+        <ol>
+            <li>Scan entire table</li>
+            <li>Apply filter condition on scan where forum == 'xx' and subject = 'yy </li>
+            <li>Con: expensive since you are performing entire table scan</li>
+        </ol>>
+        <p><strong><span style="font-size: 18;">Option 2</span></strong></p>
+        <ol>
+            <li>Filter for forum name = 'xx'</li>
+            <li>Scan result set for subject = 'yy'</li>
+            <li>Con: Still more expensive then required since scanning multiple items</li>
+        </ol>
+        <p><strong><span style="font-size: 18;">Option 3</span></strong></p>
+        <ol>
+            <li>Apply a local secondary index on Subject attribute</li>
+            <li>Query where forumname = 'xx' and define a range key expression where the subject = 'yy'</li>
+
+        </ol>
+    </body>
+    </html> 

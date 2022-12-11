@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">vpc endpoints</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>VPC Endpoints</strong></span></p>
+
+        <p><span style="font-size: 18px;"><strong>What are they?</strong></span></p>
+        <ul>
+            <li>Allow you to privately connect your VPC to other AWS services and VPC endpoint services</li>
+            <li>Eliminates the need to IGW, NAT device and VPN</li>
+            <li>Instances in the VPC do not require public IP address to communicate with service providers</li>
+            <li>Traffic between your VPC and other services does not leave AWS network</li>
+            <li><a href="../images/vpc_endpoints_overview.png">Illustration</a></li>
+        </ul>
+
+        <p><span style="font-size: 18px;"><strong>What are they?</strong></span></p>
+        <ul>
+            <li>There are two types of VPC Endpoints</li>
+            <ol>
+                <li>Interface Endpoints</li>
+                <ul>
+                    <li>Elastic Network Interfaces (ENI) with private IP addresses</li>
+                    <li>Serve as an entry point for traffic going to a supported device</li>
+                    <li><a href="https://aws.amazon.com/privatelink/pricing/" target="_blank">Cost</a></li>
+                    <ul>
+                        <li>Per VPC endpoint per AZ ($/hour): 0.01</li>
+                        <li>Per GB processed: 0.01</li>
+                    </ul>
+                </ul>
+                <li>Gateway Endpoints</li>
+                <ul>
+                    <li>Gateway that is a target for a specific route in your route table</li>
+                    <li>Used for traffic destined for a supported AWS service</li>
+                    <li>Primary use case: S3 and DynamoDB</li>
+                    <li>Pricing: Free</li>
+                </ul>
+            </ol>
+        </ul>
+
+    </body> 
+</html> 

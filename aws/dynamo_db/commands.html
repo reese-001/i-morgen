@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+                <link rel="stylesheet" href="../styles.css">
+                <title>i morgen</title>
+                <link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+                <table>
+			<tr>
+                                <td><img src="../images/logo.png" class="logo"></td>
+                                <td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+                <h2 style="color:#0A45A5;"><a href="../../aws/aws.html">aws</a>:<a href="index.html">dynamo db</a>:commands</h2>
+
+
+                <p><strong><span style="font-size: 18px;">Create Table</span></strong></p>
+                <p><strong>Two attributes with HASH (PK) and RANGE (SORT) defined</strong></p>
+                
+
+                <p>aws dynamodb create-table  \ <br/>
+                &nbsp;&nbsp;--table-name Starships \<br/>
+                &nbsp;&nbsp;--attribute-definitions \<br/>
+                &nbsp;&nbsp;&nbsp;AttributeName=ShipClass,AttributeType=S \<br/>
+                &nbsp;&nbsp;&nbsp;AttributeName=Registry,AttributeType=S \<br/>
+                &nbsp;&nbsp;--key-schema \<br/>
+                &nbsp;&nbsp;&nbsp;AttributeName=ShipClass,KeyType=HASH \<br/>
+                &nbsp;&nbsp;&nbsp;AttributeName=Registry,KeyType=RANGE \<br/>
+                &nbsp;&nbsp;--provisioned-throughput \<br/>
+                &nbsp;&nbsp;&nbsp;ReadCapacityUnits=5,WriteCapacityUnits=5 <br/>
+                </p>
+
+                <p><strong><span style="font-size: 18px;">Describe Table</span></strong></p>
+                <p><strong>output = table. Other option is 'text'. Default is json</strong></p>
+                <p>aws dynamodb describe-table --table-name Starships --output table</p>
+
+
+                <p><strong><span style="font-size: 18px;">Batch write to table</span></strong></p>
+                <p><strong>This assumes that the input file is in correct json </strong></p>
+                <p>aws dynamodb batch-write-item --request-items file://batches/batch-000.json</p>
+
+                <p><strong><span style="font-size: 18px;">Get item from table</span></strong></p>
+                <p><strong>Key file is json containing PK and Span values</strong></p>
+                <p>aws dynamodb get-item --table-name Starships --key file://key.json</p>
+
+                <p><strong><span style="font-size: 18px;">Delete item from table</span></strong></p>
+                <p><strong>Key file is json containing PK and Span values</strong></p>
+                <p>aws dynamodb delete-item --table-name Starships --key file://key.json</p>
+
+                <p><strong><span style="font-size: 18px;">Write item to table</span></strong></p>
+                <p><strong>Key file is json containing PK and Span values and all attribute data</strong></p>
+                <p>aws dynamodb put-item --table-name Starships --item file://key.json  --return-consumed-capacity TOTAL</p>
+        </body>  
+</html>  

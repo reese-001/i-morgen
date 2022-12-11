@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../aws.html">aws</a>:create ec2</h2>
+		<p><span style="font-size: 20px;"><strong>Create Public Facing EC2 with Sessions Manager</strong>: <a href="https://youtu.be/RrKRN9zRBWs?t=29443">Reference</a></span></p>
+		
+		<ol>
+			<li>Create EC</li>
+			<ul>
+				<li>Select instance type (t2.micro)</li>
+				<li>Select VPC created in <a href="allow_internet_access_from_vpc.html">here</a> other other public VPC</li>
+				<li>Select public subnet</li>
+				<li>Create new IAM role (access to Sessions Manager and S3)</li>
+				<ul>
+					<li>Select EC2 for the service that will use this role</li>
+					<li>Filter Policies = "ssm" and select AmazonEC2RoleForSSM</li>
+					<li>Filter Policies = "s3" and select AmazonS3FullAccess</li>
+					<li>Populate Review data and create role</li>
+				</ul>
+				<ul>
+					<li>In this example, User Data is passed in to install and start Apache and create a simple HTML as index.html </li>
+					<ul>
+						<li>su ec2-user</li>
+						<li>sudo yum install httpd -y</li>
+						<li>sudo service httpd start</li>
+						<li>sudo su -c "cat > /var/www/html/index.html &lt;&lt;EOL  [... proceed to create HTML]  </li>
+					</ul>
+				<li>Create Security Group to allow SSH and HTTP</li>
+				<li>Select Key/Pair</li>
+				</ul>
+
+			</ul>
+	</body>
+</html>

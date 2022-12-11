@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="index.html">dynamo db</a>:overview</h2>
+		<p><strong><span style="font-size: 20px;">DynamoDB</span></strong></p>
+        <p><strong><span style="font-size: 18px;">What does it do?</span>&nbsp;</strong></p>
+        <ul>
+			<li>No SQL key/value database and document database for internet scale applications</li>
+			<li>Features</li>
+			<ul>
+				<li>Fully managed</li>
+				<li>Multi region</li>
+				<li>Multi master</li>
+				<li>Durable</li>
+				<li>Build in security</li>
+				<li>Backup and restore</li>
+				<li>In-memory caching</li>
+			</ul>
+			<li>Provides</li>
+			<ul> 
+				<li>Eventual Consistant Reads (default)</li>
+				<li>Stronly Consistant Reads</li>
+			</ul>
+			<li>You can specift the read/write capacity per second</li>
+			<li>Data is split between at least three different AZ's on SSD storage</li>
+		</ul>
+        <p><strong><span style="font-size: 18px;">Read Consistency</span>&nbsp;</strong></p>
+		<ul>
+			<li>Data lives in at least three different locations</li>
+			<li>When data needs to be updated it has to write updates to all copies</li>
+			<li>Data consistency is guarenteed within 1 second, however ... </li>
+			<li>It is possible for the data to be inconsistent when reading from a copy that has not been updated</li>
+			<li>Two options</li>
+			<ul>
+				<li>Eventual Consistant Reads (default)</li>
+				<ul>
+					<li>reads are fast but no guarentee of consistency</li>
+					<li>all copies become consistent within a second</li>
+				</ul>
+				<li>Strongly Consistent Reads</li>
+					<li>when copies are being updated and you attempt to read, it will not return until all copies consistent</li>
+					<li>guarentee of consistency but the trade off is higher latency (slower reads)</li>
+			</ul>
+		</ul>
+		<p><strong><span style="font-size: 18px;">Partitions</span>&nbsp;</strong></p>
+		<ul>
+			<li><a href="../../aws/images/dynamo_partitions.png">Partition</a> is an allocation of storage for a table, backe dby SSD and automatically replicated across multiple AZ's within a Region</li>
+			<li>It speeds up reads for very large tables by logically grouping similar data together</li>
+			<li>DynamoDB starts with a single partition and automatically creates partitions as your data grows</li>
+			<ul>
+				<li>Partition add scenario #1: For every 10gb of data</li>
+				<li>When you exceed the RCUs or WCUs for a single partition</li>
+				<ul>
+					<li>RCUs = read capacity units</li>
+					<li>WCU = write capacity units</li>
+					<li>each partition has a max of 3000 RCUs and 1000 WCUs</li>
+					<li>DynamoDB evenly splits RCUs and WCUs across partitions</li>
+					<li><a href="../../aws/images/dynamo_provisioned_capacity.png">illustration</a></li>
+				</ul>
+			</ul>
+		</ul>
+		<p><strong><span style="font-size: 18px;">Primary Keys</span>&nbsp;</strong></p>
+		<ul>
+			<li>You must identify your PK when creating table</li>
+			<li>PK identifies where and how your data will be stores in partitions</li>
+			<li>PK will either be simple (PK only) or composite (PK + sort key)</li>
+			<li>Sort key also called the Range key</li>
+			<li>Keep in mind the following two objectives in assigning PKs</li>
+			<ul>
+				<li>Distinct: the key should be as distinct as possible</li>
+				<li>Uniform: the key should evenly divide data</li>
+			</ul>
+			<li>NOTE: The PK cannot be changed later</li>
+			<li><a href="../../aws/images/dynamo_primary_key_1.png">Illustration on Primary and Sort keys</a></li>
+			<li>How does DynamoDB determine partition when given a simple primary key?</li>
+			<ul>
+				<li>"Secret" function takes primary key and determines what partition to store the item</li>
+			</ul>
+			<li>How does DynamoDB determine partition when given a composite primary key?</li>
+			<ul>
+				<li>Similar to simple primary key</li>
+				<li>However it also groups data by partition key and is sorted A-Z </li>
+				<li><a href="../../aws/images/dynamo_composite_key.png">Illustration</a></li>
+			</ul>
+		</ul>	
+		<p><strong><span style="font-size: 18px;">Query and Scan</span>&nbsp;</strong></p>
+		<ul>
+			<li>Query: A query operation searches only primary key attribute values and supports a subset of comparison operators on key attribute values to refine the search process.</li>
+			<ul>
+				<li>Query operations only support an equal operator evaluation of the Primary Key, but conditional (=, <, <=, >, >=, Between, Begin) on the Sort Key</li>
+			</ul>
+			<li>Scan: A scan operation scans the entire table. You can specify filters to apply to the results to refine the values returned to you, after the complete scan.</li>
+			<ul>
+				<li>Scan operations are generally slower and more expensive as the operation has to iterate through each item in your table to get the items you are requesting.</li>
+			</ul>
+			<li>Example</li>
+			
+			<li>Table: CustomerId, AccountType, Country, LastPurchase *  Primary Key: CustomerId + AccountType</li>
+			<li>Query would get</li>
+			<ul>
+				<li>A CustomerId with a conditional filter on AccountType</li>
+			</ul>
+			<li>Scan would get</li>
+			<ul>
+				<li>All Customers with a specific AccountType</li>
+				<li>Items based on conditional filters by Country, ie All Customers from USA</li>
+				<li>Items based on conditional filters by LastPurchase, ie All Customers that made a purchase in the last month</li>
+			</ul>
+		</ul>
+			
+		</ul>
+
+		<p><strong><span style="font-size: 18px;">Provisioned Capacity</span>&nbsp;</strong></p>
+		<ul>
+			<li>Maximum amount of capacity your application is allowed to read or write per second from a table or index</li>
+			<li>Auto scaling allows us to go beyond RCU/WCU without dropping requests </li>
+			<li>Free tier eligible</li>
+		</ul>
+		<p><strong><span style="font-size: 18px;">On Demand Capacity</span>&nbsp;</strong></p>
+		<ul>
+			<li>Pay per request, only pay what you use</li>
+			<li>Use case</li>
+			<ul>
+				<li>New table and unknown workloads</li>
+				<li>Unpredictable application traffic</li>
+				<li>ease of paying for only what you use</li>
+			</ul>
+			<li>Throughput is limited by default upper limits</li>
+			<ul>
+				<li>40,000 RCU/WCU</li>
+			</ul>
+		</ul>
+		<p><strong><span style="font-size: 18px;">Calculate Reads</span>&nbsp;</strong></p>
+		<ul>
+			<li>1 RCU = </li>
+			<ul>
+				<li>one strongly consistent read per second</li>
+				<li>two eventual consistent reads per second</li>
+				<li>up to 4kb in size</li>
+			</ul>
+			<li>How to calculate RCUs for Strong</li>
+			<ol>
+				<li>Round data up to nearest 4</li>
+				<li>Divide data by 4</li>
+				<li>Times by number of reads</li>
+				<li><a href="../../aws/images/dynamo_rcu_strong_example.png">Example</a></li>
+			</ol>
+			<li>How to calculate RCUs for Eventual</li>
+			<ol>
+				<li>Round data up to nearest 4</li>
+				<li>Divide data by 4</li>
+				<li>Times by number of reads</li>
+				<li>Divide final number by 2</li>
+				<li>Round up to the nearest whole number</li>
+				<li><a href="../../aws/images/dynamo_rcu_eventual_example.png">Example</a></li>
+			</ol>
+			<li>How to calculate RCUs for Eventual</li>
+		</ul>
+
+		<p><strong><span style="font-size: 18px;">Calculate Writes</span>&nbsp;</strong></p>
+		<ul>
+			<li>1 WCU = </li>
+			<ul>
+				<li>one write per second</li>
+				<li>for up to 1kb</li>
+			</ul>
+			<li>How to calculate WCUs</li>
+			<ol>
+				<li>Round data up the nearest 1</li>
+				<li>Times by writes</li>
+				<li><a href="../../aws/images/dynamo_wcu_example.png">Example</li>
+			</ol>
+		</ul>
+		<p><strong><span style="font-size: 18px;">Global Tables</span>&nbsp;</strong></p>
+		<ul>
+			<li>Global tables replicate your DynamoDB tables automatically across your choice of AWS Regions</li>
+			<li>Global tables eliminate the difficult work of replicating data between Regions and resolving update conflicts, enabling you to focus on your application's business logic.</li>
+			<li>Three requirements</li>
+			<ul>
+				<li>Use KMS CMK</li>
+				<li>Enable Streams</li>
+				<li>Stream Type of new and Old Image</li>
+			</ul>
+		</ul>
+		<p><strong><span style="font-size: 18px;">Transactions</span>&nbsp;</strong></p>
+		<ul>
+			<li>Dynamo provides transactions at no additional cosrt</li>
+			<li>Two operations are provided</li>
+			<or>
+				<li>TransactWriteItems</li>
+				<li>TransactGetItems</li>
+			</or>
+			<li>Transactions allow for all or nothing changes to multiple items both within and across tables</li>
+			<li>Two underlying reat and writes are made for every transaction. This will increase the cost.</li>
+			<ol>
+				<li>Prepare the transaction</li>
+				<li>Commit the transaction</li>
+			</ol>
+		</ul>
+		<p><strong><span style="font-size: 18px;">Time To Live (TTL)</span>&nbsp;</strong></p>
+		<ul>
+			<li>Lets you have items in DynamoDB expire at a given time</li>
+			<li>TTL is great for keeping DB's small and manageable</li>
+			<li>Use cases</li>
+			<ul>
+				<li>Session Data</li>
+				<li>Event Logs</li>
+				<li>Usage patterns</li>
+			</ul>
+			<li><a href="../../aws/images/dynamo_enable_ttl.png">Illustration</a></li>
+		</ul>
+
+		<p><strong><span style="font-size: 18px;">Streams</span>&nbsp;</strong></p>
+		<ul>
+			<li>When enabled, DynamoDB captures every modification to the data items so you can react to those changes</li>
+			<li>When an insert, update or delete is executed, the change will be sent to a lambda function</li>
+			<ul>
+				<li>Changes are sent in batches at time to your custom Lambda</li>
+				<li>Changes are sent to your custom Lambda in near real time</li>
+				<li>Each stream record appears exactlyonce in a stream</li>
+				<li>For each item that is modified, the stream records appear in the same sequence as the actual modifications</li>
+			</ul>
+		</ul>
+		<p><strong><span style="font-size: 18px;">Dynamo Errors</span>&nbsp;</strong></p>
+		<ul>
+			<li>Two common types of errors</li>
+			<ul>
+				<li>ThrottlingException: the rate requests exceeds the allowed throughput</li>
+				<li>ProvisionedThroughputExceededException: Exceeded allowed provisioned throughput for a table or one or more global secondary indexes</li>
+				<li>As a reminder there are two capacity modes - throughput and on demand. ProvisionedThroughputExceededException is only for throughput </li>
+			</ul>
+			<li>SDK will automatically retry with exponential backoffs when error occurs (50ms, 100ms, 200ms, ..., 1 minute</li>
+		</ul>
+
+		<p><strong><span style="font-size: 18px;">Secondary Indexes</span>&nbsp;</strong></p>
+		<ul>
+			<li>Index is a copy of selected columns of data in a database which is used to quickly sort</li>
+			<li>DynamoDB has two types of indexes: Global is preferred</li>
+			<ol>
+				<li>LSI: Local Secondary Index</li>
+				<ul>
+					<li>can only be created during initial table creation</li>
+					<li>in effect it extends the SortKey</li>
+					<li>limited to 5 LSI's</li>
+					<li>no extra cost</li>
+					<li>see <a href="walkthrough_local_secondary_index.html">walkthrough</a></li>
+				</ul>
+				<li>GSI: Global Secondary Index</li>
+				<ul>
+					<li>Similar to LSI in function but creates a new table behind the scenes</li>
+					<li>This table is kept in sync with the original table but has the primary key changed to the attribute you created the GSI on</li>
+					<li>Must define RCU/WCU again on the second table</li>
+					<li>Cons:</li>
+					<ul>
+						<li>Writes to the main table result in a write to the GSI, effectively doubling the cost of writing</li>
+						<li>Writes to the main table are eventual replicated on the GSI quickly, but no SLA</li>
+						<li>Race conditions due to eventual consistency - your GSI can potentially return stale data</li>
+						<li>Throttling. Keep your WCU capacity on your GSI tables >= the WCU on your main table</li>
+					</ul>
+				</ul>
+			</ol>
+			<li>Strong consistency is a deciding factor</li>
+			<ul>
+				<li>local secondary index can provide strong consistency</li>
+	
+				<li>global secondary index cannot provide strong consistency</li>
+			</ul>
+		</ul>
+
+		<p><strong><span style="font-size: 18px;">Accelerator (DAX)</span>&nbsp;</strong></p>
+		<ul>
+			<li>Fully managed in memory cache for DynamoDB that runs in cluster</li>
+			<li>DynamoDB response times can be in single digit milliseconds. With DAX it can be in microseconds</li>
+			<li>Details</li>
+			<ul>
+				<li>DAX cluster consists of one or more nodes (called cache in illustration above) </li>
+				<li>Each node runs its own instance of the DAX caching software</li>
+				<li>One of the nodes serves as the primary node for cluster</li>
+				<li>Additional nodes (if present) serve as read replicas</li>
+				<li>Your app can access DAX by specifying the endpoint for the DAX cluster</li>
+				<li>The DAX client software works with the cluster endpoint to perform intelligent load balancing and routing</li>
+				<li>Incoming requests are evenly distributed across all nodes in cluster</li>
+			</ul>
+			<li>Use Cases</li>
+			<ul>
+				<li>Good for</li>
+				<ul>
+					<li>apps that require fastest possible response time for reads (real time bidding, social gaming, trading apps</li>
+					<li>apps that read a small number of items more frequently then others</li>
+					<li>apps that are read intensive but also cost sensitive</li>
+					<li>apps that require repeated reads against a large set of data</li>
+				</ul>
+				<li>Not good for (consider ElasticCache/Redis)</li>
+				<ul>
+					<li>apps that require strongly consistent reads</li>
+					<li>apps that do not require microsecond reads or unable to offlad repeated read activities from underlying tables</li>
+					<li>apps that are write intensive</li>
+					<li>apps that already are using a different caching solution for DynamoDB</li>
+
+				</ul>
+			</ul>
+			<li><a href="../../images/dynamo_dax_cluster.html">Image</a></li>
+		</ul>
+    </body>
+</html>

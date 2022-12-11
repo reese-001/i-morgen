@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		<h2 style="color:#0A45A5;"><a href="../../aws/aws.html">aws</a>:<a href="index.html">dynamo db</a>:walkthrough global secondary index</h2>
+
+        <img src="../../aws/images/dynamo_global_secondary_index.png">
+
+        <p><strong><span style="font-size: 20px;">Senario: Table is defined as shown. How to query Forum Name and Subject</span></strong></p>
+        <p><strong><span style="font-size: 18;">Option 1 (naive approach)</span></strong></p>
+        <ul>
+            <li>Scan + FilterExpression("OriginCountry" == "Germany")</li>
+            <li>This will work, but a scan operation scans all rows and this is time and $$ prohibitive</li>
+        </ul>
+        <p><strong><span style="font-size: 18;">Option 2 (GSI)</span></strong></p>
+        <ul>
+            <li>GSI's allow you to query for attributes of a row that are not the partition key you originally selected</li>
+            <li>DynamoDBQueryExpresssion&lt;Account&gt; query = <br/>
+                &nbsp;new DynamoDBQueryExpresssion&lt;Account&gt;() <br/>
+                &nbsp;.withHashValues(account) <br/>
+                &nbsp;.withIndexName("OriginCountry") <br/>
+                &nbsp;.withLimit(resultLimit)
+
+            </li>
+        </ul>
+    </body>
+    </html> 

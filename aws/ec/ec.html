@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ec2</a>:overview</h2>
+		<p><strong><span style="font-size: 20px;"><strong>EC2</strong></span></strong></p>
+		<p><strong><span style="font-size: 18px;"><strong>What is it?</strong></span></strong></p>
+		<ul>
+			<li>EC2 is a highly configurable server</li>
+			<li>Resizable compute capacity</li>
+			<li>Takes minutes to launch new instances</li>
+			<li>Anything and everything on AWS uses EC2 instance underneath</li>
+		</ul>
+		<p><span style="font-size: 18;"><strong>Instance Types and Usage</strong></span></p>
+		<ul>
+			<li>General Purpose</li>
+			<ul>
+				<li>A1, T3, T3a, T2, M5, M5a, M4</li>
+				<li>Balance of compute, memory, and network resources</li>
+				<li>Use case: web and code repos</li>
+			</ul>
+			<li>Compute Optimized</li>
+			<ul>
+				<li>C5, C5n, C4</li>
+				<li>Ideal for compute bound applicaitons that benefit from high performance processor</li>
+				<li>Use case: scientific modeling, dedicated gaming servers, ad server images</li>
+			</ul>
+			<li>Memory optimized</li>
+			<ul>
+				<li>R5, R5a, X1e, X1, High Memory, z1d</li>
+				<li>Ideal for fast performance worklaods that process large datasets in memory</li>
+				<li>Use case: in memory caches, in memory databases, real time big data analytics</li>
+			</ul>
+			<li>Accelerated Optimized</li>
+			<ul>
+				<li>P3, P2, G3, F1</li>
+				<li>hardware accelerators, or co-processors</li>
+				<li>Use case: machine learning, computation finance, seismic analysis, speech recognition</li>
+			</ul>
+			<li>Storage optimized</li>
+			<ul>
+				<li>I3, I3en, D2, H1</li>
+				<li>Ideal for high sequential read and write access to very large datasets on local storage</li>
+				<li>Use case: NoSql, in memory or transactional databases, data warehousing</li>
+			</ul>
+		</ul>
+		<p><span style="font-size: 18;"><strong>Instance Profile</strong></span></p>
+		<ul>
+			<li>Instead of embedding your AWS credentials in your code so your instance has permissions to access certain services, you attach a role to an instance via Instance Profile</li>
+			<li>The instance profile holds reference to the role</li>
+			<li>The EC2 instance is associated with the instance profile</li>
+			<li>Automatically created when launching instance via console</li>
+		</ul>
+		<p><span style="font-size: 18;"><strong>Placement Groups</strong></span></p>
+		<ul>
+			<li>Placement groups allow you to choose the logicial placement of your instances to optimize for ...</li>
+			<ul>
+				<li>Communication</li>
+				<li>Performance</li>
+				<li>Durability</li>
+			</ul>
+			<li>Cost: Free</li> 
+			<li>Types of placement groups</li>
+			<ul>
+				<li>Cluster: packs instances close together in AZ. Cluster cannot be multi-AZ</li>
+				<li>Partition: spreads instances across logical partitions. Partitions do not share underlying hardware</li>
+				<li>Spread: each instance is placed in a seperate rack. Must be multi-AZ</li>
+			</ul>
+		</ul>
+		<p><span style="font-size: 18;"><strong>UserData</strong></span></p>
+		<ul>
+			<li>A script that will automatically run when launching EC2</li>
+			<li>Used to install package, apply updates or anything else</li>
+		</ul>
+		<p><span style="font-size: 18;"><strong>MetaData</strong></span></p>
+		<ul>
+			<li>From within your EC2 instance, you can access information via http://169.254.169.254/latest/meta-data</li>
+			<li>Examples: </li>
+			<ul>
+				<li>/public-ipv4</li>
+				<li>/ami-id</li>
+				<li>/instance-type</li>
+			</ul>
+			<li>Can combine metadata with userdata scripts to perform all sorts of advanced aws staging automation</li>
+		
+		</ul>
+    </body>
+</html>

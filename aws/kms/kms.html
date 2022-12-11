@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">kms</a>:overview</h2>
+
+
+        <p><strong><span style="font-size: 20px;">KMS</span></strong></p>
+        <p><strong><span style="font-size: 18px;">What does it do?</span>&nbsp;</strong></p>
+        <ul>
+            <li>kms makes it easy to create, control, and rotate encryption keys</li>
+            <li>kms is a multi tenant Hardware Security Module (HSM)</li>
+            <li>kms can be used with CloudTrail to audit access history</li>
+        </ul>
+        <p><strong><span style="font-size: 19px;">Where can you find it?&nbsp;</span></strong></p>
+        <ul>
+            <li>RDS, CodeCommit, S3, CodeDeploy, Glacier, SNS, SQS, DynamoDB, EC2, Xray, ElasticCache and Codebuild (among many others)</li>
+        </ul>
+        <p><span style="font-size: 18px;"><strong>What is a Hardware Security Module (HSM)</strong></span></p>
+        <ul>
+            <li>Specialized hardware for storing your encryption keys</li>
+            <li>Designed to be tamper-proof</li>
+            <li>Stores keys in memory and never to disk</li>
+            <li>NOTE: CloudHSM is a single tenant HSM solution to provide stricter compliance to <a href="https://ciphertex.com/what-is-fips-140-2-level-3" rel="noopener noreferrer" target="_blank">FIPS 140-2 Level 3</a></li>
+            <li>KMS adheres to <a href="https://en.wikipedia.org/wiki/FIPS_140-2">FIPS 140-2 Level 2</a></li>
+        </ul>
+        <p><span style="font-size: 18px;"><strong>Customer Master Keys</strong></span></p>
+        <ul>
+            <li>CMKs are the primary resources in AWS KMS and a logical representation of a master key</li>
+            <li>CMK&apos;s contains metadata such as:<ul>
+                    <li>key id</li>
+                    <li>creation date</li>
+                    <li>description</li>
+                    <li>key state</li>
+                </ul>
+            </li>
+            <li>CMK&apos;s contain the key material used to&nbsp;<ul>
+                    <li>encrypt</li>
+                    <li>decrypt data</li>
+                </ul>
+            </li>
+            <li>KMS supports symmetric and asymmetric CMK&apos;s<ul>
+                    <li>example of symmetric: AES-256 (S3)</li>
+                    <li>example of asymmetric: RSA (EC2 key pairs)</li>
+                </ul>
+            </li>
+        </ul>
+        <p><span style="font-size: 18px;"><strong>Definitions</strong></span></p>
+        <ul>
+            <li>Encryption: process of encoding a message or information in such a way that only authorized parties can access it</li>
+            <li>Cryptographic Keys: string of data that is used to lock or unlock cryptographic functions, including authentication, authorization and encryption</li>
+            <li>Master key: used to encrypt all other keys on a system</li>
+            <li>Envelope encryption: using a key to encrypt another key</li>
+        </ul>
+</body>

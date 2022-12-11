@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../aws.html">aws</a>:allow internet access on vpc</h2>
+		<p><span style="font-size: 20px;"><strong></strong></span></p>
+		<p><span style="font-size: 20px;"><strong>Allow Internet Access on VPC</strong>: <a href="https://youtu.be/RrKRN9zRBWs?t=28689">Reference</a></span></p>
+		
+		<ol>
+			<li>Create VPC</li>
+			<ul>
+				<li>Typical CIDR block is 10.0.0.0/16</li>	
+				<li>By default you get a NACL and Route Table</li>
+				<li>DNS hostnames is disabled by default. Turn it on. </li>
+			</ul>
+			<li>Create Internet Gateway</li>
+			<ul>
+				<li>Will initially create in detached state</li>
+				<li>Attach it to your VPC</li>
+			</ul>
+			<li>Modify or Create new Route Table</li>
+			<ul>
+				<li>If you create a new one, set it as the main route table</li>
+				<li>Edit routes on route table</li>
+				<li>Destination: 0.0.0.0/0</li>
+				<li>Target: IGW</li>
+			</ul>
+			<li>Assuming you are making your own subnets... </li>
+			<ul>
+				<li>Select CIDR range smaller then selected from VPC</li>
+				<li>For example if CIDR was 10.0.0.0/16, select 10.0.0.0/24 or 10.0.1.0/24</li>
+				<li>After creation, go back and make it public by editing subnet settings</li>
+				<li>Ideally create at least 3 public subnets and 1 private</li>
+			</ul>
+			<li>Create Route Table Associations</li>
+			<ul>
+				<li>Route tables are created by default when you create the subnets</li>
+				<li>However in this example we created a new route table with no data and modified the private subnet to associate to the new route table</li>
+			</ul>
+		</ol>
+	</body>
+</html>

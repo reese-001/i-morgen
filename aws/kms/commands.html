@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">kms</a>:common commands</h2>
+
+        <p><strong><span style="font-size: 20px;">Common Commands</span></strong></p>
+        <p><span style="font-size: 16px;">reference</span><strong><span style="font-size: 16px;">:&nbsp;<a href="https://docs.aws.amazon.com/cli/latest/reference/kms/index.html">kms &mdash; AWS CLI 1.27.23 Command Reference (amazon.com)</a> </span></strong></p>
+        <p><br></p>
+        <table style="width: 40%"; border="1">
+            <tbody>
+                <tr>
+                    <td style="width: 35.3118%;">aws kms create-key</td>
+                    <td style="width: 64.6882%;">creates a unique customer managed CMK&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="width: 35.3118%;">aws kms encrypt</td>
+                    <td style="width: 64.6882%;">encrypts plaintext into ciphertext by using CMK</td>
+                </tr>
+                <tr>
+                    <td style="width: 35.3118%;">aws kms decrypt</td>
+                    <td style="width: 64.6882%;">decrypts ciphertext that was encrypted by CMK</td>
+                </tr>
+                <tr>
+                    <td style="width: 35.3118%;">aws kms re-encrypt</td>
+                    <td style="width: 64.6882%;">decrypts ciphertext and then re-encrypts it within KMS<br>
+                        <ul>
+                            <li>manually rotate a CMK</li>
+                            <li>change the CMK that protects ciphertext</li>
+                            <li>change the encryption context of a ciphertext</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 35.3118%;">aws kms enable-key-rotation</td>
+                    <td style="width: 64.6882%;">enable auto rotation of the key material for specified CMK</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+    </body>
+</html>

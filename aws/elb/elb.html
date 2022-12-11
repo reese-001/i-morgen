@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">elb</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>ELB (Elastic Load Balancer)</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		<ul>
+			<li>A load balancer distributes incoming application traffic across multiple EC2 instances in multiple Availability Zones</li>
+			<li>Benefit: increases the fault tolerance of your applications by detecting unhealthy instances and routes traffic only to healthy instances.</li>
+			<li>ELB can automatically scale to almost any workload</li>
+			<li>Load between targets is defined by rules and vary based on types of load balancer</li>
+
+			<li>There are three types available</li>
+			<ol>
+				<li>Application Load Balancer (ALB) </li>
+				<ul>
+					<li>Used for HTTP/HTTPS </li>
+					<li>Layer 7 of <a href="../images/elb_osi_model.png">OSI Model</a></li>
+					<li>Use case: web sites</li>
+					<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html" target="_blank">AWS link</a></li>
+				</ul>
+				<li>Network Load Balancer (NLB)</li>
+				<ul>
+					<li>Used for TCP/UDP</li>
+					<li>Layer 4 of <a href="../images/elb_osi_model.png">OSI Model</a></li>
+					<li>Able to handle millions of requests per second</li>
+					<li>Can handle cross zone load balancing</li>
+					<li>Use case: multi player games</li>
+					<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html" target="_blank">AWS link</a></li>
+				</ul>
+				<li>Classic Load Balancer (CLB)</li>
+				<ul>
+					<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/introduction.html" target="_blank">AWS link</a></li>
+					<li>Traffic is sent to listeners. If the port matches it forwards to EC2. No rules allowed. </li>
+					<li>Can handle HTTP, HTTPS, TCP traffic but not at the same time</li>
+					<li>Will respond with 504 error (timeout) if underlying application is not responding (web server/db level)</li>
+					<li><a href="../images/elb_classic_load_balancer.png">Illustration (ExamPro)</a></li>
+					<li>Legacy</li>
+				</ul
+			</ol>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Rules of Traffic</strong></span></p>
+		<ul>
+			<li>Three components involved in flow of traffic</li>
+			<ul>
+				<li>Listeners</li>
+				<ul>
+					<li>Listeners evaluate all traffic that matches the listeners port</li>
+					<li>For Classic Load Balancer, EC2 instances are directly registered to the Load Balancer</li>
+				</ul>
+				<li>Rules</li>
+				<ul>
+					<li>Listeners will invoke rules to decide what to do with the traffic and forward traffic to target groups</li>
+				</ul>
+				<li>Target Groups</li>
+				<ul>
+					<li>EC2 instances are registered as targets to a Target Group</li>
+				</ul>
+				
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Sticky Sessions</strong></span></p>
+		<ul>
+			<li>Allows you to bind a users session to a specific EC2 instance</li>
+			<li>Useful for applications that store session data on the instance</li>
+			<li>Used only on ALB an Classic (not NLB)</li>
+			
+			<ul>
+				<li>In the case of ALB, it can only be set on target group, not EC2</li>
+			</ul>
+			<li>Can be used with cookies or source IP</li>
+		</ul>
+        
+		<p><span style="font-size: 18px;"><strong>X-Forwarded-For (XFF) Header</strong></span></p>
+		<ul>
+			<li>When a request is forwarded to an EC2 instance, the XFF header is added to the request</li>
+			<li>Contains the IP address of the client that initiated the request</li>
+			<li>Useful for logging and debugging</li>
+			<li><a href="../images/elb_xff.png">Illustration (ExamPro)</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Health Checks</strong></span></p>
+		<ul>
+			<li>Route traffic away from unhealthy instances</li>
+			<li>Ping server at specific url and monitor result. Negative results will produce out of service status on EC2 instance</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Cross Zone Balancing</strong></span></p>
+		<ul>
+			<li>Only available on Classic and NLB</li>
+			<li>When enabled requests are evenly distributed across the instances in all enabled AZ's</li>
+			<li>When disabled requests are evenly distributed across the instances in only the AZ</li>
+			<li><a href="../images/elb_cross_zone_balancing.png">Illustration (ExamPro)</a></li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Request Routing</strong></span></p>
+		<ul>
+			<li>Apply rules to incoming requests and then forward or redirect traffic</li>
+			<li>Rules can be based on the following</li>
+			<li><a href="https://aws.amazon.com/blogs/aws/new-advanced-request-routing-for-aws-application-load-balancers/">AWS documentation</a></li>
+			<li><a href="https://aws.amazon.com/elasticloadbalancing/pricing/">Pricing</a></li>
+			<ul>
+				<li>Host header</li>
+				<li>Source IP</li>
+				<li>Path</li>
+				<li>Http header</li>
+				<li>Http header method</li>
+				<li>Query string</li>
+			</ul>
+			<li>Actions taken can consist of</li>
+			<ul>
+				<li>Forward to</li>
+				<li>Redirect to</li>
+				<li>Return fixed response</li>
+				<li>Authenticate</li>
+			</ul>
+
+		</ul>
+
+    </body>
+</html>

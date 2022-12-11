@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+       <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">asg</a>:overview</h2>
+
+    <p><strong><span style="font-size: 18px;">Auto Scaling Groups</span></strong></p>
+    <ul>
+        <li>AGS's contain a collection of EC2 instances that are treated as a group for the purposes of automatic scalling and management</li>
+        <li>Automatic scalling can occur via</li>
+        <ul>
+            <li>Capacity settings</li>
+            <li>Health check replacements</li>
+            <li>Scaling Policies</li>
+        </ul>
+        <li>The size of the ASG is based on three attributes</li>
+        <ul>
+            <li>Min</li>
+            <li>Max</li>
+            <li>Desired Capacity</li>
+
+        </ul>
+        <li><a href="../images/vpc_auto_scaling_group.png">Console Configuration</a></li>
+    </ul>
+
+    <li>Health check replacements</li>
+    <ul>
+        <li>ASG will perform a health check on EC2 instances to determine if there is a software or hardware issue</li>
+        <li>If the outcome is unhealthy, ASG will terminate and launch a new instance</li>
+        <li>Two types of health checks</li>
+        <ol>
+            <li>EC2</li>
+            <li>ELB</li>
+        </ol>
+    </ul>
+    <li>Scaling policies</li>
+
+    <ul>
+        <li>Two types of scaling</li>
+        <ol>
+            <li>Scaling out: adding more instances</li>
+            <li>Scaling in: removing instances</li>
+        </ol>
+        <li>Three types of policies</li>
+        <ol>
+            <li>Target tracking scaling policy</li>
+            <ul>
+                <li>Maintains a specific metric at a target value</li>
+                <li>eg. if avg cpu utilization exceeds 75% then add another server</li>
+            </ul> 
+            <li>Simple scaling policy</li>
+            <ul>
+                <li>Scales when alarm is breached</li>
+                <li>This is no longer recommended - use scaling policies with steps</li>
+            </ul>
+            <li>Scaling policy with steps</li>
+            <ul>
+                <li>Scales when an alarm is breached, can escalate based on alarm value changing</li>
+                <li><a href="../images/vpc_scaling_with_steps.png">Console configuration</a></li>
+            </ul>
+        </ol>
+        
+    </ul>
+
+    <p><strong><span style="font-size: 18px;">ASG - ELB Integration</span></strong></p>
+    <ul>
+        <li>ASG can be associated with Elastic Load Balancers (ELB)</li>
+        <li>When ASG is associated with ELB, a richer set of health checks can be set</li>
+        <li>There are three types of load balancers</li>
+        <ol>
+            <li>Classic load balancers are directly associated to the ASG</li>
+            <li>Application and Network load balancers are associated indirectly via their Target Groups</li>
+        </ol>
+    </ul>
+
+
+    <p><strong><span style="font-size: 18px;">Launch Configuration</span></strong></p>
+    <ul>
+        <li>Launch configuration is an instance configuration template that an ASG uses to launch new EC2 instances </li>
+        <li>Same process as launching EC2 instance except you are saving that configuration to launch an instance for later</li>
+        <li>Launch template are launch configurations with versioning</li>
+        <li>Launch configurations cannot be edited</li>
+    </ul>
+
+
+    <p><strong><span style="font-size: 18px;">Misc notes</span></strong></p>
+    <ul>
+        <ip>0.0.0.0/0 is also known as default and represent all possible IP addresses</ip>
+    </ul>
+    </body> 
+</html> 

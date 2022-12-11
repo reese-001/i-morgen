@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cognito</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>Cognito</strong></span></p>
+        <ul>
+            <li><span style="font-size: 18px;">Decentralized managed authentication</span></li>
+            <li>Offers authentication (authn) and authorization (authz)</li>
+            <li>Allows you to add user registration, sign in and access control</li>
+        </ul>
+        <p><br></p>
+        <p><span style="font-size: 18px;"><strong>Use cases</strong></span></p>
+        <ul>
+            <li style="font-size: 16px;">Keeping active directories of users</li>
+            <li style="font-size: 16px;">Securing apis</li>
+            <li style="font-size: 16px;">Provide temporary access to AWS resources<ul>
+                    <li style="font-size: 16px;">Allow access to upload to S3</li>
+                </ul>
+            </li>
+        </ul>
+        <p><br></p>
+        <p><span style="font-size: 18px;"><strong>Consists of three pieces</strong></span></p>
+        <ul>
+            <li style="font-size: 16px;">User Pools<ul style="font-size: initial;">
+                    <li style="font-size: 16px;">User identity with authentication to IpD to grant access to your app</li>
+                </ul>
+            </li>
+            <li style="font-size: 16px;">Identity Pools<ul style="font-size: initial;">
+                    <li style="font-size: 16px;">Provides temporary credentials for users to access AWS services</li>
+                </ul>
+            </li>
+            <li style="font-size: 16px;">Sync<ul style="font-size: initial;">
+                    <li>Syncs user data and preferences across all devices</li>
+                </ul>
+            </li>
+        </ul>
+        <p><strong><span style="font-size: 18px;">Web Identity Federation and IpD</span></strong></p>
+        <ul>
+            <li>Web Identity Federation<ul>
+                    <li>Exchange identity and security information between identity provider (IpD) and an application</li>
+                </ul>
+            </li>
+            <li>Identity Provider (IpD)<ul>
+                    <li>trusted provider of your user identity that lets you use authenticate to access other services</li>
+                    <li>for example: Facebook, Google, Git</li>
+                </ul>
+            </li>
+            <li>Types of IpD<ul>
+                    <li>SAML<ul>
+                            <li>used for single sign on solution</li>
+                        </ul>
+                    </li>
+                    <li>OAuth - powered by OpenID connect (OIDC)<ul>
+                            <li>used by social accounts</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p><span style="font-size: 18px;"><strong>Identity Pools</strong></span></p>
+        <ul>
+            <li><span style="font-size: 16px;">User directories used to manage the actions for web and mobile apps such as</span>
+                <ul>
+                    <li><span style="font-size: 16px;">sign in</span></li>
+                    <li><span style="font-size: 16px;">sign up</span></li>
+                    <li><span style="font-size: 16px;">account recovery</span></li>
+                    <li><span style="font-size: 16px;">account information</span></li>
+                </ul>
+            </li>
+            <li><span style="font-size: 16px;">You can have users directly sign up with you. In this case Cognito is the IdP</span></li>
+            <li><span style="font-size: 16px;">Otherwise you can integrate with other IpD&apos;s and Cognito is the identity broker</span></li>
+            <li><span style="font-size: 16px;">Successful user auth generates a JSON web tocken (JWT)</span></li>
+            <li><span style="font-size: 16px;">Tag attributes to create roles</span></li>
+        </ul>
+        <p><span style="font-size: 16px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img src="../images/cognito_identity_pool.png" style="width: 483px; height: 99.3368px;" width="483" height="99.3368"></span></p>
+        <p><br></p>
+        <p><br></p>
+        <p><span style="font-size: 18px;"><strong>Identity Pools</strong></span></p>
+        <ul>
+            <li style="font-size: 16px;">Short term access to AWS services</li>
+            <li><span style="font-size: 16px;">Tag attributes to create roles</span></li>
+        </ul>
+        <p><br></p>
+        <p><span style="font-size: 18px;"><strong>Notes:</strong></span></p>
+        <ul>
+            <li style="font-size: 16px;">Allows up to 40 million users</li>
+        </ul>
+        
+    </body>
+</html>
