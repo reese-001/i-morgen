@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cloudtrail</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>CloudTrail</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		<ul>
+			<li>CloudTrail is a web service that records AWS API calls for your account and delivers log files to you</li>
+			<li>The recorded information includes the identity of the API caller, the time of the API call, the source IP address of the API caller, the request parameters, and the response elements returned by the AWS service</li>
+			<li>Used for governance, compliance, operational auditing</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Data Collected</strong></span></p>
+		<ul>
+			<li><a href="../images/cloudtrail_example_data.png">Sample data</a></li>
+			<li>Where</li>
+				<ul>
+					<li>Source IP</li>
+				</ul>
+			<li>When</li>
+			<ul>
+				<li>EventTime</li>
+			</ul>
+			<li>Who</li>
+			<ul>
+				<li>User</li>
+				<li>UserAgent</li>
+			</ul>
+			<li>What</li>
+			<ul>
+				<li>Region</li>
+				<li>Resource</li>
+				<li>Action</li>
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Event History</strong></span></p>
+		<ul>
+			<li>90 days logging by default</li>
+			<li>To extend that 90 days, you need to create a trail</li>
+			<li>Tails are output to S3 and do not have GUI like Event History</li>
+			<li>To analyze a trail, you can use Amazon Athena</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Trail Options</strong></span></p>
+		<ul>
+			<li>A trail can be set to log to all regions</li>
+			<li>Can be set to across all accounts in an Organization</li>
+			<li>Can encyrpt your logs using server side encyrption via KMS (SSE-KMS)</li>
+			<li>Can ensure the integrity of our logs to see if they have been tampered we need to turn on log file validation</li>
+			<li>Can be set to deliver events to a CloudWatch log</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Management Events vs Data Events</strong></span></p>
+		<ul>
+			<li>Management Events: Tracks management operations. Turned on by default and cannot be turned off</li>
+			<ul>
+				<li>ConfiguratingSecurity (ie. IAM AttachRolePolicy API operations</li>
+				<li>Registering devices (ie. Amazon EC2 CreateDefaultVpc API operations</li>
+				<li>Configuring rules for routing data (ie. Amazon EC2 CreateSubnet API operations)</li>
+				<li>Setting up logging (ie. AWS CloudTrai CreateTrail API operations</li>
+			</ul>
+			<li>Data Events: Tracks data operations. Can be turned on or off. Results in charges</li>
+			<ul>
+				<li>Reading data (ie. Amazon S3 GetObject API operations)</li>
+				<li>Writing data (ie. Amazon S3 PutObject API operations)</li>
+				<li>Listing data (ie. Amazon S3 ListObjects API operations)</li>
+				<li>Deleting data (ie. Amazon S3 DeleteObject API operations)</li>
+			</ul>
+		</ul>
+    </body>
+</html>

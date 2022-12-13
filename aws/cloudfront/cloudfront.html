@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+       <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cloudfront</a>:overview</h2>
+
+    <p><strong><span style="font-size: 20px;">CloudFront</span></strong></p>
+    <p><span style="font-size: 18px;">What is it?</span></p>
+    <ul>
+        <li>CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds, all within a developer friendly environment.</li>
+        <li>What is a CDN?</li>
+        <ul>
+            <li>A CDN is a system of distributed servers (network) that deliver webpages and other web content to a user based on the geographic locations of the user, the origin of the webpage and a content delivery server.</li>
+            <li>CDNs help minimize delays in loading web page content by reducing the physical distance between the server and the user.</li>
+            <li>CDNs store cached copies of data in multiple locations across the world so that users can access content from the nearest edge location.</li>
+            <li>CDNs are useful for reducing latency, improving load time, and reducing the bandwidth and operating costs of serving content.</li>
+            <li><a href="../images/cloudfront_cdn.png">Illustration</a></li>
+        </ul>
+    </ul>
+    <p><span style="font-size: 18px;">Core components</span></p>
+    <ul>
+        <li>Origin: The location where all the original files are located. Examples include:
+            <ul>
+                <li>S3 bucket (this is the typical use case)</li>
+                <li>EC2 instance</li>
+                <li>ELB</li>
+                <li>Route53</li>
+            </ul>
+        </li>
+        <li>Distribution: The CDN itself. This is the component that is responsible for caching the content and serving it to the end user.</li>
+        <ul>
+            <li>See <a href="#distribution">below</a> for more information</li>
+        </ul>
+        <li>Edge Location: The location where the web content is cached. This is different than an AWS Region or AZ</li>
+        <ul>
+            <li>Edge locations are not just read only</li>
+            <li>They can also be used to write</li>
+            <li>For example, if you have a form on your website that users can fill out and submit, the form data can be written to an S3 bucket via an edge location</li>
+        </ul>
+    </ul>
+    <p><a id="distribution"></a><span style="font-size: 18px;">Distribution</span></p>
+    <ul>
+        <li>Collection of edge locations</li>
+        <li>Geopgraphic replication is based on Price Class</li>
+        <ul>
+            <li>"Only US, Canada, Europe"</li>
+            <li>"US, Cananda, Europe, Asia, Middle East and Africa"</li>
+            <li>"Use All Edge Locations (Best Perfomance)"</li>
+        </ul>
+        <li>There are two types of distributions</li>
+        <ol>
+            <li>Web (for websites)</li>
+            <li>RTMP (for streaming media) ** Depricated</li>
+            <li>Note that you can stream from web, but its not optimized</li>
+        </ol>
+        <li>Behavious</li>
+        <ul>
+            <li>Redirect to HTTPs</li>
+            <li>Restrict HTTP Methods</li>
+            <li>Restrict Viewer Access</li>
+            <li>Set TTLs</li>
+        </ul>
+        <li>Invalidations</li>
+        <ul>
+            <li>Allow you to expire the files outside the TTL window</li>
+            <li>Useful when you push changes from S3</li>
+        </ul>
+        <li>Error Page</li>
+        <ul>
+            <li>Serve custom error pages (ex 404)</li>
+        </ul>
+        <li>Restrictions</li>
+        <ul>
+            <li>Allow/Deny specific countries</li>
+        </ul>
+    </ul>
+    <p><a id="distribution"></a><span style="font-size: 18px;">Lambda@Edge</span></p>
+    <ul>
+        <li>Override the behaviour of requests and responses</li>
+        <li>Use cases:</li>
+        <ul>
+            <li>If you have protected content and you want to authenticate against Cognito. </li>
+            <li>Setup A/B websites: 50% chance traffic goes to either A or B</li>
+        </ul>
+        <li>Four available Lambda@Edge functions. <a href="../images/cloudfront_lambda_edge.html">Illlustration</a> (ExamPro)</li>
+        <ol>
+            <li>Viewer request</li>
+            <ul>
+                <li>when CloudFront recieves a rquest from a viewer</li>
+            </ul>
+            <li>Origin request</li>
+            <ul>
+                <li>Before CloudFront forwards a request to the origin</li>
+            </ul>
+            <li>Origin response</li>
+            <ul>
+                <li>When CloudFront receives a response from the origin</li>
+            </ul>
+            <li>Viewer response</li>
+            <ul>
+                <li>Before CloudFront returns the response to the viewer</li>
+            </ul>
+        </ol>
+    </ul>
+    <p><a id="distribution"></a><span style="font-size: 18px;">Protection</span></p>
+    <ul>
+        <li>Restrict viewer access to allow for protected content</li>
+        <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html" target="_blank">AWS documentation</a></li>
+        <li><a href="https://medium.com/@ratulbasak93/serving-private-content-of-s3-through-cloudfront-signed-url-593ede788d0d" target="_blank">Medium</a></li>
+        <li>If selected, a virtual user identify will be used to give your CloudFront Distribution permission to fetch a private object</li>
+        <li>To use signed url's or signed cookies, you will need to have an OAI - which is created when you select this option</li>
+        <ul>
+            <li>Signed URL's</li>
+            <ul>
+                <li>URL's that are signed with a private key</li>
+                <li>URL's are only valid for a certain amount of time</li>
+                <li>URL's are only valid for a certain IP address</li>
+                <li>URL's are only valid for a certain resource</li>
+                <li>URL's are only valid for a certain user</li>
+            </ul>
+            <li>Signed Cookies</li>
+            <ul>
+                <li>A cookie which is passed along with the request to CloudFront</li>
+                <li>Advantage is if you want to provide access to multiple restricted files (ie video streaming)</li>
+            </ul>
+        </ul>
+   
+    </ul>
+    </body> 
+</html> 
