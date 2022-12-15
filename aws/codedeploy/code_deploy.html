@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">code deploy</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>Code Deploy</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		<ul>
+			<li>Fully managed deploy pipeline to staging or production environments</li>
+			<li>Can deploy EC2, on premise, Lambda, or ECS</li>
+			<li>Rapidly deploy new features</li>
+			<li>Update AWS Lambda functions versions</li>
+			<li>Avoid downtime during application deployment</li>
+			<li>Perform in place or blue/green deployments</li>
+			<li>Integrates with existing CI/CD tools such as Jenkins and CodePipeline</li>
+			<li>Integrates with existing config management tools such as Puppet, Chef, Ansible</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Core Components</strong></span></p>
+		<ul>
+			<li>Application</li>
+			<ul>
+				<li>Unique identifier for the application being deployed</li>
+				<li>Ensures the correct combination of revision, deployment config, and groups are referenced during deployment</li>
+			</ul>
+			<li>Deployment Groups</li>
+			<ul>
+				<li>Set of EC2 instances or Lambda functions where the new revision is deployed to</li>
+			</ul>
+			<li>Deployment</li>
+			<ul>
+				<li>Instance of a deployment group</li>
+				<li>Contains the revision, deployment config, and deployment group</li>
+				<li>Can be created manually or automatically</li>
+			</ul>
+			<li>Deployment Configuration</li>
+			<ul>
+				<li>Defines how a deployment is executed and rolled back</li>
+				<li>Can be created manually or automatically</li>
+			</ul>
+			<li>AppSpec file</li>
+			<ul>
+				<li>Contains instructions for how to deploy the application</li>
+				<li>Can be created manually or automatically</li>
+			</ul>
+			<li>Revision</li>
+			<ul>
+				<li>Version of the application to be deployed</li>
+				<li>Can be created manually or automatically</li>
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>In Place Deployments</strong></span></p>
+		<ul>
+			<li>The app for each instance is stopped, the new version is deployed, and the app is started</li>
+			<li>You can use a load balancer so that each instance is de-registered during its deployment and then restored to service after deployment is complete</li>
+			<li>Only deployments that use the EC2/On-Premise compute platform can use in place deployments (no Lambda/ECS)</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Blue/Green Deployments</strong></span></p>
+		<ul>
+			<li>tip: choose "automatically copy Amazon EC2 Auto Scaling Group</li>
+			<li>Instances are provisioned for the replacement environment</li>
+			<li>The latest application revision is installed on the replacement instances</li>
+			<li>Optional wait time occurs for activities such as application testing and system verification</li>
+			<li>Instances in the replacement environment are registered with an ELB, causing traffic to be rerouted to them</li>
+			<li>Instances in the original environment are de-registered and can be terminated or used for debugging/rollback</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html" target="_blank">Appspec.yml</a></strong></span></p>
+		<ul>
+			<li>Reponsible for describing where code should be installed and how to get it running </li>
+			<li>Can be created manually or automatically</li>
+			<li><a href="../images/code_deploy_appspec.png">Illustration</a> (ExamPro)</li>
+			<li>Components</li>
+			<ul>
+				<li>Choose OS version</li>
+				<li>Where to download the source</li>
+				<li>Apply permissions</li>
+				<li>Commands to stop the application (write bash files and point to the bash files in appspec.yml)</li>
+				<li>Commands to run before code is installed</li>
+				<li>Commands to run after code is installed</li>
+				<li>Commands to start the application</li>
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html" target="_blank">Lifecycle Event Hooks</a></strong></span></p>
+		<ul>
+			<li>Allows you to view the events from a deploy to see if there is anything that failed and how long each event took. </li>
+			<li>Listed sequentially</li>
+			<li><a href="../images/code_deploy_lifecycle_events.png">Illustration</a> (ExamPro)</li>
+			<li>Failures are listed and can be drilled into. However some are cryptic and will require you to SSH into EC2 instance</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html" target="_blank">CodeDeploy Agent and ServiceRole</a></strong></span></p>
+		<ul>
+			<li>Need to install the CodeDeploy agent so the EC2 instance can report back to CodeDeploy</li>
+		</ul>
+
+		</body>
+</html>

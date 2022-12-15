@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">code build</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>Code Build</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		<ul>
+			<li>CodeBuild is a fully managed build service that compiles source code, runs tests, and produces software packages that are ready to deploy.</li>
+			<li>CodeBuild eliminates the need to provision, manage, and scale your own build servers.</li>
+			<li>It scales continuously and processes multiple builds concurrently, so your builds are not left waiting in a queue.</li>
+			<li>You can get started quickly by using prepackaged build environments, or you can create custom build environments that use your own build tools.</li>
+			<li>You can also fully automate the build process by using the AWS SDKs to integrate CodeBuild with your source control repository and deployment pipeline.</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Workflow</strong></span></p>
+		<ul>
+			<li>Trigger CodeBuild through console, SDK, CLI or most commonly, CodePipeline</li>
+			<li>Must setup CodeBuild environment</li>
+			<ul>
+				<li>Choose from pre-built environments</li>
+				<li>Or create your own via a Docker image typically stored in ECR</li>
+			</ul>
+			<li>Provide your source control, typically from CodeCommit, GitHib, etc</li>
+			<li>Execution occurs as defined in Buildspec.yml which is typically included in your source code</li>
+			<ul>
+				<li>NOTE: this can be overriden on the CLI</li>
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Build environments</strong></span></p>
+		<ul>
+			<li>Docker images are managed by CodeBuild</li>
+			<li>Check the image to see what is preinstalled</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Use Cases</strong></span></p>
+		<ul>
+			<li>Build and test code</li>
+			<li>Compile code</li>
+			<li>Run unit tests</li>
+			<li>Package artifacts</li>
+			<li>Deploy artifacts</li>
+
+			<li>Generate out static pages from a JAMstack</li>
+			<li>A website built with Gastby needs to render out static pages and delivery for a S3 static website hosting</li>
+			<ul>
+				<li>Trigger with AWS Console</li>
+				<li>CodeBuild will pull from its source (CodeCommit)</li>
+				<li>CodeBiuld will render out static pages to S3</li>
+			</ul>
+			<li>Developer needs to ensure their code passes all tests before being allowed to make a Pull Request</li>
+			<ul>
+				<li>Push code to a feature branch</li>
+				<li>Github will trigger a web hook that triggers a lambda function using AWS SDK</li>
+				<li>CodeBuild pulls down project and runs build commands</li>
+				<li>Test coverage results passed to another lambda function and back to GitHub </li>
+			</ul>
+		</ul>
+		<p><span style="font-size: 18px;"><strong>Buildspec.yml</strong></span></p>
+		<ul>
+			<li>Provides the build instructions and needs to be at the root of your project folder</li>
+			<li>Components</li>
+			<ul>
+				<li>version: .2 recommended</li>
+				<li>Affects default shell in the build environment</li>
+				<ul>
+					<li>v .1 runs each build command in a seperate instance</li>
+					<li>v .2 runns all build commands in the same instance</li>
+				</ul>
+				<li>Phases: commands the run in each phase of the build</li>
+				<ul>
+					<li>install: only for installing packed in the build env</li>
+					<li>pre_build: commands that run before builing</li>
+					<li>build: commands that run during build</li>
+					<li>post-build: commands that run after build</li>
+				</ul>
+				<li>Artifacts: where we can find the build output and how to prepare it for uploading to the S3 output bucket</li>
+			</ul>
+		</ul>
+	</body>
+</html>

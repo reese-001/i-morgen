@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+       <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">sqs</a>:overview</h2>
+
+        <p><strong><span style="font-size: 20px;">Simple Queue Servce (SQS) </span></strong></p>
+        <p><span style="font-size: 18px;">What is it?</span></p>
+        <ul>
+            <li>Fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications</li>
+            <li>Eliminates the complexity and overhead associated with managing and operating message queueing systems</li>
+            <li>Provides a simple and flexible platform for sending, storing, and receiving messages</li>
+            <li>Keeps data secure by using Server Side Encryption (SSE)</li>
+            <li>Uses S3 or DynamoDB to store contents of messages larger then 256k. Alternatively you can split messages and keep it in S3</li>
+            <li><a href="../images/sqs_overview.png">Illustration</a></li>
+        </ul>
+
+        <p><span style="font-size: 18px;">SQS offers two types of queues</span></p>       
+        <ol>
+            <li>Standard queues</li>
+            <ul>
+                <li>offer maximum throughput and at least once delivery</li>
+            </ul>
+            <li>FIFO queues</li>
+            <ul>
+                <li>strict first in first out delivery and exactly-once processing</li>
+            </ul>
+        </ol>
+        
+        <p><span style="font-size: 18px;">Additional features</span></p>
+        <ul>
+            <li>Message filtering</li>
+            <li>Message deduplication</li>
+            <li>Dead letter queues</li>
+        </ul>
+
+        <p><span style="font-size: 18px;">CLI <a href="https://medium.com/@schogini/aws-cli-and-sqs-a-tiny-demonstration-18e7136d0258">source</a></span></p>
+        <ul>
+            <li>Create queue: aws sqs create-queue --queue-name sreeQ1 --attributes file://q-attributes.json --tags file://keys.json</li>
+            <ul>
+                <li>This command references a json file for attributes. This may look like this</li>
+<pre>
+{
+    "MessageRetentionPeriod": "180"
+}
+</pre>          
+                <li>keys.json may look like this</li>
+<pre>
+{
+    "Environment": "Production"
+}
+</pre> 
+            </ul>
+        <li>Query queue for attributes: aws sqs get-queue-attributes --queue-url https://sqs.us-east-2.amazonaws.com/[removed]/sreeQ1 --attribute-names All</li>
+        <li>Sending message to queue: aws sqs send-message --queue-url https://sqs.us-east-2.amazonaws.com/[removed]/sreeQ1 --message-body "IOT-1 Temp: 51C"</li>
+        <li>Reading from queue: aws sqs --region ap-south-1 receive-message --queue-url https://sqs.us-east-2.amazonaws.com/[removed]/sreeQ1</li>
+        <li>Delete queue: aws sqs --region us-east-2 delete-queue --queue-url https://sqs.us-east-2.amazonaws.com/[removed]/sreeQ1</li>
+        </ul>
+
+        <p><span style="font-size: 18px;">Misc</span></p>
+        <ul>
+            <li>Tags</li>
+            <ul>
+                <li>Case sensitive</li>
+                <li>New keys with identical keys will overwrite existing tag</li>
+            </ul>
+            <li>You can't change the queue type after you create a queue.</li>
+            <li>Default visibility timeout is 30 seconds</li>
+            <li>The DLQ of a FIFO queue must also be FIFO. Similarly the DLQ of a standard queue must also be a standard queue</li>
+        </ul>
+    </body>
+</html> 

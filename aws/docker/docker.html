@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">docker</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>Docker</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		<ul>
+			<li>Third party tool designed to make it easier to create, deploy and run apps by using containers</li>
+			<li>Compared to VM's ...</li>
+			<ul>
+				<li>Containers make better use of space</li>
+				<li>Containers provide better app isolation</li>
+				<li>These contribute to containers avoiding some of the config conflicts, security problems and resource management issues seen in VM's</li>
+			</ul>
+		</ul>
+		<p><span style="font-size: 18px;"><strong>Dockerfile components</strong></span></p>
+		<ul>
+			<li><a href="../images/docker_sample.png">Example</a></li>
+			<li>FROM: use another docker image as a basis for this Dockerfile</li>
+			<li>RUN: execute any commands in a new layer on top of the current image</li>
+			<li>WORKDIR: change the default folder for future commands</li>
+			<li>COPY: copy files or folders from local computer to image</li>
+			<li>ENTRYPOINT: command executed when the container is started. Cannot be overrided</li>
+			<li>EXPOSE: listen on specified ports at runtime</li>
+			<li>CMD: default arguments for ENTRYPOINT</li>
+		</ul>
+		<p><span style="font-size: 18px;"><strong>Docker components</strong></span></p>
+		<ul>
+			<li>docker build: build an image from a Dockerfile</li>
+			<li>docker ps: list of containers</li>
+			<li>docker run: run a command in a new container</li>
+			<li>docker exec: run a command in a running container</li>
+			<li>docker images: list of images</li>
+			<li>docker push: push an image to a repo</li>
+			<li>docker pull: pull an image from a repo</li>
+		</ul>
+		</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../aws.html">aws</a>:static s3 site using cloudfront</h2>
+		<p><span style="font-size: 20px;"><strong>Create Static S3 Site using CloudFront</strong>: <a href="https://www.youtube.com/watch?v=mls8tiiI3uc">Reference</a></span></p>
+		<p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		<ul>
+			<li>Create simple React app and upload to S3 - Link to create <a href="#react">React app</a></li>
+			<li>Modify DNS settings in Route53</li>
+			<li>Setup caching on CloudFront</li>
+			<ul>
+				<li>React will point to a DNS entry on Route53</li>
+				<li>DNS entry will point to our Amazon CloudFront Distribution</li>
+				<li>And that is going to point to our S3 bucket which contains web site files </li>
+				<li>Finally setup certificate in the distribution</li>
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Create S3 buckets</strong></span></p>
+		<ul>
+			<li>Creating two buckets, one prefixed with 'www' and one without the prefix.</li>
+			<ul>
+				<li>The intent is to forward traffic from none 'www' to the 'www'</li>
+			</ul>
+			<li>Upload content from local directory to 'www' folder</li>
+			<li>Allow public access via permissions tab</li>
+			<li>Set bucket policy as shown below and modify "Bucket-Name" as appropriate</li>
+			
+<pre>
+	{
+		"Version": "2012-10-17",
+		"Statement": [
+			{
+				"Sid": "PublicReadGetObject",
+				"Effect": "Allow",
+				"Principal": "*",
+				"Action": [
+					"s3:GetObject"
+				],
+				"Resource": [
+					"arn:aws:s3:::Bucket-Name/*"
+				]
+			}
+		]
+	}
+</pre>
+		<li>Navigate to bucket properties and scroll down to "Static website hosting"</li>
+		<ul>
+			<li>Enable Static website hosting</li>
+			<li>Select "Host a static website"</li>		
+			<li>Type "index.html" for Index Document</li>
+		</ul>
+		<li>Navigate to non-www folder, the properties and scroll down to "Static website hosting"</li>
+		<ul>
+			<li>Enable Static website hosting</li>
+			<li>On Hosting type, select "Redirect requests for an object"</li>
+			<li>Populate host name with the 'www' prefix</li>
+			<li>select http as protocol (note: this option will be revisited at the end)</li>
+		</ul>
+		</ul>
+		
+
+		<p><span style="font-size: 18px;"><strong><a id="react">Route53</a></strong></span></p>
+		<ul>
+			<li>Navigate to Route53 and select appropriate hosted domain and select "Create record" </li>
+			<li>Populate the subdomain and ensure it matches the S3 bucket name</li>
+			<li>For record type, select "A - Routes traffic to an IPv4 address and some AWS resources</li>
+			<li>For "Value/Route traffic to", populate the subsequent three values as follows</li>
+			<ul>
+				<li>Alias to S3 website endpoint</li>
+				<li>[correct region for S3]</li>
+				<li>[bucket name]</li>
+			</ul>
+			<li>Evaluate target health can be set to no as we do not have a host behind the target</li>
+			<li>Repeat the same steps by defining another new target to account for non-www bucket. Differences noted below</li>
+			<ul>
+				<li>Record name = empty</li>
+				<li>bucket name is different</li>
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong><a id="react">Create Certificate</a></strong></span></p>
+		<ul>
+			<li>Navigate to Certificate Manager</li>
+			<li>Select "Request Certificate" </li>
+			<li>Select "Request Public Certificate" </li>
+			<li>Populate the domain names as needed and submit</li>
+			<li>Certificates will need to be validated, which will require you to insert records into the Route53 configuration. </li>
+		</ul>
+
+		<li>NOTE: Up until this point the content is served directly from S3. </li>
+		<li>Moving to CloudFront will allow for HTTPS and allow caching to take place</li>
+
+		<p><span style="font-size: 18px;"><strong><a id="react">Setup CloudFront</a></strong></span></p>
+		<ul>
+			<li>Navigate to CloudFront and create distribution</li>
+			<li>For "Origin domain", navigate to S3, your bucket, properties, and scroll down to bottom and copy the bucket endpoint address</li>
+			<li>For "Viewer Protocol Policy", select "Redirect to HTTPS"</li>
+			<li>For "Alternate Domain Names (CNAMEs)", populate the domain name</li>
+		</ul>
+		
+		<p><span style="font-size: 18px;"><strong><a id="react">React</a></strong></span></p>
+		<ol>
+			<li>install npx and execute the following in Power Shell: npx create-react-app demo-app</li>
+			<li>execute the following command and validate install: npm start</li>
+			<li>execute the following command to bundle the application: npm run build</li>
+		</ol>
+	
+		
+	</body>
+</html>

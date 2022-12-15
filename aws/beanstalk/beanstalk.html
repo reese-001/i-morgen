@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">beanstalk</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>Beanstalk</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		<li>Beanstalk is a service that allows you to deploy and manage applications in the AWS cloud without having to learn about the infrastructure that runs those applications. Beanstalk handles the details of capacity provisioning, load balancing, auto-scaling, and application health monitoring. You simply upload your application, and Beanstalk automatically handles the deployment, from capacity provisioning, load balancing, auto-scaling to application health monitoring.</li>	
+		<li>Powered by CloudFormation templates and creates</li>
+		<ul>
+			<li>ELB</li>
+			<li>ASG</li>
+			<li>RDS database</li>
+			<li>EC2 instance</li>
+			<li>Monitoring (CloudWatch/SNS)</li>
+			<li>In Place and Blue/Green deployment methodologies</li>
+			<li>Security (rotates passwords)</li>
+			<li>Can run Dockerized environments</li>
+		</ul>
+		<p><span style="font-size: 18px;"><strong>Four deployment policies available</strong></span></p>
+	
+			<ol>
+				<li>All at once</li>
+				<ul>
+					<li>deploy new app version to all instances at same time</li>
+					<li>takes all instances out of service during deployment</li>
+					<li>fastest but most dangerous, rollback = redeploy previous version to all instances</li>
+				</ul>
+				<li>Rolling (load balanced only)</li>
+				<ul>
+					<li>deploys new app version to batch of instances</li>
+					<li>each batch is out of service while deployment takes place</li>
+					<li>reattaches those instances when batch is completed</li>
+					<li>rollback requires an additional rolling update</li>
+				</ul>
+				<li>Rolling with additional batch (load balanced only)</li>
+				<ul>
+					<li>same as above but with introduction of new batch</li>
+					<li>keeps capacity in place</li>
+					<li>rollbacks require additional rolling batch</li>
+				</ul>
+				<li>Immutable</li>
+				<ul>
+					<li>create new asg group with ec2 instances</li>
+					<li>deploy new version to new asg instances</li>
+					<li>point elb to the new asg and delete old asg - which will terminate old ec2 instances</li>
+					<li>rollback just terminate the new instances</li>
+				</ul>
+			</ol>
+			<ul>
+				<li>In place refers to within the scope of the elb environment</li>
+				<li>rolling deployments require elb so cannot be used with single instance web env</li>
+			</ul>
+
+			<p><span style="font-size: 18px;"><strong>Four deployment policies available</strong></span></p>
+
+
+			<p><span style="font-size: 18px;"><strong>Initizalizing EB from Command Line</strong></span></p>
+			<ul>
+				<li>Google 'elastic beanstalk clu github' and follow directions</li>
+			</ul>
+
+			18. When you use ELB CLI, it will setup a Code Commit project for you
+19. * AWS CLI is preinstalled on C9 environment but ELB CLI is not. 
+20. Google 'elastic beanstalk clu github' and follow directions ->
+21. clone git repo, install (must add Python, pip)
+22. add eb and python to path
+<!--
+ 
+
+immutable (in place) vs blue/green: 
+ - immutable: traffic diversion takes place at the elb
+ - b/g: traffic diversion takes place at the dns
+ - immutable is safer because you control the diversion but not good if you have resources you need to keep (db)
+ 
+
+ebextensions if folder that contains all config files
+ 
+env.yml: environment manifest. example:
+ - environment name
+ - solution stack
+ - environment links
++ = groups
+
+can create custom ami's to improve provisioning time
+
+linux server config:
+ setup:
+  - packages (yum)
+  - groups
+  - users 
+  - files
+  - commands
+  - services
+  - container commands (not docker)
+  
+two types of instances: 
+ - worker instances
+	- will create sqs 
+ - web instances
+ 
+consider where your rds will reside when placement in groups (do not let it get destroyed in prod!)
+
+
+questions: 
+  - asg vs ecs
+  
+
+
+--- walk through
+
+to create cloud9 environment 
+ - create ubuntu ec2
+ - install pip, python2, node
+ 
+to get latest meta-data: curl -s http://169.254.169.254/latest/meta-data
+
+to create new security group: aws ec2 authorize-security-group-ingress --group-id sg-08773a5f73c816995 --port 8080 --protocol tcp --cidr 75.73.33.79/32
+to check security group: aws ec2 describe-security-groups --group-ids sg-08773a5f73c816995 --output-text Name=ip-permissions.to-port,Values=8080
+to install ELB CLI, need to pip install virtualenv and add path 
+
+
+
+formal steps: 
+1. Create C9
+2. Install C9 on terminal (npm i C9 -g)
+
+-- NODE INSTALL
+3. make new directory
+4. create node project (npm init -y)
+5. create express project (npm i express --save) outcome: adds dependency in node_modules/package.json
+6. create index.js, index.html, app.js, style.css (via touch command)
+7. add "start": "node index.js" to package.json scripts block
+8. go to github and copy/paste to the new files
+
+-- OPEN PORTS  (C9 allows 8080, 8081, 8082)
+through gui: EC2 -> Security Groups, inbound, edit, add 8080
+9. curl -s http://169.254.169.154/latest/meta-data/.... to get security group id
+10. use cli to add new rule to security group identified above. 
+
+-- GIT
+11. touch .gitignore and add node_modules (libraries)
+12. git init
+13. git status (shows untracked files)
+14. git add .
+15. git status (went from untracked to changes to be committed)
+16. git commit -m "Initial Commit"
+17. at this point the changes are committed but only live in the C9 environment but we want to host it in cloud9 so we will use CodeCommmit
+
+
+-- setup CodeCommit (and ELB) 1:18:00
+18. When you use ELB CLI, it will setup a Code Commit project for you
+19. * AWS CLI is preinstalled on C9 environment but ELB CLI is not. 
+20. Google 'elastic beanstalk clu github' and follow directions ->
+21. clone git repo, install (must add Python, pip)
+22. add eb and python to path
+
+
+
+
+
+--option_settings:
+    aws:elasticbeanstalk:container:nodejs:
+	
+		</ul>
+	</body>
+</html>
+	-->
+	</body>
+</html>
