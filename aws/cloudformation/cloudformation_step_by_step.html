@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cloud formation</a>:step by step</h2>
+
+        <p><span style="font-size: 20px;"><strong>Cloud Formation: Step by Step</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>Pulled from <a href="https://www.youtube.com/watch?v=YXVCdGyHDSk" target="_blank">video</a></strong></span></p>
+
+		<p><span style="font-size: 18px;"><strong>Three tasks</strong></span></p>
+		<ul>
+			<li>First thing to consider is creating a template file </li>
+			<ul>
+				<li>Save the template file below</li>
+				<li>Navigate to CloudFormation and "Create Stack"</li>
+				<li>Upload the template and navigate through the options</li>
+				<li>End result is DynamoTable is created</li>
+				<li>Select Created Change Stack</li>
+				<li>Upload modified template document</li>
+				<li>Perform similar steps as above</li>
+				<li>To delete all resources, simply delete the stack</li>
+			</ul>	
+			
+		</ul>
+		
+		<p><span style="font-size: 18px;"><strong>Template File</strong></span></p>
+<pre>
+	AWSTemplateFormatVersion: 2010-09-09
+	Resources:
+	  OrdersTable:
+		Type: AWS::DynamoDB::Table
+		Properties:
+		  TableName: AuthorsTable_prod
+		  AttributeDefinitions:
+			- AttributeName: "AuthorName"
+			  AttributeType: "S"
+			- AttributeName: "BookTitle"
+			  AttributeType: "S"
+		  KeySchema:
+			- AttributeName: "AuthorName"
+			  KeyType: "HASH"
+			- AttributeName: "BookTitle"
+			  KeyType: "RANGE"
+		  TimeToLiveSpecification:
+			AttributeName: "ExpirationTime"
+			Enabled: true
+		  ProvisionedThroughput:
+			ReadCapacityUnits: "10"
+			WriteCapacityUnits: "5"
+		DependsOn:
+		  - DynamoDBQueryPolicy
+	
+	  DynamoDBQueryPolicy:
+		Type: "AWS::IAM::Policy"
+		Properties:
+		  PolicyName: DynamoDBQueryPolicy
+		  PolicyDocument:
+			Version: "2012-10-17"
+			Statement:
+			  - Effect: "Allow"
+				Action: "dynamodb:Query"
+				Resource: "*"
+		  Roles:
+			- Ref: "OrdersTableQueryRole"
+	
+	  OrdersTableQueryRole:
+		Type: "AWS::IAM::Role"
+		Properties:
+		  AssumeRolePolicyDocument:
+			Version: "2012-10-17"
+			Statement:
+			  - Effect: "Allow"
+				Principal:
+				  Service:
+					- "dynamodb.amazonaws.com"
+				Action:
+				  - "sts:AssumeRole"
+		  Path: "/"
+	<li>Note the DependsOn line. Can be used to created a nested sequence of things you want to deploy in a specific order</li>
+	
+
+	
+</pre>
+	</body>
+</html>

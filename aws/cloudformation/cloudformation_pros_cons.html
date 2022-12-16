@@ -15,5 +15,106 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cloud formation</a>:pros and cons</h2>
 
         <p><span style="font-size: 20px;"><strong>Cloud Formation: Pros and Cons</strong></span></p>
-			</body>
+		<p><span style="font-size: 18px;"><strong>Summary based on <a href="https://www.youtube.com/watch?v=0Sh9OySCyb4" target="_blank">video</a></strong></span></p>
+		<ul>
+			<li>Suppose a situation where over time you create an AWS solution that consists of multiple artifacts and configurations</li>
+			<li>As volume and criticality grow, you are asked to duplicate it in another region. </li>
+			<li>You either hope you documented *everything*, or you use the scripts you used to implement the first copy</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Key Concepts</strong></span></p>
+		<ol>
+			<li>Templates containing resources</li>
+			<ul>
+				<li>Create .yaml or .json template containing resources</li>
+				<li>Resources can be anything from EC2 instances, S3 buckets, IAM roles, etc.</li>
+				<li>Refer to yaml below</li>
+				
+			
+<pre>
+AppendItemToListFunction:
+ Type: AWS::Lambda::Function
+   Properties:
+   Handler: index.handler
+   Role: MyLambdaRole
+   Code:
+	var response = require('cfn-response');
+	exports.handler = function(event, context) {
+	console.log("REQUEST RECEIVED:\\n", JSON.stringify(event));
+	var responseData = { "Message": "Hello World!" };
+	response.send(event, context, response.SUCCESS, responseData);
+	};
+	Runtime: nodejs8.10
+</pre> 
+				<ul>
+					<li>Name of resource = AppendItemToListFunction</li>
+					<li>Type of resource = Lambda function</li>
+					<li>...</li>
+					<li>Code segement would typically come from a file in S3, however this snippet is using inline Javascript</li>
+				</ul>
+			</ul>
+			<li>Stacks</li>
+			<ul>
+				<li>Logical groupings of templates</li>
+				<ul>
+					<li>For example set it up on an application level so every application has their own stack</li>
+				</ul>
+				<li>Combine multiple template files together so you can sum them up and deploy all at once</li>
+				<li>Nested stacks and have graph like relationships between your stacks</li>
+			</ul>
+			<li>Change Sets</li>
+			<ul>
+				<li>Basically a diff from what CloudFormation has from your previous upload and what you are attempting to upload</li>
+				<li>Show a preview of what CloudFormation will do in its incremental update </li>
+			</ul>
+		</ol>
+
+		<p><span style="font-size: 18px;"><strong>Pros and Cons</strong></span></p>
+		<ul>
+			<li>Pros</li>
+			<ul>
+				<li>Makes your life easier</li>
+				<li>Code review infrastructure changes</li>
+				<li>Integration with CI Pipeline</li>
+				<li>Large community support</li>
+			</ul>
+			<li>Cons</li>
+			<ul>
+				<li>Steep learning curve</li>
+				<li>Innocent looking changes can be dangerous. For example, changing a name will cause a delete, recreate to happen. Bad new if thats a database</li>
+				<li>Drift can be painful</li>
+				<ul>
+					<li>Once you start using CloudFormation, try to stick with it</li>
+				</ul>
+			</ul>
+			</ul>	
+			<p><span style="font-size: 18px;"><strong>Compared to ...</strong></span></p>
+			<ul>
+				<li> ... SAM</li>
+				<ul>
+					<li>SAM uses CloudFormation under the hood</li>
+					<li>Good if you are using Lambda or other serverless apps</li>
+				</ul>
+				<li> ... serverless</li>
+				<ul>
+					<li>Serverless uses CloudFormation under the hood</li>
+					<li>Very similar to SAM</li>
+				</ul>	
+				<li> ... Terraform</li>
+				<ul>
+					<li>Good if your using multiple cloud environments</li>
+					<li>Provider agnostic</li>
+					<li>Possibly more focused on infrastructure</li>
+				</ul>
+				<li> ... AWS Cloud Development Kit</li>
+				<ul>
+					<li>Write actual code to define your infrastructure</li>
+					<li>Allows constructs like if, then, etc</li>
+					<li>Good if you are a developer</li>
+				</ul>
+				<li>Note: all these frameworks compile down to CloudFormation, so knowing CloudFormation helps with debugging</li>
+				
+			</ul>
+			
+	</body>
 </html>
