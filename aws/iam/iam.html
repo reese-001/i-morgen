@@ -13,20 +13,186 @@
 				
 			</tr>
 		</table>
-        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="index.html">elb</a>:overview</h2>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../aws.html">aws</a>:<a href="index.html">iam</a>:overview</h2>
 
-        <p><span style="font-size: 20px;"><strong>IAM (Identify Access Management)</strong></span></p>
+        <p><span style="font-size: 20px;"><strong>IAM (Identity Access Management)</strong></span></p>
 		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
 		<ul>
-			<li>Allows management of access of users and resources</li>
+			<li>Helps control access to resources</li>
+			<ul>
+				<li>Resources are entities you create in AWS (ie S3 bucket)</li>
+				<li>Users attempt to perform actions on resources (ie S3::CreateBucket)</li>
+				<li>Authorization to perform an action depends on a policy</li>
+			</ul>
+			<li>Example</li>
+			<ul>
+				<li>User attempts to execute  <strong>lambda::createFunction</strong></li>
+				<li>Authorization is determined by a policy document similar to what is shown below</li>
+				<pre>
+{
+  "Version": "2012-10-17",
+	"Statement": [
+	   {
+		"Effect": "Allow",
+		"Action": "lambda::createFunction",
+		"Resource": "*"
+	   }
+	]
+}
+				</pre>
+				<li><strong>Statement</strong> is an array and contains the "meat" of the document </li>
+				<li>Sid: name of the policy and can be at your discretion </li>
+				<li>Effect: will be either "Allow" or "Deny"</li>
+				<ul>
+					<li>Implicit deny prevents access to anything you do not have "Allow" for</li>
+					<li>Explicit deny can override "Allows". Useful if you give broad "Allow" access and want to fine tune it by creating "Deny" policies</li>
+				</ul>
+				<li>Action: the specific action being targeted </li>
+				<li>Resource: meant to limit the scope. For example if this was an update policy, we could restrict the update access to a specific lambda function</li>
+				<ul>
+					<li>In that case, you would specify the ARN of the function as well</li>
+				</ul>
+			</ul>
+			</li>
+		</ul>
 		
-			<li>Three different IAM Identities</li>
+		<p><span style="font-size: 18px;"><strong>"Deeper" dive on Policy Documents/Statements</strong></span></p>
+		<ul>
+			<li>Task is to give read only access to specific columns on a DynamoDB table</li>
+			<ul>
+				<li>Note that this is an "Allow" policy</li>
+				<li>Multiple actions</li>
+				<ul>
+					<li>BatchGet* includes things like BatchGetItem (and others)</li>
+					<li>You could do this: dynamodb*</li>
+					<ul>
+						<li>This would give all DynamoDB access</li>
+					</ul>
+					<li>Resouce is identified with this: "arn:aws:dynamodb:*:*:table/table-name" </li>
+					<ul>
+						<li>arn:aws:dynamodb: is the ARN for DynamoDB</li>
+						<li>*:* is the region and account ID</li>
+						<li>table/table-name is the table name</li>
+					</ul>
+					<li>Conditions restricts the columns that will be returned based on the actions</li>
+				</ul>
+
+<pre>
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+	  "Effect": "Allow",
+	  "Action": [
+		"dynamodb:GetItem",
+		"dynamodb:BatchGet*",
+		"dynamodb:Query",
+		"dynamodb:PutItem",
+		"dynamodb:UpdateItem",
+		"dynamodb:DeleteItem",
+		"dynamodb:BatchWriteItem"
+	  ],
+	  "Resource": ["arn:aws:dynamodb:*:*:table/table-name"],
+	  "Condition": {
+		"ForAllValues:StringEquals": {
+		  "dynamodb:Attributes": [
+			"column-name-1",
+			"column-name-2",
+			"column-name-3"
+		  ]
+		},
+		"StringEqualsIfExists": {"dynamodb:Select": "SPECIFIC_ATTRIBUTES"}
+       }
+    }
+  ]
+}
+</pre>
+			</ul>
+		</ul>
+		<br/>
+
+		<p><span style="font-size: 18px;"><strong>Resourced vs Identify Based Policies</strong></span></p>
+		<ul>
+			<li>Definitions</li>
+			<ul>
+				<li>Resource based policy: attached to a resource (such as an Amazon S3 bucket) and specifies what actions can be performed on that resource.</li>
+				<li>Identity based policy: attached to an IAM user, group, or role and specifies what actions the user, group, or role is allowed to perform</li>
+			</ul>
+			<li>Resource Based Policy</li>
+			<ul>
+				<li>JSON policy documents that you attach to a resource such as an Amazon S3 bucket</li>
+				<li>These policies grant the specified principal permission to perform specific actions on that resource and defines under what conditions this applies</li>
+				<li>Resource-based policies are inline policies. There are no managed resource-based policies.</li>
+			</ul>
+		</ul>
+
+		
+		<p><span style="font-size: 18px;"><strong>Service control policies (SCPs)</strong></span></p>
+		<ul>
+			<li>What are SCP's?</li>
+			<ul>
+				<li>SCPs are a powerful tool for managing access to AWS resources within your organization, as they allow you to set centralized policies that apply to all users, groups, and roles within your organization or a specific OU.</li>
+				<li>This makes it easier to manage permissions and ensure compliance with your organization's security policies.</li>
+			</ul>
+			<li>SCPs are used to set fine-grained permissions for IAM entities (users, groups, and roles) within your organization.</li>
+			<li>SCPs are attached to the root of your organization, an organizational unit (OU), or an individual IAM entity.</li>
+			<li>SCPs use the same syntax as IAM policies, but they can only be used to set permissions and cannot be used to grant permissions. This means that SCPs can only be used to deny or restrict access to AWS services and resources, and cannot be used to grant access.</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Additional Policy Details</strong></span></p>
+		<ul>
+			<li>There are two different kinds of identity policies</li>
 			<ol>
-				<li>Users: End users who log into the console or interacrt with AWS resources programmatically</li>
-				<li>Groups: Group up your users so they will all share permission levels of the group (ie Admins, Devs, Auditors)</li>
-				<li>Roles: Associate permissions to a role and they assn this to users or groups</li>
+				<li>Managed Policy 
+				<ul>
+					<li>AdministratorAccess with policy type of "AWS managed policy from group admin")</li>
+					<li>Or they can be managed by the customer</li>
+					<li>Can be reused between different users</li>
+				</ul>
+				<li>Inline policies</li>
+				<ul>
+					<li>Only attached to a specific entity</li>
+				</ul>
 			</ol>
-			<li>IAM policies: JSON docs which grant permissions for a specific user, group or role to access services. Policies are attached to Identities</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Groups</strong></span></p>
+		<ul>
+			<li>Usually only relevent for account or organization owner</li>
+			<li>Used to bucketize your users</li>
+			<li>Groups can have a default policy document so anyone who is a member inherits that policy</li>
+			<li><a href="../images/iam_groups.png" target="_blank">Illustration</a></li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Roles</strong></span></p>
+		<ul>
+			<li>Roles are similar to users in the sense they have policy documents assigned to them</li>
+			<li>However roles can be given and revoked to users for a short time period</li>
+			<li>Both users and applications can assume roles</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Trust Relationships</strong></span></p>
+		<ul>
+			<li>Scenario: Two different AWS accounts that are seperated ny ownership. Account 1 has a DynamoDB table but someone in Account 2 needs access </li>
+			<li>To resolve, create a role in Account 1 that has the permissions we want to give to user in Account 2</li>
+			<li>Create "Trust Relationship", which in effect give a full duplex trust relationship. "I trust you and you trust me"</li>
+			<li>Account 1 must give Account 2 user the ability to assume the role described above</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Pro tips!</strong></span></p>
+		<ul>
+			<li>Protect root at all costs</li>
+			<li>Explicit Effect:'Deny' wins over Effect:'Allow'</li>
+			<li>Use least priviledge model</li>
+			<li>Use IAM Policy Simulator </li>
+		</ul>
+
+
+		
+		<p><span style="font-size: 18px;"><strong>References</strong></span></p>
+		<ul>
+			<li><p><a href="https://www.youtube.com/watch?v=_ZCTvmaPgao&t=188s" target="_blank">AWS IAM Concepts You Should Know</a></p></li>
+			<li><p><a href="https://www.youtube.com/watch?v=WYH8SQW6RJQ" target="blank">AWS IAM Crash Course</a></p></li>
 		</ul>
 		
     </body>

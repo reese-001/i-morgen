@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">notes</a>:cloudformation jupyter notebook</h2>
+
+        <p><span style="font-size: 20px;"><strong>Create CloudFormation script to generate a Jupyter Notebook</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>Source: ChatGPT</strong></span></p>
+		<pre>
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: 'CloudFormation template to create a Jupyter notebook in AWS'
+
+Resources:
+  JupyterNotebook:
+    Type: 'AWS::EMR::NotebookInstance'
+    Properties:
+      Name: 'MyJupyterNotebook'
+      RoleArn: 'arn:aws:iam::<YOUR_AWS_ACCOUNT_ID>:role/<EMR_NOTEBOOK_ROLE>'
+      DirectInternetAccess: 'Enabled'
+      VolumeSizeInGB: 10
+      InstanceType: 'ml.t2.medium'
+      SubnetId: '<YOUR_SUBNET_ID>'
+      SecurityGroupIds:
+      - '<YOUR_SECURITY_GROUP_ID>'
+      DefaultCodeRepository: 'https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>.git'
+
+		</pre>
+		<ul>
+			<li>You will need to replace the following:</li>	
+
+		
+			<ul>
+				<li>YOUR_AWS_ACCOUNT_ID: Your AWS account ID.</li>
+				<li>EMR_NOTEBOOK_ROLE: The ARN of the IAM role that you created for the EMR Notebook.</li>
+				<li>YOUR_SUBNET_ID: The ID of the subnet in which to launch the EMR Notebook.</li>
+				<li>YOUR_SECURITY_GROUP_ID: The ID of the security group to associate with the EMR Notebook.</li>
+				<li>YOUR_GITHUB_USERNAME: Your GitHub username.</li>
+				<li>YOUR_REPO: The name of your repository on GitHub.</li>
+
+			</ul>
+		</ul>
+    </body>
+</html>

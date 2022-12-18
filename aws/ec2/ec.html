@@ -92,7 +92,20 @@
 				<li>/instance-type</li>
 			</ul>
 			<li>Can combine metadata with userdata scripts to perform all sorts of advanced aws staging automation</li>
-		
 		</ul>
+
+		<p><span style="font-size: 18;"><strong>Misc Notes</strong></span></p>
+		<ul>
+			<li>Burst balance: refers to the balance of credits that are available to a burstable performance instance (t2, t3, and t3a instance types).</li>
+			<ul>
+				<li>When a burstable performance instance is launched, it is allocated a certain number of credits that can be used to support bursts of higher CPU usage</li>
+				<li>The instance uses these credits to support bursts of CPU usage that exceed the baseline CPU performance of the instance</li>
+				<li>The number of credits that are allocated to an instance is based on the instance type and the size of the instance</li>
+				<li>As the instance uses credits to support bursts of CPU usage, the burst balance of the instance decreases. </li>
+				<li>When the burst balance reaches zero, the instance's CPU performance will be limited to the baseline performance of the instance until the balance is replenished.</li>
+				
+			</ul>
+		</ul>
+
     </body>
 </html>
