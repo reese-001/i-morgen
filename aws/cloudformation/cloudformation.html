@@ -67,7 +67,8 @@
 			</ul>
 			<li>Outputs</li>
 			<ul>
-				<li>Values that returned (ie ip-address of new server created</li>
+				<li>Values that returned (ie ip-address of new server created)</li>
+				<li>Cannot accept Conditions. However if you want to control the output based on conditions, use 'Fn::If'</li>
 			</ul>
 		</ul>
 
@@ -196,6 +197,13 @@
 			
 			</ul>
 		</ul>
+
+		<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html" target="_blank">Exporting Stack Output Values</a></strong></span></p>
+		<ul>
+			<li>An exported output is a value that is made available to other stacks, and it can be imported using the Fn::ImportValue function. </li>
+			<li>Exported values	 need to have unique names across all regions. When you create an exported output in a CloudFormation stack, the output is made </li>
+		</ul>
+
 
 		<p><span style="font-size: 18px;"><strong><a href="https://www.google.com/search?q=aws+resource+attributes&oq=aws+resource+attr&aqs=edge.0.0i512j69i57j0i22i30i625j0i390j69i64.7380j0j4&sourceid=chrome&ie=UTF-8" target="_blank">Resource Attributes</a></strong></span></p>
 		<ul>

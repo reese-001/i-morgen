@@ -94,6 +94,18 @@
 			<li>Can combine metadata with userdata scripts to perform all sorts of advanced aws staging automation</li>
 		</ul>
 
+		<p><span style="font-size: 18;"><strong>User Data</strong></span></p>
+		<ul>
+			<li>Allows you to specify data (such as a script or configuration file) that should be executed when an EC2 instance is launched.</li>
+			<ul>
+				<li>The user data specified when launching an Amazon Elastic Compute Cloud (EC2) instance is only executed once, when the instance is launched</li>
+				<li>Once the user data has been executed, it is not executed again unless the instance is stopped and restarted.</li>
+			</ul>
+			<li>The user data is passed to the instance as part of the instance metadata, and can be accessed from within the instance using the EC2 metadata service.</li>
+			<li>You can use the user data feature to automate tasks such as installing software packages, configuring the instance, or joining the instance to a domain</li>
+			<li>The user data that is specified when launching an Amazon Elastic Compute Cloud (EC2) instance is executed with root privileges on the instance</li>
+		</ul>
+
 		<p><span style="font-size: 18;"><strong>Misc Notes</strong></span></p>
 		<ul>
 			<li>Burst balance: refers to the balance of credits that are available to a burstable performance instance (t2, t3, and t3a instance types).</li>
@@ -104,6 +116,49 @@
 				<li>As the instance uses credits to support bursts of CPU usage, the burst balance of the instance decreases. </li>
 				<li>When the burst balance reaches zero, the instance's CPU performance will be limited to the baseline performance of the instance until the balance is replenished.</li>
 				
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18;"><strong>Types of Reserved Instances</strong></span></p>
+		<ul>
+			<li>Scheduled Reserve</li>
+			<ul>
+				<li>Are a type of EC2 instance that allows you to reserve capacity in advance for a specific time period.</li>
+				<li>Scheduled Reserve instances are ideal for workloads that have predictable start and end times, or that require a consistent number of instances over a fixed period of time.</li>
+				<li>They are available for one or three year terms.</li>
+				<li>Limitations</li>
+				<ul>
+					<li>must be launched within the specified time period. If you do not launch the instances within the time period, the reservation will expire and you will not be able to use it.</li>
+					<li>Cannot be used with Auto Scaling or with EC2 Auto Scaling groups.</li>
+					<li>Cannot be stopped or terminated, but they can be modified or unmodified</li>
+				</ul>
+			</ul>
+			<li>Standard Reserve</li>
+			<ul>
+				<li>EC2 instance reservation that allows you to purchase a reservation for a specific instance type in a specific Availability Zone.</li>
+				<li>In general, Scheduled Reserved Instances are more specific and are best suited for workloads that have a predictable schedule, while Standard Reserved Instances are more general and are suitable for any workload that runs on EC2 instances.</li>
+			</ul>
+			<li>Convertable Reserve</li>
+			<ul>
+				<li>A type of EC2 instance reservation that allows you to purchase a reservation for a specific instance type and then exchange it for a different instance type at a later time</li>
+				<li>This can be useful if your workload requirements change over time and you need to use a different instance type to meet those requirements.</li>
+			</ul>
+		</ul>
+
+		<p><span style="font-size: 18;"><strong>Dedicated Host vs Dedicated Instance</strong></span></p>
+		<ul>
+			<li>Dedicated Hosts</li>
+			<ul>
+				<li>AWS Dedicated Hosts are physical servers that are dedicated for your use and that you can use to host one or more Amazon EC2 instances.</li>
+				<li>You can purchase Dedicated Hosts on a monthly basis and specify the number of instances that you want to run on each host</li>
+				<li>Dedicated Hosts give you full visibility and control over the physical infrastructure that your instances are running on, including the hardware, operating system, and virtualization technology.</li>
+			</ul>
+			<li>Dedicated Instance</li>
+			<ul>
+				<li>AWS Dedicated Instances are Amazon EC2 instances that run on hardware that is dedicated to a single customer</li>
+				<li>hey are launched in a VPC and can be used like any other EC2 instances, with the added benefit of being physically isolated from instances that belong to other customers</li>
+				<li>They are not tied to a specific host and can be migrated between hosts as needed</li>
+				<li>Dedicated Instances are a good option if you want the benefits of running on dedicated infrastructure but do not need the full visibility and control that Dedicated Hosts provide.</li>
 			</ul>
 		</ul>
 

@@ -46,6 +46,32 @@
 			<li>Check the image to see what is preinstalled</li>
 		</ul>
 
+		<p><span style="font-size: 18px;"><strong>Timeouts</strong></span></p>
+		<ul>
+			<li>Refer to the maximum amount of time that a build is allowed to run before it is stopped.</li>
+			<li>There are two types of timeouts in CodeBuild:</li>
+			<ol>
+				<li>Build timeout</li>
+				<ul>
+					<li>Applies to the entire build process, including the time it takes to download the source code, execute the build commands, and upload the build artifacts.</li>
+					<li>You can set the build timeout to any value between 5 minutes and 1 day.</li>
+					<li>If the build takes longer than the specified timeout, it will be stopped and marked as a failure.</li>
+
+				</ul>
+				<li>Individual phase timeout</li>
+				<ul>
+					<li>This timeout applies to each phase of the build process separately</li>
+					<li>There are three phases in a CodeBuild build</li>
+					<ol>
+						<li>Pre-Build: This phase occurs before the build starts, and is typically used to download the source code and install any dependencies.</li>
+						<li>Build: This phase is where the build commands are executed.</li>
+						<li>Post-build: This phase occurs after the build has completed, and is typically used to upload the build artifacts to Amazon S3 or another storage location.</li>
+						<li>If any phase takes longer than the specified timeout, it will be stopped and the build will be marked as a failure.</li>
+					</ol>
+				</ul>
+			</ol>
+		</ul>
+
 		<p><span style="font-size: 18px;"><strong>Use Cases</strong></span></p>
 		<ul>
 			<li>Build and test code</li>

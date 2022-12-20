@@ -18,5 +18,19 @@
         <p><span style="font-size: 20px;"><strong><a href="https://aws.amazon.com/ecs/" target="_blank">Elastic Container Service</a></strong></span></p>
 		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
 
+		<p><span style="font-size: 18px;"><strong>Step Scaling</strong></span></p>
+		<ul>
+			<li>A policy type that you can use with Amazon CloudWatch to automatically scale the number of Amazon ECS tasks in your cluster based on the value of a metric.</li>
+			<li>Step scaling policies allow you to define a set of scaling actions to take when a metric crosses a specified threshold</li>
+			<li>Examples</li>
+			<ul>
+				<li>You can define a scaling action to increase the number of tasks in your service by 10 when the average CPU utilization of your tasks exceeds 70% for 5 minutes.</li>
+				<li>You could specify that if the average value of the ApproximateNumberOfMessagesVisible metric for an Amazon SQS queue exceeds 1000, the number of tasks in the Amazon ECS cluster should be increased by 2</li>
+			</ul>
+			<li>Step scaling policies are useful for applications that experience variable traffic patterns, as they allow you to automatically scale the number of tasks in response to changes in workload</li>
+			<li>To use step scaling with Amazon ECS, you will need to create a CloudWatch Alarm and an Amazon ECS service that is associated with an Amazon EC2 Auto Scaling group.</li>
+				
+				
+		</ul>
     </body>
 </html>

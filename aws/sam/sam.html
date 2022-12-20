@@ -23,5 +23,49 @@
 			<li>CLI makes it easy to run, package and deploy serverless applications or Lambdas</li>
 
 		</ul>
+
+		<p><strong><span style="font-size: 18px;">Valid SAM Resource Types</span>&nbsp;</strong></p>
+		<ul>
+			<li>AWS::Serverless::Function</li>
+			<ul>
+				<li>This resource type is used to define an AWS Lambda function and its associated configuration, such as the function's runtime, memory size, and execution role.</li>
+			</ul>
+			<li>AWS::Serverless::Api</li>
+			<ul>
+				<li>This resource type is used to define an Amazon API Gateway REST API and its associated resources, such as stages, methods, and integration types.</li>
+			</ul>
+			<li>AWS::Serverless::SimpleTable</li>
+			<ul>
+				<li>This resource type is used to define an Amazon DynamoDB table and its associated primary key and optional global secondary index.</li>
+			</ul>
+			<li>AWS::Serverless::Application</li>
+			<ul>
+				<li>This resource type is used to define an AWS Serverless Application Repository (SAR) application and its associated resources, such as IAM roles and access policies.</li>
+			</ul>
+			<li>AWS::Serverless::LayerVersion</li>
+			<ul>
+				<li>This resource type is used to define an AWS Lambda layer and its associated version.</li>
+			</ul>
+			<li>AWS::Serverless::StateMachine</li>
+			<ul>
+				<li>This resource type is used to define an AWS Step Functions state machine and its associated resources, such as states and transitions.</li>
+			</ul>
+			<li>AWS::Serverless::LogGroup</li>
+			<ul>
+				<li>This resource type is used to define an Amazon CloudWatch Logs log group and its associated retention policy.</li>
+			</ul>
+			<li>AWS::Serverless::EventSourceMapping</li>
+			<ul>
+				<li>This resource type is used to define an event source mapping for an AWS Lambda function, which specifies the event source and triggers for the function.</li>
+			</ul>
+			<li>AWS::Serverless::LayerVersionPermission</li>
+			<ul>
+				<li>This resource type is used to define permissions for an AWS Lambda layer version, allowing other AWS accounts or IAM users to use the layer.</li>
+			</ul>
+			<li>AWS::Serverless::FunctionEventInvokeConfig</li>
+			<ul>
+				<li>This resource type is used to define the event invoke configuration for an AWS Lambda function, which specifies the retry and concurrency settings for the function when it is invoked asynchronously.</li>
+			</ul>
+		</ul>
     </body>
 </html>

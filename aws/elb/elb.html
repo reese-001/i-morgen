@@ -29,6 +29,7 @@
 				<ul>
 					<li>Used for HTTP/HTTPS </li>
 					<li>Layer 7 of <a href="../images/elb_osi_model.png">OSI Model</a></li>
+					<li>ALB logs can capture latency and incoming IP addresses</li> 
 					<li>Use case: web sites</li>
 					<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html" target="_blank">AWS link</a></li>
 				</ul>
@@ -91,7 +92,7 @@
 			<li>When a request is forwarded to an EC2 instance, the XFF header is added to the request</li>
 			<li>Contains the IP address of the client that initiated the request</li>
 			<li>Useful for logging and debugging</li>
-			<li><a href="../images/elb_xff.png">Illustration (ExamPro)</li>
+			<li><a href="../images/elb_xff.png">Illustration (ExamPro)</a></li>
 		</ul>
 
 		<p><span style="font-size: 18px;"><strong>Health Checks</strong></span></p>
@@ -106,6 +107,14 @@
 			<li>When enabled requests are evenly distributed across the instances in all enabled AZ's</li>
 			<li>When disabled requests are evenly distributed across the instances in only the AZ</li>
 			<li><a href="../images/elb_cross_zone_balancing.png">Illustration (ExamPro)</a></li>
+			<li>Example of traffic distribution: </li>
+			<ul>
+				<li>An organiztion has hosted its EC2 instances in two AZ's. AZ1 has two instances and AX2 has 8 inctances. ELB has cross zone load balancing enabled. What percent of traffic will each instance in AZ1 receive</li>
+				<ul>
+					<li>With cross-zone load balancing enabled, the Elastic Load Balancer will distribute traffic evenly across all of the registered instances in the two AZs.</li>
+					<li>This means that each instance in AZ1 will receive 1/10th (10% or 10/100) of the total traffic</li>
+				</ul>
+			</ul>
 		</ul>
 
 		<p><span style="font-size: 18px;"><strong>Request Routing</strong></span></p>

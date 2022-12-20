@@ -22,6 +22,7 @@
 			<li>It is a fully managed source control service that makes it easy for companies to host secure and highly scalable private Git repositories</li>
 			<li>Based on Git and similar to GitHub, BitBucket and GitLab</li>
 		</ul>
+
 		<p><span style="font-size: 18px;"><strong>Features</strong></span></p>
 		<ul>
 			<li>Complies with many compliance programs (ie HIPAA)</li>
@@ -32,5 +33,29 @@
 			<li>Integrates with IAM to control which users have access to specific repos</li>
 		</ul>
 
+		<p><span style="font-size: 18px;"><strong>Authorization</strong></span></p>
+		<ul>
+			<li>IAM user SSH keys</li>
+			<ul>
+				<li>These are SSH keys that are associated with an IAM user and can be used to authenticate the user when accessing CodeCommit repositories over SSH.</li>
+			</ul>
+			<li>IAM user HTTPS credentials</li>
+			<ul>
+				<li>These are a username and password combination that are associated with an IAM user and can be used to authenticate the user when accessing CodeCommit repositories over HTTPS.</li>
+			</ul>
+			<li>AWS CodeCommit credential helper</li>
+			<ul>
+				<li> This is a command-line tool that allows you to use Git credentials stored in the AWS Secrets Manager to access CodeCommit repositories. The credential helper allows you to use Git with CodeCommit without having to store your credentials in a file on your local machine.</li>
+			</ul>
+			<li>Git credentials</li>
+			<ul>
+				<li>hese are a username and password combination that can be used to authenticate with CodeCommit repositories over HTTPS. Git credentials are typically stored in a file on your local machine and are used by the Git command-line tool to authenticate with CodeCommit.</li>
+			</ul>
+			<li>SSH keys</li>
+			<ul>
+				<li>These are SSH keys that are associated with a user's local machine and can be used to authenticate the user when accessing CodeCommit repositories over SSH</li>
+			</ul>
+			<li>** Note that IAM user SSH keys and IAM user HTTPS credentials are specific to IAM users, while Git credentials and SSH keys are not tied to any particular AWS identity.</li>
+		</ul>
 	</body>
 </html>
