@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ec2</a>:<a href="ec.html">overview</a>:reserved instances</h2>
+		<p><strong><span style="font-size: 20px;"><strong>EC2 Reserved Instances</strong></span></strong></p>
+		
+		
+
+		<p><span style="font-size: 18;"><strong>Types of Reserved Instances</strong></span></p>
+		
+		<ul>
+			<li>Deeper Dive</li>
+			<ul>
+				<li>Scheduled Reserve</li>
+				<ul>
+					<li>Type of EC2 instance that allows you to reserve capacity in advance for a specific time period.</li>
+					<li>Scheduled Reserve instances are ideal for workloads that have predictable start and end times, or that require a consistent number of instances over a fixed period of time.</li>
+					<li>They are available for one or three year terms.</li>
+					<li>Limitations</li>
+					<ul>
+						<li>must be launched within the specified time period. If you do not launch the instances within the time period, the reservation will expire and you will not be able to use it.</li>
+						<li>Cannot be used with Auto Scaling or with EC2 Auto Scaling groups.</li>
+						<li>Cannot be stopped or terminated, but they can be modified or unmodified</li>
+					</ul>
+				</ul>
+				<li>Standard Reserve</li>
+				<ul>
+					<li>EC2 instance reservation that allows you to purchase a reservation for a specific instance type in a specific Availability Zone.</li>
+					<li>In general, Scheduled Reserved Instances are more specific and are best suited for workloads that have a predictable schedule, while Standard Reserved Instances are more general and are suitable for any workload that runs on EC2 instances.</li>
+				</ul>
+
+				<li>Convertable Reserve</li>
+				<ul>
+					<li>A type of EC2 instance reservation that allows you to purchase a reservation for a specific instance type and then exchange it for a different instance type at a later time</li>
+					<li>This can be useful if your workload requirements change over time and you need to use a different instance type to meet those requirements.</li>
+				</ul>
+			</ul>
+		</ul>
+		<br/>
+		<p><span style="font-size: 18;"><strong>Differences Between Standard and Convertable Reserved Instances</strong></span></p>
+		<table style="width: 80%" border="1" cellpadding="5" cellspacing="0">
+			<tr>
+				<td style="width: 20%"</td>
+				<td style="width: 40%"><strong>Standard Reserve Instance</strong></td>
+				<td style="width: 40%"><strong>Convertable Reserve Instance</strong></td>
+			</tr>
+			<tr>
+				<td><strong>Modify Reserved Instances</strong></td>
+				<td>Some attributes can be modified. <br/> For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html" target="_blank" >Modify Reserved Instances</a></td>
+				<td>Some attributes can be modified. <br/> For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html" target="_blank" >Modify Reserved Instances</a></td>
+			</tr>
+			<tr>
+				<td><strong>Exchange Reserved Instances</strong></td>
+				<td>Can't be exchanged.</td>
+				<td>Can be exchanged during the term for another Convertible Reserved Instance with new attributes, including instance family, instance type, platform, scope, or tenancy.<br/> For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html" target="_blank">Exchange Convertible Reserved Instances</a>.</td>
+			</tr>
+			<tr>
+				<td><strong>Sell in the Reserved Instance Marketplace</strong></td>
+				<td>Can be sold in the Reserved Instance Marketplace.</td>
+				<td>Can't be sold in the Reserved Instance Marketplace.</td>
+			</tr>
+			<tr>
+				<td><strong>Buy in the Reserved Instance Marketplace</strong></td>
+				<td>Can be bought in the Reserved Instance Marketplace.</td>
+				<td>Can't be bought in the Reserved Instance Marketplace.</td>
+			</tr>
+		</table>
+		<br/>
+
+    </body>
+</html>

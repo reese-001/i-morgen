@@ -24,6 +24,26 @@
 			<li>You can use API Gateway to create APIs that access AWS or other web services, as well as data stored in the AWS Cloud. API Gateway also integrates with other AWS services, such as AWS Lambda, Amazon SNS, Amazon Kinesis, and Amazon DynamoDB, making it easy to build serverless architectures and microservices.</li>
 		</ul>
 		
+		<p><span style="font-size: 18px;"><strong>Authentication</strong></span></p>
+		<ul>
+			<li>Amazon Cognito User Pools</li>
+			<li>Amazon Cognito Identity Pools</li>
+			<li>IAM</li>
+			<li>OpenID Connect</li>
+			<li>OAuth 2.0</li>
+			<li>Custom authorizers</li>
+			<li>Security Token Service</li>
+			<ul>
+				<li>STS is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users or for users that you authenticate (federated users).</li>
+				<li>These temporary credentials consist of an access key ID, a secret access key, and a security token.</li>
+				<li>Typically, you use STS if you want to make a one-time call to AWS using the security credentials of an IAM user or a federated user.</li>
+				<li>You can also use STS to get access to temporary security credentials and use them to access a resource that supports STS authentication in a more convenient way than embedding the long-term credentials in your application.</li>
+				<li>For example, you might want to make periodic calls to Amazon EC2 to automatically start or stop your instances based on your predefined schedule.</li>
+				<li>With STS, you can create a script that calls the STS API to get temporary security credentials and then use those credentials to call the Amazon EC2 API.</li>
+				<li>For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html" target="_blank">Temporary Security Credentials</a>.</li>
+			</ul>
+			<ul></ul>
+		</ul>
 
 		<p><span style="font-size: 18px;"><strong>Mapping Templates</strong></span></p>
 		<ul>
@@ -31,7 +51,7 @@
 			<li>You can use Mapping Templates to convert the data into a different format (such as XML or JSON), to filter out unwanted data, or to modify the data in any way you like.</li>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Mapping Templates</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>Customer Interceptor</strong></span></p>
 		<ul>
 			<li>A piece of code that runs before or after the execution of an AWS Lambda function</li>
 			<li>A custom interceptor can be used to perform additional tasks or to modify the input or output of the Lambda function</li>

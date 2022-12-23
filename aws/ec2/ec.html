@@ -77,11 +77,7 @@
 				<li>Spread: each instance is placed in a seperate rack. Must be multi-AZ</li>
 			</ul>
 		</ul>
-		<p><span style="font-size: 18;"><strong>UserData</strong></span></p>
-		<ul>
-			<li>A script that will automatically run when launching EC2</li>
-			<li>Used to install package, apply updates or anything else</li>
-		</ul>
+	
 		<p><span style="font-size: 18;"><strong>MetaData</strong></span></p>
 		<ul>
 			<li>From within your EC2 instance, you can access information via http://169.254.169.254/latest/meta-data</li>
@@ -106,44 +102,28 @@
 			<li>The user data that is specified when launching an Amazon Elastic Compute Cloud (EC2) instance is executed with root privileges on the instance</li>
 		</ul>
 
-		<p><span style="font-size: 18;"><strong>Misc Notes</strong></span></p>
-		<ul>
-			<li>Burst balance: refers to the balance of credits that are available to a burstable performance instance (t2, t3, and t3a instance types).</li>
-			<ul>
-				<li>When a burstable performance instance is launched, it is allocated a certain number of credits that can be used to support bursts of higher CPU usage</li>
-				<li>The instance uses these credits to support bursts of CPU usage that exceed the baseline CPU performance of the instance</li>
-				<li>The number of credits that are allocated to an instance is based on the instance type and the size of the instance</li>
-				<li>As the instance uses credits to support bursts of CPU usage, the burst balance of the instance decreases. </li>
-				<li>When the burst balance reaches zero, the instance's CPU performance will be limited to the baseline performance of the instance until the balance is replenished.</li>
-				
-			</ul>
-		</ul>
+		
 
 		<p><span style="font-size: 18;"><strong>Types of Reserved Instances</strong></span></p>
 		<ul>
-			<li>Scheduled Reserve</li>
-			<ul>
-				<li>Are a type of EC2 instance that allows you to reserve capacity in advance for a specific time period.</li>
-				<li>Scheduled Reserve instances are ideal for workloads that have predictable start and end times, or that require a consistent number of instances over a fixed period of time.</li>
-				<li>They are available for one or three year terms.</li>
-				<li>Limitations</li>
-				<ul>
-					<li>must be launched within the specified time period. If you do not launch the instances within the time period, the reservation will expire and you will not be able to use it.</li>
-					<li>Cannot be used with Auto Scaling or with EC2 Auto Scaling groups.</li>
-					<li>Cannot be stopped or terminated, but they can be modified or unmodified</li>
-				</ul>
-			</ul>
-			<li>Standard Reserve</li>
-			<ul>
-				<li>EC2 instance reservation that allows you to purchase a reservation for a specific instance type in a specific Availability Zone.</li>
-				<li>In general, Scheduled Reserved Instances are more specific and are best suited for workloads that have a predictable schedule, while Standard Reserved Instances are more general and are suitable for any workload that runs on EC2 instances.</li>
-			</ul>
-			<li>Convertable Reserve</li>
-			<ul>
-				<li>A type of EC2 instance reservation that allows you to purchase a reservation for a specific instance type and then exchange it for a different instance type at a later time</li>
-				<li>This can be useful if your workload requirements change over time and you need to use a different instance type to meet those requirements.</li>
-			</ul>
-		</ul>
+			<li>AWS Reserve Instances are a pricing option for Amazon EC2 and Amazon RDS instances that offer a significant discount compared to on-demand pricing.</li>
+			<li>Require a one-time payment up front and provide a discounted hourly rate for the duration of the reservation.</li>
+			<li>Can be purchased for a period of 1 or 3 years, and the discount is applied to the hourly usage of the instances.</li>
+			<li>Flexible and can be exchanged or returned for a full or partial refund within the first 75 days of the reservation.</li>
+			<li>Ideal for steady-state or predictable workloads that run for an extended period of time, as they provide a predictable and lower cost for instances over the duration of the reservation.</li>
+		
+			<li>There are three types of AWS Reserve Instances.</li>
+			<ol>
+				<li>Standard: offer the highest discount and provide the most flexibility for modifying the instance size or instance family within the same instance type.</li>
+				<li>Convertable: offer a lower discount than Standard Reserve Instances, but allow you to exchange the reservation for another instance type within the same instance family, subject to some restrictions.</li>
+				<li>Scheduled: allow you to specify the time when your instances will be running in advance, and offer a discount for instances that are running during a specified time window.</li>
+			</ol>
+			<li> <a href="reserved_instances.html" target="_blank">Link</a> (i-morgen)</li>
+		
+			
+			
+		</ul>	
+
 
 		<p><span style="font-size: 18;"><strong>Dedicated Host vs Dedicated Instance</strong></span></p>
 		<ul>
@@ -159,6 +139,20 @@
 				<li>hey are launched in a VPC and can be used like any other EC2 instances, with the added benefit of being physically isolated from instances that belong to other customers</li>
 				<li>They are not tied to a specific host and can be migrated between hosts as needed</li>
 				<li>Dedicated Instances are a good option if you want the benefits of running on dedicated infrastructure but do not need the full visibility and control that Dedicated Hosts provide.</li>
+			</ul>
+		</ul>
+		
+
+		<p><span style="font-size: 18;"><strong>Notes</strong></span></p>
+		<ul>
+			<li>Burst balance: refers to the balance of credits that are available to a burstable performance instance (t2, t3, and t3a instance types).</li>
+			<ul>
+				<li>When a burstable performance instance is launched, it is allocated a certain number of credits that can be used to support bursts of higher CPU usage</li>
+				<li>The instance uses these credits to support bursts of CPU usage that exceed the baseline CPU performance of the instance</li>
+				<li>The number of credits that are allocated to an instance is based on the instance type and the size of the instance</li>
+				<li>As the instance uses credits to support bursts of CPU usage, the burst balance of the instance decreases. </li>
+				<li>When the burst balance reaches zero, the instance's CPU performance will be limited to the baseline performance of the instance until the balance is replenished.</li>
+				
 			</ul>
 		</ul>
 

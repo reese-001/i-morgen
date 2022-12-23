@@ -19,8 +19,11 @@
 		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
 		<ul>
 			<li>Helps provision, manage and deploy public and private SSL TLS certificates</li>
+			<ul>
+				<li>Note: IAM can also be used as a cert manager in regions where ACM is not supported. In this case, the cert must be obtained from external provider</li>
+			</ul>
 			<li>Can be used within AWS as well as your internal connected resources</li>
-			<li> With ACM, you can request, renew, and manage SSL/TLS certificates for your websites and applications, and ACM will automatically renew your certificates before they expire</li>
+			<li>With ACM, you can request, renew, and manage SSL/TLS certificates for your websites and applications, and ACM will automatically renew your certificates before they expire</li>
 			<li>You can use ACM to deploy SSL/TLS certificates for a variety of applications, including web servers, load balancers, and email servers</li>
 			<li>To use ACM, you request a certificate, specify the domain or domains that you want to secure, and ACM will handle the rest, including verifying your ownership of the domain and issuing the certificate</li>
 		</ul>

@@ -22,11 +22,41 @@
 			<li>You can trigger Lambda from over 200 AWS services and software as a service (SaaS) applications, and only pay for what you use.</li>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Lambda Aliases?</strong></span></p>
+		<p><span style="font-size: 18px;"><strong>Lambda Aliases</strong></span></p>
 		<ul>
 			<li>An alias is a pointer to a specific version of a Lambda function, and you can use aliases to control traffic to different versions of a function</li>
 			<li>You can use an alias to specify the percentage of traffic that should be directed to a particular version of the function, and you can easily update the alias to point to a different version if needed</li>
 		</ul>
 
+		<p><span style="font-size: 18px;"><strong>Lambda Authorizer</strong></span></p>
+		<ul>
+			<li>API Gateway feature that uses a Lambda function to control access to your API.	</li>
+			<li>A Lambda authorizer is useful if you want to implement a custom authorization scheme that uses a bearer token authentication strategy such as OAuth or SAML, or that uses request parameters to determine the caller's identity.</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>Memory and Computing Power</strong></span></p>
+		<ul>
+			<li>Memory is the principle lever available for controlling the performance of a function as is adjustable between 128 MB to 10,240 MB </li>
+			<li>Adding more memory proporationally adds for CPU</li>
+		</ul>
+
+		<p><span style="font-size: 18px;"><strong>How To</strong></span></p>
+		<ul>
+			<li>Deploy a function that makes use of a Python library not otherwise available to Lambda</li>
+			<ul>
+				<li>In this case, we will install "requests"</li>
+				<li>pip install --target ./package requests</li>
+				<li>cd package</li>
+				<li>zip -r9 ${OLDPWD}/function.zip .</li>
+				<li>cd ..</li>
+				<li>zip -g function.zip lambda_function.py</li>
+				<li>aws lambda update-function-code --function-name my-function --zip-file fileb://function.zip</li>
+				<li>Sources</li>
+				<ul>
+					<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/python-package.html" target="_blank">AWS docs</a></li>
+					<li><a href="https://stackoverflow.com/questions/58445984/python-at-aws-lambda-requests-from-botocore-vendored-deprecated-but-request" target="_blank">StackOverflow</a></li>
+				</ul>
+			</ul>
+		</ul>
     </body>
 </html>

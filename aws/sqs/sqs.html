@@ -67,7 +67,7 @@
         <li>Delete queue: aws sqs --region us-east-2 delete-queue --queue-url https://sqs.us-east-2.amazonaws.com/[removed]/sreeQ1</li>
         </ul>
 
-        <p><span style="font-size: 18px;">Misc</span></p>
+        <p><span style="font-size: 18px;">Misc Notes</span></p>
         <ul>
             <li>Tags</li>
             <ul>
@@ -76,7 +76,7 @@
             </ul>
             <li>You can't change the queue type after you create a queue.</li>
             <li>Default visibility timeout is 30 seconds</li>
-            <li>The DLQ of a FIFO queue must also be FIFO. Similarly the DLQ of a standard queue must also be a standard queue</li>
+            <li>The DLQ of a FIFO queue must also be FIFO. Similarly the DLQ of a standard queue must also be a standard queue (ie. they must match)</li>
         </ul>
     </body>
 </html> 

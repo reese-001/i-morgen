@@ -12,9 +12,33 @@
 				<td><h1 style="color:#0B2042;">i morgen</h1></td>
 			</tr>
 		</table>
-        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="index.html">dynamo db</a>:overview</h2>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../aws.html">aws</a>:<a href="index.html">dynamo db</a>:overview</h2>
+
+		<p><strong><span style="font-size: 20px;">Contents</span></strong></p>
+		<ul>
+			<li><a href="#what_does_it_do">What does it do?</a><br/></li>
+			<li><a href="#read_consistency">Read Consistency</a></li>
+			<li><a href="#partitions">Partitions</a></li>
+			<li><a href="#primary_keys">Primary Keys</a></li>
+			<li><a href="#query_and_scan">Query and Scan</a></li>
+			<li><a href="#provisioned_capacity">Provisioned Capacity</a></li>
+			<li><a href="#on_demand_capacity">On Demand Capacity</a></li>
+			<li><a href="#calculate_reads">Calculate Reads</a></li>
+			<li><a href="#calculate_writes">Calculate Writes</a></li>
+			<li><a href="#global_tables">Global Tables</a></li>
+			<li><a href="#transactions">Transactions</a></li>
+			<li><a href="#ttl">Time to Live</a></li>
+			<li><a href="#streams">Streams</a></li>
+			<li><a href="#dynamo_errors">Dynamo Errors</a></li>
+			<li><a href="#secondary_indexes">Secondary Indexes</a></li>
+			<li><a href="#accelerator ">Accelerator</a></li>
+
+		</ul>
+		
+		
+
 		<p><strong><span style="font-size: 20px;">DynamoDB</span></strong></p>
-        <p><strong><span style="font-size: 18px;">What does it do?</span>&nbsp;</strong></p>
+        <div id="what_does_it_do"><p><strong><span style="font-size: 18px;">What does it do?</span>&nbsp;</strong></p></div>
         <ul>
 			<li>No SQL key/value database and document database for internet scale applications</li>
 			<li>Features</li>
@@ -35,25 +59,32 @@
 			<li>You can specift the read/write capacity per second</li>
 			<li>Data is split between at least three different AZ's on SSD storage</li>
 		</ul>
-        <p><strong><span style="font-size: 18px;">Read Consistency</span>&nbsp;</strong></p>
+        <div id="read_consistency"><p><strong><span style="font-size: 18px;"><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html" target="_blank">Read Consistency</a></span>&nbsp;</strong></p></div>	
 		<ul>
-			<li>Data lives in at least three different locations</li>
-			<li>When data needs to be updated it has to write updates to all copies</li>
-			<li>Data consistency is guarenteed within 1 second, however ... </li>
-			<li>It is possible for the data to be inconsistent when reading from a copy that has not been updated</li>
-			<li>Two options</li>
+			<li>Data is stored individually across all availability zones</li>
 			<ul>
+				<li>This creates a situation where data needs to replicate across AZ's after a write operation</li>
+				<li>The data will eventually be consistant across all locations, usually in a second or less</li>
+				<li>It is possible for the data to be inconsistent when reading from a copy that has not been updated</li>
+			</ul>
+			
+			<li>Two options: Eventual Consistant Reads and Strongly Consistant Reads</li>
+			<ol>
 				<li>Eventual Consistant Reads (default)</li>
 				<ul>
-					<li>reads are fast but no guarentee of consistency</li>
+					<li>reads are fast but no guarentee of immediate consistency</li>
 					<li>all copies become consistent within a second</li>
 				</ul>
 				<li>Strongly Consistent Reads</li>
-					<li>when copies are being updated and you attempt to read, it will not return until all copies consistent</li>
+				<ul>
+					<li>returns a response with the most up-to-date data, reflecting the updates from all prior write operations that were successful. </li>
 					<li>guarentee of consistency but the trade off is higher latency (slower reads)</li>
-			</ul>
+					<li>not supported on global secondary indexes (GSI) </li>
+					<li>To use, add "ConsistentRead = True" on your query</li>
+				</ul>
+			</ol>
 		</ul>
-		<p><strong><span style="font-size: 18px;">Partitions</span>&nbsp;</strong></p>
+		<div id="partitions"><p><strong><span style="font-size: 18px;">Partitions</span>&nbsp;</strong></p></div>
 		<ul>
 			<li><a href="../../aws/images/dynamo_partitions.png">Partition</a> is an allocation of storage for a table, backe dby SSD and automatically replicated across multiple AZ's within a Region</li>
 			<li>It speeds up reads for very large tables by logically grouping similar data together</li>
@@ -70,7 +101,7 @@
 				</ul>
 			</ul>
 		</ul>
-		<p><strong><span style="font-size: 18px;">Primary Keys</span>&nbsp;</strong></p>
+		<div id="primary_keys"><p><strong><span style="font-size: 18px;">Primary Keys</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>You must identify your PK when creating table</li>
 			<li>PK identifies where and how your data will be stores in partitions</li>
@@ -94,7 +125,8 @@
 				<li><a href="../../aws/images/dynamo_composite_key.png">Illustration</a></li>
 			</ul>
 		</ul>	
-		<p><strong><span style="font-size: 18px;">Query and Scan</span>&nbsp;</strong></p>
+
+		<div id="query_and_scan"><p><strong><span style="font-size: 18px;">Query and Scan</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>Query: A query operation searches only primary key attribute values and supports a subset of comparison operators on key attribute values to refine the search process.</li>
 			<ul>
@@ -121,13 +153,14 @@
 			
 		</ul>
 
-		<p><strong><span style="font-size: 18px;">Provisioned Capacity</span>&nbsp;</strong></p>
+		<div id="provisioned_capacity"><p><strong><span style="font-size: 18px;">Provisioned Capacity</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>Maximum amount of capacity your application is allowed to read or write per second from a table or index</li>
 			<li>Auto scaling allows us to go beyond RCU/WCU without dropping requests </li>
 			<li>Free tier eligible</li>
 		</ul>
-		<p><strong><span style="font-size: 18px;">On Demand Capacity</span>&nbsp;</strong></p>
+
+		<div id="on_demand_capacity"><p><strong><span style="font-size: 18px;">On Demand Capacity</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>Pay per request, only pay what you use</li>
 			<li>Use case</li>
@@ -141,7 +174,9 @@
 				<li>40,000 RCU/WCU</li>
 			</ul>
 		</ul>
-		<p><strong><span style="font-size: 18px;">Calculate Reads</span>&nbsp;</strong></p>
+
+
+		<div id="calculate_reads"><p><strong><span style="font-size: 18px;">Calculate Reads</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>1 RCU = </li>
 			<ul>
@@ -168,7 +203,7 @@
 			<li>How to calculate RCUs for Eventual</li>
 		</ul>
 
-		<p><strong><span style="font-size: 18px;">Calculate Writes</span>&nbsp;</strong></p>
+		<div id="calculate writes"><p><strong><span style="font-size: 18px;">Calculate Writes</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>1 WCU = </li>
 			<ul>
@@ -179,10 +214,12 @@
 			<ol>
 				<li>Round data up the nearest 1</li>
 				<li>Times by writes</li>
-				<li><a href="../../aws/images/dynamo_wcu_example.png">Example</li>
+				<li><a href="../../aws/images/dynamo_wcu_example.png">Example</a></li>
 			</ol>
 		</ul>
-		<p><strong><span style="font-size: 18px;">Global Tables</span>&nbsp;</strong></p>
+
+		
+		<div id="global_tables"><p><strong><span style="font-size: 18px;">Global Tables</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>Global tables replicate your DynamoDB tables automatically across your choice of AWS Regions</li>
 			<li>Global tables eliminate the difficult work of replicating data between Regions and resolving update conflicts, enabling you to focus on your application's business logic.</li>
@@ -193,7 +230,9 @@
 				<li>Stream Type of new and Old Image</li>
 			</ul>
 		</ul>
-		<p><strong><span style="font-size: 18px;">Transactions</span>&nbsp;</strong></p>
+
+
+		<div id="transactions"><p><strong><span style="font-size: 18px;">Transactions</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>Dynamo provides transactions at no additional cosrt</li>
 			<li>Two operations are provided</li>
@@ -208,7 +247,8 @@
 				<li>Commit the transaction</li>
 			</ol>
 		</ul>
-		<p><strong><span style="font-size: 18px;">Time To Live (TTL)</span>&nbsp;</strong></p>
+
+		<div id="ttl"><p><strong><span style="font-size: 18px;">Time To Live (TTL)</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>Lets you have items in DynamoDB expire at a given time</li>
 			<li>TTL is great for keeping DB's small and manageable</li>
@@ -221,7 +261,7 @@
 			<li><a href="../../aws/images/dynamo_enable_ttl.png">Illustration</a></li>
 		</ul>
 
-		<p><strong><span style="font-size: 18px;">Streams</span>&nbsp;</strong></p>
+		<div id="streams"><p><strong><span style="font-size: 18px;">Streams</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>When enabled, DynamoDB captures every modification to the data items so you can react to those changes</li>
 			<li>When an insert, update or delete is executed, the change will be sent to a lambda function</li>
@@ -232,7 +272,8 @@
 				<li>For each item that is modified, the stream records appear in the same sequence as the actual modifications</li>
 			</ul>
 		</ul>
-		<p><strong><span style="font-size: 18px;">Dynamo Errors</span>&nbsp;</strong></p>
+
+		<div id="dynamo_errors"><p><strong><span style="font-size: 18px;">Dynamo Errors</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>Two common types of errors</li>
 			<ul>
@@ -243,7 +284,7 @@
 			<li>SDK will automatically retry with exponential backoffs when error occurs (50ms, 100ms, 200ms, ..., 1 minute</li>
 		</ul>
 
-		<p><strong><span style="font-size: 18px;">Secondary Indexes</span>&nbsp;</strong></p>
+		<div id="secondary indexes"><p><strong><span style="font-size: 18px;">Secondary Indexes</span>&nbsp;</strong></p></div>
 		<ul>
 			<li>Index is a copy of selected columns of data in a database which is used to quickly sort</li>
 			<li>DynamoDB has two types of indexes: Global is preferred</li>
@@ -278,7 +319,7 @@
 			</ul>
 		</ul>
 
-		<p><strong><span style="font-size: 18px;">Accelerator (DAX)</span>&nbsp;</strong></p>
+		<div id="accelerator"><p><strong><span style="font-size: 18px;">Accelerator (DAX)</span>&nbsp;</strong></p></div>	
 		<ul>
 			<li>Fully managed in memory cache for DynamoDB that runs in cluster</li>
 			<li>DynamoDB response times can be in single digit milliseconds. With DAX it can be in microseconds</li>

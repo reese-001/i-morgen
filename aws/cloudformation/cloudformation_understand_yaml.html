@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cloud formation</a>:understanding yaml</h2>
+
+
+		<p><span style="font-size: 20px;"><strong>Understanding YAML</strong></span></p>
+
+		<p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		<ul>
+			<li>YAML stands for "YAML Ain't Markup Language." It is a human-readable data serialization language that is commonly used for configuration files, data storage, and communication between services.</li>
+			<li>AWS CloudFormation is a service that enables you to use programming languages or a simple YAML file to model and provision, in an automated and secure manner, all the resources needed for your applications across all of your AWS accounts.</li>
+			<li>In CloudFormation, a YAML file is used to define a "stack," which is a collection of AWS resources that you want to create or update as a single unit. The YAML file specifies the resources to create, as well as their properties and dependencies.</li>
+			<li>A CloudFormation template is written in YAML or JSON, and it consists of six main sections:</li>
+			<ul>
+				<li>Resources: (Required) This section defines the AWS resources that you want to create or update. Each resource has a type (e.g., Amazon S3 bucket, Amazon EC2 instance), a unique identifier, and a set of properties that specify its configuration.</li>
+				<li>Outputs: This section specifies values that you want to output from your CloudFormation stack. You can use these outputs to pass data between stacks or to display information to users.</li>
+				<li>Conditions: This section lets you specify conditions that control whether certain resources or resource properties are created or updated.</li>
+				<li>Mappings: This section lets you create maps of keys and values that you can reference in other parts of your template.</li>
+				<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html" target="blank">Parameters</a>: This section lets you specify values that you want to pass into your CloudFormation stack when you create or update it. These values can be used to customize the resources that are created or updated.</li>
+				<li>Metadata: This section lets you specify additional information about the CloudFormation stack, such as the stack's description or the version of the CloudFormation template.</li>
+				<li>Transform: This is used to specify the name of one or more AWS CloudFormation macros that you want to use in your template. Typically associated to serverless applications</li>
+			</ul>
+			<li>You can use the AWS CloudFormation CLI or the AWS Management Console to create and manage stacks based on your YAML templates. You can also use CloudFormation as part of your continuous integration and delivery (CI/CD) pipelines, to automate the deployment of your infrastructure and applications.</li>
+		</ul>
+	
+		<p><span style="font-size: 18px;"><strong>Notes</strong></span></p>
+		<ul>
+			<li>Intrinsic Functions in templates are used to assign values to properties that are not available until runtime. They usually start with Fn:: or !. Example: !Sub or Fn::Sub.</li>
+		</ul>
+
+</pre>
+	</body>
+</html>
