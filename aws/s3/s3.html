@@ -20,6 +20,14 @@
 			
 		</ul>
 
+		<p><strong><span style="font-size: 18px;">Permissions</span>&nbsp;</strong></p>
+		<ul>
+			<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws-dates.html" target="_blank">Time Bound Constraints</a></li>
+			<ul>
+				<li></li>
+			</ul>
+		</ul>
+
 		<p><strong><span style="font-size: 18px;">Object Lock</span>&nbsp;</strong></p>
 		<ul>
 			<li>Amazon S3 Object Lock is a feature that enables customers to store objects in an immutable state, meaning that they cannot be deleted or overwritten for a specified retention period. </li>
@@ -40,6 +48,19 @@
 				<li>Inventory: Inventory provides metadata about objects stored in an S3 bucket, such as the object's key, size, and last modified date. </li>
 				<li>Metrics: Metrics enable customers to collect and analyze data about how their objects are accessed, such as the number of reads and writes to an object, the source of the request, and the response status code</li>
 			</ul>
+		</ul>
+
+		<p><strong><span style="font-size: 18px;">Multi Part Uploads</span>&nbsp;</strong></p>
+		<ul>
+			<li>Amazon Simple Storage Service (S3) multi-part uploads allow you to upload large objects, such as videos or backups, more efficiently to S3.</li>
+			<li>With multi-part uploads, you can upload parts of an object in parallel to improve the upload speed.</li>
+			<li>Minimum part size is 5 MB, maximum part size is 5 GB.</li>
+			<li>Recommended in the following scenarios</li>
+			<ul>
+				<li>If you're uploading large objects over a stable high-bandwidth network, use multipart uploading to maximize the use of your available bandwidth by uploading object parts in parallel for multi-threaded performance.</li>
+				<li>If you're uploading large objects over a network with limited bandwidth, use multipart uploading to minimize the impact of network latency on your upload time.</li>
+			</ul>
+			
 		</ul>
     </body>
 </html>

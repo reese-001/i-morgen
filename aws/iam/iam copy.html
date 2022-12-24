@@ -17,20 +17,66 @@
 
         <p><span style="font-size: 20px;"><strong>IAM (Identity Access Management)</strong></span></p>
 
-
-		<li><a href="#intro">Introduction</a></li>
+		
+		<li><a href="#what_is_it">What is it?</a></li>
+		<li><a href="#authentication">Authentication</a></li>
 		<li><a href="#policy_docs">Policy Documents/Statements</a></li>
 		<li><a href="#resource_vs_identify">Resourced vs Identify Based Policies</a></li>
 		<li><a href="#"></a></li>
 
 
-		<p><span style="font-size: 18px;"><strong><div id="intro">Introduction</div></strong></span></p>
+		<p><span style="font-size: 18px;"><strong><div id="what_is_it">What is it?</div></strong></span></p>
 		<ul>
-			<li>Users are people in your organization and can be grouped</li>
-			<li>Groups contain users only, not other groups</li>
-			<li>Users do not have to belong to a group, and they can belong to more then one group</li>
+			<li>Resources </li>
+			<li>Helps control access to resources</li>
+			<ul>
+				<li>Resources are entities you create in AWS (ie S3 bucket)</li>
+				<li>Users attempt to perform actions on resources (ie S3::CreateBucket)</li>
+				<li>Authorization to perform an action depends on a policy</li>
+			</ul>
+			<li>Example</li>
+			<ul>
+				<li>User attempts to execute  <strong>lambda::createFunction</strong></li>
+				<li>Authorization is determined by a policy document similar to what is shown below</li>
+				<pre>
+{
+  "Version": "2012-10-17",
+	"Statement": [
+	   {
+		"Effect": "Allow",
+		"Action": "lambda::createFunction",
+		"Resource": "*"
+	   }
+	]
+}
+				</pre>
+				<li><strong>Statement</strong> is an array and contains the "meat" of the document </li>
+				<li>Sid: name of the policy and can be at your discretion </li>
+				<li>Effect: will be either "Allow" or "Deny"</li>
+				<ul>
+					<li>Implicit deny prevents access to anything you do not have "Allow" for</li>
+					<li>Explicit deny can override "Allows". Useful if you give broad "Allow" access and want to fine tune it by creating "Deny" policies</li>
+				</ul>
+				<li>Action: the specific action being targeted </li>
+				<li>Resource: meant to limit the scope. For example if this was an update policy, we could restrict the update access to a specific lambda function</li>
+				<ul>
+					<li>In that case, you would specify the ARN of the function as well</li>
+				</ul>
+			</ul>
+			</li>
 		</ul>
-		
+
+
+		<p><span style="font-size: 18px;"><strong><div id="authentication">Policy Documents/Statements</div></strong></span></p>
+		<li>
+			<ul>MFA device options</ul>
+			<ul>
+				<li>Virtual MFA device</li>
+				<
+			</ul>
+		</li>
+
+
 		<p><span style="font-size: 18px;"><strong><div id="policy_docs">Policy Documents/Statements</div></strong></span></p>
 		<ul>
 			<li>Task is to give read only access to specific columns on a DynamoDB table</li>

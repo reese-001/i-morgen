@@ -238,10 +238,20 @@
 			<li>Two operations are provided</li>
 			<or>
 				<li>TransactWriteItems</li>
+				<ul>
+					<li>Synchronous and idempotent</li>
+					<li>Groups up to 100 write actions in a single all-or-nothing operation</li>
+					<li>Aggregate size of all items in transactions cannot exceed 4mb</li>
+				</ul>
 				<li>TransactGetItems</li>
+				<ul>
+					<li>Synchronous read operation</li>
+					<li>Groups up to 100 get actions together</li>
+					<li>Aggregate size of all items in transactions cannot exceed 4mb</li>
+				</ul>
 			</or>
 			<li>Transactions allow for all or nothing changes to multiple items both within and across tables</li>
-			<li>Two underlying reat and writes are made for every transaction. This will increase the cost.</li>
+			<li>Two underlying read and writes are made for every transaction. This will increase the cost.</li>
 			<ol>
 				<li>Prepare the transaction</li>
 				<li>Commit the transaction</li>

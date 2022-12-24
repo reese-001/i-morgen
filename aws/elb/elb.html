@@ -16,7 +16,19 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">elb</a>:overview</h2>
 
         <p><span style="font-size: 20px;"><strong>ELB (Elastic Load Balancer)</strong></span></p>
-		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+
+		<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+		<ul>
+			<li><a href="#what_is_it">What is it</a></li>
+			<li><a href="#rules_of_traffic">Rules of Traffic</a></li>
+			<li><a href="#sticky_sessions">Sticky Sessions</a></li>
+			<li><a href="#xff">XFF</a></li>
+			<li><a href="#health_checks">Health Checks</a></li>
+			<li><a href="#cross_zone_balancing">Cross Zone Balancing</a></li>
+			<li><a href="#request_routing">Request Routing</a></li>
+		</ul>
+
+		<div id="what_is_it"><p><span style="font-size: 18px;"><strong>What is it?</strong></span></p></div>
 		<ul>
 			<li>A load balancer distributes incoming application traffic across multiple EC2 instances in multiple Availability Zones</li>
 			<li>Benefit: increases the fault tolerance of your applications by detecting unhealthy instances and routes traffic only to healthy instances.</li>
@@ -54,7 +66,7 @@
 			</ol>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Rules of Traffic</strong></span></p>
+		<div id="rules_of_traffic"><p><span style="font-size: 18px;"><strong>Rules of Traffic</strong></span></p></div>	
 		<ul>
 			<li>Three components involved in flow of traffic</li>
 			<ul>
@@ -75,7 +87,8 @@
 			</ul>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Sticky Sessions</strong></span></p>
+		
+		<div id="sticky_sessions"><p><span style="font-size: 18px;"><strong>Sticky Sessions</strong></span></p></div>
 		<ul>
 			<li>Allows you to bind a users session to a specific EC2 instance</li>
 			<li>Useful for applications that store session data on the instance</li>
@@ -87,7 +100,7 @@
 			<li>Can be used with cookies or source IP</li>
 		</ul>
         
-		<p><span style="font-size: 18px;"><strong>X-Forwarded-For (XFF) Header</strong></span></p>
+		<div id="xff"><p><span style="font-size: 18px;"><strong>X-Forwarded-For (XFF) Header</strong></span></p></div>
 		<ul>
 			<li>When a request is forwarded to an EC2 instance, the XFF header is added to the request</li>
 			<li>Contains the IP address of the client that initiated the request</li>
@@ -95,13 +108,21 @@
 			<li><a href="../images/elb_xff.png">Illustration (ExamPro)</a></li>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Health Checks</strong></span></p>
+		<div id="health_checks"><p><span style="font-size: 18px;"><strong>Health Checks</strong></span></p></div>
 		<ul>
-			<li>Route traffic away from unhealthy instances</li>
-			<li>Ping server at specific url and monitor result. Negative results will produce out of service status on EC2 instance</li>
+			<li>To maintain the same number of instances, Amazon EC2 Auto Scaling performs a periodic health check on running instances within an Auto Scaling group.</li>
+			<li>When it finds that an instance is unhealthy, it terminates that instance and launches a new one</li>
+			<li>Amazon EC2 Auto Scaling creates a new scaling activity for terminating the unhealthy instance and then terminates it.</li>
+			<li>Later, another scaling activity launches a new instance to replace the terminated instance.</li>
+			<li>References</li>
+			<ul>
+				<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/auto-scaling-terminate-instance/" target="_blank">Why didn’t Amazon EC2 Auto Scaling terminate an unhealthy instance?</a></li>
+				<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-maintain-instance-levels.html#replace-unhealthy-instance" target="_blank">Maintain a fixed number of instances in your Auto Scaling group</a></li>
+				<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html" target="_blank">Health Checks for Auto Scaling Instances</a></li>
+			</ul>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Cross Zone Balancing</strong></span></p>
+		<div id="cross_zone_balancing"><p><span style="font-size: 18px;"><strong>Cross Zone Balancing</strong></span></p></div>	
 		<ul>
 			<li>Only available on Classic and NLB</li>
 			<li>When enabled requests are evenly distributed across the instances in all enabled AZ's</li>
@@ -117,7 +138,7 @@
 			</ul>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Request Routing</strong></span></p>
+		<div id="request_routing"><p><span style="font-size: 18px;"><strong>Request Routing</strong></span></p></div>	
 		<ul>
 			<li>Apply rules to incoming requests and then forward or redirect traffic</li>
 			<li>Rules can be based on the following</li>
