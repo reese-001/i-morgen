@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="../styles.css">
+      <title>i morgen</title>
+      <link rel="icon" href="../images/logo.png">
+   </head>
+   <body>
+      <table>
+         <tr>
+            <td><img src="../images/logo.png" class="logo"></td>
+            <td>
+               <h1 style="color:#0B2042;">i morgen</h1>
+            </td>
+         </tr>
+      </table>
+      <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ec2</a>:purchasing options</h2>
+      <p><strong><span style="font-size: 20px;"><strong>EC2 Purchasing Options</strong></span></strong></p>
+
+      <li>Contents</li>
+      <ul>
+        <li><a href="#on_demand">EC2 On Demand</a></li>
+        <li><a href="#reserved_instances">EC2 Reserved Instances</a></li>
+        <li><a href="#savings_plans">EC2 Savings Plans</a></li>
+        <li><a href="#spot_instances">Spot Instances</a></li>
+        <li><a href="#dedicated_host">EC2 Dedicated Host</a></li>
+        <li><a href="#dedicated_instance">EC2 Dedicated Instances</a></li>
+        <li><a href="#capacity_reservation">EC2 Capacity Reservations</a></li>
+        <li><a href="#vacation">Vacation Analogy</a></li>
+       
+      </ul>
+
+      <div id="on_demand"><p><span style="font-size: 18;"><strong>EC2 On Demand</strong></span></p></div>   
+      <ul>
+         <li>Pay for what you use</li>
+         <ul>
+            <li>Linux or Windows: billing per second after the first minute</li>
+            <li>All other OS's: billing per hour</li>
+         </ul>
+         <li>Highest cost but no upfront payment</li>
+         <li>No long term commitment</li>
+         <li>Recommended: short term and un-interrupted workloads where you can't predict how the application will behave</li>
+      </ul>
+
+      <div id="reserved_instances"><p><span style="font-size: 18;"><strong>EC2 Reserved Instances</strong></span></p></div>
+      <ul>
+         <li>Note: more details <a href="reserved_instances.html"  target="_blank">here</a></li>
+         <li>Large discount compared to on-demand</li>
+         <li>Reserve a specific instance attributes (instance type, region, tenaency, OS</li>
+         <li>Reservation period: 1 year (+ discount) or 3 years (+++ discount)</li>
+         <li>Payment options: No upfront (+), partial upfront (++), all upfront (+++)</li>
+         <li>Reserved instance scope: regional or zonal</li>
+         <li>Buy and sell in Reserved Instance Marketplace</li>
+         <li>Recommended: steady state (ie database)</li>
+         <li>Convertable Reserved Instance Type</li>
+         <ul>
+            <li>Can change the EC2 instance type, instance family, OS, scope, tenancy</li>
+         </ul>
+      </ul>
+
+      <div id="savings_plans"><p><span style="font-size: 18;"><strong>EC2 Savings Plans</strong></span></p></div>
+      <ul>
+         <li>Get a discount based on long term usage (similar to Reserved Instances)</li>
+         <li>Commit to a certain type of usage (ie. $10/hr for 1 or 3 years)</li>
+         <li>Usage beyond EC2 savings plans is billed at the on demand price</li>
+         <li>Locked into a specific instance family and region (ie: M5 in us-east-1)</li>
+         <li>However you are flexible across:</li>
+         <ul>
+            <li>instance size (ie: m5.xlarge, m5.2xlarge)</li>
+            <li>OS (ie: Linux, Windows</li>
+            <li>Tenancy (ie: host, dedicated, default</li>
+         </ul>
+
+         <div id="spot_instances"><p><span style="font-size: 18;"><strong>Spot Instances</strong></span></p></div>
+         <ul>
+            <li>Most aggressive discounts</li>
+            <li>You can lose them at any point in time if yor max price is less then the current spot price</li>
+            <li>Useful for:</li>
+            <ul>
+               <li>batch jobs</li>
+               <li>Data analysis</li>
+               <li>Image processing</li>
+               <li>Any distributed workload</li>
+               <li>Workloads with a flexible start and end time</li>
+            </ul>
+            <li>Not suitable for critical jobs or databases</li>
+         </ul>
+
+         <div id="dedicated_host"><p><span style="font-size: 18;"><strong>EC2 Dedicated Host</strong></span></p></div>
+         <ul>
+            <li>Physical server with EC2 instance capacity fully dedicated to you</li>
+            <li>Useful for complaince requirements and for server bound licenses (ie: per socket, per core)</li>
+            <li>Purchasing options</li>
+            <ul>
+               <li>On demand: pay per second for active dedicated host</li>
+               <li>Reserved: 1 or 3 years (no upfront, partial upfront, full upfront)</li>
+            </ul>
+         </ul>
+
+         <div id="dedicated_instance"><p><span style="font-size: 18;"><strong>EC2 Dedicated Instances</strong></span></p></div>
+         <ul>
+            <li>Instances run on hardware thats dedicated to you</li>
+            <li>However you may share the hardware with other instances in the same account</li>
+            <li>No control over instance placement</li>
+            <br/>
+            <p><span style="font-size: 18;"><strong>Comparing Dedicated Instances to Dedicated Hosts</strong></span></p>
+            <table style="width:50%" border="1">
+               <tr>
+                  <td><strong>Characteristic</strong></td>
+                  <td><strong>Dedicated Instance</strong></td>
+                  <td><strong>Dedicated Host</strong></td>
+               </tr>
+               <tr>
+                  <td>Enables the use of dedicated physical servers</td>
+                  <td>X</td>
+                  <td>X</td>
+               </tr>
+               <tr>
+                  <td>Per instance billing</td>
+                  <td>X</td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td>Per host billing</td>
+                  <td></td>
+                  <td>X</td>
+               </tr>
+               <tr>
+                  <td>Visibility of sockets, cores, host id</td>
+                  <td></td>
+                  <td>X</td>
+               </tr>
+               <tr>
+                  <td>Affinity between a host and instance</td>
+                  <td></td>
+                  <td>X</td>
+               </tr>
+               <tr>
+                  <td>Targeted instance placement</td>
+                  <td></td>
+                  <td>X</td>
+               </tr>
+               <tr>
+                  <td>Automatic instance placement</td>
+                  <td>X</td>
+                  <td>X</td>
+               </tr>
+               <tr>
+                  <td>Add capacity using allocation request</td>
+                  <td></td>
+                  <td>X</td>
+               </tr>
+            </table>
+         </ul>
+
+         <div id="capacity_reservation"><p><span style="font-size: 18;"><strong>EC2 Capacity Reservations</strong></span></p></div>
+         <ul>
+            <li>Reserve on-demand instances in a specific AZ for any duration</li>
+            <li>You always have access to EC2 capacity when you need it</li>
+            <li>No time commitments (create/cancel any time), no billing discounts - only purpose is to reserve capacity</li>
+            <li>Combine with regional reserved instances and savings plans to benefit from billing discounts</li>
+            <li>You are charged at on-demand rates whether you run instance or not</li>
+            <li>Recommended: short term, un-interrupted workloads that need to be in a specific AZ</li>
+         </ul>
+
+         <div id="vacation"><p><span style="font-size: 18;"><strong>Vacation Analogy</strong></span></p></div>
+         <ul>
+            <li>On demand: coming and staying in resort whenever we like, we pay full price</li>
+            <li>Reserved: like planning ahead and if we plan to stay a long time, we may get a discount</li>
+            <li>Savings plans: Pay a certain amount per hour for a certain period and stay in any room</li>
+            <li>Spot instances: the hotel allows people to bid for empty rooms and the highest bidder gets it. You may be kicked out any any time</li>
+            <li>Dedicated host: Book an entire building at the resort</li>
+            <li>Capacity reservations: Book a room for a period and pay full price, even if you dont stay in it</li>
+         </ul>
+      </ul>
+   </body>
+</html>
