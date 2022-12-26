@@ -6,6 +6,7 @@
 		<link rel="icon" href="../images/logo.png">
 	</head>
 	<body>
+		<div id="home"></div>
 <table>
 			<tr>
 				<td><img src="../images/logo.png" class="logo"></td>
@@ -14,14 +15,31 @@
 		</table>
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ec2</a>:overview</h2>
 		<p><strong><span style="font-size: 20px;"><strong>EC2</strong></span></strong></p>
-		<p><strong><span style="font-size: 18px;"><strong>What is it?</strong></span></strong></p>
+
+		<div id="contents"></div><li>Contents</li></div>
+		<ul>
+			<li><a href="#what_is_it">What is it?</a></li>
+			<li><a href="#instance_types_and_usage">Instance Types and Usage</a></li>
+			<li><a href="#purchasing_options">Purchasing Options</a></li>
+			<li><a href="#instance_profile">Instance Profile</a></li>
+			<li><a href="#metadata">Metadata</a></li>
+			<li><a href="#user_data">User Type</a></li>
+			<li><a href="#types_reserved_instances">Types of Reserved Instances</a></li>
+			<li><a href="#dedicated_host_instance">Dedicated vs Host Instance</a></li>
+			<li><a href="#notes">Notes</a></li>
+			
+		</ul>
+
+		<div id="what_is_it"><p><strong><span style="font-size: 18px;"><strong>What is it?</strong></span></strong></p></div>
 		<ul>
 			<li>EC2 is a highly configurable server</li>
 			<li>Resizable compute capacity</li>
 			<li>Takes minutes to launch new instances</li>
 			<li>Anything and everything on AWS uses EC2 instance underneath</li>
+			<li><a href="#home">home</a></li>
 		</ul>
-		<p><span style="font-size: 18;"><strong>Instance Types and Usage</strong></span></p>
+
+		<div id="instance_types_and_usage"><p><span style="font-size: 18;"><strong>Instance Types and Usage</strong></span></p>
 		<ul>
 			<li>General Purpose</li>
 			<ul>
@@ -53,8 +71,50 @@
 				<li>Ideal for high sequential read and write access to very large datasets on local storage</li>
 				<li>Use case: NoSql, in memory or transactional databases, data warehousing</li>
 			</ul>
+			<li><a href="#home">home</a></li>
 		</ul>
-		<p><span style="font-size: 18;"><strong>Instance Profile</strong></span></p>
+
+		<div id="purchasing_options"><p><span style="font-size: 18;"><strong>Purchasing Options</strong></span></p></div>
+		<ul>
+			<li>Note: more details <a href="purchasing_options.html" target="_blank">here</a></li>
+			<li>On-Demand instances</li>
+			<ul>
+				<li>Short lived, predictable, pay by second</li>
+			</ul>
+			<li>Reserved (1 and 3 years)</li>
+			<ul>
+				<li>Reserved instances: long workloads</li>
+				<li>Convertable reserved instances: long workloads with flexible instances </li>
+				<li> <a href="reserved_instances.html" target="_blank">Link</a> (i-morgen)</li>
+			</ul>
+			<ul>
+				<li>Savings plans (1 and 3 years)</li>
+				<ul>
+					<li>Commitment to an amount of usage and workload</li>
+				</ul>
+			</ul>
+			<ul>
+				<li>Spot Instances</li>
+				<ul>
+					<li>Short workloads, cheap, can lose instance (less reliable)</li>
+				</ul>
+			</ul>
+			<li>Dedicated hosts</li>
+			<ul>
+				<li>Book an entire physcial server, control <a href="#instance_placement">instance placement</a></li>
+			</ul>
+			<li>Dedicated instance</li>
+			<ul>
+				<li>No other customer will share your hardware</li>
+			</ul>
+			<li>Capacity reservations</li>
+			<ul>
+				<li>Reserve capacvity in a specific AZ for any duration</li>
+			</ul>
+			<li><a href="#home">home</a></li>
+		</ul>
+
+		<div id="instance_profile"><p><span style="font-size: 18;"><strong>Instance Profile</strong></span></p></div>
 		<ul>
 			<li>Instead of embedding your AWS credentials in your code so your instance has permissions to access certain services, you attach a role to an instance via Instance Profile</li>
 			<li>The instance profile holds reference to the role</li>
@@ -76,9 +136,10 @@
 				<li>Partition: spreads instances across logical partitions. Partitions do not share underlying hardware</li>
 				<li>Spread: each instance is placed in a seperate rack. Must be multi-AZ</li>
 			</ul>
+			<li><a href="#home">home</a></li>
 		</ul>
 	
-		<p><span style="font-size: 18;"><strong>MetaData</strong></span></p>
+		<div id="metadata"><p><span style="font-size: 18;"><strong>MetaData</strong></span></p></div>	
 		<ul>
 			<li>From within your EC2 instance, you can access information via http://169.254.169.254/latest/meta-data</li>
 			<li>Examples: </li>
@@ -88,9 +149,11 @@
 				<li>/instance-type</li>
 			</ul>
 			<li>Can combine metadata with userdata scripts to perform all sorts of advanced aws staging automation</li>
+			<li><a href="#home">home</a></li>
 		</ul>
 
-		<p><span style="font-size: 18;"><strong>User Data</strong></span></p>
+
+		<div id="user_data"><p><span style="font-size: 18;"><strong>User Data</strong></span></p></div>
 		<ul>
 			<li>Allows you to specify data (such as a script or configuration file) that should be executed when an EC2 instance is launched.</li>
 			<ul>
@@ -100,11 +163,12 @@
 			<li>The user data is passed to the instance as part of the instance metadata, and can be accessed from within the instance using the EC2 metadata service.</li>
 			<li>You can use the user data feature to automate tasks such as installing software packages, configuring the instance, or joining the instance to a domain</li>
 			<li>The user data that is specified when launching an Amazon Elastic Compute Cloud (EC2) instance is executed with root privileges on the instance</li>
+			<li><a href="#home">home</a></li>
 		</ul>
 
 		
 
-		<p><span style="font-size: 18;"><strong>Types of Reserved Instances</strong></span></p>
+		<div id="types_reserved_instances"><p><span style="font-size: 18;"><strong>Types of Reserved Instances</strong></span></p></div>
 		<ul>
 			<li>AWS Reserve Instances are a pricing option for Amazon EC2 and Amazon RDS instances that offer a significant discount compared to on-demand pricing.</li>
 			<li>Require a one-time payment up front and provide a discounted hourly rate for the duration of the reservation.</li>
@@ -120,12 +184,12 @@
 			</ol>
 			<li> <a href="reserved_instances.html" target="_blank">Link</a> (i-morgen)</li>
 		
-			
+			<li><a href="#home">home</a></li>
 			
 		</ul>	
 
 
-		<p><span style="font-size: 18;"><strong>Dedicated Host vs Dedicated Instance</strong></span></p>
+		<div id="dedicated_host_instance"><p><span style="font-size: 18;"><strong>Dedicated Host vs Dedicated Instance</strong></span></p></div>
 		<ul>
 			<li>Dedicated Hosts</li>
 			<ul>
@@ -140,10 +204,11 @@
 				<li>They are not tied to a specific host and can be migrated between hosts as needed</li>
 				<li>Dedicated Instances are a good option if you want the benefits of running on dedicated infrastructure but do not need the full visibility and control that Dedicated Hosts provide.</li>
 			</ul>
+			<li><a href="#home">home</a></li>
 		</ul>
 		
 
-		<p><span style="font-size: 18;"><strong>Notes</strong></span></p>
+		<div id="notes"><p><span style="font-size: 18;"><strong>Notes</strong></span></p></div>
 		<ul>
 			<li>Burst balance: refers to the balance of credits that are available to a burstable performance instance (t2, t3, and t3a instance types).</li>
 			<ul>
@@ -154,6 +219,7 @@
 				<li>When the burst balance reaches zero, the instance's CPU performance will be limited to the baseline performance of the instance until the balance is replenished.</li>
 				
 			</ul>
+			<li><a href="#home">home</a></li>
 		</ul>
 
     </body>
