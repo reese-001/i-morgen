@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ec2 instance storage</a>:overview</h2>
+
+        <p><span style="font-size: 20px;"><strong>EC2 Instance Storage</strong></span></p>
+
+		<p>Contents</p>
+		<ul>
+			<li><a href="#what_is_it">What is it?</a></li>
+			<li><a href="#snapshots">Snapshots</a></li>
+			<li><a href="#ami">AMI's</a></li>
+			<li><a href="#instance_store">EC2 Instance Store</a></li>
+			<li><a href="#ebs_volume_types">EBS Volume Types</a></li>
+			<li><a href="#multi_attach">Multi-Attach</a></li>
+			<li><a href="#efs">Elastic File System (EFS)</a></li>
+			<li><a href="#efs_storage_classes">EFS Storage Classes</a></li>
+			<li><a href="#ebs_vs_efs">EBS vs EFS</a></li>
+		</ul>
+		
+		<div id="what_is_it"><p><span style="font-size: 18px;"><strong>What is it?</strong></span></p></div>
+		<ul>
+			<li>Network drive that you can attach to your instances while they run</li>
+			<ul>
+				<li>Consequences of being network drive</li>
+				<ul>
+					<li>latency</li>
+					<li>Can be detached and attached to another EC2 instance quickly</li>
+				</ul>
+			</ul>
+			<li>It allows your instances to persist data, even after instance termination</li>
+			<li>Can only be mounted to one instance at a time [todo: research multi-attach feature] </li>
+			<li>Bound to a specific AZ</li>
+			<ul>
+				<li>You can create a snapshot which will allow you to effectively move drive to another AZ</li>
+			</ul>
+			<li>Think of them as a "network usb stick</li>
+			<li>Provisioned resource</li>
+			<ul>
+				<li>Free tier: 30 GB</li>
+				<li>Must provision in advance in both GB's and IOPS</li>
+				<li>Billed for this provisioned capacity</li>
+				<li>Can be increased over time</li>
+			</ul>
+			<li>Delete on Termination feature allows you to control what happens to the volume when the EC2 instance is terminated</li>
+			<ul>
+				<li>By default the root volume is set to terminate</li>
+			</ul>
+		</ul>
+
+		<div id="snapshots"></div><p><span style="font-size: 18px;"><strong>Snapshots</strong></span></p>
+		<ul>
+			<li>Make a backup (snapshot) of your EBS volume at a point in time</li>
+			<li>Not required to detach volume to do a snapshot but it is recommended</li>
+			<li>Can copy snapshots across AZ or Region</li>
+			<li>EBS snapshot archive:</li>
+			<ul>
+				<li>Move a snapshot to an 'archive tier' that is 75% cheaper</li>
+				<li>Takes within 24-72 hours for restoring the archive</li>
+			</ul>
+			<li>Recycle bin for EBS Snapshots</li>
+			<ul>
+				<li>Setup rules to retain deleted snapshots so you can recover after accidental deletion</li>
+				<li>Retention can be set between 1 day to 1 year</li>
+			</ul>
+			<li>Fast Snapshot Restore (FSR)</li>
+			<ul>
+				<li>Force full initialization of snapshot to have no latency on first time use</li>
+				<li>Caution: $$$</li>
+			</ul>
+		</ul>
+
+		<div id="ami"></div><p><span style="font-size: 18px;"><strong>AMI's</strong></span></p>
+		<ul>
+			<li>Amazon Machine Image</li>
+			<li>AMI's are a customization of an EC2 instance</li>
+			<ul>
+				<li>You can add your own software, configurations, OS, monitoring, etc</li>
+				<li>Faster boot and config time because all software is prepackaged</li>
+			</ul>
+			<li>AMI's are built for a specific region (and can be copied across regions)</li>
+			<li>You can launch EC2 instances from:</li>
+			<ul>
+				<li>Public AMI's </li>
+				<li>Your own AMI's</li>
+				<li>AWS Marketplace AMI </li>
+			</ul>
+			<li>AMI creation process</li>
+			<ul>
+				<li>Start EC2 instance and customize it</li>
+				<li>Stop the instance (for data integrity)</li>
+				<li>Build an AMI - this will also create EBS snapshots</li>
+				<li>Launch instances from other AMI's</li>
+
+			</ul>
+			</ul>	
+
+			<div id="instance_store"></div><p><span style="font-size: 18px;"><strong>EC2 Instance Store</strong></span></p>
+			<ul>
+				<li>EBS volumes are network drives with good but 'limited' perfomance</li>
+				<li>If you need a high performance hardware disk, use EC2 Instance Store</li>
+				<li>Consequences:</li>
+				<ul>
+					<li>Better IO perfomance</li>
+					<li>EC2 instance store lose their storage if they are stopped (ephemeral)</li>
+					<li>Risk of data loss if hardware fails</li>
+					<li>Backups and replication are your responsibility</li>
+					<li>Good for buffer, cache, scratch data, or temp content</li>
+				</ul>
+				
+			</ul>
+
+			<div id="ebs_volume_types"></div><p><span style="font-size: 18px;"><strong>EBS Volume Types</strong></span></p>
+			<ul>
+				<li>EBS volumes come in 6 different types</li>
+				<ul>
+					<li>gp2/gp3 (SSD): General purpose SSD volume that balances price and performance for a while variety of workloads</li>
+					<li>io1/io2 (SSD): Highest perfomance SSD volume for mission critical, low latency or high throughput workloads</li>
+					<li>st1 (HDD): Low cost HDD volume designed for frequently accessed, throughout intensive workloads</li>
+					<li>sc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads</li>
+				</ul>
+				<li>EBS volumes are charactorized in size, throughput and IOPS</li>
+				<li>Only gp2/gp3 and io1/io2 can be used as boot volumes</li>
+				<li>Use cases</li>
+				<ul>
+					<li>General purpose SSD</li>
+					<ul>
+						<li>Cost effective strategy</li>
+						<li>Low latency</li>
+						<li>System boot volumes, virtual desktops, development and test environments</li>
+						<li>1 GB -> 16 TiB</li>
+						<li>gp3: </li>
+						<ul>
+							<li>Baseline of 3k IOPS and throughput of 125 MiB/s</li>
+							<li>Can increase IOPS to 16k and throughput to 1000 MiB/s (not linked)</li>
+						</ul>
+						<li>gp2: </li>
+						<ul>
+							<li>Small GP2 volume can burst to 3k IOPS</li>
+							<li>Size of volume and IOPS are linked. Max IOPS is 16k</li>
+							<li>3 IOPS per GB. Max GB of 5334 GB</li>
+						</ul>
+					</ul>
+					<li>Provisioned IOPS (PIOPS) SSD</li>
+					<ul>
+						<li>Critical business applications with sustained IOPS perfomance</li>
+						<li>.. or critical apps that need more than 16k IOPS</li>
+						<li>Great for DB's - which are sensitive to storage perf and consistency</li>
+						<li>io1/io2 (4gb - 16 TiB)</li>
+						<ul>
+							<li>Max PIOPS: 64k for Nitro EC2 and 32k for others</li>
+							<li>Can increase PIOPS independently from storage size</li>
+							<li>io2 have more durability and more IOPS per GB (at the same price as io1)</li>
+						</ul>
+						<li>io2 Block Express</li>
+						<ul>
+							<li>Sub millisecond latency</li>
+							<li>Max PIOPS: 256k with IOPS:GiB ratio of 1,000:1</li>
+						</ul>
+						<li>Supports EBS Multi-attach</li>
+					</ul>
+					<li>ST1/SC1</li>
+					<ul>
+						<li>Cannot be a boot volume</li>
+						<li>125 MiB and 16 TiB</li>
+						<li>Throughput optimized HDD (st1)</li>
+						<ul>
+							<li>Big data, data warehousing, log processing</li>
+							<li>Max throughput 500 MiB/s </li>
+							<li>Max 500 IOPS</li>
+						</ul>
+						<li>Cold HDD (sc1)</li>
+						<ul>
+							<li>Archiving scenarios</li>
+							<li>Max throughput 250 MiB/s</li>
+							<li>Max 250 IOPS</li>
+						</ul>
+					</ul>
+				</ul
+				
+				<div id="multi_attach"></div><p><span style="font-size: 18px;"><strong>EBS Multi-Attach</strong></span></p>
+				<ul>
+					<li>Attach same EBS volume to multiple EC2's in the same AZ</li>
+					<li>Only available in io1/io2 family</li>
+					<li>Each instance has full read and write permissions to the high perfomance volume</li>
+					<li>Use cases</li>
+					<ul>
+						<li>Achieve higher application availability in clusteed Linux applications (ex Terradata)</li>
+						<li>Applications must manage concurrent write ops</li>
+					</ul>
+					<li>Limitations</li>
+					<ul>
+						<li>As mentioned, EC2's must be in the same region</li>
+						<li>Max 16 EC2 instances at a time</li>
+						<li>File system must be cluster aware (not XFS, EX4, etc)</li>
+					</ul>
+				</ul>
+
+				<div id="efs"></div><p><span style="font-size: 18px;"><strong>Elastic File System (EFS)</strong></span></p>
+				<ul>
+					<li>Overview</li>
+					<ul>
+						<li>Managed NFS (network file system) that can be mounted on many EC2's</li>
+						<li>EFS works with EC2 instances in multi-AZ</li>
+						<li>Highly available, scalable, expensive (3x gp2), pay per use</li>
+						<li>Use cases</li>
+						<ul>
+							<li>content management</li>
+							<li>web serving</li>
+							<li>data sharing</li>
+							<li>Wordpress</li>
+						</ul>
+						<li>Used NFSv4.1 protocol</li>
+						<li>Access controlled with security groups</li>
+						<li>Only available with Linux based AMI's</li>
+						<li>Encryption at rest using KMS</li>
+						<li>POSIX file system that has a standard file API</li>
+						<li>No need to plan capacity, it will scale automatically</li>
+					</ul>
+					<li>Performance and Storage</li>
+					<ul>
+						<li>Scalability</li>
+						<ul>
+							<li>1000s of concurrent NFS clients, 10 GB+/s throughput</li>
+							<li>Grow to petabyte-scale network file system automatically</li>
+						</ul>
+						<li>Performance (set at EFS creation)</li>
+						<ul>
+							<li>General Purpose (default): latency-sensitive use cases (web server, CMS, etc) </li>
+							<li>Max I/O: higher latency, throughput, highly parallel (big data, media processing)</li>
+						</ul>
+						<li>Throughput mode</li>
+						<ul>
+							<li>Bursting (Default): 1 Tb storage  = 50 MiB/s + burst up to 100 MiB/s</li>
+							<li>Provisioned: set your throughput regardless of storage size. Example: 1 GiB/s for 1 TiB storage</li>
+						</ul>
+					</ul>
+				</ul>
+
+				<div id="efs_storage_classes"></div><p><span style="font-size: 18px;"><strong>EFS Storage Classes</strong></span></p>
+				<ul>
+					<li>Storage Tiers (lifecycle management feature - move file after N days)</li>
+					<ul>
+						<li>Standard: for frequently accessed files</li>
+						<li>Infequency Access (EFS-IA): cost to retreive files, lower price to store. Enable EFS-IA with a <a href="https://docs.aws.amazon.com/efs/latest/ug/lifecycle-management-efs.html" target="_blank">Lifecycle Policy</a></li>
+						<li>Example</li>
+						<ul>
+							<li>Assume we have some frequently used files on EFS Standard</li>
+							<li>One of those files is not access for more then 60 days</li>
+							<li>Because of Lifecycle Policy, the file will be moved to EFS IA </li>
+						</ul>
+					</ul>
+					<li>Availability and durability</li>
+					<ul>
+						<li>Multi AZ, great for prod</li>
+						<li>One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone IA)</li>
+					</ul>
+				</ul>	
+
+				<div id="ebs_vs_efs"></div><p><span style="font-size: 18px;"><strong>EBS vs EFS</strong></span></p>
+				<ul>
+					<li>EBS</li>
+					<ul>
+						<li>Can be attached toonly one instance at a time</li>
+						<li>Are locked at the AZ level</li>
+						<li>gp2: IO increases if the disk space increases</li>
+						<li>io1: can increase IO independently</li>
+				
+						<li>To migrate an EBS volume across AZ's</li>
+						<ul>
+							<li>Take a snapshot</li>
+							<li>Restore the snapshot to another AZ</li>
+							<li>EBS backups use IO and you shouldnt run them while your application is handling heavy traffic</li>
+						</ul>
+						<li>Root EBS volumes of instance get terminated by default if the EC2 instance gets terminated</li>
+					</ul>
+					<li>EFS</li>
+					<ul>
+						<li></li>
+					</ul>
+					</ul>
+				</ul>
+    </body>
+</html>

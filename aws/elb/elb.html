@@ -20,6 +20,7 @@
 		<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
 		<ul>
 			<li><a href="#what_is_it">What is it</a></li>
+			<li><a href="#types_of_elb">Types of ELB</a></li>
 			<li><a href="#rules_of_traffic">Rules of Traffic</a></li>
 			<li><a href="#sticky_sessions">Sticky Sessions</a></li>
 			<li><a href="#xff">XFF</a></li>
@@ -34,7 +35,10 @@
 			<li>Benefit: increases the fault tolerance of your applications by detecting unhealthy instances and routes traffic only to healthy instances.</li>
 			<li>ELB can automatically scale to almost any workload</li>
 			<li>Load between targets is defined by rules and vary based on types of load balancer</li>
+			</ul>
 
+		<div id="types_of_elb"><p><span style="font-size: 18px;"><strong>Types of ELB</strong></span></p></div>
+		<ul>
 			<li>There are three types available</li>
 			<ol>
 				<li>Application Load Balancer (ALB) </li>
@@ -62,7 +66,7 @@
 					<li>Will respond with 504 error (timeout) if underlying application is not responding (web server/db level)</li>
 					<li><a href="../images/elb_classic_load_balancer.png">Illustration (ExamPro)</a></li>
 					<li>Legacy</li>
-				</ul
+				</ul>
 			</ol>
 		</ul>
 
