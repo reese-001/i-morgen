@@ -21,11 +21,14 @@
 		<ul>
 			<li><a href="#what_is_it">What is it</a></li>
 			<li><a href="#types_of_elb">Types of ELB</a></li>
+			<li><a href="#health_checks">Health Checks</a></li>
 			<li><a href="#rules_of_traffic">Rules of Traffic</a></li>
 			<li><a href="#sticky_sessions">Sticky Sessions</a></li>
 			<li><a href="#xff">XFF</a></li>
 			<li><a href="#health_checks">Health Checks</a></li>
 			<li><a href="#cross_zone_balancing">Cross Zone Balancing</a></li>
+			<li><a href="#ssl_tls">SSL/TLS</a></li>
+			<li><a href="#connection_draining">Connection Draining</a></li>
 			<li><a href="#request_routing">Request Routing</a></li>
 		</ul>
 
@@ -39,25 +42,67 @@
 
 		<div id="types_of_elb"><p><span style="font-size: 18px;"><strong>Types of ELB</strong></span></p></div>
 		<ul>
-			<li>There are three types available</li>
+			<li>There are four types available</li>
 			<ol>
 				<li>Application Load Balancer (ALB) </li>
 				<ul>
-					<li>Used for HTTP/HTTPS </li>
+					<li>Used for http, https, web sockets </li>
+					<li>Supports redirects (http->https for example)</li>
+					<li>Supports routing based on path in URL (ie example.com/users vs example.com/posts) and on query strings</li>
+					<li>Has a port mapping feature to redirect to a dynamic port in ECS</li>
 					<li>Layer 7 of <a href="../images/elb_osi_model.png">OSI Model</a></li>
 					<li>ALB logs can capture latency and incoming IP addresses</li> 
-					<li>Use case: web sites</li>
+					<li>Use case: microservices and container based apps (Docker and Amazon ECS)</li>
 					<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html" target="_blank">AWS link</a></li>
+					<li>Target Groups (can send to multiple groups)</li>
+					<ul>
+						<li>EC2 instances (can be managed by an Auto Scaling Group</li>
+						<li>ECS tasks (managed by ECS itself)</li>
+						<li>Lambda functions (http request is translated into a JSON event)</li>
+						<li>Private IP addresses</li>
+					</ul>
 				</ul>
 				<li>Network Load Balancer (NLB)</li>
 				<ul>
-					<li>Used for TCP/UDP</li>
-					<li>Layer 4 of <a href="../images/elb_osi_model.png">OSI Model</a></li>
+					<li>Layer 4 of <a href="../images/elb_osi_model.png">OSI Model</a> (tcp, tls, udp)</li>
 					<li>Able to handle millions of requests per second</li>
+					<li>One static IP per AZ and supports assigning static Elastic IP (helpful for whitelisting specific IP)</li>
+					<li>Target Groups</li>
+					<ul>
+						<li>EC2 instances</li>
+						<li>Private IP addresses</li>
+						<li>Application Load Balancer (this is useful to get the static IP address and still use ALB functionality)</li>
+						<li>Note: Health checks support tcp, http and https</li>
+					</ul>
 					<li>Can handle cross zone load balancing</li>
 					<li>Use case: multi player games</li>
 					<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html" target="_blank">AWS link</a></li>
 				</ul>
+				<li>Gateway Load Balancer (GWLB)</li>
+				<ul>
+					<li>Deploy, scale and manage a fleet of 3rd party network appliances in AWS</li>
+					<li>OSI Layer 3</li>
+					<li>What kind of network appliances?</li>
+					<ul>
+						<li>Firewalls</li>
+						<li>Intrusion Detection and Prevention Systems</li>
+						<li>Deep packet inspection systems</li>
+						<li>Payload manipulation</li>
+					</ul>
+					<li>Example</li>
+					<ul>
+						<li>All incoming traffic coming into Gateway</li>
+						<li>Gateway sends that traffic to EC2 instances for some kind of analysis</li>
+						<li>If passed, the traffic comes back to the Gateway</li>
+						<li>Gateway finally sends to desintation</li>
+					</ul>
+					<li>Target groups</li>
+					<ul>
+						<li>EC2 instances</li>
+						<li>Private IP addresses </li>
+					</ul>
+				</ul>
+				
 				<li>Classic Load Balancer (CLB)</li>
 				<ul>
 					<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/introduction.html" target="_blank">AWS link</a></li>
@@ -69,6 +114,22 @@
 				</ul>
 			</ol>
 		</ul>
+
+		<div id="health_checks"><p><span style="font-size: 18px;"><strong>Health Checks</strong></span></p></div>
+		<ul>
+			<li>To maintain the same number of instances, Amazon EC2 Auto Scaling performs a periodic health check on running instances within an Auto Scaling group.</li>
+			<li>When it finds that an instance is unhealthy, it terminates that instance and launches a new one</li>
+			<li>Health check is done on a port and route (/health is common)</li>
+			<li>Amazon EC2 Auto Scaling creates a new scaling activity for terminating the unhealthy instance and then terminates it.</li>
+			<li>Later, another scaling activity launches a new instance to replace the terminated instance.</li>
+			<li>References</li>
+			<ul>
+				<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/auto-scaling-terminate-instance/" target="_blank">Why didn’t Amazon EC2 Auto Scaling terminate an unhealthy instance?</a></li>
+				<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-maintain-instance-levels.html#replace-unhealthy-instance" target="_blank">Maintain a fixed number of instances in your Auto Scaling group</a></li>
+				<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html" target="_blank">Health Checks for Auto Scaling Instances</a></li>
+			</ul>
+		</ul>
+
 
 		<div id="rules_of_traffic"><p><span style="font-size: 18px;"><strong>Rules of Traffic</strong></span></p></div>	
 		<ul>
@@ -97,11 +158,36 @@
 			<li>Allows you to bind a users session to a specific EC2 instance</li>
 			<li>Useful for applications that store session data on the instance</li>
 			<li>Used only on ALB an Classic (not NLB)</li>
-			
 			<ul>
 				<li>In the case of ALB, it can only be set on target group, not EC2</li>
 			</ul>
 			<li>Can be used with cookies or source IP</li>
+			<ul>
+				<li>Cookies</li>
+				<ul>
+					<li>Application based cookies</li>
+					<ul>
+						<li>Custom cookie</li>
+						<ul>
+							<li>Generated by target</li>
+							<li>Can include any custom attributes required by application</li>
+							<li>Cookie name must be specified individually for each target group</li>
+							<li>Don't use AWSALB, AWSALBAPP, AWSALPTG</li>
+						</ul>
+						<li>Application cookie</li>
+						<ul>
+							<li>Generated by load balancer</li>
+							<li>Cookie name is AWSALPAPP</li>
+						</ul>
+					</ul>
+					<li>Duration based cookies</li>
+					<ul>
+						<li>Generated by load balancer</li>
+						<li>Cookie name is AWSALB for ALB or AWSELB for CLB</li>
+						
+					</ul>
+				</ul>
+			</ul>
 		</ul>
         
 		<div id="xff"><p><span style="font-size: 18px;"><strong>X-Forwarded-For (XFF) Header</strong></span></p></div>
@@ -112,26 +198,32 @@
 			<li><a href="../images/elb_xff.png">Illustration (ExamPro)</a></li>
 		</ul>
 
-		<div id="health_checks"><p><span style="font-size: 18px;"><strong>Health Checks</strong></span></p></div>
-		<ul>
-			<li>To maintain the same number of instances, Amazon EC2 Auto Scaling performs a periodic health check on running instances within an Auto Scaling group.</li>
-			<li>When it finds that an instance is unhealthy, it terminates that instance and launches a new one</li>
-			<li>Amazon EC2 Auto Scaling creates a new scaling activity for terminating the unhealthy instance and then terminates it.</li>
-			<li>Later, another scaling activity launches a new instance to replace the terminated instance.</li>
-			<li>References</li>
-			<ul>
-				<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/auto-scaling-terminate-instance/" target="_blank">Why didn’t Amazon EC2 Auto Scaling terminate an unhealthy instance?</a></li>
-				<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-maintain-instance-levels.html#replace-unhealthy-instance" target="_blank">Maintain a fixed number of instances in your Auto Scaling group</a></li>
-				<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html" target="_blank">Health Checks for Auto Scaling Instances</a></li>
-			</ul>
-		</ul>
+		
 
 		<div id="cross_zone_balancing"><p><span style="font-size: 18px;"><strong>Cross Zone Balancing</strong></span></p></div>	
 		<ul>
-			<li>Only available on Classic and NLB</li>
 			<li>When enabled requests are evenly distributed across the instances in all enabled AZ's</li>
 			<li>When disabled requests are evenly distributed across the instances in only the AZ</li>
 			<li><a href="../images/elb_cross_zone_balancing.png">Illustration (ExamPro)</a></li>
+			<li>Behaviour by type of load balancer:</li>
+			<ul>
+				<li>Application Load Balancer </li>
+				<ul>
+					<li>Enabled by default (can be disabled at the target group level)</li>
+					<li>No charges for inter AZ data</li>
+				</ul>
+				<li>Network and Gateway Load Balancer </li>
+				<ul>
+					<li>Disabled by default</li>
+					<li>If enabled, charges will be generated</li>
+				</ul>
+				<li>Classic Load Balancer </li>
+				<ul>
+					<li>Disabled by default</li>
+					<li>No charges if enabled</li>
+				</ul>
+			</ul>
+			
 			<li>Example of traffic distribution: </li>
 			<ul>
 				<li>An organiztion has hosted its EC2 instances in two AZ's. AZ1 has two instances and AX2 has 8 inctances. ELB has cross zone load balancing enabled. What percent of traffic will each instance in AZ1 receive</li>
@@ -141,6 +233,24 @@
 				</ul>
 			</ul>
 		</ul>
+
+		<div id="ssl_tls"><p><span style="font-size: 18px;"><strong>SSL/TLS</strong></span></p></div>	
+		<ul>
+			<li><a href="ssl_basics.html" target="_blank">Link</a></li>
+		</ul>
+
+		
+		<div id="connection_draining"><p><span style="font-size: 18px;"><strong>Connection Draining</strong></span></p></div>	
+		<ul>
+			<li>Called Connection Draining in CLB and Deregistration Delay in ALB/NLB</li>
+			<li>Allows time to complete 'in-flight requests' while the instance is de-registering or unhealthy</li>
+			<li>Stops sending new requests to the EC2 instance which is de-registering</li>
+			<li>Between 1-3600 seconds. Default is 300 seconds</li>
+			<li>Can be disabled by setting value to 0</li>
+
+		</ul>
+
+
 
 		<div id="request_routing"><p><span style="font-size: 18px;"><strong>Request Routing</strong></span></p></div>	
 		<ul>

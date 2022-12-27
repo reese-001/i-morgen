@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">elb</a>:ssl basics</h2>
+
+        <p><span style="font-size: 20px;"><strong>SSL Basics</strong></span></p>
+
+		<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#load_balancer">Load Balancer</a></li>
+            <li><a href="#sni">Server Name Indication</a></li>
+        </ul>
+
+        <div id="intro"><p><span style="font-size: 18px;"><strong>Intro</strong></span></p></div>
+        <ul>
+            <li>SSL cert allows traffic between your clients and your load balancer to be encrypted in flight</li>
+            <li>SSL refers to Secure Socket Layer and is used to encrypt connections</li>
+            <li>TLS refers to Transport Layer Security and is a newer version of SSL</li>
+            <li>TLS certs are primarily used, but people still refer to SSL</li>
+            <li>Public SSL certs are issued by Certificate Authorities (CA)</li>
+            <li>Examples include</li>
+            <ul>
+                <li>Comodo</li>
+                <li>Symantec</li>
+                <li>GoDaddy</li>
+                <li>GlobalSign</li>
+                <li>Digicert</li>
+                <li>Letsencrypt</li>
+                <li>and more</li>
+            </ul>
+            <li>SSL certs have an expiration date (you set) and must be renewed </li>
+        </ul>
+
+        <div id="load_balancer"><p><span style="font-size: 18px;"><strong>Load Balancer</strong></span></p></div>   
+        <ul>
+            <li>Traffic is encrypted between client and load balancer</li>
+            <li>Traffic is not encrypted betweeen load balancer and target - but it is within a private VPC</li>
+            <li>Load balancer uses X.509 certificate (SSL/TLS server cert)</li>
+            <li>You can manage certs using ACM (AWS cert manager)</li>
+            <li>HTTPS listener</li>
+            <ul>
+                <li>You must specify a default certificate</li>
+                <li>You can add optional list of certs to support multiple domains</li>
+                <li>Clients can use SNI (Server Name Indication) to specify the hostname they reach</li>
+                <li>Ability to specify a security policy to support older versions of SSL/TLS</li>
+            </ul>
+        </ul>
+
+        <div id="sni"><p><span style="font-size: 18px;"><strong>Server Name Indication</strong></span></p></div>  
+        <ul>
+            <li>SNI solves the problem of loading multiple SSL certificates into one web server (to serve multiple web sites)</li>
+            <li>Its a newer protocol and requires the client to indicate the hostname of the target server in the initial SSL handshake</li>
+            <li>The server will then find the correct certificate, or return a default one</li>
+            <li>Works with ALB, NLB or Cloudfront</li>
+        </ul>
+
+    </body>
+</html> 

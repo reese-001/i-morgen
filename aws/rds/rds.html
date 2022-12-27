@@ -15,15 +15,100 @@
 		</table>
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../aws.html">aws</a>:<a href="index.html">rds</a>:overview</h2>
 
-        <p><span style="font-size: 20px;"><strong>Relatinal Database Service (RDS)</strong></span></p>
-		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+        <p><span style="font-size: 20px;"><strong>Relational Database Service (RDS)</strong></span></p>
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What is it?</a></li>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#storage_auto_scaling">Storage auto scaling</a></li>
+        <li><a href="#rds_read_replicas">RDS Read Replicas for Read Scalability</a></li>
+        <li><a href="#aurora">Aurora</a></li>
+
+        <div id="what_is_it">
+		    <p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+        </div>
         <ul>
-                <li>RDS is a fully managed database service that makes it easier to set up, operate, and scale a relational database in the cloud. RDS supports a variety of database engines, including MySQL, MariaDB, PostgreSQL, Microsoft SQL Server, Oracle, and Amazon Aurora.</li>
-                <li>With RDS, you can create and manage a database instance with just a few clicks in the AWS Management Console. RDS automatically patches and backs up your database, and it provides high availability and failover support to ensure your database stays up and running even in the event of a failure.</li>
-                <li>RDS provides a variety of benefits for developers and businesses. It can help you reduce the time and cost of setting up and maintaining a database, and it offers scalability and flexibility to support the needs of your application. You can also use RDS to host multi-tenant applications or to build a data warehouse.</li>
+            <li>RDS is a fully managed database service that makes it easier to set up, operate, and scale a relational database in the cloud. RDS supports a variety of database engines, including MySQL, MariaDB, PostgreSQL, Microsoft SQL Server, Oracle, and Amazon Aurora.</li>
+            <li>With RDS, you can create and manage a database instance with just a few clicks in the AWS Management Console. RDS automatically patches and backs up your database, and it provides high availability and failover support to ensure your database stays up and running even in the event of a failure.</li>
+            <li>RDS provides a variety of benefits for developers and businesses. It can help you reduce the time and cost of setting up and maintaining a database, and it offers scalability and flexibility to support the needs of your application. You can also use RDS to host multi-tenant applications or to build a data warehouse.</li>
+            <li>Storage backed by EBS (gp2 or io1)</li>
+            <li>You cannot SSH into these instances</li>
+            <li>What databases are support?</li>
+            <ul>
+                <li>Postgres</li>
+                <li>MySQL</li>
+                <li>MariaDB</li>
+                <li>Oracle</li>
+                <li>MS SqlServer</li>
+                <li>Auora (AWS proprietary database)</li>
+            </ul>
+         </ul>
+
+        <div id="storage_auto_scaling">
+            <p><span style="font-size: 18px;"><strong>Storage Auto Scaling</strong></span></p>
+        </div>
+        <ul>
+            <li>Helps you increase storage on your RDS DB instance dynamically</li>
+            <li>When RDS detects you are running out of free database storage, it scales automatically</li>
+            <li>Set a Maxiumum Storage Threshold</li>
+            <li>Automatically modify storage if</li>
+            <ul>
+                <li>Free storage is less then 10% of allocated storage</li>
+                <li>Low storage lasts for more then 5 minutes</li>
+                <li>6 hours have passed since last modification</li>
+            </ul>
         </ul>
 
-        <div id="authentication"><p><span style="font-size: 18px;"><strong>What is it?</strong></span></p></div>
+        <div id="rds_read_replicas">
+            <p><span style="font-size: 18px;"><strong>RDS Read Replicas for Read Scalability</strong></span></p>
+        </div>
+        <ul>
+            <li>What is it>?</li>
+            <ul>
+                <li>In the event of read latency, the RDS database will create up to 5 replicas of itself in the following ways:</li>
+                <ul>
+                        <li>With AZ</li>
+                        <li>Cross AZ</li>
+                        <li>Cross region</li>
+                </ul>
+                <li>These replicas will be populated with async replication - eventually consistant</li>
+                <li>These replicas can be promoted to their own DB</li>
+                <li>Do not use write ops</li>
+            </ul>
+            <li>Use Cases</li>
+            <ul> 
+                <li>You have a production database that is taking normal load</li>
+                <li>You want to run a reporting application on this db</li>
+                <li>Create a read replica to run the new workload there</li>
+            </ul>
+            <li>Network Costs</li>
+            <ul>
+                <li>For RDS Read Replicas within the same region, there is no additional fee</li>
+                <li>Cross region replication will incur costs </li>
+            </ul>
+            <li>RDS Multi AZ (DR)</li>
+            <ul>
+                <li>SYNC replication to the standby RDS instance or the transaction fails</li>
+                <li>Automatic app failover to standby</li>
+                <li>Read Replicas can be setup as a Multi AZ for DR</li>
+            </ul>
+            <li>How to go from Single AZ to Multi AZ</li>
+            <ul>
+                <li>Zero downtown operation</li>
+                <li>Just click "Modify DB"</li>
+
+            </ul>
+
+        <div id="aurora">
+            <p><span style="font-size: 18px;"><strong>Aurora</strong></span></p>
+        </div>
+        <ul>
+            <li></li>
+        </ul>
+
+        <div id="authentication">
+            <p><span style="font-size: 18px;"><strong>Authentication</strong></span></p>
+        </div>
         <ul>
             <li>Supports IAM authentication on the following three databases</li>
             <ol>
