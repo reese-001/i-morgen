@@ -17,13 +17,190 @@
         <p><strong><span style="font-size: 20px;"><a href="https://docs.aws.amazon.com/s3/index.html" target="_blank">Simple Storage Service (S3)</a></span></strong></p>
 
 		<p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+		<li><a href="#buckets">Buckets</a></li>
+		<li><a href="#use_cases">Use Cases</a></li>
+		<li><a href="#use_cases">Security</a></li>
+		<li><a href="#versioning">Versioning</a></li>
+		<li><a href="#replication">Replication</a></li>
+		<li><a href="#storage_classes">Storage Classes</a></li>
 		<li><a href="#permissions">Permissions</a></li>
 		<li><a href="#object_lock">Object lock</a></li>
 		<li><a href="#analytics">Analytics</a></li>
 		<li><a href="#multi_part_uploads">Multi Part Uploads</a></li>
-	
 
+		
+		<div id="buckets">
+			<p><strong><span style="font-size: 18px;">buckets</span>&nbsp;</strong></p>
+		</div>	
+		<ul>
+			<li>Allows people to store objects (files) in "buckets" (directories)</li>
+			<li>Must have globally unique name</li>
+			<li>Defined at the region level</li>
+			<li>Looks like a global service but regional</li>
+			<li>They appear to have directories, but in reality the directories are part of the key</li>
+			<li>Max size = 5TB but can use multi-part upload to transfer files above that size</li>
+
+		</ul>
+	
+		<div id="use_cases">
+			<p><strong><span style="font-size: 18px;">Use Cases</span>&nbsp;</strong></p>
+		</div>	
+			<ul>
+				<li>Backup and storage</li>
+				<li>Disaster Recovery</li>
+				<li>Archive</li>
+				<li>Hybrid Cloud Storage</li>
+				<li>Application Hosting</li>	
+			</ul>
+		</div>
+
+		<div id="security">
+			<p><strong><span style="font-size: 18px;">Security</span>&nbsp;</strong></p>
+		</div>
+		<ul>
+			<li>User based</li>
+			<ul>
+				<li>IAM policies: which API calls should be allows for a specific user from IAM</li>
+				
+			</ul>
+			<li>Resourced based</li>
+			<ul>
+				<li>Bucket policies: bucket wide rules from the S3 console</li>
+				<li>Object ACL: finer grain and can be disabled</li>
+				<li>Bucket ACL: less common (can be disabled)</li>
+			</ul>
+			<li>An IAM principle can access an S3 object if:</li>
+			<ul>
+				<li>The user IAM permissions allow it *or* the resource policy allows it</li>
+				<li>And there is not explicit deny</li>
+			</ul>
+			<li>Encryption: encrypts objects in S3 using encryption keys</li>
+			<li>S3 Bucket Policies</li>
+			<ul>
+				<li>JSON based policies</li>
+			</ul>
+		</ul>
        
+		<div id="versioning">
+			<p><strong><span style="font-size: 18px;">Versioning</span>&nbsp;</strong></p>
+		</div>
+		<ul>
+			<li>Enabled at the bucket level</li>
+			<li>Same key overwrite will change the "version": 1, 2, 3, etc</li>
+			<li>Best practive to version</li>
+			<ul>
+				<li>Protects against unintended deletes (you can restore)</li>
+				<li>Easy roll back</li>
+			</ul>
+			<li>Any file that is not versioned prior to enabling versioning will have version "null"</li>
+			<li>Suspending versioning does not delete previous versions</li>
+
+		</ul>
+
+		<div id="replication">
+			<p><strong><span style="font-size: 18px;">Replication</span>&nbsp;</strong></p>
+		</div>
+		<ul>
+			<li>Must enable versioning in source and destination buckets</li>
+			<li>Two types of replication</li>
+			<ul>
+				<li>Cross Region Replication (CRR)</li>
+				<li>Same Region Replication (SRR)</li>
+			</ul>
+			<li>Buckets can be in different AWS accounts</li>
+			<li>Copying is asynchronous</li>
+			<li>Use cases</li>
+			<ul>
+				<li>CRR: complience, lower latency, replication across accounts</li>
+				<li>SRR: log aggregation, live replication between test and prod env's</li>
+			</ul>
+			<li>Notes:</li>
+			<ul>
+				<li>After you enable replication, only new objects are replicated</li>
+				<li>To replicate existing objects use <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html" target="_blank">S3 Batch Replication</a></li>
+				<li>There is no chaining of replication (ie A -> B -> C. A != C)</li>
+				<li>Delete ops: can replicate delete markers from source to target (optional)</li>
+				<li>Delete ops: Deletes with version ID are not replicated</li>
+			</ul>
+		</ul>
+
+
+		
+		<div id="storage_classes">
+			<p><strong><span style="font-size: 18px;">Storage Classes</span>&nbsp;</strong></p>
+			<ul>
+				<li>Durability</li>
+				<ul>
+					<li>How many times will AWS lose the data. This is 11 9's across multiple AZ's</li>
+					<li>If you store 10 million objects on S3, you can expect to incur a lose of a single object once every 10k years</li>
+				</ul>
+				<li>Availability</li>
+				<ul>
+					<li>Measures how readily available to service is</li>
+					<li>Varies by storage class</li>
+					<li>S3 Standard has 99.99% availability</li>
+				</ul>
+				<li>Storage Classes</li>
+				<ul>
+					<li>Standard - General Purpose</li>
+					<ul>
+						<li>Availability: 99.99%</li>
+						<li>Use case: Frequently used data - ie Big Data, mobile and gaming apps, content distribution</li>
+						<li>Latency: low</li>
+						<li>Throughput: high</li>
+						<li>Sustain 2 concurrent facility failures</li>
+					</ul>
+					<li>Standard - Infrequent Access (IA)</li>
+					<ul>
+						<li>Availability: 99.9%</li>
+						<li>Use case: DR, backups</li>
+					</ul>
+					<li>One Zone-Infrequent Access</li>
+					<ul>
+						<li>Availability: 99.5%</li>
+						<li>Durability: 11 9's in single AZ</li>
+						<li>Use case: secondary backups</li>
+					</ul>
+					<li>Glacier Instant Retrieval</li>
+					<ul>
+						<li>Purpose: Backup but need instant access</li>
+						<li>Price for storage + cost for retrieval</li>
+						<li>Min storage 90 days</li>
+					</ul>
+					<li>Glacier Flexible Retrieval</li>
+					<ul>
+						<li>Retrieval: </li>
+						<ul>
+							<li>Expedited (1-5 min)</li>
+							<li>Standard (3-5 hours)</li>
+							<li>Bulk (5-12 hours)</li>
+						</ul>
+						<li>Min storage 90 days</li>
+				
+					</ul>
+					<li>Glacier Deep Archive</li>
+					<ul>
+						<li>Retrieval: </li>
+						<ul>
+							<li>Standard (12 hrs)</li>
+							<li>Bulk (48 hours)</li>
+						</ul>
+						<li>Min storage 180 days</li>
+					</ul>
+					<li>Intelligent Tiering</li>
+					<ul>
+						<li>"Sit back annd relax" mode</li>
+						<li>Small monitoring fee</li>
+						<li>Moves objects automatically between tiers based on usage</li>
+						<li>No retrieval charge</li>
+					</ul>
+					
+				</ul>
+			</ul>
+		</div>
+
+
+
 		<div id="permissions">
 			<p><strong><span style="font-size: 18px;">Permissions</span>&nbsp;</strong></p>
 		</div>

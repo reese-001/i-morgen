@@ -103,7 +103,30 @@
             <p><span style="font-size: 18px;"><strong>Aurora</strong></span></p>
         </div>
         <ul>
-            <li></li>
+            <li>Background</li>
+                <ul>
+                <li>Postgres and MySql are both supported as Aurora DB - meaning your drivers will work as if Aurora was a Postgres or MySql db</li>
+                <li>Cloud optimized for 5x performance over MySql on RDS. 3x performance over Postgres on RDS</li>
+                <li>Storage automatically grows in increments of 10GB, up to 128 TB</li>
+                <li>Can have 15 replicas while MySql has 5. Replication process also faster</li>
+                <li>Failover is instantaneous</li>
+                <li>Costs 20% then other RDS systems </li>
+            </ul>   
+            <li>High Availability and Read Scaling</li>
+            <ul>
+                <li>6 copies of your data across 3 AZ's</li>
+                <ul>
+                    <li>Only needs 4 copies out of 6 for writes</li>
+                    <li>Three copies out of 6 for reads</li>
+                    <li>Self healing with peer-to-peer replication</li>
+                    <li>Storage is stripped across 100s of volumes</li>
+                </ul>
+                <li>One Aurora Instance takes writes (master)</li>
+                <li>Automated failover from master in less then 30 seconds</li>
+                <li>Master + up to 15 Aurora Read Replicas serve reads</li>
+            </ul>
+
+
         </ul>
 
         <div id="authentication">

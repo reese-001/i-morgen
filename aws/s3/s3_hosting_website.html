@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+        <table>
+            <tr>
+                <td><img src="../images/logo.png" class="logo"></td>
+                <td><h1 style="color:#0B2042;">i morgen</h1></td>
+            </tr>
+        </table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">s3</a>:website hosting</h2>
+
+        <p><strong><span style="font-size: 20px;">S3 Website Hosting</a></span></strong></p>
+        <p><strong><span style="font-size: 18px;">Overview</a></span></strong></p>
+        <ul>
+            <li>S3 can host static websites and have them available on the Internet</li>
+            <li>Website URL will be (depending on region)</li>
+            <ul>
+                <li>http://bucket-name.s3-website-aws-region.amazonaws.com</li>
+                <li>http://bucket-name.s3-website.aws-region.amazonaws.com</li>
+            </ul>
+            <li>If you get an http 403, make sure the bucket policy allows public reads</li>
+        </ul>
+
+        <p><strong><span style="font-size: 18px;">S3 Bucket Setup</a></span></strong></p>
+        <ul>
+            <li>Navigate into an S3 bucket and select "Properties"</li>
+            <li>Scroll down to bottom and select "Static website hosting</li>
+            <li>Modify the following settings</li>
+            <ul>
+                <li>Select "Enable" for Static website hosting</li>
+                <li>Hosting type: Host a static website</li>
+                <li>Index document: As required, or index.html</li>
+
+            </ul>
+            <li>Ensure public access is enabled via policy document</li>
+           
+           
+            
+
+        </ul>
