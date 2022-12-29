@@ -16,9 +16,93 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ecs</a>:overview</h2>
 
         <p><span style="font-size: 20px;"><strong><a href="https://aws.amazon.com/ecs/" target="_blank">Elastic Container Service</a></strong></span></p>
-		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		
 
-		<p><span style="font-size: 18px;"><strong>Step Scaling</strong></span></p>
+
+		<strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+		<li><a href="#what_is_it">What is it</a></li>
+		<li><a href="#iam_roles_ecs">IAM Roles for ECS</a></li>
+		<li><a href="#step_scaling">Step Scaling</a></li>
+		<li><a href="#load_balancer">Load Balancer Integrations</a></li>
+		<li><a href="#data_persistance">Data Persistance</a></li>
+		
+
+		
+
+
+		<div id="what_is_it">
+			<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		</div>	
+			<ul>
+				<li>When you launch Docker containers on AWS, you are actually launching ECS Tasks on ECS cluster</li>
+				<li>There are two types of launch types</li>
+				<ul>
+					<li>EC2 launch type</li>
+					<ul>
+						<li>You must provision and maintain the infrastructure (ie EC2 instances)</li>
+						<li>Each EC2 instance must run the ECS agent to register in the ECS cluster</li>
+						<li>AWS takes care of starting and stopping the container</li>
+					</ul>
+					<li>Fargate launch type</li>
+					<ul>
+						<li>No need to provision infrastructure, just create task definitions</li>
+						<li>AWS runs ECS tasks for you based on the CPU/RAM you need</li>
+						<li>To scale, increase the number of tasks</li>
+					</ul>
+				</ul>
+				
+			</ul>
+		</div>
+
+		<div id="iam_roles_ecs">
+			<p><span style="font-size: 18px;"><strong>IAM Roles for ECS</strong></span></p>
+			<ul>
+				<li>EC2 instance profile</li>
+				<ul>
+					<li>Used by the ECS agent</li>
+					<li>Creates API calls to ECS service to restore the instance</li>
+					<li>Calls to CloudWatch logs to send container logs</li>
+					<li>Pull Docker image from ECR</li>
+					<li>Reference sensitive data in Secrets Manager or SSM Parameter Store</li>
+				</ul>
+				<li>ECS Task Role</li> 
+				<ul>
+					<li>TODO</li>
+				</ul>
+			</ul>
+		</div>
+
+
+		<div id="load_balancer">
+			<p><span style="font-size: 18px;"><strong>Load Balancer Integrations</strong></span></p>
+		</div>	
+			<ul>
+				<li>Application load balancer supported and works for most use cases</li>
+				<li>Network load balancer is recommended only for high performance needs - or AWS Private Link</li>
+			</ul>
+		</div>
+
+		<div id="data_persistance">
+			<p><span style="font-size: 18px;"><strong>Data Persistance</strong></span></p>
+			<ul>
+				<li>EFS</li>
+				<ul>
+					<li>You can mount EFS file systems to both EC2 and Fargate launch types</li>
+					<li>Tasks running in any AZ will share the same data in the EFS file system</li>
+					<li>Use Case:</li>
+					<ul>
+						<li>Persistent multi-AZ shared storage for your containers</li>
+					</ul>
+				</ul>
+				<li>S3 (can't be done)</li>
+			</ul>
+		</div>	
+
+
+
+		<div id="step_scaling">
+			<p><span style="font-size: 18px;"><strong>Step Scaling</strong></span></p>
+		</div>
 		<ul>
 			<li>A policy type that you can use with Amazon CloudWatch to automatically scale the number of Amazon ECS tasks in your cluster based on the value of a metric.</li>
 			<li>Step scaling policies allow you to define a set of scaling actions to take when a metric crosses a specified threshold</li>

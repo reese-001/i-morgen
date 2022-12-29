@@ -16,7 +16,20 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">api gateway</a>:overview</h2>
 
         <p><span style="font-size: 20px;"><strong><a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a></strong></span></p>
-		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+
+
+
+		<div id="contents"></div>Contents</div>
+		<ul>
+			<li><a href="#what_is_it">What is it?</a></li>
+			<li><a href="#authentication">Authentication</a></li>
+			<li><a href="#mapping_templates">Mapping Templates</a></li>
+			<li><a href="#custom_intercepters">Custom Interceptors</a></li>
+		</ul>
+
+		<div id="what_is_it">
+			<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		</div>
 		<ul>
 			<li>Amazon API Gateway is a fully managed service that makes it easy to create, publish, maintain, monitor, and secure APIs at any scale.</li>
 			<li>With API Gateway, you can create REST and WebSocket APIs that enable your backend services to be accessed by web and mobile applications.</li>
@@ -25,23 +38,27 @@
 			<li><a href="../images/api_gateway_how_it_works.png">Illustration</a></li>
 		</ul>
 		
-		<p><span style="font-size: 18px;"><strong>Authentication</strong></span></p>
+		<div id="authentication">
+			<p><span style="font-size: 18px;"><strong>Authentication</strong></span></p>
+		</div>
 		<ul>
 			<li>Amazon Cognito User Pools</li>
 			<li>Amazon Cognito Identity Pools</li>
 			<li>IAM</li>
 			<li>Lambda Authorizers</li>
-		
-
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Mapping Templates</strong></span></p>
+		<div id="mapping_templates">
+			<p><span style="font-size: 18px;"><strong>Mapping Templates</strong></span></p>
+		</div>
 		<ul>
 			<li>Mapping Templates allow you to specify how the data returned by the Lambda function should be transformed before it is returned to the client</li>
 			<li>You can use Mapping Templates to convert the data into a different format (such as XML or JSON), to filter out unwanted data, or to modify the data in any way you like.</li>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Customer Interceptor</strong></span></p>
+		<div id="custom_intercepters">
+			<p><span style="font-size: 18px;"><strong>Customer Interceptor</strong></span></p>
+		</div>
 		<ul>
 			<li>A piece of code that runs before or after the execution of an AWS Lambda function</li>
 			<li>A custom interceptor can be used to perform additional tasks or to modify the input or output of the Lambda function</li>

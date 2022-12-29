@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">s3</a>:lifecycle management</h2>
+
+        <p><strong><span style="font-size: 20px;">S3 Lifecycle Management</a></span></strong></p>
+
+        
+		<p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+		<li><a href="#overview">Overview</a></li>
+        <li><a href="#lifecycle_rules">Lifecycle Rules</a></li>
+        <li><a href="#analytics">S3 Analytics</a></li>
+
+
+
+        <div id="overview">
+            <p><strong><span style="font-size: 18px;">Overview</a></span></strong></p>
+        </div>  
+        <ul>
+            <li>Allows us to move files between different storage classes</li>
+            <li>See <a href="../images/s3_lifecycle_1.png">diagram</a></li>
+            <li>From any level, you can go down any number of levels</li>
+            <li>For example, if you know your objects will not be used often, migrate them to Standard IA</li>
+            <li>Alternativelly, if you do not need fast access to them, move to Glacier or Glacier Deep Archive</li>
+            <li>Lifecycle Rules allows us to automate this task</li>
+        </ul>
+
+        <div id="lifecycle_rules">
+            <p><strong><span style="font-size: 18px;">Lifecycle Rules</a></span></strong></p>
+        </div> 
+        <ul>
+            <li>Transition actions: configure objects to transition to another storage class</li>
+            <ul>
+                <li>Move objects to Standard IA 60 days after creation</li>
+                <li>Move to Glacier for archiving after 6 months</li>
+            </ul>
+            <li>Expiration actions: configure objects to expire after some time</li>
+            <ul>
+                <li>Access log files can be set to delete after 365 days</li>
+                <li>Delete old versions of files</li>
+                <li>Delete incomplete multi part uploads</li>
+            </ul>
+            <li>Rules can be created for specific prefixes (s3://mybucket/s3/*)</li>
+            <li>Rules can be created for specific object tags </li>
+        </ul>
+
+        <div id="analytics">
+            <p><strong><span style="font-size: 18px;">S3 Analytics</a></span></strong></p>
+            <ul>
+                <li>Helps decide when to transition objects to the right storage class</li>
+                <li>Recommendations for Standard and Standard IA</li>
+                <ul>
+                    <li>Does not work for One-Zone IA or Glacier</li>
+                </ul>
+                <li>Report updated daily</li>
+                <li>24-48 hours to see data be generated</li>
+                <li>Good first step to put together lifecycle rules</li>
+            </ul>
+        </div> 
+
+
+
+    </body>
+</html>

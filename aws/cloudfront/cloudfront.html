@@ -15,7 +15,24 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cloudfront</a>:overview</h2>
 
     <p><strong><span style="font-size: 20px;">CloudFront</span></strong></p>
-    <p><span style="font-size: 18px;">What is it?</span></p>
+
+    <p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+		<li><a href="#what_is_it">What is it</a></li>
+        <li><a href="#verses_s3">What is it</a></li>
+        <li><a href="#cache">Cache</a></li>
+        <li><a href="#http_backend">ALB or EC2 as an Origin</a></li>
+        <li><a href="#geo_restrictions">Geographic Restrictions</a></li>
+		<li><a href="#core_components">Cloudfront vs S3 Cross Region Replication</a></li>
+        <li><a href="#distribution">Distribution</a></li>
+        <li><a href="#lambda_edge">Lambda@Edge</a></li>
+        <li><a href="#protection">Protection</a></li>
+        <li><a href="#key_pairs">Key Pairs</a></li>
+
+
+        
+    <div id="what_is_it">
+        <p><span style="font-size: 18px;">What is it?</span></p>
+    </div>	
     <ul>
         <li>CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds, all within a developer friendly environment.</li>
         <li>What is a CDN?</li>
@@ -26,12 +43,83 @@
             <li>CDNs are useful for reducing latency, improving load time, and reducing the bandwidth and operating costs of serving content.</li>
             <li><a href="../images/cloudfront_cdn.png">Illustration</a></li>
         </ul>
+        <li>DDoS protection, integration with Shield (AWS Web App Firewall)</li>
     </ul>
-    <p><span style="font-size: 18px;">Core components</span></p>
+
+    <div id="verse_s3">
+        <p><span style="font-size: 18px;">Cloudfront vs S3 Cross Region Replication</span></p>
+    </div>	
+    <ul>
+        <li>CloudFront</li>
+        <ul>
+            <li>Global edge network</li>
+            <li>Files are cached for a TTL (day?)</li>
+            <li>Great for static content</li>
+        </ul>
+        <li>S3 Cross Region Replication</li>
+        <ul>
+            <li>Must be setup for each region you want replication to happen</li>
+            <li>Files are updated in near real time</li>
+            <li>Read only</li>
+            <li>Great for dynamic content that needs low latency in a few regions</li>
+        </ul>
+    </ul>
+
+    <div id="cache">
+        <p><span style="font-size: 18px;">Cache</span></p>
+    </div>	
+    <ul>
+        <li>Cache based on </li>
+        <ul>
+            <li>Headers</li>
+            <li>Session Cookies</li>
+            <li>Query string parameters</li>
+        </ul>
+        <li>The cache lives at each CloudFront edge location</li>
+        <li>Goal is to maximize cache hit rate and minimize source requests</li>
+        <li>TTL can be set from 0 seconds to 1 year and set by the origin using the Cache-Control header</li>
+        <li>You can invalidate parts of the cache via the CreateInvalidation API (and via console)</li>
+    </ul>
+
+    <div id="http_backend">
+        <p><span style="font-size: 18px;">ALB or EC2 as an Origin</span></p>
+    </div>	
+    <ul>
+        <li>EC2 Backend</li>
+        <ul>
+            <li>EC2 instances must be public - no private VPC connectivity between edge locations and EC2</li>
+            <li>Must have security group that allows all edge locations. See <a href="http://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips" target="_blank">link</a></li>
+        </ul>
+        <li>ALB</li>
+        <ul>
+            <li>ALB must be public but EC2's can be private because there is private VPC connectivity between EC2 and ALB</li>
+            <li>ALB must have a SG that allows public IP's of edge locations</li>
+        </ul>
+    </ul>
+
+
+    <div id="geo_restrictions">
+        <p><span style="font-size: 18px;">Geographic Restrictions</span></p>
+        <ul>
+            <li>Can be Allowlist or a Blocklist</li>
+            <ul>
+                <li>Allows your users tom access content only if they are in one of the allowed countries, or ...</li>
+                <li>Blocks your users if they are originating from a banned country</li>
+            </ul>
+            <li>Typical use case is to restrict IP/copywrite content</li>
+        </ul>
+    </div>	
+    
+    <div id="core_components">
+        <p><span style="font-size: 18px;">Core Components</span></p>
+    </div>
     <ul>
         <li>Origin: The location where all the original files are located. Examples include:
             <ul>
                 <li>S3 bucket (this is the typical use case)</li>
+                <ul>
+                    <li>Can be used to egress and ingress data</li>
+                </ul>
                 <li>EC2 instance</li>
                 <li>ELB</li>
                 <li>Route53</li>
@@ -48,7 +136,10 @@
             <li>For example, if you have a form on your website that users can fill out and submit, the form data can be written to an S3 bucket via an edge location</li>
         </ul>
     </ul>
-    <p><a id="distribution"></a><span style="font-size: 18px;">Distribution</span></p>
+
+    <div id="distribution">
+        <p><span style="font-size: 18px;">Distribution</span></p>
+    </div>
     <ul>
         <li>Collection of edge locations</li>
         <li>Geopgraphic replication is based on Price Class</li>
@@ -84,7 +175,10 @@
             <li>Allow/Deny specific countries</li>
         </ul>
     </ul>
-    <p><a id="distribution"></a><span style="font-size: 18px;">Lambda@Edge</span></p>
+
+    <div id="lambda_edge">
+        <p><span style="font-size: 18px;">Lambda@Edge</span></p>
+    </div>  
     <ul>
         <li>Override the behaviour of requests and responses</li>
         <li>Use cases:</li>
@@ -112,7 +206,9 @@
             </ul>
         </ol>
     </ul>
-    <p><a id="distribution"></a><span style="font-size: 18px;">Protection</span></p>
+
+    <div id="protection">
+    <p><span style="font-size: 18px;">Protection</span></p>
     <ul>
         <li>Restrict viewer access to allow for protected content</li>
         <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html" target="_blank">AWS documentation</a></li>
@@ -134,13 +230,15 @@
                 <li>Advantage is if you want to provide access to multiple restricted files (ie video streaming)</li>
             </ul>
         </ul>
-
-        <p><a id="distribution"></a><span style="font-size: 18px;">Key Pairs</span></p>
-        <ul>
-            <li>CloudFront Key Pairs are a pair of public and private keys that you can use to securely sign your Amazon CloudFront URLs and cookies. </li>
-            <li>They are used to authenticate your identity as the owner of a CloudFront distribution and to protect the content of your distribution from unauthorized access.</li>
-            <li>CloudFront key pairs can only be created by the root user of the AWS account.</li>
-        </ul>
+    </ul>       
+    <div id="key_pairs">
+        <p><span style="font-size: 18px;">Key Pairs</span></p>
+    </div>
+    <ul>
+        <li>CloudFront Key Pairs are a pair of public and private keys that you can use to securely sign your Amazon CloudFront URLs and cookies. </li>
+        <li>They are used to authenticate your identity as the owner of a CloudFront distribution and to protect the content of your distribution from unauthorized access.</li>
+        <li>CloudFront key pairs can only be created by the root user of the AWS account.</li>
     </ul>
+</ul>
     </body> 
 </html> 
