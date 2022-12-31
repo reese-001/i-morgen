@@ -19,7 +19,19 @@
 		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
 		<ul>
 			<li>Fully managed deploy pipeline to staging or production environments</li>
-			<li>Can deploy EC2, on premise, Lambda, or ECS</li>
+			<li>Can deploy on</li>
+			<ul>
+				<li>EC2</li>
+				<ul>
+					<li>Each EC2 instance must be running the CodeDeploy agent</li>
+				</ul>
+				<li>On-premises</li>
+				<ul>
+					<li>Each on-premise instance must be running the CodeDeploy agent</li>
+				</ul>
+				<li>Lambda</li>
+				<li>ECS</li>
+			</ul>
 			<li>Rapidly deploy new features</li>
 			<li>Update AWS Lambda functions versions</li>
 			<li>Avoid downtime during application deployment</li>

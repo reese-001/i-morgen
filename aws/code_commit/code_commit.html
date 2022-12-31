@@ -16,14 +16,27 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">code commit</a>:overview</h2>
 
         <p><span style="font-size: 20px;"><strong><a href="https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html" target="_blank">Code Commit</a></strong></span></p>
-		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+
+		<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+		<ul>
+			<li><a href="#what_is_it">What is it?</a></li>
+			<li><a href="#features">Features</a></li>
+			<li><a href="#authorization">Authorization</a></li>
+			
+		</ul>
+
+		<div id="what_is_it">
+			<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		</div>
 		<ul>
 			<li>A version control service hosted by Amazon Web Services that you can use to privately store and manage assets (such as documents, source code, and binary files) in the cloud</li>
 			<li>It is a fully managed source control service that makes it easy for companies to host secure and highly scalable private Git repositories</li>
 			<li>Based on Git and similar to GitHub, BitBucket and GitLab</li>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Features</strong></span></p>
+		<div id="features">
+			<p><span style="font-size: 18px;"><strong>Features</strong></span></p>
+		</div>
 		<ul>
 			<li>Complies with many compliance programs (ie HIPAA)</li>
 			<li>Repos encrypted at rest as well as in transit</li>
@@ -33,7 +46,9 @@
 			<li>Integrates with IAM to control which users have access to specific repos</li>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Authorization</strong></span></p>
+		<div id="authorization">
+			<p><span style="font-size: 18px;"><strong>Authorization</strong></span></p>
+		</div>
 		<ul>
 			<li>IAM user SSH keys</li>
 			<ul>
@@ -45,7 +60,7 @@
 			</ul>
 			<li>AWS CodeCommit credential helper</li>
 			<ul>
-				<li> This is a command-line tool that allows you to use Git credentials stored in the AWS Secrets Manager to access CodeCommit repositories. The credential helper allows you to use Git with CodeCommit without having to store your credentials in a file on your local machine.</li>
+				<li>This is a command-line tool that allows you to use Git credentials stored in the AWS Secrets Manager to access CodeCommit repositories. The credential helper allows you to use Git with CodeCommit without having to store your credentials in a file on your local machine.</li>
 			</ul>
 			<li>Git credentials</li>
 			<ul>

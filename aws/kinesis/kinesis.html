@@ -15,7 +15,18 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">kinesis</a>:overview</h2>
 
         <p><strong><span style="font-size: 20px;">Kinesis</span></strong></p>
-        <p><strong><span style="font-size: 18px;">What does it do?</span>&nbsp;</strong></p>
+
+        <p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+        <li><a href="#what_is_it">What is it?</a></li>
+        <li><a href="#data_streams">Kinesis Data Streams</a></li>
+        <li><a href="#firehose">Firehose Delivery Stream</a></li>
+        <li><a href="#video_streams">Video Streams</a></li>
+        <li><a href="#data_analytics">Data Analytics</a></li>
+
+
+        <div id="what_is_it">
+            <p><strong><span style="font-size: 18px;">What is it?</span>&nbsp;</strong></p>
+        </div>
         <ul>
             <li>Fully managed solution for collecting, processing and analyzing streaming data in the cloud</li>
             <li>Create data processing applications known as Kinesis Data Stream applications</li>
@@ -37,11 +48,50 @@
         </ul>
         </ul>   
        
-        <p><strong><span style="font-size: 18px;"><a href="images_data_stream.html">Kinesis Data Streams</a></span></strong></p>    
+        <div id="data_streams">
+            <p><strong><span style="font-size: 18px;"><a href="images_data_stream.html">Kinesis Data Streams</a></span></strong></p>    
+        </div>
         <ul>
-            <li>Pay per running shard</li>
+            <li>Purpose: Stream big data in your system</li>
+            <ul>
+                <li>Stream consists of shards</li>
+                <li>Shards are numbered (1, 2, 3, ..) and must be provisioned ahead of time</li>
+                <li>Shards define your capacity and ingestion rates</li>
+                <li>Pay per running shard</li>
+            </ul>
+            <li>Producers</li>
+            <ul>
+                <li>Applications</li>
+                <li>Clients</li>
+                <li>SDK, KPL (<a href="https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-kpl.html" target="_blank">Kinesis Producer Library</a>)</li>
+                <li>Kinesis Agent</li>
+            </ul>
+            <li>Producers send record into Kinesis</li>
+            <ul>
+                <li>Consists of</li>
+                <ul>
+                    <li>Partition Key</li>
+                    <li>Data Blob (1 MB max)</li>
+                </ul>
+                <li>Partition key will help determine what shard it will land on</li>
+            </ul>
+            <li>Kinesis sends record to consumers</li>
+            <ul>
+                <li>Consists of</li>
+                <ul>
+                    <li>Partition Key</li>
+                    <li>Sequence Number</li>
+                    <li>Data Blob</li>
+                </ul>
+            </ul>
             <li>You can have multiple consumers and they must be manually configured</li>
-            <li>Data persists for a predetermined time frame (24h default, 168h max)</li>
+            <ul>
+                <li>Apps (KCL, SDK)</li>
+                <li>Lambda</li>
+                <li>Kinesis Data Firehose</li>
+                <li>Kinesis Data Analytics</li>
+            </ul>
+            <li>Data persists for a predetermined time frame (24h default, 168h max - or is it 365 days? Conflicting info. TODO. )</li>
             <li>Typical use cases</li>
             <ul>
                 <li>log and event data collection</li>
@@ -51,7 +101,9 @@
             </ul>
         </ul>   
 
-        <p><strong><span style="font-size: 18px;">Firehouse Delivery Stream</span></strong></p>    
+        <div id="firehose">
+            <p><strong><span style="font-size: 18px;">Firehouse Delivery Stream</span></strong></p>    
+        </div>
         <ul>
             <li>Choose one consumer from a predefined list that includes data lakes, data stores and analytics tools</li>
             <li>Delivers real-time streaming data to destinations such as</li>
@@ -75,13 +127,17 @@
         </ul>  
 
 
-        <p><strong><span style="font-size: 18px;"><a href="images_video_stream.html">Video Streams</a></span></strong></p>    
+        <div id="video_streams">
+            <p><strong><span style="font-size: 18px;"><a href="images_video_stream.html">Video Streams</a></span></strong></p>    
+        </div>
         <ul>
             <li>Ingest video and audio encoded data from various devices and services</li>
             <li>Output video data to ML or video processing services</li>
         </ul> 
 
-        <p><strong><span style="font-size: 18px;">Data Analytics</span></strong></p>    
+        <div id="data_analytics">
+            <p><strong><span style="font-size: 18px;">Data Analytics</span></strong></p>    
+        </div>
         <ul>
             <li>Specify firehose or data streams as an input and an output</li>
             <li>Data that passes through the data analytics is run through custom SQL</li>

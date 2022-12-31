@@ -16,10 +16,37 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ci/cd</a>:overview</h2>
 
         <p><span style="font-size: 20px;"><strong>CI/CD</strong></span></p>
-		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+
+		<p><span style="font-size: 18;"><strong>Contents</strong></span></p>
 		<ul>
-			<li></li>
-		</ul>	
-	
+			<li><a href="#ci">Continuous Integration (CI)</a></li>
+			<li><a href="#cd">Continuous Delivery/Deployment (CD)</a></li>
+		</ul>
+
+		<div id="ci">
+			<p><span style="font-size: 18px;"><strong>Continuous Integration (CI)</strong></span></p>
+		</div>
+		<ul>
+			<li>Developers push the code into a code repo (GitHub, CodeCommit, BitBucket, etc)</li>
+			<li>A test of build server will perform predefined checks as soon as the code is pushed (CodeBuild, Jenkins CI, etc)</li>
+			<li>Developer gets feedback about which tests failed and passed</li>
+			<li>Benefits</li>
+			<ul>
+				<li>Find bugs early</li>
+				<li>Deliver code faster</li>
+				<li>Deploy often</li>
+			</ul>
+		</ul>
+		<div id="CD">
+			<p><span style="font-size: 18px;"><strong>Continuous Delivery/Deployment (CD)</strong></span></p>
+		</div>
+		<ul>
+			<li>Ensures that code can be released reliably whenever needed</li>
+			<li>Ensures deployments happen often and quick</li>
+			<li>Automated deployment tools include Jenkins CD, CodeDeploy, Spinnaker, etc</li>
+			<li>Tech stack: <a href="../images/cicd_tech_stack.png">link</a></li>
+		</ul>
+
+		
 	</body>
 </html>

@@ -15,18 +15,91 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">sqs</a>:overview</h2>
 
         <p><strong><span style="font-size: 20px;">Simple Queue Servce (SQS) </span></strong></p>
-        <p><span style="font-size: 18px;">What is it?</span></p>
+
+        <p><span style="font-size: 18px;">Contents</span></p>
+        <li><a href="#what_is_it">What is it</a></li>
+        <li><a href="#sqs_with_asg">SQS with ASG</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#long_polling">Long Polling</a></li>
+        <li><a href="#types_queues">Types of Queues</a></li>
+        <li><a href="#additional_features">Additional Features</a></li>
+        <li><a href="#cli_example">CLI Example</a></li>
+        <li><a href="#notes">Notes</a></li>
+
+
+
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;">What is it?</span></p>
+        </div>
         <ul>
             <li>Fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications</li>
             <li>Eliminates the complexity and overhead associated with managing and operating message queueing systems</li>
             <li>Provides a simple and flexible platform for sending, storing, and receiving messages</li>
             <li>Keeps data secure by using Server Side Encryption (SSE)</li>
             <li>Uses S3 or DynamoDB to store contents of messages larger then 256k. Alternatively you can split messages and keep it in S3</li>
+            <ul>
+                <li>Use the SQS Extended Client</li>
+                <li>Send large file to S3 and smaller metadata message to SQS. SQS will pass metadata to consumer who in turn will pull file from S3 </li>
+                <li>Use Case: video files</li>
+            </ul>
+            <li>Unlimited throughput, unlimited messages in queue</li>
+            <li>Retention period defaults to 4 days, max 14 days</li>
             <li><a href="../images/sqs_overview.png">Illustration</a></li>
         </ul>
 
-        <p><span style="font-size: 18px;">SQS offers two types of queues</span></p>       
-        <ol>
+        <div id="sqs_with_asg">
+            <p><span style="font-size: 18px;">SQS with ASG</span></p> 
+        </div>
+        <ul>
+            <li>Horizontal scaling with SQS is a great use case</li>
+            <ul>
+                <li>Consumers will be EC2 instances residing in an ASG </li>
+                <li>ASG must scale on a metric. An appropriate metric measures queue length and is called "ApproximateNumberOfMessages"</li>
+                <li>Set rule to alarm if that metric exceeds a specific value in CloudWatch</li>
+            </ul>
+            <li>Similar setup could occur on the producer side, for example a front end web app</li>
+            <li>In this way, you can have independent auto scaling on producer and consumer side</li>
+        </ul>
+
+        <div id="security">
+            <p><span style="font-size: 18px;">Security</span></p> 
+        </div>
+        <ul>
+            <li>Encryption</li>
+            <ul>
+                <li>In flight using https</li>
+                <li>At rest using KMS</li>
+                <li>Client side if client wants to perform encryption/decryption itself</li>
+            </ul>
+            <li>Access Controls</li>
+            <ul>
+                <li>IAM regulates access to SQS API</li>
+            </ul>
+            <li>SQS Access Policies</li>
+            <ul>
+                <li>Useful to cross account access to SQS</li>
+                <ul>
+                    <li>Allow EC2 instance in one account to pull from SQS in another:</li>
+                    <li>Policy: Effect: Allow, Principal = Account that will poll, Action = sqs:ReceiveMessage, Resource = Account with host queue</li>
+                </ul>
+            </ul>
+        </ul>
+
+        
+        <div id="long_polling">
+            <p><span style="font-size: 18px;">Long Polling</span></p> 
+        </div>
+        <ul>
+            <li>Consumer requests messages from the queue, it can optionally wait for the message to arrive if there is not any waiting</li>
+            <li>Decreases the number of API calls made to SQS while increasing efficiency and decrease latency of your app</li>
+            <li>Configurable between 1 sec to 20 sec</li>
+            <li>Use this. It is preferable over short polling.</li>
+        </ul>
+
+        <div id="types_queues">
+            <p><span style="font-size: 18px;">Types of Queues</span></p>       
+        </div>
+        <ul>
             <li>Standard queues</li>
             <ul>
                 <li>offer maximum throughput and at least once delivery</li>
@@ -35,16 +108,20 @@
             <ul>
                 <li>strict first in first out delivery and exactly-once processing</li>
             </ul>
-        </ol>
+        </ul>
         
-        <p><span style="font-size: 18px;">Additional features</span></p>
+        <div id="additional_features">
+            <p><span style="font-size: 18px;">Additional features</span></p>
+        </div>
         <ul>
             <li>Message filtering</li>
             <li>Message deduplication</li>
             <li>Dead letter queues</li>
         </ul>
 
-        <p><span style="font-size: 18px;">CLI <a href="https://medium.com/@schogini/aws-cli-and-sqs-a-tiny-demonstration-18e7136d0258">source</a></span></p>
+        <div id="cli_example">
+            <p><span style="font-size: 18px;"><a href="https://medium.com/@schogini/aws-cli-and-sqs-a-tiny-demonstration-18e7136d0258">CLI Example</a></span></p>
+        </div>
         <ul>
             <li>Create queue: aws sqs create-queue --queue-name sreeQ1 --attributes file://q-attributes.json --tags file://keys.json</li>
             <ul>
@@ -67,7 +144,9 @@
         <li>Delete queue: aws sqs --region us-east-2 delete-queue --queue-url https://sqs.us-east-2.amazonaws.com/[removed]/sreeQ1</li>
         </ul>
 
-        <p><span style="font-size: 18px;">Misc Notes</span></p>
+        <div id="notes">
+            <p><span style="font-size: 18px;">Notes</span></p>
+        </div>
         <ul>
             <li>Tags</li>
             <ul>
