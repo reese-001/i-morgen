@@ -21,6 +21,7 @@
         <li><a href="#sqs_with_asg">SQS with ASG</a></li>
         <li><a href="#security">Security</a></li>
         <li><a href="#long_polling">Long Polling</a></li>
+        <li><a href="#api">Important API's</a></li>
         <li><a href="#types_queues">Types of Queues</a></li>
         <li><a href="#additional_features">Additional Features</a></li>
         <li><a href="#cli_example">CLI Example</a></li>
@@ -94,6 +95,16 @@
             <li>Decreases the number of API calls made to SQS while increasing efficiency and decrease latency of your app</li>
             <li>Configurable between 1 sec to 20 sec</li>
             <li>Use this. It is preferable over short polling.</li>
+        </ul>
+
+        <div id="api">
+            <p><span style="font-size: 18px;">Important API's</span></p> 
+        </div>
+        <ul>
+            <li>CreaseQueue (MessageRetentionPeriod), DeleteQueue</li>
+            <li>PurgeQueue: delete all messages</li>
+            <li>SendMessage (DelaySeconds), ReceiveMessage, DeleteMessage</li>
+            <li>MaxNumberOfMessages default 1, max 10</li>
         </ul>
 
         <div id="types_queues">

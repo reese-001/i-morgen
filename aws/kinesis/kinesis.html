@@ -61,10 +61,14 @@
             </ul>
             <li>Producers</li>
             <ul>
-                <li>Applications</li>
-                <li>Clients</li>
-                <li>SDK, KPL (<a href="https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-kpl.html" target="_blank">Kinesis Producer Library</a>)</li>
-                <li>Kinesis Agent</li>
+                <li>Examples</li>
+                <ul>
+                    <li>Applications</li>
+                    <li>Clients</li>
+                    <li>SDK, KPL (<a href="https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-kpl.html" target="_blank">Kinesis Producer Library</a>)</li>
+                    <li>Kinesis Agent</li>
+                </ul>
+                
             </ul>
             <li>Producers send record into Kinesis</li>
             <ul>
@@ -74,6 +78,15 @@
                     <li>Data Blob (1 MB max)</li>
                 </ul>
                 <li>Partition key will help determine what shard it will land on</li>
+                <li>Use PutRecord API from Producer to send into Kinesis </li>
+                <ul>
+                    <li>Consider batching to reduce costs and increase throughput</li>
+                </ul>
+                <li>Consider partition keys to avoid a "hot partition"</li>
+                <ul>
+                    <li>If incoming data rate exceeds capacity, you will get a "ProvisionedThroughputExceeded" error</li>
+                    <li>In this case, re-evaluate your parition keys, implement retries with exponential backoff amd increase shards (scaling)</li>
+                </ul>>
             </ul>
             <li>Kinesis sends record to consumers</li>
             <ul>
@@ -82,6 +95,24 @@
                     <li>Partition Key</li>
                     <li>Sequence Number</li>
                     <li>Data Blob</li>
+                </ul>
+                <li>There are two types of consumers</li>
+                <ul>
+                    <li>Shared (Classic) (Pull)</li>
+                    <ul>
+                        <li>Low number of consuming apps</li>
+                        <li>Read throughput 2 MB/sec per shard across all consumers</li>
+                        <li>Max 5 GetRecord API calls per second</li>
+                        <li>Latency: 200ms</li>
+                        <li>Poll data using GetRecords API</li>
+                    </ul>
+                    <li>Enhanced (Push)</li>
+                    <ul>
+                        <li>Multiple consuming applications for the same stream</li>
+                        <li>2 MB per second per shard</li>
+                        <li>Latency: 70ms</li>
+                        <
+                    </ul>
                 </ul>
             </ul>
             <li>You can have multiple consumers and they must be manually configured</li>
