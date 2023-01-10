@@ -18,6 +18,7 @@
 
         <p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
         <li><a href="#what_is_it">What is it?</a></li>
+        <li><a href="#define_streams">Define Streams</a></li>
         <li><a href="#data_streams">Kinesis Data Streams</a></li>
         <li><a href="#firehose">Firehose Delivery Stream</a></li>
         <li><a href="#video_streams">Video Streams</a></li>
@@ -28,11 +29,17 @@
             <p><strong><span style="font-size: 18px;">What is it?</span>&nbsp;</strong></p>
         </div>
         <ul>
-            <li>Fully managed solution for collecting, processing and analyzing streaming data in the cloud</li>
+            <li>Fully managed solution for collecting, processing and analyzing streaming data in the cloud - alternative to Apache Kafka</li>
             <li>Create data processing applications known as Kinesis Data Stream applications</li>
+            <li>Replicated synchronously to 3 AZ's </li>
             <li>When you need real time, think Kinesis!</li>
             <li>Streaming data examples</li>
             <ul>
+                <li>Streaming processing frameworks</li>
+                <ul>
+                    <li>Spark</li>
+                    <li>NiFi</li>
+                </ul>
                 <li>Stock prices</li>
                 <li>Game data</li>
                 <li>Social network data</li>
@@ -41,12 +48,27 @@
             </ul>
         <li>There are four different kinds of Kinesis Streams</li>
         <ul>
-            <li>Data Streams</li>
-            <li>Firehose Delivery stream</li>
-            <li>Data Analytics</li>
-            <li>Video Analytics</li>
+            <li>Data Streams: low latency streaming ingest at scale</li>
+            <li>Firehose Delivery stream: load streams into S3, Redshift, ElasticSearch and Splunk</li>
+            <li>Data Analytics: perform real time analytics on streams using SQL</li>
+            <li>Video Analytics: meant for streaming video in real time</li>
         </ul>
-        </ul>   
+        </ul>  
+        
+        <div id="define_streams">
+            <p><strong><span style="font-size: 18px;">Define Streams</span>&nbsp;</strong></p>
+        </div>
+        <ul>
+            <li>In the context of Amazon Kinesis Streams, a stream is a sequence of data records</li>
+            <li>What is the difference between streams and files?</li>
+            <ul>
+                <li>Storage: Files are typically stored on a physical storage medium such as a hard drive, while streams are usually stored in memory or transmitted over a network</li>
+                <li>Access: Files are accessed in a sequential or random manner, while streams are usually processed as they are received in a continuous flow.</li>
+                <li>Size: Files can be any size, while streams are typically of an unbounded size.</li>
+                <li>Format: Files have a fixed format, while streams can have a variety of formats depending on how they are used.</li>
+                <li>Modification: Files can be modified by overwriting or appending data, while streams are generally consumed as they are produced and cannot be modified.</li>
+            </ul>
+        </ul>
        
         <div id="data_streams">
             <p><strong><span style="font-size: 18px;"><a href="images_data_stream.html">Kinesis Data Streams</a></span></strong></p>    
@@ -86,7 +108,7 @@
                 <ul>
                     <li>If incoming data rate exceeds capacity, you will get a "ProvisionedThroughputExceeded" error</li>
                     <li>In this case, re-evaluate your parition keys, implement retries with exponential backoff amd increase shards (scaling)</li>
-                </ul>>
+                </ul>
             </ul>
             <li>Kinesis sends record to consumers</li>
             <ul>

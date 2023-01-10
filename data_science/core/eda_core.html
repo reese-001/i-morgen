@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : exploratory data analysis (core)</h2>
+		
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#intro">Introduction</a></li>
+		<li><a href="#framework">EDA Framework</a></li>
+		<li><a href="#data_types">Data Types</a></li>
+		<li><a href="#distributions">Data Distributions</a></li>
+		<li><a href="#time_series">Time Series: Trends and Seasonality</a></li>
+
+        <div id="intro">
+            <p><span style="font-size: 18px;"><strong>Introduction</strong></span></p>
+		</div>
+			<ul>
+				<li>Pandas</li>
+				<ul>
+					<li>Provides data structures for efficiently storing large datasets and tools for working with them, including reading and writing data from various sources such as CSV and Excel files, and performing statistical analysis on the data</li>
+				</ul>
+				<li>Numpy</li>
+				<ul>
+					<li>Provides support for large, multi-dimensional arrays and matrices of numerical data, and has a large collection of functions for performing mathematical operations on these data structures</li>
+				</ul>
+				<li>Matplotlib</li>
+				<ul>
+					<li>Allows for the creation of line plots, scatter plots, bar plots, error bars, bar charts, histograms, scatterplots, etc</li>
+				</ul>
+				<li>Seaborn</li>
+				<ul>
+					<li>Data visualization library in Python that is built on top of matplotlib and provides a higher-level interface for creating and customizing plots</li>
+					<li>Unique outputs:</li>
+					<ul>
+						<li>Heat map</li>
+						<li>Pair plot</li>
+						<li>Joint plot</li>
+					</ul>
+				</ul>
+			
+				<li>scikit-learn</li>
+				<ul>
+					<li>Library for machine learning in Python that provides a wide range of tools for building and training machine learning models, as well as tools for evaluating the performance of those models and for making predictions using the trained models</li>
+				</ul>
+			</ul>
+      
+			<div id="framework">
+				<p><span style="font-size: 18px;"><strong>EDA Framework</strong></span></p>
+			</div>
+			<ul>
+				<li>Review data for unexpected-ness in the following (non exclusive) areas </li>
+				<ul>
+					<li>Column names</li>
+					<li>Missing data</li>
+					<li>Outliers</li>
+					<li>Execute dataframe.describe()</li>
+				</ul>
+				
+				<li>Respond to missing data</li>
+				<ul>
+					<li>Drop</li>
+					<ul>
+						<li>Take steps to avoid introducing bias when dropping data</li>
+						<li>dataframe.dropna()</li>
+					</ul>
+					<li>Impute</li>
+				</ul>
+				<li>Convert data that exists in Pandas dataframe into numpy array</li>
+				<li>Normalize data</li>
+				<ul>
+					<li>Ensures data is centered around the mean for each column and scaled down to the same range so they have the same weight </li>
+					<ul>
+						<li>from sklearn import preprocessing</li>
+						<li>scaler = preprocessing.StandardScalar()</li>
+						<li>features_scaled = scaler.fit_transform(features)</li>
+					</ul>
+				</ul>
+			</ul>
+
+
+			<div id="data_types">
+				<p><span style="font-size: 18px;"><strong>Data Types</strong></span></p>
+			</div>
+			<ul>
+				<li>Numerical</li>
+				<ul>
+					<li>Represents some sort of quantitative measurement</li>
+					<ul>
+						<li>Height</li>
+						<li>Page load times</li>
+						<li>Stock prices</li>
+					</ul>
+					<li>Two kinds of numerical data</li>
+					<ul>
+						<li>Discrete Data</li>
+						<ul>
+							<li>Integer based, often counts of some event</li>
+							<ul>
+								<li>How many purchases did a customer make in a year?</li>
+								<li>How many times did I flip heads</li>
+							</ul>
+						</ul>
+						<li>Continuous data</li>
+						<ul>
+							<li>Has an infinite number of possible values</li>
+							<ul>
+								<li>How much time did it take for a user to check out?</li>
+								<li>How much rain fell on a given day</li>
+							</ul>
+						</ul>
+					</ul>
+					
+				</ul>
+			
+				<li>Categorical</li>
+				<ul>
+					<li>No inherent mathematical meaning</li>
+					<ul>
+						<li>Gender</li>
+						<li>Yes/no</li>
+						<li>Race</li>
+						<li>State of residence</li>
+					</ul>
+					<li>You can assign numbers to the categories, but they have no inherent meaning</li>
+					<ul>
+						<li>Example: the size of Texas is greater then the size of Florida, but Texas is not greater then Florida</li>
+					</ul>
+				</ul>
+					
+				<li>Ordinal</li>
+				<ul>
+					<li>Mixture of numerical and categori</li>
+					<li>Categorical data that has mathematical meaning</li>
+					<ul>
+						<li>Movie ratings, 1 means its worse then 2</li>
+					</ul>
+				</ul>
+			</ul>
+
+			<div id="distributions">
+				<p><span style="font-size: 18px;"><strong>Data Distributions</strong></span></p>
+			</div>
+			<ul>
+			<li>[For Reference] There are two types of functions</li>
+			<ul>
+				<li> Probability Density Function</li>	
+				<ul>
+					<li>A probability density function (PDF) is a way to describe the likelihood of a continuous variable having a certain value</li>
+					<li>It is represented by a curve, where the height of the curve at any point represents the probability of the variable taking on that value</li>
+					<li>The area under the curve over a range of values represents the probability that the variable falls within that range</li>
+					<li>PDF example: <a href="images/normal_distribution.png" target="_blank">link</a></li>
+					<li>Examples: Normal, Triangular, Lognormal, Beta</li>
+				</ul>
+				<li>Probability Mass Function</li>
+				<ul>
+					<li>A probability mass function (PMF) is similar to a probability density function (PDF), but it is used to describe the probability of a discrete random variable</li>
+					<li>Looks a lot like a histogram - because it is a histogram</li>
+					<li>PMF example: <a href="images/probability_mass_function.png" target="_blank">link</a></li>
+				</ul>
+			</ul>
+			<li>Normal distribution</li>
+			<ul>
+				<li>This is an example of a PDF</li>
+				<li>For a given range of values, it gives you a way to find the probability of that range occuring</li>
+				<li>Divided into deviations</li>
+			</ul>
+			<li>Poisson distribution</li>
+			<ul>
+				<li>This is an example of a PDF</li>
+				<li>A discrete probability distribution that is used to model the number of events that occur in a fixed interval of time or space, given that the average number of events per interval is known.</li>
+				<li>Poisson example: <a href="images/poisson_distribution.png" target="_blank">link</a></li>
+			</ul>
+			<li>Binomial distribution</li>
+			<ul>
+				<li>Another example of a PDF</li>
+				<li>Describes the number of successes in a sequence of experiments with a yes or no question</li>
+				<li>Example is flipping a coin</li>
+				<li>A specific case of the Binomial distribution is the Bernoulli Distribution</li>
+				<ul>
+					<li>Has a single trial (n = 1)</li>
+					<li>Can think of Binomial distribution as the sum of Bernoulli distributions</li>
+				</ul>
+			</ul>
+		</ul>
+
+		<div id="time_series">
+			<p><span style="font-size: 18px;"><strong>Time Series: Trends and Seasonality</strong></span></p>
+		</div>
+		<ul>
+			<li>Discrete points in time over a period of time</li>
+			<li>Trends</li>
+			<ul>
+				<li>The overall direction that the data points are moving in over time</li>
+				<li>Can be upward (positive), downward (negative) or flat (horizontal or flat)</li>
+			</ul>
+			<li>Seasonality</li>
+			<ul>
+				<li>Seasonality refers to the presence of regular, repeating patterns within the data that occur over specific, predictable time periods, such as daily, weekly, monthly, or yearly.</li>
+				<li>Trend and Seasonality can co-exist in a time series</li>
+				<li>Seasonality can be removed for a clearer understanding of trends</li>
+			</ul>
+			
+			<li>Noise</li>
+			<ul>
+				<li>Some variations are just random in nature</li>
+				<li>Two ways to model with noise</li>
+				<ul>
+					<li>Additive model</li>
+					<ul>
+						<li>Seasonality + Trends + Noise = time series</li>
+						<li>Characteristic: seasonality is constant</li>
+					</ul>
+					<li>Multiplicative model</li>
+					<ul>
+						<li>Characteristic: seasonality scales with trend</li>
+					</ul>
+				</ul>
+			</ul>
+		</ul>
+
+
+	</body>
+</html>
