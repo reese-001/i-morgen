@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> : kubernetes</h2>
+
+        <p><span style="font-size: 20px;"><strong>Kubernetes (K8s)</strong></span></p>
+
+
+		<p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+		<li><a href="#what_is_it">What is it</a></li>
+		<li><a href="#architecture">Architecture</a></li>
+		<li><a href="#master_worker_nodes">Master vs Worker Nodes</a></li>
+		<li><a href="#kubectl">Kubectl</a></li>
+		<li><a href="#pods">PODs</a></li>
+
+
+
+		<div id = "what_is_it">
+			<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		</div>
+		<ul>
+			<li>Built by Google based on their experience running containers in production</li>
+			<li>Now it is one of the best and most popular container orchestrations</li>
+		</ul>	
+
+			<div id = "architecture">
+				<p><span style="font-size: 18px;"><strong>Architecture</strong></span></p>
+			</div>
+			
+			<ul>
+				<li>API Server</li>
+				<ul>
+					<li>Acts as the front end for K8s</li>
+					<li>The users, management devices, and command line interfaces all talk to the API server to interact with the K8s cluster</li>
+				</ul>
+				<li>etcd</li>
+				<ul>
+					<li>Distributed key-value store used by K8s to store all data used to manage the cluster</li>
+					<li>When you have multiple nodes and masters in your cluster, etcd stores all the information on all the nodes in the cluster in a distributed manner</li>
+					<li>Responsible for implementing locks within the cluster to ensure that there</li>
+				</ul>
+				<li>Scheduler</li>
+				<ul>
+					<li>Responsible for distributing work for containers across multiple nodes </li>
+					<li>Looks for newly created containers and assigns them to nodes</li>
+				</ul>
+				<li>Controller</li>
+				<ul>
+					<li>The "brain" behind the orchestration</li>
+					<li>Responsible for noticing and responding when nodes, containers or end points go down</li>
+					
+				</ul>
+				<li>Container Runtime</li>
+				<ul>
+					<li>Container runtime is the underlying software that is used to run containers</li>
+				</ul>
+				<li>kublet</li>
+				<ul>
+					<li>The agent that runs on each node in the cluster</li>
+					<li>The agent is responsible for making sure the containers are running on on the nodes as expected</li>
+				</ul>
+			</ul>
+
+			<div id = "master_worker_nodes">
+				<p><span style="font-size: 18px;"><strong>Master vs Worker nodes</strong></span></p>
+			</div>
+			<ul>
+				<li>Master has</li>
+				<ul>
+					<li>kube-apiserver</li>
+					<li>etcd</li>
+					<li>controller</li>
+					<li>scheduler</li>
+				</ul>
+				<li>Worker has</li>
+				<ul>
+					<li>kubelet</li>
+					<li>container runtime</li>
+				</ul>
+			</ul>
+
+			<div id = "kubectl">
+				<p><span style="font-size: 18px;"><strong>Kubectl</strong></span></p>
+			</div>
+			<ul>
+				<li>Used to deploy and manage applications on a K8s cluster</li>
+				<li>deploy an application: kubectl run hello-minikube</li>
+				<li>view information about the cluster: kubectl cluster-info</li>
+				<li>list all nodes part of the cluster: kubectl nodes</li>
+			</ul>
+
+			<div id = "pods">
+				<p><span style="font-size: 18px;"><strong>PODs</strong></span></p>
+			</div>
+			<ul>
+				<li>K8s does not deploy containers directly on worker nodes </li>
+				<li>Instead they are encapsulated into a K8s object known as a pod </li>
+				<li>POD is a single instance of an application and is the smallest object you can create</li>
+				<li>Typically there is a 1 to 1 relationship between pods and containers</li>
+				<li>Scaling</li>
+				<ul>
+					<li>To scale up, you create new PODs</li>
+					<li>To scale down, you delete existing PODs</li>
+					<li>You do not add existing containers to an existing POD </li>
+				</ul>
+				<li>There is a concept of Helper containers</li>
+				<ul>
+					<li>If there is an container that supports the primary container, they can live in the same POD</li>
+					<li>For example, web app + container to process uploaded file. They can be created and destroyed together</li>
+					<li>They will share storage and network space</li>
+				</ul>
+			</ul>
+
+		</ul>
+			
+			
+		</ul>
+	</body>
+</html>

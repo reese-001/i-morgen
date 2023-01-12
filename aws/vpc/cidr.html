@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">vpc</a>:cidr</h2>
+        <p><strong><span style="font-size: 20px;">CIDR (Classless Inter-Domain Routing) </span></strong></p>
+
+        <p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+		<li><a href="#whatisit">What is it</a></li>
+		<li><a href="#how_do_they_work">How do they work?</a></li>
+		<li><a href="#private_public">Private vs Public IP's</a></li>
+    
+
+
+        <div id="whatisit">
+            <p><strong><span style="font-size: 18px;">What is it?</span></strong></p>
+        </div>
+        <ul>
+            <li>A method for allocating IP addresses</li>
+			<li>Used in Security Group rules and AWS (and GCP, Azure and others) networking in general</li>
+			<li>Help define IP ranges</li>
+			<ul>
+				<li>ww.xx.yy.zz/32 => one IP</li>
+				<li>0.0.0.0/0 => all IP's</li>
+			</ul>
+        </ul>
+
+		<div id="how_do_they_work">
+            <p><strong><span style="font-size: 18px;">How do they work?</span></strong></p>
+        </div>
+		<ul>
+			<li>Consists of two components</li>
+			<ul>
+				<li>Base IP</li>
+				<ul>
+					<li>Represents an IP contained in the range (xx.xx.xx.xx)</li>
+					<li>Examples: 10.0.0.0, 192.168.0.0, ...</li>
+				</ul>
+				<li>Subnet Mask</li>
+				<ul>
+					<li>Defines how many bits can change in the IP</li>
+					<li>Examples: /0, /24, /32</li>
+				</ul>
+				<li>Examples of subnet masks</li>
+				<ul>
+					<li>192.168.0.0/32 = 192.168.0.0 (loopback) </li>
+					<li>192.168.0.0/31 = 192.168.0.0 - 192.168.0.1</li>
+					<li>192.168.0.0/30 = 192.168.0.0 - 192.168.0.3</li>
+					<li>192.168.0.0/29 = 192.168.0.0 - 192.168.0.7</li>
+					<li>192.168.0.0/24 = 192.168.0.0 - 192.168.0.255</li>
+					<li>192.168.0.0/16 = 192.168.0.0 - 192.168.255.255</li>
+				</ul>	
+			</ul>
+		</ul>
+
+		<div id="private_public">
+            <p><strong><span style="font-size: 18px;">Private vs Public IP's</span></strong></p>
+        </div>
+        <ul>
+			<li>Private IP's</li>
+			<ul>
+				<li>10.0.0.0 - 10.255.255.255 (10.0.0.0/8)</li>
+				<li>172.16.0.0 - 172.31.255.255 (172.16.0.0/12)</li>
+				<li>192.168.0.0 - 192.168.255.255 (192.168.0.0/16)</li>
+			</ul>
+			<li>All others are public</li>
+		</ul>
+    </body> 
+</html> 

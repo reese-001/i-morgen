@@ -15,11 +15,32 @@
 
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">vpc</a>:overview</h2>
         <p><strong><span style="font-size: 20px;">Virtual Provide Network</span></strong></p>
-        <p><strong><span style="font-size: 18px;">What is it?</span></strong></p>
+
+        <p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+		<li><a href="#whatisit">What is it</a></li>
+        <li><a href="#core_components">Core Components</a></li>
+        <li><a href="#key_features">Key Features</a></li>
+        <li><a href="#default_vpc">Default VPC</a></li>
+        <li><a href="#vpc_peering">VPC Peering</a></li>
+        <li><a href="#route_tables">Route Tables</a></li>
+        <li><a href="#internet_gateways">Internet Gateways</a></li>
+        <li><a href="#bastions_jumpbox">Bastion Jumpbox</a></li>
+        <li><a href="#direct_connect">Direct Connect</a></li>
+        <li><a href="#vpc_flow_logs">VPC Flow Logs</a></li>
+
+
+
+
+        <div id="whatisit">
+            <p><strong><span style="font-size: 18px;">What is it?</span></strong></p>
+        </div>
         <ul>
             <li>Provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual private network that you define</li>
         </ul>
-        <p><strong><span style="font-size: 18px;">Core Components</span></strong></p>
+
+        <div id="core_components">
+            <p><strong><span style="font-size: 18px;">Core Components</span></strong></p>
+        </div>
         <ul>
             <li>Internet Gateway (IGW)</li>
             <li>Virtual Private Gateway (VPN gateway)</li>
@@ -34,7 +55,9 @@
             <li>VPC Peering</li>
         </ul>   
 
-        <p><strong><span style="font-size: 18px;">Key Features</span></strong></p>
+        <div id="key_features">
+            <p><strong><span style="font-size: 18px;">Key Features</span></strong></p>
+        </div>
         <ul>
             <li>Region specific - cannot span regions</li>
             <li>Can create 5 VPC's per region</li>
@@ -59,7 +82,9 @@
             </ul>
         </ul>
 
-        <p><strong><span style="font-size: 18px;">Default VPC</span></strong></p>
+        <div id="default_vpc">
+            <p><strong><span style="font-size: 18px;">Default VPC</span></strong></p>
+        </div>  
         <ul>
             <li>Every region has a default VPC so you can immediately deploy instances</li>
             <li>Default VPC has specific configurations that make it unique</li>
@@ -74,7 +99,9 @@
             </ul>
         </ul>
 
-        <p><strong><span style="font-size: 18px;">Key Features</span></strong></p>
+        <div id="vpc_peering">
+            <p><strong><span style="font-size: 18px;">VPC Peering</span></strong></p>
+        </div>  
         <ul>
             <li>Allows you to connect one VPC to another over a direct network route using private IP addresses</li>
             <li>Instances on peered VPC's behave just like they were on same network</li>
@@ -87,14 +114,18 @@
             </ul>
         </ul>
 
-        <p><strong><span style="font-size: 18px;">Route Tables</span></strong></p>
+        <div id="route_tables">
+            <p><strong><span style="font-size: 18px;">Route Tables</span></strong></p>
+        </div>  
         <ul>
             <li>Route tables are used to determine where network traffic is directed</li>
             <li>Each subnet in your VPC must be associated with a route table</li>
             <li>A subnet can only be associated with one route table at a time, but you can associate multiple subnets with one route table</li>
         </ul>
 
-        <p><strong><span style="font-size: 18px;">Internet Gateways</span></strong></p>
+        <div id="internet_gateways">
+            <p><strong><span style="font-size: 18px;">Internet Gateways</span></strong></p>
+        </div>
         <ul>
             <li>IGW allows your VPC to access the Internet and does two things</li>
             <ol>
@@ -105,7 +136,9 @@
             </ol>
         </ul>
 
-        <p><strong><span style="font-size: 18px;">Bastions/Jumpbox</span></strong></p>
+        <div id="bastions_jumpbox">
+            <p><strong><span style="font-size: 18px;">Bastions/Jumpbox</span></strong></p>
+        </div>
         <ul>
             <li>EC2 instances which are security hardened and designed to help you gain access to EC2 instances via SSH or RCP in a private subnet</li>
             <li>System Manager's Sessions Manager replaces the need to Bastions</li>
@@ -113,14 +146,18 @@
             <li><a href="../images/vpc_bastion.png">Illustration</a></li>
         </ul>
 
-        <p><strong><span style="font-size: 18px;">Direct Connect</span></strong></p>
+        <div id="direct_connect">
+            <p><strong><span style="font-size: 18px;">Direct Connect</span></strong></p>
+        </div>
         <ul>
             <li>AWS Direct Connect is the AWS solution for establishing dedicated network connections for on-premises locations to AWS</li>
             <li>Lower bound = 50M-500M</li>
             <li>Upper bound = 1gb-10gb</li>
         </ul>
 
-        <p><strong><span style="font-size: 18px;">VPC Flow Logs</span></strong></p>
+        <div id="vpc_flow_logs">
+            <p><strong><span style="font-size: 18px;">VPC Flow Logs</span></strong></p>
+        </div>  
         <ul>
             <li>Allows you to capture information about the IP traffic going to and from network interfaces in your VPC</li>
             <li>Flow logs can be used to troubleshoot network connectivity issues, monitor the traffic patterns of your instances, and enforce network security policies.</li>
