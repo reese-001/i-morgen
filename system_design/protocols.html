@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="../styles.css">
+      <title>i morgen</title>
+      <link rel="icon" href="../../images/logo.png">
+   </head>
+   <body>
+      <table width="80%">
+         <tr>
+            <td width="5%"><img src="../images/logo.png" class="logo"></td>
+            <td width="80%">
+               <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+            </td>
+         </tr>
+      </table>
+      <h2 style="color:#0A45A5;"><a href="index.html">home</a> : <a href="index.html">system design</a> : protocols</h2>
+      <p><span style="font-size: 20px;"><strong>System Design : Protocols </a></strong></span>
+        
+      </p>
+      <span style="font-size: 18px;"><strong>Contents</strong></span>
+      <ul>
+         <li><a href="#network_protocols">Network Protocols</a></li>
+         <li><a href="#ip">IP</a></li>
+         <li><a href="#tcp">TCP</a></li>
+      </ul>
+
+      <div id="network_protocols">
+         <span style="font-size: 18px;"><strong>Network Protocols</strong></span>
+      </div>
+      <ul>
+         <li>A network protocol is a set of rules and standards that govern the communication between devices on a network</li>
+         <li>Network protocols are necessary for devices on a network to understand how to communicate with each other</li>
+         <li>Examples include</li>
+         <ul>
+            <li>IP</li>
+            <li>TCP</li>
+            <li>HTTP</li>
+            <li>FTP</li>
+            <li>DNS</li>
+            <li>DHCP</li>
+      </ul>
+
+      <div id="ip">
+         <span style="font-size: 18px;"><strong>IP</strong></span>
+      </div>
+      <ul>
+         <li>Internet Protocol</li>
+         <li>Function is to route packets of data between devices on a network</li>
+         <li>These data packets are known as "IP Packets" and are the fundumental unit of data that gets sent from one device to another </li>
+         <li>IP Packets consist of two segments</li>
+         <ul>
+            <li>IP Header</li>
+            <ul>
+               <li>Size is typically between 20-60 bytes</li>
+               <li>Contains</li>
+               <ul>
+                  <li>Source IP</li>
+                  <li>Destination IP</li>
+                  <li>Internet Header Length (IHL)</li>
+                  <li>Version (IPv4 or IPv6)</li>
+               </ul>
+            </ul>
+            <li>Data</li>
+            <ul>
+               <li>The total size of the IP packet is 2^16 bytes</li>
+               <li>To meaningfully transmit data, you will need a lot more then 2^16 bytes of data capacity</li>
+               <li>Additionally, because IP is connection-less and best effort, it cannot guarantee delivery of the packet nor the delivery in the correct order </li>
+               <li>This introduces the functionality of TCP (and UDP)</li>
+            </ul>
+         </ul>
+      </ul>
+
+      <div id="tcp">
+         <span style="font-size: 18px;"><strong>TCP</strong></span>
+      </div>
+      <ul>
+         <li>Transmition Control Protocol</li>
+         <li>Built on top of IP and introduces the concept of 'connections'</li>
+         <li>Intended to solve the following problems</li>
+         <ul>
+            <li>Deliver packets in ordered manner</li>
+            <li>Deliver packets reliabily - or at least inform if they are not able to be delivered</li>
+            <li>Deliver packets without corruption</li>
+         </ul>
+         <li>These allow the transmission of arbitrarily long data </li>
+         <li>Introduces the TCP header to the IP Packet. This lives alongside the IP Header</li>
+         <li>Connections originate from a three way handshake - aka SYN, SYN-ACK, ACK process</li>
+         <ul>
+            <li>First device says "I want to connect with you" (SYN)</li>
+            <li>Second device responds "I accept your request" (SYN-ACK)</li>
+            <li>First device responds with "We are now connected" (ACK)</li>
+         </ul>
+         <li>Timeouts are defined by a period of inactivity or by </li>
+      </ul>
+   </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> : yaml</h2>
+
+        <p><span style="font-size: 20px;"><strong>YAML</strong></span></p>
+
+
+		<p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
+		<li><a href="#what_is_it">What is it</a></li>
+		
+
+
+
+		<div id = "what_is_it">
+			<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+		</div>
+		<ul>		
+			<li>YAML is a data serialization language that is often used for writing configuration files</li>
+			<li>There are several different methods used</li>
+			<ul>
+				<li>Key Value Pair</li>
+				<pre> Fruit: Apple
+ Vegetable: Carrot
+ Liquid: Water 
+ Mean: Chicken	
+				</pre>
+			<li>Array</li>
+			<pre>
+ Fruits:
+   -  Orange
+   -  Apple 
+   -  Banana
+
+ Vegetables
+   -  Carrot
+   -  Cauliflower
+   -  Tomato
+			</pre>
+			<li>Dictionary/Map</li>
+			<pre> Banana
+   Calories: 105
+   Fat: 0.4 g  
+   Carbs: 27 g 
+
+Grapes
+  Caleries: 62
+  Fat: 0.3 g
+  Carbs: 16 g
+
+			</pre>
+			</ul>
+		<li>Types can be layered, for example Dictionary/Map in an Array</li>
+		<ul>
+			<pre> Fruits:
+  - Banana: 
+     Caleries: 105
+     Fat: 0.4 g 
+     Carbs: 27 g  
+
+			</pre>
+		</ul>
+		</ul>
+	</body>
+</html>

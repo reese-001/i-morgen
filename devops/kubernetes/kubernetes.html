@@ -24,7 +24,7 @@
 		<li><a href="#master_worker_nodes">Master vs Worker Nodes</a></li>
 		<li><a href="#kubectl">Kubectl</a></li>
 		<li><a href="#pods">PODs</a></li>
-
+		<li><a href="#yaml">YAML in Kubernetes</a></li>
 
 
 		<div id = "what_is_it">
@@ -126,8 +126,57 @@
 					<li></li>
 				</ul>
 
+			<div id = "yaml">
+				<p><span style="font-size: 18px;"><strong>Yaml in Kubernetes</strong></span></p>
+			</div>
+			<ul>
+				<li>Kubernetes uses YAML files for inputs for the creation of objects such as pods and other objects</li>
+				<li>Regardless of object, the definition file always contains the following four components</li>
+				<ul>
+					<li>apiVersion</li>
+					<ul>
+						<li>The version of the K8s API you are using to create the objects</li>
+						<li>Possible values are v1, apps/v1</li>
+					</ul>
+					<li>kind</li>
+					<ul>
+						<li>Type of object we are creating</li>
+						<li>Possible values are POD, Service, ReplicaSet, Deployment</li>
+					</ul>
+					<li>metadata</li>
+					<ul>
+						<li>Data about the object, such as </li>
+						<ul> 
+							<li>name</li>
+							<li>labels</li>
+							<li>you can create your own labels under the label tag, ie app and type</li>
+						</ul>
+						<li>This is created as a dictionary undern the metadata tag, so you would expect to see some indentation under metadata</li>
+					</ul>
+					<li>spec</li>
+					<ul>
+						<li>Depending on the object we are creating, this is what we will pass to K8s to spec the creation</li>
+						<li>spec is a dictionary</li>
+						<li>For Pod types, the spec can contain a "containers" array specifying name and image</li>
+					</ul>
+				</ul>
+				<li>Once the YAML is complete, run the following command: kubectl create -f pod-definition.yml</li>
 			</ul>
 
+
+			</ul>
+
+			<div id = "references">
+				<p><span style="font-size: 18px;"><strong>References</strong></span></p>
+			</div>
+			<ul>
+				<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands" target="_blank">kubectl commands</a></li>
+				<li><a href="https://kubernetes.io/docs/concepts/" target="_blank">Kubernetes Core Concepts</a></li>
+				<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/" target="_blank">Pod overview</a></li>
+			</ul>
+
+
+			
 		</ul>
 			
 			
