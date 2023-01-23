@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker : intro</h2>
+		
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What Is It</a></li>
+		
+		
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+		<ul>
+			<li><strong>Intended to manage the entire machine learning workflow - <a href="images/workflow.png">image</a></strong></li>
+			<ul>
+				<li>Start by fetching, cleaning data and prepare data</li>
+				<li>Feed that into a model to train and evaluate</li>
+				<li>Deploy model to make inferences on data we have not seen</li>
+				<li>Monitor the data in production and the cycle repeats</li>
+			</ul>
+			<li><strong>Architecture</strong></li>
+			<ul>
+				<li>Training</li>
+				<ul>
+					<li>Training data will reside in an S3 bucket</li>
+					<li>Sagemaker will provision a number of training hosts</li>
+					<li>The code that is uses comes from a Docker image (training code image) that is registered in <a href="../../aws/docker/docker.html" target="_blank">ECR</a> </li>
+					<li>The output data will be saved in a different S3 folder</li>
+				</ul>	
+				<li>Deployment</li>
+				<ul>
+					<li>There will be another Docker image in ECR called Inference Code Image</li>
+					<li>This ECR image will potentially be much simplier as its only job is to take incoming requests and make inferences based on the incoming data</li>
+				</ul>
+				<li>Endpoints</li>
+				<ul>
+					<li>Used to connect the model deployment image(s) to the outside world</li>
+				</ul>
+			</ul>
+			<li><strong>Using Notebooks to direct the process</strong></li>
+			<ul>
+				<li>Sagemaker notebook has access to S3 and can interface with the datasets being used</li>
+				<li>Within the notebook you can implement scikit_learn, spark, tensorflow, etc</li>
+				<li>Has access to a wide variety of prebuilt models in the form of Docker images</li>
+				<ul>
+					<li>Within the notebook itself, you can create an entire fleet of instances from these Docker images to execute your training on</li>
+					<li>When the training is complete, you can repeat this process for deployment and ultimately have a large fleet of images for inferencing</li>
+				</ul>
+				<li>Can create hyperparameter tuning jobs</li>
+			</ul>
+			<li><strong>Data preperation</strong></li>
+			<ul>
+				<li>Sagemaker expects your data to come from S3</li>
+				<ul>
+					<li>It is reasonable to prepare the data externally to this process and deliver that data to S3, or </li>
+					<li>You can execute your data prep steps directly in the notebook</li>
+					<li>Most performant data will be in RecordIO/Protobuf format</li>
+					<ul>
+						<li>RecordIO is a binary format used to store large amounts of data in a compact and efficient way</li>
+						<li>Protobuf is short for Protocol Buffers</li>
+						<ul>
+							<li>Language neutral data serialization format used for transmitting data over networks or storing it in files</li>
+						</ul>
+					</ul>
+					<li>CSV is also an accepted format</li>
+				</ul>
+				<li>Other input sources are Athena, EMR, Redshift, Amazon Keyspaces DB</li>
+				<li>Spark integrates with Sagemaker for large scale processing </li>
+			</ul>
+			<li><strong>Training on Sagemaker</strong></li>
+			<ul>
+				<li>Training jobs can be created from your notebook or console</li>
+				<li>The following data will be required</li>
+				<ul>
+					<li>URL of the S3 location with your training data</li>
+					<li>ML computer resources</li>
+					<li>URL of the S3 bucket for output</li>
+					<li>ECR path to training code</li>
+				</ul>
+				<li>Large library of training options</li>
+				<ul>
+					<li>Built in options</li>
+					<li>Spark MLLib</li>
+					<ul>
+						<li>Spark MLlib is a machine learning library for the Apache Spark platform</li>
+						<li>It provides a wide range of machine learning algorithms and utilities for data processing and analysis, including classification, regression, clustering, recommendation, and feature extraction</li>
+					</ul>
+					<li>TensorFlow</li>
+					<ul>
+						<li>TensorFlow is an open-source software library for dataflow and differentiable programming across a range of tasks</li>
+						<li>It is a symbolic math library, and is also used for machine learning applications such as neural networks</li>
+					</ul>
+					<li>MXNet</li>
+					<ul>
+						<li>Pronounced "Mix-net"</li>
+						<li>Open source deep learning framework developed by Apache Software Foundation</li>
+						<li>It is designed to be highly efficient and flexible, allowing for easy deployment of deep learning models on a variety of devices, including CPUs, GPUs, and mobile devices</li>
+						<li>MXNet supports a wide range of programming languages, including Python, R, C++, and Julia</li>
+					</ul>
+					<li>Your own Docker image</li>
+					<li>Algorithm purchased from AWS marketplace</li>
+				</ul>
+			</ul>
+			<li><strong>Deploying on Sagemaker</strong></li>
+			<ul>
+				<li>Can be done from the notebook</li>
+				<li>Can deploy in two ways</li>
+				<ul>
+					<li>Request Sagemaker to create persistent endpoints for making individual inferences on demand</li>
+					<li>Request Sagemaker to create a Batch Transform to get predictions for an entire dataaset</li>
+				</ul>
+				<li>Other options include</li>
+				<ul>
+					<li>Inference Pipelines</li>
+					<ul>
+						<li>A way to organize and deploy a sequence of models as a single endpoint</li>
+					</ul>
+					<li>Sagemaker Neo</li>
+					<ul>
+						<li>Allows you to deploy your models all the way to edge devices via Cloudfront</li>
+						<li>When you deploy a model using SageMaker Neo, the model is optimized for the target device, and then Neo uses <a href="../../aws/cloudfront/cloudfront.html" target="_blank">CloudFront</a> to distribute the model to the edge locations closest to the devices where the model will be used</li>
+					</ul>
+					<li>Elastic Inference</li>
+					<ul>
+						<li>Allows users to add GPU acceleration to their Amazon Elastic Compute Cloud (EC2) instances on an as-needed basis</li>
+					</ul>
+					<li>Automatic scaling</li>
+					<ul>
+						<li>Increases the number of endpoints as needed</li>
+					</ul>
+				</ul>
+			</ul>
+		</ul>
+	</body>
+</html>
