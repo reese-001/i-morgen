@@ -17,20 +17,22 @@
 		
         <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
         <li><a href="#what_is_it">What Is It</a></li>
-		
+		<li><a href="#linear_learner">Linear Learner</a></li>
+		<li><a href="#xgboost">XGBoost</a></li>
 		
         <div id="what_is_it">
             <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
 		</div>
 		<ul>
-			<li><strong>Intended to manage the entire machine learning workflow - <a href="images/workflow.png">image</a></strong></li>
+			<li>Intended to manage the entire machine learning workflow - <a href="images/workflow.png">image</a></li>
 			<ul>
 				<li>Start by fetching, cleaning data and prepare data</li>
 				<li>Feed that into a model to train and evaluate</li>
 				<li>Deploy model to make inferences on data we have not seen</li>
 				<li>Monitor the data in production and the cycle repeats</li>
 			</ul>
-			<li><strong>Architecture</strong></li>
+			<br/>
+			<li>Architecture</li>
 			<ul>
 				<li>Training</li>
 				<ul>
@@ -49,7 +51,8 @@
 					<li>Used to connect the model deployment image(s) to the outside world</li>
 				</ul>
 			</ul>
-			<li><strong>Using Notebooks to direct the process</strong></li>
+			<br/>
+			<li>Using Notebooks to direct the process</strong></li>
 			<ul>
 				<li>Sagemaker notebook has access to S3 and can interface with the datasets being used</li>
 				<li>Within the notebook you can implement scikit_learn, spark, tensorflow, etc</li>
@@ -60,7 +63,8 @@
 				</ul>
 				<li>Can create hyperparameter tuning jobs</li>
 			</ul>
-			<li><strong>Data preperation</strong></li>
+			<br/>
+			<li>Data preperation</li>
 			<ul>
 				<li>Sagemaker expects your data to come from S3</li>
 				<ul>
@@ -79,7 +83,8 @@
 				<li>Other input sources are Athena, EMR, Redshift, Amazon Keyspaces DB</li>
 				<li>Spark integrates with Sagemaker for large scale processing </li>
 			</ul>
-			<li><strong>Training on Sagemaker</strong></li>
+			<br/>
+			<li>Training on Sagemaker</li>
 			<ul>
 				<li>Training jobs can be created from your notebook or console</li>
 				<li>The following data will be required</li>
@@ -113,7 +118,8 @@
 					<li>Algorithm purchased from AWS marketplace</li>
 				</ul>
 			</ul>
-			<li><strong>Deploying on Sagemaker</strong></li>
+			<br/>
+			<li>Deploying on Sagemaker</li>
 			<ul>
 				<li>Can be done from the notebook</li>
 				<li>Can deploy in two ways</li>
@@ -143,5 +149,115 @@
 				</ul>
 			</ul>
 		</ul>
+		<div id="linear_learner">
+            <p><span style="font-size: 18px;"><strong>Linear Learner</strong></span></p>
+		</div>
+		<ul>
+			<li>Linear learner can accomodate both regression and classification predictions</li>
+			<li>Input can be either file or pipped and can be one of the following formats</li>
+			<ul>
+				<li>RecordIO wrapped protobuf (float32 data only)</li>
+				<li>CSV. First column assumed to be the label</li>
+				<li>Hint: If you experience issues training data located in an S3 bucket, consider pipe mode </li>
+			</ul>
+			<br/>
+			<li>How is it used?</li>
+			<ul>
+				<li>Preprocessing</li>
+				<ul>
+					<li>Training data must be normalized</li>
+					<ul>
+						<li>You can do this yourself or Linear Learner can do it</li>
+					</ul>
+					<li>Input should be shuffled</li>
+				</ul>
+				<li>Training</li>
+					<li>Available optimization algorithms</li>
+					<ul>
+						<li>Adam</li>
+						<li>AdaGrad</li>
+						<li>SGD</li>
+					</ul>
+					<li>Multiple models trained in parallel</li>
+					<li>Tune L1, L2 regularization</li>
+					
+					<li>Validation</li>
+					<ul>
+						<li>Most optimal model is selected</li>
+					</ul>
+				</ul>
+			
+				<br/>
+				<li>Hyperparameters</li>
+				<ul>
+					<li>Balance_multiclass_weights</li>
+					<ul>
+						<li>Gives each class equal importance in loss functions</li>
+					</ul>
+					<li>learning_rate, mini_batch_size</li>
+					<li>L1: aka regularization</li>
+					<li>L2: aka weight decay</li>
+				</ul>
+				<br/>
+				<li>For instance types, keep in mind the following two guidelines</li>
+				<ul>
+					<li>Single or multi-machine CPU or GPU</li>
+					<li>Multi-GPU on one machine does not help</li>
+				</ul>
+			</ul>
+		</ul>
+		<div id="xgboost">
+            <p><span style="font-size: 18px;"><strong>XGBoost</strong></span></p>
+		</div>
+		
+		<ul>
+			<li>eXtreme Gradiant Boosting</li>
+			<ul>
+				<li>Boosted group of decision trees. See <a href="../core/bagging_vs_boosting.html" target="_blank">link</a> for more information</li>
+			</ul>
+			<li>Can be used for classification and regression using regression trees</li>
+			<li>XGBoost was not made for Sagemaker in the original implementation, instead AWS started from the open source version of XGBoost that everyone else uses and built on top of that</li>
+			<li>Historically has only accepted CSV or libsvm formatted data as input, but now takes recordIO-protobuf and Paraguet as well</li>
+			<br/>
+			<li>How is it used? </li>
+			<ul>
+				<li>Models are serialized/deserialized with Pickle</li>
+				<li>Can use as a framework within notebooks with Sagemaker.xgboost</li>
+				<li>Or as a built-in Sagemaker algorithm</li>
+			</ul>
+			<br/>
+			<li>Hyperparameters (not inclusive!)</li>
+			<ul>
+				<li>Subsample</li>
+				<ul>
+					<li>Prevents overfitting</li>
+				</ul>
+				<li>Eta</li>
+				<ul>
+					<li>Step size shrinkage, prevents overfitting</li>
+				</ul>
+				<li>Gamma</li>
+				<ul>
+					<li>Gamma</li>
+				</ul>
+				<li>Alpha</li>
+				<ul>
+					<li>L1 regularization term; larger = more conservative</li>
+				</ul>
+				<li>Lambda</li>
+				<ul>
+					<li>L2 regularization term; larger = more conservative</li>
+				</ul>
+				<li>eval_metric</li>
+				<ul>
+					<li>Focus on accuracy: optimize for error or rmse</li>	
+					<li>Focus on false positives: optimize for AUC</li>
+				</ul>
+				<li>scale_pos_weight</li>
+			</ul>
+
+		</ul>
+		
+
 	</body>
 </html>

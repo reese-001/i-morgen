@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : bagging vs boosting</h2>
+		
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#bagging">Bagging</a></li>
+		<li><a href="#boosting">Boosting</a></li>
+		<li><a href="#differences">Summary of Differences</a></li>
+
+        <div id="bagging">
+            <p><span style="font-size: 18px;"><strong>Bagging</strong></span></p>
+		</div>
+		<ul>
+			<li>Bagging is a type of ensemble learning method that combines the predictions of multiple models to create a stronger, more robust model</li>
+			<li>The basic idea behind bagging is to train multiple models independently on random subsets of the training data, and then combine their predictions to make a final prediction</li>
+			<li>Bagging algorithms are known for their robustness and ability to reduce overfitting</li>
+			<li>The process of creating a bagging model involves</li>
+			<ul>
+				<li>Creating multiple subsets of the training data by sampling with replacement</li>
+				<li>Training multiple models independently on each subset</li>
+				<li>Combining the predictions of the models to make a final prediction</li>
+				<ul>
+					<li>Typically by taking the majority vote for classification problems</li>
+					<li>Or by averaging the predictions for regression problems</li>
+				</ul>  
+				<li>Examples</li>
+				<ul>
+					<li>Random Forest</li>
+					<li>Extra Trees</li>
+					<li>Bagging Classifiers</li>
+				</ul>
+			</ul>
+		</ul>
+	
+		<div id="boosting">
+            <p><span style="font-size: 18px;"><strong>Boosting</strong></span></p>
+		</div>
+		<ul>
+			<li>Boosting is a type of ensemble learning method that combines the predictions of multiple weak models to create a stronger, more accurate model</li>
+			<li>The basic idea behind boosting is to iteratively train weak models on the residual errors of the previous models, thus building a final model that is more accurate than any of the individual weak models</li>
+			<li>Boosting algorithms are typically used in supervised learning tasks such as classification and regression</li>
+			<li>Boosting algorithms are known for their high accuracy and robustness, and are often used in situations where the data is noisy or non-linearly separable.</li>
+			<li>The process of creating a boosting model typically involves</li>
+			<ul>
+				<li>Initializing the weight of each training example to the same value</li>
+				<li>Training a weak model on the data, and computing the residual errors for each example</li>
+				<li>Updating the weight of each example based on the magnitude of its residual error</li>
+				<li>Training another weak model on the updated data with weighted examples</li>
+				<li>Adding the predictions of the weak models together to make a final prediction</li>
+			</ul>
+			<li>Examples</li>
+			<ul>
+				<li>AdaBoost</li>
+				<ul>
+					<li>One of the first boosting algorithms, which uses a weighting system to adjust the importance of training examples in each iteration</li>
+				</ul>
+				<li>Gradient Boosting</li>
+				<ul>
+					<li>A boosting algorithm that uses gradient descent to minimize the loss function. It is a popular choice for regression and classification problems</li>
+				</ul>
+				<li>XGBoost</li>
+				<ul>
+					A gradient boosting algorithm that is designed to handle large datasets and high-dimensional feature spaces. It is widely used in Kaggle competitions and industry applications
+				</ul>
+				<li>LightGBM</li>
+				<ul>
+					<li>A gradient boosting algorithm that is designed to handle large datasets and high-dimensional feature spaces. It is faster than XGBoost, it uses histograms to speed up the training process</li>
+				</ul>
+				<li>CatBoost</li>
+				<ul>
+					<li>It's a gradient boosting algorithm that is designed to handle categorical variables efficiently, which makes it well suited for datasets with many categorical features</li>
+				</ul>
+			</ul>
+
+		</ul>
+
+		<div id="differences">
+            <p><span style="font-size: 18px;"><strong>Summary of Differences</strong></span></p>
+		</div>
+		<ul>
+			<li>Bagging and Boosting are both ensemble learning methods, but they differ in how they combine the predictions of multiple models to make a final prediction</li>
+			<li>Bagging is based on averaging or voting, where multiple models are trained independently on random subsets of the data, and their predictions are combined to make a final prediction. Boosting, on the other hand, is based on iteratively training weak models on the residual errors of the previous models</li>
+			<li>Bagging reduces variance by averaging the predictions of multiple models, whereas Boosting reduces bias by iteratively correcting the errors of previous models</li>
+			<li>Bagging is generally less prone to overfitting than Boosting, since it averages the predictions of multiple models, which can help to smooth out any errors. Boosting, on the other hand, can be prone to overfitting if the number of weak models is too high</li>
+			<li>Bagging is more computationally efficient than Boosting, as it is based on averaging or voting, which can be done quickly. Boosting is more computationally intensive, as it requires training multiple models iteratively.</li>
+		</ul>
+
+	</body>
+</html>
