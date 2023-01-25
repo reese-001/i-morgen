@@ -19,6 +19,8 @@
         <li><a href="#what_is_it">What Is It</a></li>
 		<li><a href="#linear_learner">Linear Learner</a></li>
 		<li><a href="#xgboost">XGBoost</a></li>
+		<li><a href="#blazingtext">BlazingText</a></li>
+		<li><a href="#object2vec">Object2Vec</a></li>
 		
         <div id="what_is_it">
             <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
@@ -257,7 +259,132 @@
 			</ul>
 
 		</ul>
+		<div id="blazingtext">
+            <p><span style="font-size: 18px;"><strong>BlazingText</strong></span></p>
+		</div>
+		<ul>
+			<li>Two primary purposes</li>
+			<ul>
+				<li>Text classification</li> 
+				<ul>
+					<li>Predict labels for sentences</li>
+					<li>Useful for web seaches and information retrieval</li>
+				</ul>
+				<li>Word2vec</li>
+				<ul>
+					<li>Creates a vector representation of words</li>
+					<li>Semantically similar words are represented by vectors close to each other</li>
+					<li>This is known as word embedding</li>
+				</ul>
+			</ul>
+			<br/>
+			<li>What kind of training input does it expect?</li>
+			<ul>
+				<li>Regardless of the format, the text requires tokenization and should be lowered</li>
+				<li>For supervised mode (text classification)</li>
+				<ul>
+					<li>One sentence per line</li>
+					<li>First "word" in the sentence is the string "__label__" followed by the label</li>
+					<li>ex. __label__1 This is my sentence</li>
+					<li>Alternatively it accepts augmented manifest text format</li>
+					<ul>
+						<li>It is a JSON file that specifies the location of the training data, as well as the labels and other metadata associated with each example</li>
+					</ul>
+				</ul>
+				<li>For Word2vec</li>
+				<ul>
+					<li>Requires a text file with one training sentence per line</li>
+					<li>ex. {"source":"This is my sentence"}</li>
+				</ul>
+			</ul>
+			<br/>
+			<li>Word2vec has multiple modes</li>
+			<ul>
+				<li>Cbow</li>
+				<li>Skip-gram</li>
+				<li>Batch skip-gram</li>
+				<ul>
+					<li>Distributed computation over many CPU nodes</li>
+				</ul>
+			</ul>
+			<br/>
+			<li>Hyperparameters</li>
+			<ul>
+				<li>Word2vec</li>
+				<ul>
+					<li>Mode (batch_skipgram, skipgram, chow)</li>
+					<li>Learning_rate</li>
+					<li>Window_size</li>
+					<li>Vector_dim</li>
+					<li>Negative_samples</li>
+				</ul>
+				<li>Text classification</li>
+				<ul>
+					<li>Epochs</li>
+					<li>Learning_rate</li>
+					<li>Word_ngrams</li>
+					<li>Vector_dim</li>
+				</ul>
+			</ul>
+		</ul>
 		
-
+		<div id="object2vec">
+            <p><span style="font-size: 18px;"><strong>Object2Vec</strong></span></p>
+		</div>
+		<ul>
+			<li>Used for training object-based embeddings on large datasets</li>
+			<li>Built on top of the open-source library Gensim</li>
+			<li>It is available as part of the AWS SageMaker platform and uses distributed computing and GPU acceleration to speed up training and make it more efficient</li>
+			<li>Object2Vec can be used for tasks such as item-to-item similarity, item-to-set similarity, and clustering</li>
+			<br/>
+			<li>Can be used for the following</li>
+			<ul>
+				<li>Compute neatest neighbors of objects</li>
+				<li>Visualize clusters</li>
+				<li>Genre prediction</li>
+				<li>Recommendations</li>
+			</ul>
+			<br/>
+			<li>What kind of input does it expect?</li>
+			<ul>
+				<li>Data must be tokenized into integers</li>
+				<li>Training data consists of pairs of tokens and/or sequences of tokens</li>
+				<ul>
+					<li>Sentence-sentence</li>
+					<li>Labels-sequences</li>
+					<li>Customer-customer</li>
+					<li>Product-product</li>
+					<li>User-item</li>
+				</ul>
+			</ul>
+			<br/>
+			<li>How is it used?</li>
+			<ul>
+				<li>Process data into JSON lines and shuffle it</li>
+				<li>Train with two input channels, two encoders, and a comparator</li>
+				<ul>
+					<li>Comparator function takes two input embeddings (vectors) and returns a similarity score between 0 and 1, indicating how similar the two objects are</li>
+				</ul>
+				<li>Encoder choices</li>
+				<ul>
+					<li>Average-pooled enbeddings</li>
+					<li>CNN's</li>
+					<li>Bidirectional LSTM</li>
+				</ul>
+				<li>Comparator is followed by a feed-forward neural network</li>
+			
+			</ul>
+			<br/>
+			<li>Hyperparameters</li>
+			<ul>
+				<li>dropout</li>
+				<li>early stopping</li>
+				<li>epochs</li>
+				<li>learning rate</li>
+				<li>batch size</li>
+				<li>layers</li>
+				<li>activations</li>
+			</ul>
+	</ul>
 	</body>
 </html>
