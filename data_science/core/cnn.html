@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : cnn</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Convolutional Neural Networks</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#how_do_they_work">How do they work</a></li>
+
+
+		<br/>
+
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>What are they used for</li>
+			<ul>
+				<li>In general, when you have data that does not neatly fit into columns </li>
+				<li>Alternatively, we can say they can be used for various tasks involving data with spatial structure such as images, audio signals, and sequential data</li>
+				<ul>
+					<li>Images that you want to find features in (ie. stop sign)</li>
+					<li>Machine translation</li>
+					<li>Sentence identification </li>
+					<li>Sentiment analysis</li>
+				</ul>
+			</ul>
+		</ul>
+
+		<br/>
+		<div id="how_do_they_work">
+            <p><span style="font-size: 18px;"><strong>How do they work</strong></span></p>
+		</div>
+		<ul>
+			<li>Inspired by the biology of the visual cortext</li>
+			<ul>
+				<li>Local receptive fields are groups of neurons that only respond to a part of what your eye is seeing (subsampling)</li>
+				<li>They overlap each other to cover the entire visual field (convolutions</li>
+				<li>They feed into higher layers that identify increasingly complex images</li>
+				<ul>
+					<li></li>
+				</ul>
+			</ul>
+		
+			<li>Source data must be of appropriate dimensions</li>
+			<ul>
+				<li>width * length * color channels</li>
+			</ul>
+			<li>Conv2D layer</li>
+			<ul>
+				<li>Performs convolution operations on image data</li>
+				<li>It slides a filter/kernel matrix over the input image, element-wise multiplies the values in the filter with the input matrix and then sums them to generate a single output value</li>
+				<li>Note: Conv1D is used for audio or text, Conv3D is used for video</li>
+			</ul>
+			<li>MaxPoling2D layer</li>
+			<ul>
+				<li>Used for down-sampling the spatial dimensions of the data</li>
+				<li>Divides the input feature map into non-overlapping regions and chooses the maximum value from each region to generate the output</li>
+			</ul>
+			<li>Flattern layers</li>
+			<ul>
+				<li>Convert 2D layer to 1D layer for passing into a flat hidden layer of neurons</li>
+			</ul>
+			<li>Typical pattern</li>
+			<ul>
+				<li>Conv2D -> MaxPooling2D -> Dropout -> Flatten -> Dense -> Dropout -> Softmax</li>
+			</ul>
+			<li>CNN's are difficult</li>
+			<ul>
+				<li>Very resource intensive</li>
+				<li>Lots of hyperparameters</li>
+				<li>Getting the training data is often the hardest part</li>
+			</ul>
+			<li>Specialized CNN architectures</li>
+			<ul>
+				<li>LeNet-5: Handwriting</li>
+				<li>AlexNet: Image classification</li>
+				<li>GoogLeNet (Inception Network): Deeper then LeNet but better performance</li>
+				<li>ResNet: Uses skip connections </li>
+			</ul>
+
+	</body>
+</html>

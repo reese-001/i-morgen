@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : blazing text</h2>
+		
+		<br/>
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+		<li><a href="#what_is_it">What Is It</a></li>
+
+		<br/>
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+		<ul>
+			<li>Managed service provided by AWS that enables the training and deployment of highly accurate natural language processing (NLP) models, specifically for the task of supervised text classification</li>
+			<li>Two primary purposes</li>
+			<ul>
+				<li>Text classification</li> 
+				<ul>
+					<li>Predict labels for sentences</li>
+					<li>Useful for web seaches and information retrieval</li>
+				</ul>
+				<li>Word2vec</li>
+				<ul>
+					<li>Creates a vector representation of words</li>
+					<li>Semantically similar words are represented by vectors close to each other</li>
+					<li>This is known as word embedding</li>
+				</ul>
+			</ul>
+			<br/>
+			<li>What kind of training input does it expect?</li>
+			<ul>
+				<li>Regardless of the format, the text requires tokenization and should be lowered</li>
+				<li>For supervised mode (text classification)</li>
+				<ul>
+					<li>One sentence per line</li>
+					<li>First "word" in the sentence is the string "__label__" followed by the label</li>
+					<li>ex. __label__1 This is my sentence</li>
+					<li>Alternatively it accepts augmented manifest text format</li>
+					<ul>
+						<li>It is a JSON file that specifies the location of the training data, as well as the labels and other metadata associated with each example</li>
+					</ul>
+				</ul>
+				<li>For Word2vec</li>
+				<ul>
+					<li>Requires a text file with one training sentence per line</li>
+					<li>ex. {"source":"This is my sentence"}</li>
+				</ul>
+			</ul>
+			<br/>
+			<li>Word2vec has multiple modes</li>
+			<ul>
+				<li>Cbow</li>
+				<li>Skip-gram</li>
+				<li>Batch skip-gram</li>
+				<ul>
+					<li>Distributed computation over many CPU nodes</li>
+				</ul>
+			</ul>
+			<br/>
+			<li>Hyperparameters</li>
+			<ul>
+				<li>Word2vec</li>
+				<ul>
+					<li>Mode (batch_skipgram, skipgram, chow)</li>
+					<li>Learning_rate</li>
+					<li>Window_size</li>
+					<li>Vector_dim</li>
+					<li>Negative_samples</li>
+				</ul>
+				<li>Text classification</li>
+				<ul>
+					<li>Epochs</li>
+					<li>Learning_rate</li>
+					<li>Word_ngrams</li>
+					<li>Vector_dim</li>
+				</ul>
+			</ul>
+		</ul>
+		<br/>
+
+    </body>
+</html>

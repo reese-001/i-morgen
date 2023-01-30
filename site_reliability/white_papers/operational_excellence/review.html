@@ -8,71 +8,149 @@
    <body>
       <table width="80%">
          <tr>
-            <td width="5%"><img src="../../images/logo.png" class="logo"></td>
+            <td width="5%">
+               <img src="../../images/logo.png" class="logo">
+            </td>
             <td width="80%">
                <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
             </td>
          </tr>
       </table>
-      <h2 style="color:#0A45A5;"><a href="../../../index.html">home</a>:<a href="../../index.html">site reliability</a>:<a href="../index.html">white papers</a>:<a href="index.html">foundations</a>:reliability pillar - aws well architected framework</h2>
-      <p><span style="font-size: 20px;"><strong><a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/reliability.html" target="_blank">Operational Excellence Pillar - AWS Well-Architected Framework</a></strong></span>
-        
+      <h2 style="color:#0A45A5;">
+         <a href="../../../index.html">home</a>: <a href="../../index.html">site reliability</a>: <a href="../index.html">white papers</a>: <a href="index.html">foundations</a>:operational pillar - aws well architected framework
+      </h2>
+      <p>
+         <span style="font-size: 20px;">
+         <strong>
+         <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/reliability.html" target="_blank">Operational Excellence Pillar - AWS Well-Architected Framework</a>
+         </strong>
+         </span>
       </p>
-      <span style="font-size: 18px;"><strong>Contents</strong></span>
+      <span style="font-size: 18px;">
+      <strong>Contents</strong>
+      </span>
       <ul>
-         <li><a href="#understanding_availability_needs"></a></li>
-        
+         <li>
+            <a href="#overview">Overview</a>
+         </li>
+         <li>
+            <a href="#organization">Organization</a>
+         </li>
       </ul>
-      <br/>
+      <br />
       <div id="overview">
-         <li>Overview</li>
+         <p>
+            <span style="font-size: 18px;">
+            <strong>Overview</strong>
+            </span>
+         </p>
       </div>
       <ul>
-         <li>How your organization supports business objecives, your ability to run workloads, gain insights into their operations and to continuously improve supporting processes and procedures to deliver business value</li>
-         <li>Breaking that into component parts</li>
+         <li>Intent</li>
          <ul>
-            <li>Business Objectives</li>
+            <li>The operational excellence pillar includes how your organization supports your business objectives, your ability to run workloads effectively, gain insight into their operations, and to continuously improve supporting processes and procedures to deliver business value</li>
+            <li>intended to help organizations improve the reliability, availability, and scalability of their systems, while also reducing costs and minimizing the risk of disruptions to their operations</li>
+         </ul>
+         <br />
+         <li>Design Principles</li>
+         <ul>
+            <li>Perform operations as code</li>
             <ul>
-               <li>How do we actually build a system that solves a specific problem</li>
-      
+               <li>Apply the same engineering discipline that you use for application code to your entire environment</li>
+               <li>A practice of automating and scripting the tasks involved in operating and maintaining systems and infrastructure through the use of programming or scripting languages, this enables organizations to improve the efficiency, consistency, and reliability of their operations</li>
             </ul>
-            <li>Run workloads</li>
-            <li>Operations</li>
+            <li>Make frequent, small, reversible changes</li>
+            <li>Refine operations procedures frequently</li>
             <ul>
-               <li>How can we ensure these systems are not only operating at all times, but operating correctly</li>
+               <li>Increased agility</li>
+               <li>Reduced risk</li>
+               <li>Improved collaboration</li>
+               <li>Easier testing and validation</li>
             </ul>
-            <li>Processes and Procedures</li>
+            <li>Anticipate failure</li>
             <ul>
-               <li>Constant iteration, constant improvement</li>
+               <li>Risk assessment</li>
+               <li>Regular system monitoring</li>
+               <li>Load testing</li>
+               <li>Regular backups</li>
+               <li>Maintenance and upgrades</li>
+               <li>Incident management</li>
+               <li>Ops as Code</li>
+               <ul>
+                  <li>Refers to the practice of automating and scripting the tasks involved in operating and maintaining systems and infrastructure.</li>
+                  <li>Infrastructure as code (IAC)</li>
+                  <li>Configuration management</li>
+                  <li>CI/CD</li>
+                  <li>Monitoring/Logging</li>
+                  <li>Automated incident response</li>
+               </ul>
+            </ul>
+            <li>Learn from all operational failures</li>
+         </ul>
+         </br>
+         <li>Best Practices #TODO: review</li>
+         <ul>
+            <li>Organization</li>
+            <li>Prepare</li>
+            <li>Operate</li>
+            <li>Evolve</li>
+         </ul>
+      </ul>
+      <br />
+      <div id="organization">
+         <p>
+            <span style="font-size: 18px;">
+            <strong>Organization</strong>
+            </span>
+         </p>
+      </div>
+      <ul>
+         <li>To set the priorities that will enable success, your teams need to have a shared understanding of ..</li>
+         <ul>
+            <li>Your entire workload</li>
+            <li>Their role in it</li>
+            <li>Shared business goals </li>
+         </ul>
+         <li>Best practices</li>
+         <ul>
+            <li>Evaluate external customer needs</li>
+            <li>Involve key stakeholders to determine where to focus efforts on external customer needs</li>
+            <ul>
+               <li>Personal: How have I done this</li>
+               <ul>
+                  <li>Incident Prioritization Framework</li>
+                  <li>Customer Lifetime Value index</li>
+                  <li>Operational infrastructure monitoring</li>
+                  <li>Intelligent Incident Analysis </li>
+               </ul>
+            </ul>
+            <li>Anti patterns</li>
+            <ul>
+               <li>You decided to not have customer support outside of core hours but have not reviewed the data nor understand how it will impact your customers</li>
+               <li>You develop a new feature without engaging customers or stakeholders</li>
             </ul>
          </ul>
       </ul>
-
-      <div id="guiding_principles">
-         <li>Guiding Principles</li>
-      </div>
+      <li>Evaluate internal customer needs</li>
       <ul>
-         <li>Use automation</li>
+         <li>Similar to evaluating external customer needs, ensure you take input from business, development and ops teams when determining where to focus your efforts</li>
          <ul>
-            <li>Use infrastructure as code</li>
+            <li>Personal: How have I done this</li>
             <ul>
-               <li>Limit human error via code review process</li>
-               <li>Version control to track and roll back changes</li>
-               <li>Reusability by implementing templates</li>
+               <li>Escalation process</li>
+               <li>Continued effort to increase visibility to core metrics</li>
             </ul>
-            <li>Automation scripts to run cleanup tasks</li>
          </ul>
-         <li>Frequent, small, reversable changes</li>
+         <li>Anti patterns</li>
          <ul>
-            <li>Always ensure your changes are backwards compatible</li>
-            <li>CI/CD Pipeline</li>
-            <ul> 
-               <li>Strive for an environment where developers have enough confidence in the testing processes, integration tests, functional tests, unit tests to catch all issues </li>
-            </ul>
+            <li>Decide to reallocate your IP addresses without discussing with stakeholders and without knowledge of possible impact</li>
+            <li>Develop a new tool without consulting stakeholders to determine its value</li>
          </ul>
-
-
       </ul>
-
+      <li>Evaluate governance requirements</li>
+      </ul>
+      </ul>
+      </ul>
    </body>
+   undefined
 </html>

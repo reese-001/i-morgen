@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="../styles.css">
+      <title>i morgen</title>
+      <link rel="icon" href="../images/logo.png">
+   </head>
+   <body>
+      <table>
+         <tr>
+            <td><img src="../images/logo.png" class="logo"></td>
+            <td>
+               <h1 style="color:#0B2042;">i morgen</h1>
+            </td>
+         </tr>
+      </table>
+      <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : semantic segmentation</h2>
+      <br/>
+      <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+      <li><a href="#what_is_it">What Is It</a></li>
+      <li><a href="#useful">Usefulness</a></li>
+      <li><a href="#training">Training Data</a></li>
+      <li><a href="#how_is_it_used">How is it used</a></li>
+      <li><a href="#hyperparameters">Hyperparameters</a></li>
+      <li><a href="#instance_types">Instance Types</a></li>
+      <br/>
+      <div id="what_is_it">
+         <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+      </div>
+      <ul>
+         <li>Pixel level object classification</li>
+         <li>Hierarchy with similar technology</li>
+         <ul>
+            <li>Image Classification: Tells you what is in the image</li>
+            <li>Object Detectiopn: Tells you what objects exist in the image and where they are in the image</li>
+            <li>Semantic Segmentation: Tells you what each pixel in the image is part of</li>
+         </ul>
+         <li>Produces a segmentation mask</li>
+      </ul>
+      <br/>
+      <div id="useful">
+         <p><span style="font-size: 18px;"><strong>Usefulness</strong></span></p>
+      </div>
+      <ul>
+         <li>Self driving cars</li>
+         <li>Medical imaging</li>
+         <li>Robot sensing</li>
+      </ul>
+      <div id="traininig">
+         <p><span style="font-size: 18px;"><strong>Training Data</strong></span></p>
+      </div>
+      <ul>
+         <li>JPG images and PNG annotations</li>
+         <li>Can accept augmented manifest image format that enables support for Pipe mode</li>
+         <li>JPEG images accepted for inference</li>
+      </ul>
+      <br/>
+      <div id="how_is_it_used">
+         <p><span style="font-size: 18px;"><strong>How Is It Used</strong></span></p>
+      </div>
+      <ul>
+         <li>Built on <a href="https://mxnet.apache.org/versions/1.9.1/api/python/docs/tutorials/packages/gluon/index.html" target="_blank">MXNet Gluon</a> and <a href="https://cv.gluon.ai/" target="_blank">GluonCV</a></li>
+         <ul>
+            <li>MXNet Gluon</li>
+            <ul>
+               <li>High-level, easy-to-use deep learning API for building, training, and deploying deep learning models</li>
+               <li>Part of the MXNet deep learning framework, which is an open-source deep learning framework that provides a wide range of tools for building and deploying deep learning models</li>
+               <li>Similar to</li>
+               <ul>
+                  <li>TensorFlow</li>
+                  <li>PyTorch</li>
+                  <li>Caffe</li>
+               </ul>
+            </ul>
+            <li>Gluon CV</li>
+            <ul>
+               <li>Computer vision toolkit based on the MXNet deep learning framework.</li>
+               <li>Provides a collection of pre-trained models and pre-written building blocks for computer vision tasks, including object detection, semantic segmentation, instance segmentation, and image classification</li>
+               <li>Similar to</li>
+               <ul>
+                  <li>TensorFlow Object Detection API</li>
+                  <li>TorchVision</li>
+                  <li>OpenCV</li>
+               </ul>
+            </ul>
+         </ul>
+         <li>Choice of 3 algorithms</li>
+         <ul>
+            <li>Fully Convolutional Network (FCN)</li>
+            <li><a href="https://arxiv.org/pdf/1612.01105.pdf" target="_blank">Pyramid Scene Parsing (PSP)</a></li>
+            <li><a href="https://paperswithcode.com/method/deeplabv3#:~:text=DeepLabv3%20is%20a%20semantic%20segmentation,by%20adopting%20multiple%20atrous%20rates." target="_blank">DeepLabV3</a></li>
+         </ul>
+         <li>Choice of backbones</li>
+         <ul>
+            <li>ResNet Models</li>
+            <ul>
+               <li>ResNet (Residual Network) models that were designed to address the vanishing gradient problem in deep CNNs</li>
+               <li>ResNet models address this problem by introducing residual connections between layers that allow gradients to flow more easily through the network.</li>
+               <li>ResNet50: 50 layer CNN</li>
+               <li>Resnet101: 101 layer CNN</li>
+            </ul>
+            <li>Both trainined on ImageNet</li>
+         </ul>
+         <li>Both incremental training or training from scratch supported</li>
+      </ul>
+      <br/>
+      <div id="hyperparameters">
+         <p><span style="font-size: 18px;"><strong>Hyperparameters</strong></span></p>
+      </div>
+      <ul>
+         <li>Epochs</li>
+         <li>Learning Rate</li>
+         <li>Batch size</li>
+         <li>Optimizer, etc</li>
+         <li>Choice of algorithms, as discussed above</li>
+         <li>Choice of backbone, as discussed above</li>
+      </ul>
+      <br/>
+      <div id="instance_types">
+         <p><span style="font-size: 18px;"><strong>Instance Types</strong></span></p>
+      </div>
+      <ul>
+         <li>Training</li>
+         <ul>
+            <li>More restrictive because it is a very intensive </li>
+            <li>You must use GPU nodes (P2 or P3)</li>
+            <li>Supports single machine - cant be parallelized</li>
+         </ul>
+         <li>Inference</li>
+         <ul>
+            <li>CPU (C5 or M5)</li>
+            <li>GPU (P2 or P3</li>
+         </ul>
+      </ul>
+      
+   </body>
+</html>

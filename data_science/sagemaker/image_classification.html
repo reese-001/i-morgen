@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : image classification</h2>
+		<br/>
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What Is It</a></li>
+		<br/>
+
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+		<ul>
+			<li>Background</li>
+			<ul>
+				<li>Similar to object detection, however it does not provide the bounding boxes or additional details</li>
+				<li>Assigns one or more labels to an image</li>
+			</ul>
+			<li>Training Data</li>
+			<ul>
+				<li>Apache MXNet RecordIO</li>
+				<ul>
+					<li>Not Protobuf</li>
+					<li>This ensures interoperability with other deep learning frameworks</li>
+				</ul>
+				<li>Raw jpb/png files</li>
+				<ul>
+					<li>Requires "lst" files to associate the image index with a class label and path to image</li>
+				</ul>
+				<li>Augmented Manifest Image Format</li>
+				<ul>
+					<li>Can be used with Pipe mode</li>
+				</ul>
+				<li>Example of "lst" file</li>
+				<ul>
+					<li>5  1  your_image_directory/train_img_dog1.jpb</li>
+					<li>1000  0  your_image_directory/train_img_cat1.jpb</li>
+					<li>22 1  your_image_directory/train_img_dog2.jpb</li>
+				</ul>
+			</ul>
+			<li>How is it used</li>
+			<ul>
+				<li>Uses ResNet CNN</li>
+				<li>Two modes</li>
+				<ul>
+					<li>Full training mode</li>
+					<ul>
+						<li>Network initialized with random weights</li>
+					</ul>
+					<li>Transfer learning mode</li>
+					<ul>
+						<li>initialized with pre-trained weights</li>
+						<li>The top fully connected layer is initialized with random weights</li>
+						<li>The idea is to wipe out that top layer and recreate it with the new learnings</li>
+					</ul>
+					<li>Default image size is 3 channel 224x224</li>
+				</ul>
+			</ul>
+			<li>Hyperparameters</li>
+			<ul>
+				<li>Batch size, learning rate, optimizer</li>
+				<li>Optimizer-specific parameters</li>
+				<ul>
+					<li>Weight Decay</li>
+					<li>Beta 1</li>
+					<li>Beta 2</li>
+					<li>EPS</li>
+					<li>Gamma</li>
+				</ul>
+			</ul>
+		</ul>
+		<br/>
+
+        
+
+    </body>
+</html>

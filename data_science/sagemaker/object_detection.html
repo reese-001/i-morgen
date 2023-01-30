@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : object detection</h2>
+		<br/>
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What Is It</a></li>
+		<br/>
+		<div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+		<ul>
+			<li>Background</li>
+			<ul>
+				<li>Identify all objects in an image with bounding boxes</li>
+				<li>Detects and calssifies objects with a single deep neural network</li>
+				<li>Classes are accompanied by confidence scores</li>
+				<li>Can train from scratch or use pretrained models based on ImageNet</li>
+			</ul>
+			<li>What kind of training input does it expect</li>
+			<ul>
+				<li>RecordIO or image format (jpg pr png)</li>
+				<li>With an image format, supply a JSON file for annotation data for each image</li>
+				<ul>
+					<li><a href="../../definitions/image_types.html" target="_blank">review image types</a></li>
+				</ul>
+				<li>Must identify where each item of interestg is on the picture and tell Object Detection what it is</li>
+			</ul>
+			<li>How is it used</li>
+			<ul>
+				<li>Takes an image as input and outputs all instances of objects in the image with categories and confidence scores</li>
+				<li>It uses a CNN with <a href="https://towardsdatascience.com/ssd-single-shot-detector-for-object-detection-using-multibox-1818603644ca" target="_blank">Single Shot MultiBox Detector algorithm</a></li>
+				<ul>
+					<li>The base CNN can be <a href="https://www.geeksforgeeks.org/vgg-16-cnn-model/" target="_blank">VGG-16</a> or <a href="https://datagen.tech/guides/computer-vision/resnet-50/#:~:text=ResNet%2D50%20is%20a%2050,networks%20by%20stacking%20residual%20blocks." target="_blank">ResNet-50</a></li>
+				</ul>
+				<li>Allows transfer/incremental learning</li>
+				<li>Uses Flip, rescale, and jitter internally to avoid overfitting</li>
+			</ul>
+			<li>Hyperparameters</li>
+			<ul>
+				<li>mini_batch_size</li>
+				<li>learning_rate</li>
+				<li>Optimizer</li>
+				<ul>
+					<li><a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent" target="_blank">SGD</a></li>
+					<li><a href="https://www.geeksforgeeks.org/intuition-of-adam-optimizer/" target="_blank">Adam</a></li>
+					<li><a href="https://towardsdatascience.com/understanding-rmsprop-faster-neural-network-learning-62e116fcf29a" target="_blank">rmsprop</a></li>
+					<li><a href="https://keras.io/api/optimizers/adadelta/" target="_blank">adadelta</a></li>
+				</ul>
+			</ul>
+			<li>Instance Types</li>
+			<ul>
+				<li>Will benefit from GPU instances</li>
+				<li>Multi GPU/multi CPU</li>
+				<ul>
+					<li>ML.P2-p3</li>
+				</ul>
+				<li>Inference, as always, places low demands on system</li>
+				<ul>
+					<li>C5, M5, P2, P3, etc</li>
+				</ul>
+			</ul>
+		</ul>
+		<br/>
+    </body>
+</html>

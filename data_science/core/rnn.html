@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : rnn</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Recurrent Neural Networks</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#how_do_they_work">How do they work</a></li>
+		<li><a href="#toplogies">Topologies</a></li>
+		<li><a href="#training">Training</a></li>
+
+		<br/>
+
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>Used in time series data</li>
+			<ul>
+				<li>Predict future behavoir based on past behavoir</li>
+				<li>Examples</li>
+				<ul>
+					<li>Web logs</li>
+					<li>Sensor logs</li>
+					<li>Stock trades</li>
+					<li>Where to drive your self driving car based on past trajectories</li>
+				</ul>				
+			</ul>
+			<li>Data that consists of sequences of arbitrary length</li>
+			<ul>
+				<li>Machine translation</li>
+				<li>Image captions</li>
+				<li>Machine generated music</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="how_do_they_work">
+            <p><span style="font-size: 18px;"><strong>How do they work?</strong></span></p>
+		</div>
+		<ul>
+			<li>Each neuron has a hidden state that is updated at each time step based on the input and the previous hidden state</li>
+			<li>This allows the network to capture the dependencies between the inputs over time</li>
+			<li>The hidden state is then used to make predictions for the current time step</li>
+			<li>RNNs can be unrolled through time to visualize their behavior, which makes them easier to understand and debug. <a href="images/rnn.jpg" target="_blank">Graphic</a></li>
+			<li>Over time the feedbacks become more diluted</li>
+		</ul>
+
+		<br/>
+        <div id="topologies">
+            <p><span style="font-size: 18px;"><strong>Topologies</strong></span></p>
+		</div>
+		<ul>
+			<li>There are four different topologies that RNN's can take</li>
+			<ul>
+				<li>Sequence to Sequence</li>
+				<ul>
+					<li>Predict stock prices based on series of historical data</li>
+				</ul>
+				<li>Sequence to vector</li>
+				<ul>
+					<li>Words in a sentence to sentiment</li>
+				</ul>
+				<li>Vector to sequence</li>
+				<ul>
+					<li>Create captions from image</li>
+				</ul>
+				<li>Encoder to Decoder</li>
+				<ul>
+					<li>Sequence -> vector -> sequence</li>
+				</ul>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="training">
+            <p><span style="font-size: 18px;"><strong>Training</strong></span></p>
+		</div>
+		<li>Back propogration through time (BPTT)</li>
+		<ul>
+			<li>BPTT is an extension of the standard backpropagation algorithm used to train feedforward neural networks</li>
+			<li>Must back prop through layers and time -> results in a very deep network</li>
+			<li>This can be controlled by BPTT, which limits back propogration to a limited number of time steps</li>
+		</ul>
+		<li>Responding to vanishing gradient problem in RNN's</li>
+		<ul>
+			<li>Over time, the input from previous time steps in an RNN becomes diluted as it passes through multiple layers, making it difficult for the network to preserve information from the earlier time steps</li>
+			<li>This leads to the gradients computed during backpropagation becoming very small and disappearing, making it difficult for the network to learn from the data and to capture long-term dependencies in the sequence</li>
+			<li>This can be mitaged in two ways</li>
+			<ul>
+				<li>LSTM</li>
+				<ul>
+					<li>Use if you want a network that does not give preferential treatment to more recent time slices</li>
+					<li>Long Short-Term Memory (LSTM) is a type of Recurrent Neural Network (RNN) architecture that is designed to overcome the vanishing gradients problem in traditional RNNs</li>
+					<li>LSTMs have a memory cell that can store information over an extended period of time, allowing the network to capture long-term dependencies in the data</li>
+					<li>LSTMs also have gates that control the flow of information into and out of the memory cell, allowing the network to selectively preserve and discard information as it processes the input sequence</li>
+				</ul>
+				<li>GRU Cells</li>
+				<ul>
+					<li>Implements LSTM-like functionality with less resources. </li>
+					<li>Gated Recurrent Units (GRUs) are a type of Recurrent Neural Network (RNN) architecture that is designed to capture long-term dependencies in sequential data</li>
+					<li>GRUs have two gates, called the update gate and reset gate, which control the flow of information into and out of the hidden state of the network</li>
+				</ul>
+			</ul>
+			<li>Training RNN's is hard. Try to pick up where someone else left off</li>
+		
+		</ul>
+	
+
+
+
+	</body>
+</html>

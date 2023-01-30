@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : xgboost</h2>
+		
+		<br/>
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What Is It</a></li>
+		<br/>
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+		<ul>
+			<li>eXtreme Gradiant Boosting</li>
+			<ul>
+				<li>Boosted group of decision trees. See <a href="../core/bagging_vs_boosting.html" target="_blank">link</a> for more information</li>
+			</ul>
+			<li>Can be used for classification and regression using regression trees</li>
+			<li>XGBoost was not made for Sagemaker in the original implementation, instead AWS started from the open source version of XGBoost that everyone else uses and built on top of that</li>
+			<li>Historically has only accepted CSV or libsvm formatted data as input, but now takes recordIO-protobuf and Paraguet as well</li>
+			<br/>
+			<li>How is it used? </li>
+			<ul>
+				<li>Models are serialized/deserialized with Pickle</li>
+				<li>Can use as a framework within notebooks with Sagemaker.xgboost</li>
+				<li>Or as a built-in Sagemaker algorithm</li>
+			</ul>
+			<br/>
+			<li>Hyperparameters (not inclusive!)</li>
+			<ul>
+				<li>Subsample</li>
+				<ul>
+					<li>Prevents overfitting</li>
+				</ul>
+				<li>Eta</li>
+				<ul>
+					<li>Step size shrinkage, prevents overfitting</li>
+				</ul>
+				<li>Gamma</li>
+				<ul>
+					<li>Gamma</li>
+				</ul>
+				<li>Alpha</li>
+				<ul>
+					<li><a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L1 regularization</a> term; larger = more conservative</li>
+				</ul>
+				<li>Lambda</li>
+				<ul>
+					<li><a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L2 regularization</a> term; larger = more conservative</li>
+				</ul>
+				<li>eval_metric</li>
+				<ul>
+					<li>Focus on accuracy: optimize for error or rmse</li>	
+					<li>Focus on false positives: optimize for AUC</li>
+				</ul>
+				<li>scale_pos_weight</li>
+			</ul>
+
+		</ul>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : object2vec</h2>
+		<br/>
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What Is It</a></li>
+		<br/>
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+		<ul>
+			<li>Used for training object-based embeddings on large datasets</li>
+			<li>Built on top of the open-source library <a href="https://radimrehurek.com/gensim/" target="_blank">Gensim</a></li>
+			<li>It is available as part of the AWS SageMaker platform and uses distributed computing and GPU acceleration to speed up training and make it more efficient</li>
+			<li>Object2Vec can be used for tasks such as item-to-item similarity, item-to-set similarity, and clustering</li>
+			<br/>
+			<li>Can be used for the following</li>
+			<ul>
+				<li>Compute neatest neighbors of objects</li>
+				<li>Visualize clusters</li>
+				<li>Genre prediction</li>
+				<li>Recommendations</li>
+			</ul>
+			<br/>
+			<li>What kind of input does it expect?</li>
+			<ul>
+				<li>Data must be tokenized into integers</li>
+				<li>Training data consists of pairs of tokens and/or sequences of tokens</li>
+				<ul>
+					<li>Sentence-sentence</li>
+					<li>Labels-sequences</li>
+					<li>Customer-customer</li>
+					<li>Product-product</li>
+					<li>User-item</li>
+				</ul>
+			</ul>
+			<br/>
+			<li>How is it used?</li>
+			<ul>
+				<li>Process data into JSON lines and shuffle it</li>
+				<li>Train with two input channels, two encoders, and a comparator</li>
+				<ul>
+					<li>Comparator function takes two input embeddings (vectors) and returns a similarity score between 0 and 1, indicating how similar the two objects are</li>
+				</ul>
+				<li>Encoder choices</li>
+				<ul>
+					<li>Average-pooled enbeddings</li>
+					<li>CNN's</li>
+					<li>Bidirectional LSTM</li>
+				</ul>
+				<li>Comparator is followed by a feed-forward neural network</li>
+			
+			</ul>
+			<br/>
+			<li>Hyperparameters</li>
+			<ul>
+				<li>dropout</li>
+				<li>early stopping</li>
+				<li>epochs</li>
+				<li>learning rate</li>
+				<li>batch size</li>
+				<li>layers</li>
+				<li>activations</li>
+			</ul>
+		</ul>
+		<br/>
+    </body>
+</html>

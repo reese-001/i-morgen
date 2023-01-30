@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : linear learner</h2>
+		<br/>
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What Is It</a></li>
+        <br/>
+
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+        <ul>
+            <li>Linear learner can accomodate both regression and classification predictions</li>
+            <li>Input can be either file or pipped and can be one of the following formats</li>
+            <ul>
+                <li>RecordIO wrapped protobuf (float32 data only)</li>
+                <li>CSV. First column assumed to be the label</li>
+                <li>Hint: If you experience issues training data located in an S3 bucket, consider pipe mode </li>
+            </ul>
+            <br/>
+            <li>How is it used?</li>
+            <ul>
+                <li>Preprocessing</li>
+                <ul>
+                    <li>Training data must be normalized</li>
+                    <ul>
+                        <li>You can do this yourself or Linear Learner can do it</li>
+                    </ul>
+                    <li>Input should be shuffled</li>
+                </ul>
+                <li>Training</li>
+                    <li>Available optimization algorithms</li>
+                    <ul>
+                        <li><a href="https://www.geeksforgeeks.org/intuition-of-adam-optimizer/" target="_blank">Adam</a></li>
+                        <li><a href="https://www.geeksforgeeks.org/intuition-behind-adagrad-optimizer/" target="_blank">AdaGrad</a> </li>
+                        <li><a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent" target="_blank">SGD</a></li>
+                    </ul>
+                    <li>Multiple models trained in parallel</li>
+                    <li>Tune <a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L1/L2</a> regularization</li>
+                    
+                    <li>Validation</li>
+                    <ul>
+                        <li>Most optimal model is selected</li>
+                    </ul>
+                </ul>
+            
+                <br/>
+                <li>Hyperparameters</li>
+                <ul>
+                    <li>Balance_multiclass_weights</li>
+                    <ul>
+                        <li>Gives each class equal importance in loss functions</li>
+                    </ul>
+                    <li>learning_rate, mini_batch_size</li>
+                    <li><a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L1</a>: aka regularization</li>
+                    <li><a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L2</a>: aka weight decay</li>
+                </ul>
+                <br/>
+                <li>For instance types, keep in mind the following two guidelines</li>
+                <ul>
+                    <li>Single or multi-machine CPU or GPU</li>
+                    <li>Multi-GPU on one machine does not help</li>
+                </ul>
+            </ul>
+        </ul>
+    </body>
+</html>

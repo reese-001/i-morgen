@@ -1,102 +1,39 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="../styles.css">
 		<title>i morgen</title>
-		<link rel="icon" href="images/logo.png">
+		<link rel="icon" href="../images/logo.png">
 	</head>
 	<body>
-		<table width="80%">
+		<table>
 			<tr>
-				<td width="5%"><img src="images/logo.png" class="logo"></td>
-				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
-				
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
 			</tr>
 		</table>
-        <h2 style="color:#0A45A5;"><a href="../index.html">home</a>:definitions</h2>
+		
+		<h2 style="color:#0A45A5;"><a href="../index.html">home</a> :  definitions</h2>
+		
+		
 
-
-
-		<table width="80%" class="definitions">
+		<table>
 			<tr>
-				<td style="width: 10%"><h3>Word</h3></td>
-				<td style="width: 90 %"><h3>Defintion</h3></td>
+				<td><strong>Definitions</strong></td>
+				<td>&emsp;&emsp;&emsp;</td>
+				<td><strong></strong></td>
 			</tr>
 			<tr>
-				<td>ACID</td>
-				<td>atomicty consistancy isolation durability</td>
+				<td><a href="concepts.html">concepts.html</a></td>				
 			</tr>
-
 			<tr>
-				<td>Control Plane</td>
-				<td>Responsible for the management and coordination of the system. This includes tasks such as making decisions about how to distribute and process data, monitoring the state of the system, and providing an interface for external management and configuration.</td>
+				<td><a href="definitions.html">general definitions</a></td>
 			</tr>
-
 			<tr>
-				<td>Data Plane</td>
-				<td>Responsible for the actual processing and handling of data. This includes tasks such as receiving, transforming, and forwarding data, as well as enforcing data validation and access control rules.</td>
+				<td><a href="image_types.html">image types</a></td>				
 			</tr>
 			
-			<tr>
-				<td>Race condition</td>
-				<td>a race condition occurs when the program's behavior is determined by which event occurs first</td>
-			</tr>
-			<tr>
-				<td>Certificate Pinning</td>
-				<td>a security measure that involves associating a host with its X509 certificate or public key and storing it locally on the client device. The client can then verify the identity of the host by comparing the stored certificate or public key to the one presented by the host during SSL/TLS negotiation, helping to prevent man-in-the-middle attacks.</td>
-			</tr>
-			<tr>
-				<td>Marshalling Data</td>
-				<td>The process of transforming the memory representation of an object into a data format suitable for storage or transmission. It is typically used when data must be moved between different parts of a computer program or from one program to another.</td>
-			</tr>
-			<tr>
-				<td>POSIX file system</td>
-				<td>File system that is widely used in many different types of computer systems and are known for their stability, reliability, and portability. They are often used in environments where multiple users need to access and share files and resources, and are well suited for use in server systems, networked environments, and other types of distributed systems.</td>
-			</tr>
-			<tr>
-				<td>Stretch goal</td>
-				<td>a goal that is set that is significantly beyond the current expected level of performance or target. It is a goal that is designed to challenge and motivate people to go beyond their current capabilities and achieve something that may initially seem unattainable. Stretch goals are often used in business and other organizations as a way to drive innovation and encourage employees to think creatively and push themselves to achieve more.</td>
-			</tr>
 		</table>
-			 
-		
-		<p><span style="font-size: 18px;"><strong>Concepts</strong></span></p>
-		<ul>
-			<li>Blue/Green Deploymnent</li>
-			<ul>
-				<li>Blue/green deployment is a technique for releasing software updates where two identical environments, referred to as "blue" and "green," are used to deploy the application.</li>
-				<li>During a blue/green deployment, the application is first deployed to the "green" environment, while the "blue" environment continues to serve the live application.</li>
-				<li>After the new version of the application has been deployed and tested in the green environment, traffic is routed to the green environment, and the application in the blue environment is decommissioned</li>
-				<li>There are several ways to do this</li>
-				<ul>
-					<li>Use a load balancer to route traffic between the blue and green environments</li>
-					<li>Use a DNS service to route traffic between the blue and green environments</li>
-					<li>Use blue/green deployment patterns with serverless architectures, such as AWS Lambda, by using aliases or canaries to control traffic to different versions of a function.</li>
-				</ul>
-				<li>What tools does AWS specifically have to facilitate Blue/Green deploys?</li>
-				<ul>
-					<li>CodeDeploy: This is a fully managed deployment service that makes it easy to deploy code to a variety of compute platforms, including Amazon EC2, AWS Lambda, and Amazon ECS. CodeDeploy supports blue/green deployments and allows you to specify the percentage of traffic that should be routed to the new version of the application.</li>
-					<li>Elastic Beanstalk: This is a fully managed service for deploying web applications and services. Elastic Beanstalk supports blue/green deployments and allows you to specify the percentage of traffic that should be routed to the new version of the application.</li>
-					<li>AWS CloudFormation: This is a service that allows you to use templates to create and manage AWS resources. You can use CloudFormation to define the infrastructure for a blue/green deployment, including the resources needed for the blue and green environments, and use the service to automate the process of rolling out updates and rolling back to previous versions if needed.</li>
-					<li>AWS Lambda traffic shifting: This feature allows you to specify the percentage of traffic that should be directed to a new version of a Lambda function. You can use traffic shifting to gradually shift traffic from the old version to the new version, allowing you to test the new version with a small portion of the traffic before directing all traffic to the new version.</li>
-					<li>AWS Lambda Aliases: An alias is a pointer to a specific version of a Lambda function, and you can use aliases to control traffic to different versions of a function. You can use an alias to specify the percentage of traffic that should be directed to a particular version of the function, and you can easily update the alias to point to a different version if needed.</li>
-					<li>AWS Lambda canaries: This is a deployment pattern that allows you to test a new version of a Lambda function by directing a small percentage of traffic to the new version. You can use canaries to validate the new version before directing all traffic to the new version.</li>
-					<li>What are the differences between traffic shifting, aliases and canaries?</li>
-					<ul>
-						<li>Traffic shifting allows you to gradually shift traffic from one version to another, while aliases and canaries allow you to direct a fixed percentage of traffic to a specific version.</li>
-						<li>Traffic shifting is configured at the function level, while aliases and canaries are configured at the alias or canary level.</li>
-						<li>Aliases and canaries are both pointers to specific versions of a function, but aliases are intended to be long-lived and used to represent the current version of the function, while canaries are temporary and used to test new versions of the function.</li>
-					</ul>
-				</ul>
-			</ul>
-	
-		<li>Data Lake</li>
-		<ul>
-			<li>Centralized repository that allows organizations to store and manage large volumes of structured and unstructured data at any scale</li>
-			<li>It is designed to handle data from various sources and in various formats, and enables organizations to store data in its raw, unprocessed form for later access and analysis</li>
-			<li>Data lakes can be accessed using a variety of tools and technologies, and can be integrated with other data management and analysis tools to enable more advanced data processing and analysis</li>
-			<li>Data lakes provide organizations with a scalable and flexible solution for storing and managing large volumes of data, enabling them to derive value from their data more effectively.</li>
-		</ul>
-		</ul>
-        </body> 
+<br/>
+	</body>
 </html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : activation functions</h2>
+		
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#linear">Linear Activation Function</a></li>
+		<li><a href="#binary_step_function">Binary Step function Function</a></li>
+		<li><a href="#nonlinear_activations">Non Linear Activations</a></li>
+		<li><a href="#sigmoid_logistic_tanh">Sigmoid, Logistic, TanH</a></li>
+		<li><a href="#rectified_linear_unit">Rectified Linear Unit (ReLU)</a></li>
+		<li><a href="#softmax">Softmax</a></li>
+		<li><a href="#how_to_choose">How to Choose</a></li>
+		
+		
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>What is it?</li>
+			<ul>
+				<li>Function within a neuron that sums all incoming inputs into that neuron and decides what output to send</li>
+				<li>It helps to introduce non-linearity into the output, which enables the network to be more expressive and able to learn a wider range of patterns</li>
+			</ul>
+			<li>For information on the problems of linear activation functions, see <a href="../../definitions/concepts.html#linear_activation_problems" target="_blank">here</a> </li>
+		</ul>
+
+		<br/>
+		<div id="linear">
+            <p><span style="font-size: 18px;"><strong>Linear Activation Function</strong></span></p>
+		</div>
+		<ul>
+			<li>The most simple of activation functions - it does not really do anything</li>
+			<ul>
+				<li>Because the input is the same as the output, there is no point in having multiple layers</li>
+				<li>Cannot do back propogration</li>
+			</ul>
+			<li>The activation function is expressed as f(x) = x, where x is the input</li>
+			<li>This activation function is typically used in regression problems where the relationship between inputs and outputs is assumed to be linear</li>
+			<li>In neural networks, linear activation functions are typically only used in the final layer of the network, where the goal is to produce a linear output</li>
+		</ul>
+
+		<br/>
+		<div id="binary_step_function">
+            <p><span style="font-size: 18px;"><strong>Binary Step function Function</strong></span></p>
+		</div>
+		<ul>
+			<li>Maps all input values below a specific threshold to 0 and all input values above that threshold to 1. Its either on or off</li>
+			<li>Cant handle multiple classification (hint: its binary)</li>
+			<li>Can be expressed as f(x) = 1 if x >= threshold else 0</li>
+			<li>It is a <a href="../../definitions/definitions.html" target="_blank">piecewise constanct function</a></li>
+			<li>The binary step function is a piecewise constant function that is not differentiable at the threshold, which makes it difficult to optimize the network's parameters through backpropagation and gradient descent</li>
+			<li>Rarely used, but has found application in specialized functions such as optimization of binary neural networks</li>
+			<li>One substantial problem is finding deriviates at the transition point. Somemtimes a small slope is introduced</li>
+		</ul>
+
+		<br/>
+		<div id="nonlinear_activations">
+            <p><span style="font-size: 18px;"><strong>Non Linear Activations</strong></span></p>
+		</div>
+		<ul>
+			<li>These create complex mappings between the input and output</li>
+			<li>Allow backpropagation due to them having useful derivatives</li>
+			<li>Allow for multiple layers</li>
+
+		</ul>
+
+		<br/>
+		<div id="sigmoid_logistic_tanh">
+            <p><span style="font-size: 18px;"><strong>Sigmoid, Logistic, TanH</strong></span></p>
+		</div>
+		<ul>
+			<li>General charactoristics</li>
+			<ul>
+				<li>Smooth</li>
+				<li>Scales everything from 0 to 1 for sigmoid/logistic and -1 to 1 for tanh/hyperbolic</li>
+				<li>Computationally expensive</li>
+				<li>Suffers from <a href="../../definitions/concepts.html#vanishing_gradient" target="_blank">vanishing gradient</a>
+			</ul>
+			<li>Sigmoid/Logistic</li>
+			<ul>
+				<li>Charactoristics</li>
+				<ul>
+					<li>Output range: 0 -> 1</li>
+					<li>Center of activation: .5 - this implies that inputs close to 0 will products outputs close to .5</li>
+				</ul>
+				<li>Often used for binary classification problems as its output is always between 0 and 1</li>
+				<li><a href="images/sigmoid_function.jpg">Graphic</a></li></li>
+			</ul>
+			<li>TanH/Hyperbolic</li>
+			<ul>
+				<li>Charactoristics</li>
+				<ul>
+					<li>Ouput range: -1 -> 1</li>
+					<li>Center of activation: 0 - inputs close to 0 will products outputs close to 0</li>
+				</ul>
+				<li>Used for regression problems</li>
+				<li>Can handle more complex non-linear relationships in the data due to its centered output range</li>
+				<li><a href="images/tanh.jpg" target="_blank">Graphic</a></li>
+			</ul>			
+		</ul>
+
+		<br/>
+		<div id="rectified_linear_unit">
+            <p><span style="font-size: 18px;"><strong>Rectified Linear Unit (ReLU)</strong></span></p>
+		</div>
+		<ul>
+			<li>Can be expressed as f(x) = max(0, x)</li>
+			<li>Maps all negative input values to 0 and all positive input values to themselves</li>
+			<li>Results in a <a href="../../definitions/concepts.html#linear_activation_problems" target="_blank">piecewise constanct function</a> that is differentiable everywhere except at 0, where it has a slope of 0</li>
+			<li><a href="images/relu_function.jpg" target="_blank">Graphic</a></li>
+			<li>Benefits</li>
+			<ul>
+				<li>Simplicity</li>
+				<ul>
+					<li>The ReLU activation function is very simple to compute and can be implemented with just a few lines of code</li>
+				</ul>
+				<li>Computational efficiency</li>
+				<ul>
+					<li>T2he ReLU activation function is computationally efficient, as it requires only a simple comparison and max operation to compute its output</li>
+				</ul>
+				<li><a href="../../definitions/concepts.html#linear_activation_problems" target="_blank">Non-Linearity</a></li>
+				<ul>
+					<li>The ReLU activation function introduces non-linearity into the output of each node, allowing the neural network to model complex relationships between inputs and outputs</li>
+				</ul>
+				<li><a href="../../definitions/concepts.html#sparsity" target="_blank">Sparsity</a></li>
+				<ul>
+					<li>The ReLU activation function can result in sparse representations, as many of its outputs will be 0, reducing the number of active nodes in the network and making the model more efficient.</li>
+				</ul>
+				<li>Dying ReLU problem</li>
+				<ul>
+					<li>Once the weight goes to a negative number, it sets to zero and will remain at zero</li>
+					<li>As a result, the activation function effectively stops learning and contributes nothing to the network's overall prediction, resulting in a "dead" or "dying" ReLU</li>
+					<li>Addressed by the following</li>
+					<ul>
+						<li>Initialize the weights with small, random values</li>
+						<li>Use a smaller learning rate</li>
+						<li>Consider the <a href="images/leaky_relu.jpg" target="_blank">Leaky ReLU or Parametric ReLU where the negative slope is learned </a></li>
+					</ul>
+				</ul>
+				<li>Other ReLU varients</li>
+				<ul>
+					<li>Exponential ReLU: Exponential function on negative side</li>
+					<li>Swish</li>
+					<ul>
+						<li>Benefits seen with very deep networks (40+ layers)</li>
+						<li>Developed by Google</li>
+					</ul>
+					<li>Maxout: outputs the max of the inputs</li>
+				</ul>
+			</ul>
+			
+		</ul>
+
+		<br/>
+		<div id="softmax">
+            <p><span style="font-size: 18px;"><strong>Softmax</strong></span></p>
+		</div>
+		<ul>
+			<li>Often used on the final ouput layer of a multiple classification problem</li>
+			<li>Converts outputs to probabilities of each classification</li>
+			<li>Can't produce more then one label for something (as opposed to sigmoid)</li>
+		</ul>
+
+		<br/>
+		<div id="how_to_choose">
+            <p><span style="font-size: 18px;"><strong>How to Choose</strong></span></p>
+		</div>
+		<ul>
+			<li>Multiple classification: softmax</li>
+			<li>RNN: Tanh</li>
+			<li>Everything else</li>
+			<ul>
+				<li>Start with ReLU</li>
+				<li>If you need better, move to leaky ReLU</li>
+				<li>Last resort: PReLU, Maxout</li>
+				<li>Deep network: Swish</li>
+			</ul>
+		</ul>
+	</body>
+</html>
