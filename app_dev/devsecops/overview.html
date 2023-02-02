@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">app dev</a> : <a href="index.html">devsecops</a> : overview</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Overview</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#definitions">Definitions</a></li>
+		
+		
+
+		<br/>
+
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>DevSecOps is a practice that integrates security considerations into the software development life cycle (SDLC) and the operations of an organization</li>
+			<li>It aims to bridge the gap between development, security, and operations teams, by promoting collaboration, communication, and automation of security activities throughout the entire SDLC</li>
+			<li>Expands upon the principles of Devops by shifting security considerations and testing to the left with the goal of identifying vulnerabilities early in the SDLC cycle - and prior to deployment</li>
+			<li>Key focus areas</li>
+			<ul>
+				<li>Automating Security</li>
+				<ul>
+					<li>Pipeline based security</li>
+					<ul>
+						<li>Pre commit hooks</li>
+						<ul>
+							<li>Scripts that are executed prior to a GIT commit</li>
+							<li>Used to enforce certain rules or checks on the code being committed</li>
+							<li>In the context of IT application security, pre-commit hooks can be used to</li>
+							<ul> 
+								<li>Validate code for security vulnerabilities</li>
+								<li>Format code to meet security standards</li>
+								<li>Ensure the code is in compliance</li>
+							</ul>
+						</ul>
+						<li>Source composition analysis (SCA)</li>
+						<ul>
+							<li>Analyzes the components and dependencies of an appplication to identify known vulnerabilities and potential security risks</li>
+							<li>Typically involves scanning source code and metadata to identify included packages and compares them to databases of known vulnerabilities</li>
+							<li>Helps identify issues early in the process</li>
+							<li>Products include</li>
+							<ul>
+								<li>Sonatype Nexus</li>
+								<ul>
+									<li>Through component analysis, it provides insights into the security, quality, and licensing of components</li>
+								</ul>
+								<li>Black Duck Hub</li>
+								<ul>
+									<li>Provides component inventory management, vulnerability management, policy management and pipeline integration  </li>
+								</ul>
+								<li>Snyk</li>
+								<ul>
+									<li>Provides vulnerability management, continuous monitoring, community vulnerability database and pipeline integration</li>
+								</ul>
+								<li>Trufflehog</li>
+								<ul>
+									<li>Can scan a Git repository and find secrets (e.g., API keys, passwords, etc.) that were accidentally committed to the repository</li>
+								</ul>
+							</ul>
+						</ul>
+						<li>Static App Security Testing (SAST) (Dependency-Check, Requires.IO, Retire.js)</li>
+						<ul>
+							<li>Analyzes source code of an application for potential vulnerabilities without executing</li>
+							<li>Looks for patterns and anomalies that indicate vulnerabilities such as</li>
+							<ul>
+								<li>Missing input validations</li>
+								<li>Hard coded passwords</li>
+								<li>Buffer overflows</li>
+							</ul>
+							<li>Products include</li>
+							<ul>
+								<li>SonarQube</li>
+								<li>Checkmarx</li>
+								<li>Veracode Static Analysis</li>
+								<li>Snyk</li>
+							</ul>
+						</ul>
+
+						<li>Dynamic Security Testing (DAST)</li>
+						<ul>
+							<li>Similar to SAST, except it anaylzes the executing of an application</li>
+							<li>Does this by sending various inputs and observing output</li>
+							<li>Goal is to identify security risks that may not be observable through SAST</li>
+							<ul>
+								<li>Cross site scripting (XSS) <a href="../../definitions/security_vulnerabilities.html#xss" target="_blank">link</a></li>
+								<li>Cross site request forgery (CSRF) <a href="../../definitions/security_vulnerabilities.html#csrf" target="_blank">link</a></li>
+								<li>SQL Injection attacks <a href="../../definitions/security_vulnerabilities.html#sql" target="_blank">link</a></li>
+							</ul>
+							<li>Products include</li>
+							<ul>
+								<li>Acunetix</li>
+								<li>AppScan</li>
+								<li>Checkmarx</li>
+							</ul>
+						</ul>
+
+					</ul>
+				</ul>
+			</ul>
+		</ul>
+
+		<div id="definitions">
+            <p><span style="font-size: 18px;"><strong>Definitions</strong></span></p>
+		</div>
+		<ul>
+			<li>Vulnerability</li>
+			<ul>
+				<li>Weakness in software or hardware that can be exploited by attackers to cause harm.</li>
+			</ul>
+			<li>Expliot</li>
+			<ul>
+				<li>Piece of code or technique that takes advantage of a vulnerability to carry out an attack.</li>
+			</ul>
+			<li>Threat</li>
+			<ul>
+				<li>Potential danger that can cause harm to an organization or system. A threat can be made up of one or more exploits that target known vulnerabilities.</li>
+			</ul>
+		</ul>
+	
+
+
+
+
+	</body>
+</html>

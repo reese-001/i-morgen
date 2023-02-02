@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../index.html">home</a> : <a href="index.html">definitions</a> : security vulnerabilities</h2>
+
+		<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+		<li><a href="#xss">Cross Site Scripting (XSS)</a></li>
+		<li><a href="#csrf">Cross Site Request Forgery (CSRF)</a></li>
+		<li><a href="#sql">Sql Injection Attacks</a></li>
+
+
+
+		<br/>
+		<div id="xss">
+            <p><span style="font-size: 18px;"><strong>Cross Site Scripting (XSS)</strong></span></p>
+		</div>
+		<ul>
+			<li>Type of security vulnerability that allows an attacker to inject malicious code into a web page viewed by other users</li>
+			<li>The injected code can steal sensitive information such as passwords, or perform actions on behalf of the victim, such as making unauthorized purchases</li>
+			<li>XSS can occur when a web application does not properly validate user input and includes it in the generated web page without proper encoding or filtering</li>
+			<li>Example</li>
+			<ul>
+				<li>In comments section, place a script block with a src tag that points to a Browser Exploitation Framework Project (BeEF) url</li>
+				<li>Log into BeEF and view open connections to that web site</li>
+				<li>Push login requests to a specific user</li>
+				<ul>
+					<li>For example, Facebook or Google</li>
+					<li>User will be prompted to login to that web site and BeEF will share the password with you</li>
+				</ul>
+			</ul>
+			<li>References</li>
+			<ul>
+				<li><a href="https://www.youtube.com/watch?v=PPzn4K2ZjfY" target="_blank">Cross-Site Scripting (XSS) Explained And Demonstrated By A Pro Hacker!</a>
+			</ul>
+		</ul>
+
+		<br/>
+		<div id="xss">
+            <p><span style="font-size: 18px;"><strong>Cross Site Request Forgery (CSRF)</strong></span></p>
+		</div>
+		<ul>
+			<li>References</li>
+			<ul>
+				<li><a href="https://www.youtube.com/watch?v=V03_7CphtHE" target="_blank">Cross-Site Request Forgery (CSRF) Explained And Demonstrated By A Pro Hacker!</a></li>
+			</ul>
+		</ul>
+
+		<br/>
+		<div id="sql">
+            <p><span style="font-size: 18px;"><strong>Sql Injection Attacks</strong></span></p>
+		</div>
+		<ul>
+			<li>References</li>
+			<ul>
+				<li><a href="https://www.youtube.com/watch?v=cx6Xs3F_1Uc" target="_blank">SQL Injection For Beginners</a></li>
+				<li><a href="https://www.youtube.com/watch?v=2OPVViV-GQk" target="_blank">SQL Injections are scary!! (hacking tutorial for beginners)</a></li>
+			</ul>
+		</ul>
+
+
+
+    </body> 
+</html>
