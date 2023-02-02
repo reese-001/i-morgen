@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">app dev</a> : <a href="index.html">data structures</a> : big o</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Big O</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#example">Example</a></li>
+		asymptotic
+
+
+		<br/>
+
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>For time complexity, we measure the complexity of the function with respect to the input</li>
+			<li>This analysis is known as asymptotic analysis, which means we analyze the time a function takes to complete as the input tends towards infinity</li>
+		</ul>
+
+		<br/>
+
+        <div id="example">
+            <p><span style="font-size: 18px;"><strong>Example</strong></span></p>
+		</div>
+		<ul>
+			<li>Assume a = [] and consider three different functions operating on list a</li>
+			<ul>
+				<li>f1(a) => 1 + a[0]</li>
+				<li>f2(a) => sum(a)</li>
+				<li>f3(a) => pair(a)</li>
+			</ul>
+			<li>If len(a) == 1</li>
+			<ul>
+				<li>All three functions will complete basically instantly</li>
+			</ul>
+			<li>If len(a) == 10000</li>
+			<ul>
+				<li>f1(a) will still complete basically instantly</li>
+				<li>f2(a) will still complete basically instantly</li>
+				<li>f3(a) may take a few seconds</li>
+			</ul>
+			<li>If len(a) == 100000000</li>
+			<ul>
+				<li>f1(a) will still complete basically instantly</li>
+				<li>f2(a) may take a few seconds</li>
+				<li>f3(a) would not complete</li>
+			</ul>
+			<li>How can we summarize this?</li>
+			<ul>
+				<li>It does not make sense to assign time values since it is dependent on the size of the varibale</li>
+				<li>We can say however that f2 and f3 are sensitive to the size of the array whereas f1 is not</li>
+				<li>The measure of complexity is not just a measure of speed, but a measure of speed with respect to the size of the input increases</li>
+				<li>f1 = O(1)</li>
+				<ul>
+					<li>Known as constant time. The speed of f1 is independent of the size of the input</li>
+				</ul>
+				<li>f2 = O(N) </li>
+				<ul>
+					<li>Known as linear time. As the size of the input grows, the time to complete the function scales linearly</li>
+				</ul>
+				<li>f3 = O(N^2) </li>
+				<ul>
+					<li>Known as exponential time. For each number in the array, we retraverse the entire array </li>
+				</ul>
+			</ul>
+			
+		</ul>
+	
+
+
+
+	</body>
+</html>
