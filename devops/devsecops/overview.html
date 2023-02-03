@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> : <a href="index.html">devsecops</a> : overview</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Overview</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#importance">Importance</a></li>
+		<li><a href="#general_guidance">General Guidance</a></li>
+		
+		
+
+		<br/>
+
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>DevSecOps is a practice that integrates security considerations into the software development life cycle (SDLC) and the operations of an organization</li>
+			<li>It aims to bridge the gap between development, security, and operations teams, by promoting collaboration, communication, and automation of security activities throughout the entire SDLC</li>
+			<li>Expands upon the principles of Devops by shifting security considerations and testing to the left with the goal of identifying vulnerabilities early in the SDLC cycle - and prior to deployment</li>
+			<li>Key focus areas</li>
+			<ul>
+				<li>Automating Security</li>
+				<ul>
+					<li>Pipeline based security</li>
+					<ul>
+						<li>Pre commit hooks</li>
+						<ul>
+							<li>Scripts that are executed prior to a GIT commit</li>
+							<li>Used to enforce certain rules or checks on the code being committed</li>
+							<li>In the context of IT application security, pre-commit hooks can be used to</li>
+							<ul> 
+								<li>Validate code for security vulnerabilities</li>
+								<li>Format code to meet security standards</li>
+								<li>Ensure the code is in compliance</li>
+							</ul>
+						</ul>
+						<li>Source composition analysis (SCA)</li>
+						<ul>
+							<li>Analyzes the components and dependencies of an appplication to identify known vulnerabilities and potential security risks</li>
+							<li>Typically involves scanning source code and metadata to identify included packages and compares them to databases of known vulnerabilities</li>
+							<li>Helps identify issues early in the process</li>
+							<li>Products include</li>
+							<ul>
+								<li>Sonatype Nexus</li>
+								<ul>
+									<li>Through component analysis, it provides insights into the security, quality, and licensing of components</li>
+								</ul>
+								<li>Black Duck Hub</li>
+								<ul>
+									<li>Provides component inventory management, vulnerability management, policy management and pipeline integration  </li>
+								</ul>
+								<li>Snyk</li>
+								<ul>
+									<li>Provides vulnerability management, continuous monitoring, community vulnerability database and pipeline integration</li>
+								</ul>
+								<li>Trufflehog</li>
+								<ul>
+									<li>Can scan a Git repository and find secrets (e.g., API keys, passwords, etc.) that were accidentally committed to the repository</li>
+								</ul>
+							</ul>
+						</ul>
+						<li>Static App Security Testing (SAST) (Dependency-Check, Requires.IO, Retire.js)</li>
+						<ul>
+							<li>Executes white box testing post check in</li>
+							<li>Analyzes source code of an application for potential vulnerabilities without executing</li>
+							<li>Application does not need to be complete or to be functional. </li>
+							<li>Looks for patterns and anomalies that indicate vulnerabilities such as</li>
+							<ul>
+								<li>Missing input validations</li>
+								<li>Hard coded passwords</li>
+								<li>Buffer overflows</li>
+								
+							</ul>
+							<li>Products include</li>
+							<ul>
+								<li>SonarQube</li>
+								<li>Checkmarx</li>
+								<li>Veracode Static Analysis</li>
+								<li>Snyk</li>
+							</ul>
+						</ul>
+
+						<li>Dynamic Application Scanning Tools (DAST)</li>
+						<ul>
+							<li>Similar to SAST, except it anaylzes the executing of an application and has no access to source code</li>
+							<li>Occurs post code build and often takes place in an isolated code sandbox</li>
+							<li>Does this by sending various inputs and observing output</li>
+							<li>What does DAST do?</li>
+							<ul>
+								<li>Correct logging</li>
+								<li>Access controls</li>
+								<li>Specific vulnerabilities</li>
+								<ul>
+									<li>Cross site scripting (XSS) <a href="../../definitions/security_vulnerabilities.html#xss" target="_blank">link</a></li>
+									<li>Cross site request forgery (CSRF) <a href="../../definitions/security_vulnerabilities.html#csrf" target="_blank">link</a></li>
+									<li>SQL Injection attacks <a href="../../definitions/security_vulnerabilities.html#sql" target="_blank">link</a></li>
+								</ul>
+							</ul>
+							
+							<li>Products include</li>
+							<ul>
+								<li>Acunetix</li>
+								<li>AppScan</li>
+								<li>Checkmarx</li>
+							</ul>
+						</ul>
+						<li>Security in Production</li>
+						<ul>
+							<li>Automated patching</li>
+							<li>Configuration management</li>
+						</ul>
+					</ul>
+				</ul>
+			</ul>
+		</ul>
+
+		<br/>
+
+        <div id="importance">
+            <p><span style="font-size: 18px;"><strong>Importance</strong></span></p>
+		</div>
+		<ul>
+			<li>The risk profile of your project extends beyond the code you write</li>
+			<ul>
+				<li>Typically 10% to 20%  of code is custom code</li>
+				<li>The remainder is open source code and libraries, which in turn often import other libraries</li>
+				<li>Containers and IaC are other large sources of vulnerabilities</li> 
+			</ul>
+			<li>Security teams provide expertise and tooling to increase developer autonomy while still providing a level of oversight</li>
+			<li>Six benefits Sec brings to DevOps</li>
+			<ul>
+				<li>Faster delivery</li>
+				<ul>
+					<li>Speed of delivery is improved when security is integrated into the pipeline</li>
+					<li>Defects and vulnerabilities are fixed before going into production</li>
+				</ul>
+				<li>Improved security posture</li>
+				<ul>
+					<li>A shared responsibility model ensures security is tightly integrated</li>
+				</ul>
+				<li>Reduced costs</li>
+				<ul>
+					<li>Identifying vulnerabilities before going to production reduces overall costs </li>
+				</ul>
+				<li>Enhancing the value of devops</li>
+				<ul>
+					<li>Improving the overall security posture as a result of collaboration between development and security</li>
+				</ul>
+				<li>Improving security integration and pace</li>
+				<ul>
+					<li>Costs are reduced by eliminating the need to retrofit security controls post development</li>
+				</ul>
+				<li>Enabling greater overall business success</li>
+				<ul>
+					<li>Greater trust in the ability to bring new technologies online increases the speed and efficiency of doing business</li>
+				</ul>
+			</ul>
+			
+		</ul>
+
+
+		<div id="general_guidance">
+            <p><span style="font-size: 18px;"><strong>General Guidance</strong></span></p>
+		</div>
+		<ul>
+			<li>Minimize footprint</li>
+			<ul>
+				<li>Dont give hackers more tools to expand their exploits</li>
+				<li>Choose the slimest container</li>
+			</ul>
+			<li>Layer housekeeping</li>
+			<ul>
+				<li>Understand how layers work at build and run time</li>
+			</ul>
+			<li>Build strategies</li>
+			<ul>
+				<li>Multi-stage, repeatable builds, standardized labeling, alternative tools</li>
+			</ul>
+			<li>Secure supply chain</li>
+			<ul>
+				<li>Understand your chain of custody for libraries</li>
+			</ul>
+			<li>Dont run as root</li>
+			<li>Do not use privledged containers</li>
+			<li>Drop capabilities you dont need</li>
+			<li>Read only root filesystem</li>
+			<li>Deploy from known sources</li>
+		</ul>>
+	
+
+
+
+
+	</body>
+</html>
