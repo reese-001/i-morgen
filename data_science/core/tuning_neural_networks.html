@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : tuning neural networks</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Tuning Neural Networks</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#learning_rate">Learning Rate</a></li>
+		<li><a href="#batch_size">Batch Size</a></li>
+		
+
+
+		<br/>
+        <div id="learning_rate">
+            <p><span style="font-size: 18px;"><strong>Learning Rate</strong></span></p>
+		</div>
+		<ul>
+			<li>Neural networks are typically training by gradient descent</li>
+			<li>We start with random weights in our network and try to reduce the cost function over a number of epochs</li>
+			<li>Learning rate is how far the model can go in trying to reduce the cost function</li>
+			<li>If viewed on a 2D graph, it would be points that ideally would converge on the lowest point</li>
+			<li>Consequences of each approach</li>
+			<ul>
+				<li>Smaller LR = higher training time</li>
+				<li>Higher LR = possibility of overshooting the correct solution</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="batch_size">
+            <p><span style="font-size: 18px;"><strong>Batch Size</strong></span></p>
+		</div>
+		<ul>
+			<li>Defines how many training samples are used within each batch of each epoch</li>
+			<li>This is relevant to being able to avoid becoming stuck in local minima</li>
+			<ul>
+				<li>Smaller batch sizes provide more 'wiggle' and thus are more effective at avoiding becoming trapped in local minima </li>
+				<li>Consequently, larger batch sizes can become stuck and land on the wrong solution</li>
+			</ul>
+			<li>Random shuffling at each epoch can make this look inconsistent from run to run</li>
+			<ul>
+				<li>Some runs you may get stuck in local minima and other runs you will not</li>
+			</ul>
+		</ul>
+
+	</body>
+</html>

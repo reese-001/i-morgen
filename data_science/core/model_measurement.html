@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : model measurement</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Model Measurement</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+       
+		<li><a href="#recall">Recall</a></li>
+		<li><a href="#precision">Precision</a></li>
+		<li><a href="#specificity">Specificity</a></li>
+		<li><a href="#f1">F1</a></li>
+		<li><a href="#rmse">RMSE (Root Mean Squared Error)</a></li>
+		<li><a href="#roc_curve">ROC Curve</a></li>
+		
+
+		<br/>
+        <div id="recall">
+            <p><span style="font-size: 18px;"><strong>Recall</strong></span></p>
+		</div>
+		<ul>
+			<li>True Positives / (True Positives + False Negatives)</li>
+			<li>Shows the percent of positives rightly predicted</li>
+			<li>Good choice when you care about false negatives</li>
+			<ul>
+				<li>For example, fraud detection</li>
+			</ul>
+			<li>Also known by the following names</li>
+			<ul>
+				<li>Sensitivity</li>
+				<li>True positive rate</li>
+				<li>Completeness</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="precision">
+            <p><span style="font-size: 18px;"><strong>Precision</strong></span></p>
+		</div>
+		<ul>
+			<li>True Positive / (True Positive + False Positive)</li>
+			<li>Shows the measure of relevancy</li>
+			<li>Good choice when you care about false postiives</li>
+			<ul>
+				<li>For example, medical screening and drug testing</li>
+			</ul>
+			<li>Also known by the following names</li>
+			<ul>
+				<li>Correct positives</li>
+				<li>Percent of relevant reuslts</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="specificity">
+            <p><span style="font-size: 18px;"><strong>Specificity</strong></span></p>
+		</div>
+		<ul>
+			<li>True Negative / (True Negative + False Positive)</li>
+			<li>Also known by the following names</li>
+			<ul>
+				<li>True negative rate</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="f1">
+            <p><span style="font-size: 18px;"><strong>F1</strong></span></p>
+		</div>
+		<ul>
+			<li>Represented by the following two equations (they are the same)</li>
+			<ul>
+				<li>2 * True Positive / (2 * True Positive + False Postivie + False Negative)</li>
+				<li>2 * ((Precision * Recall)/(Precision + Recall))</li>
+			</ul>
+			<li>Good choice when you care about precision and recall</li>
+			<li>Also known by the following names</li>
+			<ul>
+				<li>Harmonic mean of precision and sensitivity</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="rmse">
+            <p><span style="font-size: 18px;"><strong>RMSE (Root Mean Squared Error)</strong></span></p>
+		</div>
+		<ul>
+			<li>Sum all the squared errors for each prediction from its actual true value and take the square root</li>
+			<li>Measures accuracy</li>
+		</ul>
+
+		<br/>
+        <div id="roc_curve">
+            <p><span style="font-size: 18px;"><strong>ROC Curve</strong></span></p>
+		</div>
+		<ul>
+			<li>Receiver Operating Characteristic Curve (ROC Curve)</li>
+			<li>Plot of true positive rate (recall) vs false positive rate at various threshold settings</li>
+			<li>Points above the diagonal represent good classification</li>
+			<li>The idea curve would be a point in the upper left corner</li>
+			<li>The more it is bent towards the upper left, the better</li>
+			<li><a href="images/roc_curve.jpg" target="_blank">Graphic</a></li>
+			<li>Area Under the Curve (AUC)</li>
+			<ul>
+				<li>Equal to the probability that a classifer will rank a randomly chosen positive instance higher than a randomly chose negative one</li>
+				<li>ROC AUC of .5 is a useless classifer</li>
+				<li>ROC AUG of 1 is a perfect classifier</li>
+			</ul>
+		</ul>
+
+
+
+	</body>
+</html>

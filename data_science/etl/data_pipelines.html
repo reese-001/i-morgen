@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : data pipelines</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Data Pipelines</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#pipeline_vs_glue">AWS Pipeline vs Glue</a></li>
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+            <li>Data pipelines manage task dependencies - an orchestrator</li>
+            <li>The ETL occurs within the EC2 instances managed by the Data Pipeline, not the pipeline itself </li>
+            <li>Retries are available and notifications will occur when required</li>
+            <li>Data sources may be on-prem</li>
+            <li>Highly available</li>
+			<li>Destinations include</li>
+            <ul>
+                <li><a href="../../aws/s3/s3.html" target="_blank">S3</a></li>
+                <li><a href="../../aws/rds/rds.html" target="_blank">RDS</a></li>
+                <li><a href="../../aws/dynamo_db/dynamo_db.html" target="_blank">DynamoDB</a></li>
+                <li><a href="redshift.html" target="_blank">Redshift</a></li>
+                <li><a href="" target="_blank">EMR</a></li>
+            </ul>
+		
+		</ul>
+
+        <br/>
+        <div id="example">
+            <p><span style="font-size: 18px;"><strong>Example</strong></span></p>
+		</div>
+        <ul>
+            <li>Assume you have a data set that resides in RDS and you want to perform machine learning on this dataset</li>
+            <li>In order to use Sagemaker, this dataset must reside within an S3 bucket</li>
+            <li>This task requires a data pipeline</li>
+            <li>The pipeline will create an EC2 instance and orchestrate the migration of data from RDS to S3 to Sagemaker</li>
+            <li>The same process can easily expand to accomodate DynamoDB</li>
+        </ul>
+	
+        <br/>
+        <div id="pipeline_vs_glue">
+            <p><span style="font-size: 18px;"><strong>AWS Pipeline vs Glue</strong></span></p>
+		</div>
+        <ul>
+            <li>Glue</li>
+            <ul>
+                <li>Runs Apache Spark code, Scala or Python - focused on the ETL</li>
+                <li>Do not worry about configuration or managing the resource</li>
+                <li>Data catalog to make the data available to <a href="" target="_blank">Athena</a> or <a href="" target="_blank">Redshift Spectrum</a></li>
+            </ul>
+            <li>Data Pipeline</li>
+            <ul>
+                <li>Orchestrator service</li>
+                <li>More control over the environment, compute resources that run your code, and your actual code</li>
+                <li>Allows access to the underlying EC2 or EMR instances</li>
+            </ul>
+        </ul>
+
+
+	</body>
+</html>

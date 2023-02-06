@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : regularization techniques</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Regularization Techniques</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#dropout">Dropout</a></li>
+		<li><a href="#early_stopping">Early Stopping</a></li>
+		<li><a href="#l1">L1</a></li>
+		<li><a href="#l2">L2</a></li>
+
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>Used to prevent overfitting</li>
+			<ul>
+				<li>Overfitting occurs when a model is too complex for the training data and ends up fitting the noise in the data instead of the underlying relationship</li>
+				<li>Regularization adds a penalty term to the loss function to discourage the model from assigning too much importance to any one feature</li>
+				<li>Models that are good when measured against the training data but not as good when seeing new data such as testing/validation data</li>
+				</ul>	
+				<li>Common examples of penalty terms include</li>
+				<ul>
+					<li>Use fewer neurons and/or layers</li>
+					<li>Dropout</li>
+					<li>Early stopping</li>
+					<li>L1</li>
+					<li>L2</li>
+				</ul>
+		</ul>
+
+		<br/>
+        <div id="dropout">
+            <p><span style="font-size: 18px;"><strong>Dropout</strong></span></p>
+		</div>
+		<ul>
+			<li>Randomly dropping out (i.e. setting to zero) a fraction of the activations in the hidden layers during each forward pass</li>
+			<li>Prevents nay single node in the network from becoming overly influential</li>
+			<li>Can be seen as a form of "model averaging"</li>
+			<ul>
+				<li>Different models with different activations are used during each forward pass</li>
+			</ul>
+			<li>Specifically useful in CNN's where dropout rates can be as high as 50%</li>
+		</ul>
+
+		<br/>
+        <div id="early_stopping">
+            <p><span style="font-size: 18px;"><strong>Early Stopping</strong></span></p>
+		</div>
+		<ul>
+			<li>Works by monitoring the performance of a model on a validation set during training and stopping the training process when the performance on the validation set has not improved for a specified number of iterations</li>
+			<li>This provides a way to control overfitting without adding additional regularization terms to the loss function or increasing the size of the training set</li>
+		</ul>
+
+		<br/>
+        <div id="l1">
+            <p><span style="font-size: 18px;"><strong>L1</strong></span></p>
+		</div>
+		<ul>
+			<li>Also known as "Lasso regularization"</li>
+			<li>Sum of weights</li>
+			<li>Charactoristics</li>
+			<ul>
+				<li>Performs feature selection due to its tendency to force entire features to go to zero</li>
+				<li>Computationally inefficient</li>
+				<li>Often results in spare output</li>
+			</ul>
+			<li>Feature selection is sometimes preferable</li>
+			<ul>
+				<li>If you suspect some of your features may not matter, L1 may work better </li>
+			</ul>
+		
+		</ul>
+
+		<br/>
+        <div id="l2">
+            <p><span style="font-size: 18px;"><strong>L2</strong></span></p>
+		</div>
+		<ul>
+			<li>Also known as "Ridge regularization"</li>
+			<li>Sum of the square of the weights</li>
+			<li>Charactoristics</li>
+			<ul>
+				<li>All features remain, they are just weighted differently</li>
+				<li>Computationally efficient</li>
+				<li>Results in dense output</li>
+			</ul>
+			<li>If you feel all features are important, L2 is the right path to take</li>
+		</ul>
+		
+	</body>
+</html>

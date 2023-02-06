@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : deep ar</h2>
+
+		<p><span style="font-size: 20px;"><strong>Deep AR</strong></span></p>
+
+		<br/>
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What Is It</a></li>
+		<li><a href="#input">Input</a></li>
+		<li><a href="#how_is_it_used">How Is It Used</a></li>
+		<li><a href="#hyperparameters">Hyperparameters</a></li>
+		<li><a href="#instance_types">Instance Types</a></li>
+
+
+		<br/>
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+		<ul>
+			<li>Used for forecasting one dimensional time series data</li>
+			<li>Built using RNN's</li>
+			<li>Allows the training of several related time series by the same model</li>
+			<li>Find frequencies and seasonality</li>
+		</ul>
+
+		<br/>
+        <div id="input">
+            <p><span style="font-size: 18px;"><strong>Input</strong></span></p>
+		</div>
+		<ul>
+			<li>JSON lines format</li>
+			<ul>
+				<li>Can be in either Gzip opr Parquet format</li>
+			</ul>
+			<li>Each record must contain</li>
+			<ul>
+				<li>Start: the starting time stamp</li>
+				<li>Target: the time series values</li>
+			</ul>
+			<li>Each record can contain</li>
+			<ul>
+				<li>Dynamic_feat: dynamic features such as was a promotion applied to the product in a time series product purchase</li>
+				<li>Cat: categorical features</li>
+			</ul>
+			<li>Example</li>
+			<ul>
+				<li>{"start": "2010-01-01 00:00:00", "target": [4.3, "NaN", 5.1, ...], "cat": [0, 1], "dynamic_feat": [[1.1, 1.2, ...]]}</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="how_is_it_used">
+            <p><span style="font-size: 18px;"><strong>How is it used</strong></span></p>
+		</div>
+		<ul>
+			<li>Always use the entire time series for training, testing and inference</li>
+			<ul>
+				<li>This is true even if you only care about a subset of that data</li>
+			</ul>
+			<li>Use the entire dataset as test set, remove last time points for training - evaluate on withheld values</li>
+			<li>Don't use very large values for prediction ( > 400)</li>
+			<li>Train on as many time series as you can</li>
+		</ul>
+
+		<br/>
+        <div id="hyperparameters">
+            <p><span style="font-size: 18px;"><strong>Hyperparameters</strong></span></p>
+		</div>
+		<ul>
+			<li>Epochs</li>
+			<li>mini_batch_size</li>
+			<li>Learning_rate</li>
+			<li>Num_cells</li>
+			<li>Context_length</li>
+			<ul>
+				<li>Number of time points the model sees before making a prediction</li>
+				<li>Can be smaller than seasonalities</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="instance_types">
+            <p><span style="font-size: 18px;"><strong>Instance Types</strong></span></p>
+		</div>
+		<ul>
+			<li>Can use GPU or CPU</li>
+			<li>Single or multi machine</li>
+			<li>Start with CPU, for example</li>
+			<ul>
+				<li>C4.2xlarge</li>
+				<li>C4.4xlarge</li>
+			</ul>
+			<li>Move to GPU is needed as this only helps with larger models</li>
+			<li>CPU only for inference</li>
+			
+		</ul>
+
+    </body>
+</html>

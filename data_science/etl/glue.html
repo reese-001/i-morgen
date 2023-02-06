@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : glue</h2>
+        
+		<p><span style="font-size: 20px;"><strong>Glue</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#glue_data_catalog">Glue Data Catalog</a></li>
+        <li><a href="#crawlers">Crawlers</a></li>
+        <li><a href="#partitions">Partitions</a></li>
+        <li><a href="#etl">ETL</a></li>
+        <li><a href="#transformations">ETL Transformations</a></li>
+
+		<br/>
+        <div id="glue_data_catalog">
+            <p><span style="font-size: 18px;"><strong>Glue Data Catalog</strong></span></p>
+		</div>
+		<ul>
+            <li>Fully managed and centralized repository for storing the metadata of the data stored in data stores such as Amazon S3 and Amazon Redshift</li>
+            <li>The metadata includes information about the structure of the data, the relationships between tables, and the schema information of the data</li>
+            <li>Metadata repository for all your tables</li>
+            <li>Integrated with Athena or Redshift Spectrum to do schema and data discovery</li>
+            <li>Makes use of Glue Crawlers to help build the Glue Data Catalog</li>
+        </ul>
+
+        <br/>
+        <div id="crawlers">
+            <p><span style="font-size: 18px;"><strong>Crawlers</strong></span></p>
+		</div>
+        <ul>
+            <li>Crawlers go through your data to infer schemas and partitions</li>
+            <li>Supports various data formats such as CSV, JSON, Parquet, and Avro, as well as data stored in databases like Amazon RDS and Amazon Redshift</li>
+            <li>It can also crawl semi-structured data sources like XML and HTML</li>
+            <li>Once the AWS Glue crawler has completed the crawl, the resulting table can be used in AWS Glue jobs for transforming and loading data</li>
+            <li>The schema information in the AWS Glue Data Catalog is used to determine the data types, relationships, and mapping between source and target data</li>
+            <li>Crawlers can be run on a schedule or on demand</li>
+            <li>Need an IAM role/credentials to access the data stores</li>
+        </ul>
+
+        <br/>
+        <div id="partitions">
+            <p><span style="font-size: 18px;"><strong>Partitions</strong></span></p>
+		</div>
+        <ul>
+            <li>Crawler will extract partitions based on how your S3 data is organizationed</li>
+            <li>For example</li>
+            <ul>
+                <li>Do you query by time ranges? If so, consider organizing your buckets like 's3://my-bucket/dataset/yyyy/mm/dd/device'</li>
+                <li>Do you query by deviced? If so, consider organizing your buckets like 's3://my-bucket/dataset/device/yyyy/mm/dd'</li>
+            </ul>
+        </ul>
+
+        <br/>
+        <div id="etl">
+            <p><span style="font-size: 18px;"><strong>ETL</strong></span></p>
+		</div>
+        <ul>
+            <li>AWS Glue is a fully managed ETL (Extract, Transform, Load) service offered by Amazon Web Services</li>
+            <ul>
+                <li>It makes it easy to move data between data stores</li>
+                <li>It can automate the discovery of data sources</li>
+                <li>Extract data from various sources</li>
+                <li>Transform data into the format required by analytics and business applications</li>
+                <li>And load the data into destinations like data lakes and data warehouses</li>
+            </ul>
+            <li>ETL code can be created in Python or Scala</li>
+            <li>Can provide your own Spark or PySpark scripts</li>
+            <li>Fully managed and cost effective </li>
+        </ul>
+
+        <br/>
+        <div id="transformations">
+            <p><span style="font-size: 18px;"><strong>ETL Transformations</strong></span></p>
+		</div>
+        <ul>
+            <li>Bundles transformations</li>
+            <ul>
+                <li>DropFields</li>
+                <li>DropNullFields</li>
+                <li>Filter</li>
+                <li>Join</li>
+                <li>Map</li>
+            </ul>
+            <li>Machine learning tranformations</li>
+            <ul>
+                <li>FindMatches ML</li>
+                <ul>
+                    <li>Identifies duplicate or matching records in your dataset, even if the records do not have a common identifier and no fields match exactly</li>
+                </ul>
+            </ul>
+            <li>Format conversions</li>
+            <ul>
+                <li>CSV</li>
+                <li>JSON</li>
+                <li>Avro</li>
+                <li>Parquet</li>
+                <li>ORC</li>
+                <li>XML</li>
+            </ul>
+        </ul>
+       
+
+	</body>
+</html>

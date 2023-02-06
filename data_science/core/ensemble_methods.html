@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : ensemble methods</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Ensemble Methods: Bagging and Boosting</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#bagging">Bagging</a></li>
+		<li><a href="#boosting">Boosting</a></li>
+		
+		
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>Ensemble model takes multiple models (or multiples of a single type of model) and lets them vote on the result</li>	
+			<li>For example, random forest</li>
+			<ul>
+				<li>Consists of many decision trees with slightly different turning or datasets</li>
+			</ul>
+			<li>How these trees differ is what defines the difference between bagging and boosting</li>
+		</ul>
+	
+		<br/>
+        <div id="bagging">
+            <p><span style="font-size: 18px;"><strong>Bagging</strong></span></p>
+		</div>
+		<ul>
+			<li>Generate new training sets by random sampling with replacement</li>
+			<li>Each resampled model can be trained in parallel</li>
+		</ul>
+
+		<br/>
+        <div id="boosting">
+            <p><span style="font-size: 18px;"><strong>Boosting</strong></span></p>
+		</div>
+		<ul>
+			<li>Observations are weighted</li>
+			<li>Some will take part in new training sets more often</li>
+			<li>Runs in a serial fashion</li>
+		</ul>
+
+		<br/>
+        <div id="bagging_vs_boosting">
+            <p><span style="font-size: 18px;"><strong>Bagging vs Boosting</strong></span></p>
+		</div>
+		<ul>
+			<li>XGBoost is hot and generally produces better accuracy</li>
+			<li>Bagging avoids overfitting</li>
+			<li>Bagging is faster (ie can run in parallel</li>
+	
+		</ul>
+
+	</body>
+</html>

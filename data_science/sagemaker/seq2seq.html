@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : seq2seq</h2>
+
+		<p><span style="font-size: 20px;"><strong>Sequence to Sequence</strong></span></p>
+
+		<br/>
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#what_is_it">What Is It</a></li>
+		<li><a href="#input">Input</a></li>
+		<li><a href="#how_is_it_used">How Is It Used</a></li>
+		<li><a href="#hyperparameters">Hyperparameters</a></li>
+		<li><a href="#instance_types">Instance Types</a></li>
+
+
+		<br/>
+        <div id="what_is_it">
+            <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+		</div>
+		<ul>
+			<li>Type of neural network architecture commonly used for tasks such as machine translation, text summarization, and question-answering</li>
+			<ul>
+				<li>Can be implemented in</li>
+				<ul>
+					<li>RNN</li>
+					<li>CNN's with attention</li>
+				</ul>
+			</ul>
+			<li>Consists of two main components: an encoder that processes the input sequence and a decoder that generates the output sequence</li>
+			<li>Both input and output are sequences of tokens</li>
+		</ul>
+
+		<br/>
+        <div id="input">
+            <p><span style="font-size: 18px;"><strong>Input</strong></span></p>
+		</div>
+		<ul>
+			<li>RecordIO-protobuf</li>
+			<ul>
+				<li>Tokens must be integers</li>
+				<li>Note that this is unusual as most algorithms in Sagemaker expect floating point data</li>
+				<li>This makes sense however because tokens are not floating point data types</li>
+			</ul>
+			<li>Start with tokenized text files</li>
+			<li>Convert to protobuf using sample code</li>
+			<ul>
+				<li>Packs into integeer tensors with vocabulary files</li>
+				<li>Similar to TF/IDF</li>
+			</ul>
+			<li>Must provide training data, validation data and vocabulary files</li>
+		</ul>
+
+		<br/>
+        <div id="how_is_it_used">
+            <p><span style="font-size: 18px;"><strong>How is it used</strong></span></p>
+		</div>
+		<ul>
+			<li>Training for machine translation can take days</li>
+			<li>Pre-trained models are available</li>
+			<li>Public trained datasets are available for specific translation tasks</li>
+			<li>Within AWS, you can use Seq2Seq for various NLP tasks by leveraging the following services</li>
+			<ul>
+				<li>Sagemaker</li>
+				<li>Amazon Translate</li>
+				<li>Amazon Comprehend</li>
+			</ul>
+			<li>Can be used with open source libaries such as </li>
+			<ul>
+				<li>TensorFlow</li>
+				<li>PyTorch</li>
+				<li>Hugging Face Transformers</li>
+
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="hyperparameters">
+            <p><span style="font-size: 18px;"><strong>Hyperparameters</strong></span></p>
+		</div>
+		<ul>
+			<li>batch_size</li>
+			<li>optimizer_type</li>
+			<ul>
+				<li><a href="../../definitions/concepts.html#machine_learning_optimizers" target="_blank">adam</a></li>
+				<li><a href="../../definitions/concepts.html#machine_learning_optimizers" target="_blank">sgd</a></li>
+				<li><a href="../../definitions/concepts.html#machine_learning_optimizers" target="_blank">rmsprop</a></li>
+			</ul>
+			<li>Learning_rate</li>
+			<li>Num_layers_encoder</li>
+			<li>Num_layers_decoder</li>
+			<li>Can optimize on</li>
+			<ul>
+				<li><a href="../../definitions/concepts.html#machine_learning_evaluation_metrics" target="_blank">Accuracy</a></li>
+				<li><a href="../../definitions/concepts.html#machine_learning_evaluation_metrics" target="_blank">BLEU score</a></li>
+				<li><a href="../../definitions/concepts.html#machine_learning_evaluation_metrics" target="_blank">Perplexity</a></li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="instance_types">
+            <p><span style="font-size: 18px;"><strong>Instance Types</strong></span></p>
+		</div>
+		<ul>
+			<li>Can only use GPU instance types (P3 for example)</li>
+			<li>Can only use a single machine for training</li>
+			<ul>
+				<li>But can use multi GPU on one machine</li>
+			</ul>
+		</ul>
+
+    </body>
+</html>

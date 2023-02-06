@@ -26,6 +26,7 @@
 		<li><a href="#linear_activation_problems">Linear Activation Problems</a></li>
 		<li><a href="#vanishing_gradient">Vanishing Gradient</a></li>
 		<li><a href="#sparsity">Sparsity</a></li>
+		<li><a href="#ml_evaluation_metrics">Machine Learning Evaluation Metrics</a></li>
 
 
 		<br/>
@@ -133,6 +134,111 @@
 				<li>L1 Regularization</li>
 				<li>Pruning</li>
 				<li>Using activation functions such as <a href="../data_science/core/activation_functions.html#rectified_linear_unit" target="_blank">ReLU</a></li>
+			</ul>
+		</ul>
+
+		<br/>
+		<div id="machine_learning_evaluation_metrics">
+			<p><span style="font-size: 18px;"><strong>Machine Learning Evaluation Metrics</strong></span></p>
+		</div> 
+		<ul>
+			<li>BLEU (Bilingual Evaluation Understudy)</li>
+			<ul>
+				<li>Measures the similarity between the predicted translation and the reference translation</li>
+				<li>Similarity is determined by the number of overlapping n-grams (contiguous sequences of words) between the two</li>
+				<li>BLEU score is a weighted average of the precision of the predicted translation with respect to the reference translation, with weights that decrease as the length of the n-grams increases</li>
+				<li>The score ranges from 0 to 1, with 1 indicating a perfect match between the predicted and reference translations.</li>
+			</ul>
+			<li>Perplexity</li>
+			<ul>
+				<li>Commonly used evaluation metric in natural language processing and specifically in language modeling where the goal is to predict the next word in a sequence given the previous words</li>
+				<li>Perplexity is a measure of how well a language model is able to predict the next word in a sequence</li>
+			</ul>
+			<li>Accuracy</li>
+			<ul>
+				<li>Accuracy shows us how comfortable the model is with detecting the positive and negative classes</li>
+				<li>It’s computed by the sum of True Positives and True Negatives divided by the total population</li>
+			</ul>
+			<li>Recall</li>
+			<ul>
+				<li>Recall explains how sensitive the model is towards identifying the positive class</li>
+				<li>It’s computed as the number of True Positives divided by the sum of True Positives and False Negatives</li>
+			</ul>
+			<li>Precision</li>
+			<ul>
+				<li>Precision tells us about the success probability of making a correct positive class classification</li>
+				<li>It’s computed as the number of True Positives divided by the total number of positive calls</li>
+			</ul>
+			<li>F1</li>
+			<ul>
+				<li>The harmonic mean of precision and recall, used as a single metric to represent the overall performance of a binary classifier</li>
+			</ul>
+			<li>Mean Absolute Error (MAE)</li>	
+			<ul>
+				<li>The average magnitude of the difference between the predicted and actual values for a regression task</li>
+			</ul>
+			<li>Mean Squared Error (MSE)</li>	
+			<ul>
+				<li>The average squared difference between the predicted and actual values for a regression task</li>
+			</ul>
+			<li>R-Squared</li>
+			<ul>
+				<li>A measure of the goodness of fit of a regression model, representing the proportion of variance in the target variable that is explained by the model</li>
+			</ul>
+			<li>AUC-ROC</li>
+			<ul>
+				<li>A measure of a binary classifier's ability to distinguish between positive and negative cases, represented as the area under a curve that plots true positive rate against false positive rate</li>
+			</ul>
+			<li>Log-Loss</li>
+			<ul>
+				<li>A measure of the performance of a classifier that outputs probabilities, representing the average cross-entropy between the predicted and actual class probabilities.</li>
+			</ul>
+		
+		</ul>
+
+
+		<br/>
+		<div id="machine_learning_optimizers">
+			<p><span style="font-size: 18px;"><strong>Machine Learning Optimizers</strong></span></p>
+		</div> 
+		<ul>
+			<li>Optimization is a crucial step in the training of machine learning models</li>
+			<li>Determines the values of model parameters that minimize the difference between the predicted and actual values</li>
+			<li>Stochastic Gradient Descent (SGD)</li>
+			<ul>
+				<li>A simple optimization algorithm that updates model parameters based on the gradient of the loss function with respect to the parameters, calculated using a single training example (or batch of examples) at a time</li>
+				<li>Simple and efficient optimization algorithm that can be used in many different applications, including</li>
+				<ul>
+					<li>Linear regression</li>
+					<li>Logistic regression</li>
+					<li>Support Vector Machines (SVM)</li>
+					<li>Neural networks</li>
+					<li>Recommender systems</li>
+					<li>Clustering</li>
+				</ul>
+			</ul>
+			<li>Adam (Adaptive Moment Estimation)</li>
+			<ul>
+				<li>An optimization algorithm that uses a combination of gradient information and historical running averages to determine the learning rate for each parameter, designed to be highly effective and widely used in practice.</li>
+				<li>Can be used in a variety of applications where the goal is to minimize the difference between the predicted and actual values</li>
+				<ul>
+					<li>Image classification</li>
+					<li>Natural language processing</li>
+					<li>Recommender systems</li>
+					<li>Anomaly detection</li>
+					<li>Speech recognition</li>
+				</ul>
+			</ul>
+			<li>RMSprop</li>
+			<ul>
+				<li>An optimization algorithm that uses the root mean squared historical gradient information to determine the learning rate for each parameter, designed to address some limitations of the Adagrad algorithm.</li>
+				<ul>
+					<li>Neural networks</li>
+					<li>CNN</li>
+					<li>Reinforcement learning</li>
+					<li>Generative models</li>
+					<li>Online learning</li>
+				</ul>
 			</ul>
 		</ul>
 

@@ -18,6 +18,10 @@
 		<br/>
         <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
         <li><a href="#what_is_it">What Is It</a></li>
+		<li><a href="#how_is_it_used">How Is It Used</a></li>
+		<li><a href="#hyperparameters">Hyperparameters</a></li>
+		<li><a href="#instance_types">Instance Types</a></li>
+
 		<br/>
         <div id="what_is_it">
             <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
@@ -30,44 +34,80 @@
 			<li>Can be used for classification and regression using regression trees</li>
 			<li>XGBoost was not made for Sagemaker in the original implementation, instead AWS started from the open source version of XGBoost that everyone else uses and built on top of that</li>
 			<li>Historically has only accepted CSV or libsvm formatted data as input, but now takes recordIO-protobuf and Paraguet as well</li>
-			<br/>
-			<li>How is it used? </li>
-			<ul>
-				<li>Models are serialized/deserialized with Pickle</li>
-				<li>Can use as a framework within notebooks with Sagemaker.xgboost</li>
-				<li>Or as a built-in Sagemaker algorithm</li>
-			</ul>
-			<br/>
-			<li>Hyperparameters (not inclusive!)</li>
-			<ul>
-				<li>Subsample</li>
-				<ul>
-					<li>Prevents overfitting</li>
-				</ul>
-				<li>Eta</li>
-				<ul>
-					<li>Step size shrinkage, prevents overfitting</li>
-				</ul>
-				<li>Gamma</li>
-				<ul>
-					<li>Gamma</li>
-				</ul>
-				<li>Alpha</li>
-				<ul>
-					<li><a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L1 regularization</a> term; larger = more conservative</li>
-				</ul>
-				<li>Lambda</li>
-				<ul>
-					<li><a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L2 regularization</a> term; larger = more conservative</li>
-				</ul>
-				<li>eval_metric</li>
-				<ul>
-					<li>Focus on accuracy: optimize for error or rmse</li>	
-					<li>Focus on false positives: optimize for AUC</li>
-				</ul>
-				<li>scale_pos_weight</li>
-			</ul>
+		</ul>
 
+		<br/>
+        <div id="how_is_it_used">
+        	<p><span style="font-size: 18px;"><strong>How Is It Used</strong></span></p>
+		</div>
+		<ul>
+			<li>Models are serialized/deserialized with Pickle</li>
+			<li>Can use as a framework within notebooks with Sagemaker.xgboost</li>
+			<li>Or as a built-in Sagemaker algorithm</li>
+		</ul>
+
+		<br/>
+        <div id="hyperparameters">
+        	<p><span style="font-size: 18px;"><strong>Hyperparameters</strong></span></p>
+		</div>
+		<ul>
+		
+			<li>Subsample</li>
+			<ul>
+				<li>Prevents overfitting</li>
+			</ul>
+			<li>Eta</li>
+			<ul>
+				<li>Step size shrinkage, prevents overfitting</li>
+			</ul>
+			<li>Gamma</li>
+			<ul>
+				<li>Gamma</li>
+			</ul>
+			<li>Alpha</li>
+			<ul>
+				<li><a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L1 regularization</a> term; larger = more conservative</li>
+			</ul>
+			<li>Lambda</li>
+			<ul>
+				<li><a href="https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c" target="_blank">L2 regularization</a> term; larger = more conservative</li>
+			</ul>
+			<li>eval_metric</li>
+			<ul>
+				<li>Focus on accuracy: optimize for error or <a href="../core/model_measurement.html#rmse" target="_blank">rmse</a></li>	
+				<li>Focus on false positives: optimize for <a href="../core/model_measurement.html#roc_curve" target="_blank">AUC</a></li>
+			</ul>
+			<li>scale_pos_weight</li>
+			<ul>
+				<li>Adjusts balance of positive and negative weights</li>
+				<li>Helpful for unbalanced classes</li>
+				<li>Consider setting it to the sum(negative cases) / sum (positive cases) </li>
+			</ul>
+			<li>max_depth</li>
+			<ul>
+				<li>Max depth of trees</li>
+				<li>Avoid overfitting by not setting too high</li>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="instance_types">
+        	<p><span style="font-size: 18px;"><strong>Instance Types</strong></span></p>
+		</div>
+		<ul>
+			<li>Historically this was a CPU only model (XGBoost 1.0/1.1)</li>
+			<ul>
+				<li>Still the case for multiple instance training</li>
+				<li>Memory bound, not so much CPU bound</li>
+				<li>If you are going down this route, use something like an M5 instance</li>
+			</ul>
+			<li>XGBoost 1.2 allows GPU training for single instance configs</li>
+			<ul>
+				<li>A solid choice in this case is using P3 instance</li>
+				<li>Remember to set tree_method hyperparameter to gpu_hist</li>
+				<li>Due to the increase in speed, this can be more cost effective</li>
+			</ul>
+			
 		</ul>
     </body>
 </html>

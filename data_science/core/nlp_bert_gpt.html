@@ -34,6 +34,42 @@
 				<li>Transformers use self-attention mechanisms to dynamically weigh the importance of different elements in the input sequence, allowing the network to capture long-range dependencies in the data.</li>
 				<li>Transformers are based on the idea of using multiple parallel attention layers, rather than sequential recurrent or convolutional layers, to process the input sequence. This allows for faster training and inference compared to traditional RNNs and CNNs</li>
 				<li>Transformer architectures have been successful in a wide range of NLP tasks, including machine translation, text classification, and question answering, and have become a cornerstone of modern NLP models</li>
+				<li>Examples include</li>
+				<ul>
+					<li>BERT</li>
+					<ul>
+						<li>A pre-trained language representation model developed by Google</li>
+						<li>One of the key features of BERT is its bidirectional training process</li>
+						<li>BERT is a Transformer-based model, and its architecture allows for parallel computation, making it highly scalable and efficient</li>
+					</ul>
+
+					<li>RoBERTa</li>
+					<ul>
+						<li>Robustly Optimized BERT Pretraining Approach</li>
+						<li>Transformer based language model developed by Facebook AI in 2019</li>
+						<li>RoBERTa aims to address some of the limitations of BERT, such as the limited amount of training data, and the way BERT was fine-tuned for specific NLP tasks</li>
+						<li>Has become a popular choice for transfer learning in NLP</li>
+					</ul>
+					<li>T5</li>
+					<ul>
+						<li>Test-to-Test Transfer Tranformer</li>
+						<li>Large-scale language model developed by Google AI in 2020</li>
+						<li>Trained on a diverse range of tasks that involve generating text, such as translation, summarization, and question answering</li>
+					</ul>
+					<li>GPT-2</li>
+					<ul>
+						<li>Language model developed by OpenAI</li>
+						<li>It is based on the Transformer architecture and uses a large corpus of text data to generate natural language text</li>
+						<li>It is one of the largest language models developed to date, with over 1.5 billion parameters</li>
+						<li>Primarily used to generate text</li>
+					</ul>
+					<li>DistilBERT</li>
+					<ul>
+						<li>Created by the Hugging Face team</li>
+						<li>Uses knowledge distiliation to reduce model size by 40%</li>
+						<li>The reduced size of DistilBERT makes it a popular choice for use in real-world applications where computational resources are limited</li>
+					</ul>
+				</ul>
 			</ul>
 			<li>BERT: (Bidirectional Encoder Representations from Transformers)</li>
 			<ul>
@@ -55,17 +91,34 @@
 			<ul>
 				<li>This is integrated with Sagemaker via Hugging Face Deep Learning Containers (HFDLC)</li>
 			</ul>
-		</ul>
-		<li>BERT example</li>
-		<ul>
-			<li>Hugging Face offers a Deep Learning Container (DLC) for BERT</li>
-			<li>Its pre-trained on BookCorpus and Wikipedia</li>
-			<li>You can fine tune BERT (or DistilBERT, etc) with your </li>
-		</ul>
+			<li>There are a few different options</li>
+			<ul>
+				<li>Fine Tuning</li>
+				<ul>
+					<li>Use this if you want to add a smaller amount of data to an existing large model</li>
+					<li>Use a low learning rate to ensure you incrementally improve the model</li>
+				</ul>
+				<li>Add new layers to the top of a frozen model</li>
+				<ul>
+					<li>Learns to turn old features into predictions on new data</li>
+					<li>You can do both as well, add new layers and then fine tune the complete model</li>
+				</ul>
+				<li>Retrain from scrath</li>
+				<ul>
+					<li>If you want to take advantage of the model infrastructure and also have large amounts of training data</li>
+					<li>This is an expensive option</li>
+				</ul>
+			</ul>
+			<li>BERT example</li>
+			<ul>
+				<li>Hugging Face offers a Deep Learning Container (DLC) for BERT</li>
+				<li>Its pre-trained on BookCorpus and Wikipedia</li>
+				<li>You can fine tune BERT (or DistilBERT, etc) with your own data</li>
+				<li>You must tokenize the data in the same method the model was originally tokenized</li>
+			</ul>
+		</ul>	
 `
-		<div id="transfer_learning">
-            <p><span style="font-size: 18px;"><strong>Transfer Learning</strong></span></p>
-		</div>
+	
 
 
 	</body>

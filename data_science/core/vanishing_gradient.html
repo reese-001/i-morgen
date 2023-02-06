@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : vanishing gradients</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Vanishing Gradients</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#gradient_checking">Gradient Checking</a></li>
+		
+
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>There are two issues relevant to this discussion</li>
+			<ul>
+				<li>Vanishing gradient</li>
+				<ul>
+					<li>As the slope approaches zero, the gradient will diminish and could even result in numerical errors and be seen as slow training of a failure to converge</li>
+					<li>The vanishing gradients problem is most commonly encountered in deep feedforward networks with sigmoid or hyperbolic tangent activation function</li>
+					<li>Mitigation</li>
+					<ul>
+						<li>Multi level heriarchy</li>
+						<ul>
+							<li>Instead of training the network at once, train layers individually called "sub networks"</li>
+						</ul>
+						<li>Change your architecture</li>
+						<ul>
+							<li>LSTM</li>
+							<li>Residual networks</li>
+							<ul>
+								<li>ResNET</li>
+							</ul>
+							<li>Change activation to <a href="activation_functions.html#rectified_linear_unit" target="_blank">ReLU</a> or <a href="activation_functions.html#dying_relu" target="_blank">Leaky ReLU</a></li>
+						</ul>
+					</ul>
+				</ul>
+				<li>Exploding gredient</li>
+				<ul>
+					<li>Seen when the graph approaches a vertical line and can lead to numeric instability and diverging behavior</li>
+					<li>Mitigation: gradient normalization, gradient clipping, using residual networks</li>
+				</ul>
+			</ul>
+			
+		</ul>
+		
+
+		<br/>
+        <div id="gradient_checking">
+            <p><span style="font-size: 18px;"><strong>Gradient Checking</strong></span></p>
+		</div>
+		<ul>
+			<li>Technique used in deep learning to verify the correctness of the gradients calculated by the backpropagation algorithm</li>
+			<li>Gradient checking works by comparing the analytically computed gradients with the numerical approximations of the gradients, using a small perturbation to the network parameters</li>
+			<li>If the analytically computed gradients and numerical approximations are close, it is likely that the gradients are correct</li>
+		</ul>
+
+	</body>
+</html>
