@@ -16,7 +16,17 @@
         <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cdk</a>:overview</h2>
 
         <p><span style="font-size: 20px;"><strong><a href="https://docs.aws.amazon.com/cdk/v2/guide/reference.html" target="_blank">Development Kit (CDK)</a></strong></span></p>
-		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+
+		<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#install">Install</a></li>
+		<li><a href="#useful_commands">Useful Commands</a></li>
+		<li><a href="#getting_started">Getting Started</a></li>
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
 		<ul>
 			<li>Transpiler. Takes input from popular languages (Python, Java) and converts it to CloudFormation, which in turn creates the resources</li>
 			<li>CloudFormation is a declarative language. You tell it what you want, and it figures out how to get it done</li>
@@ -25,13 +35,121 @@
 			<li><a href="https://www.youtube.com/watch?v=T-H4nJQyMig" target="_blank">YouTube</a> (freeCodeCamp.org)</li>
 		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Notes</strong></span></p>
+		<br/>
+        <div id="install">
+            <p><span style="font-size: 18px;"><strong>Install</strong></span></p>
+		</div>
 		<ul>
-			<li>What does it mean to sythesize a stack?</li>
+			<li>Prerequisites (when using Python)</li>
 			<ul>
-				<li>Synthesizing a stack refers to the process of generating an AWS CloudFormation template from your CDK cod</li>
+				<li>NPM</li>
+				<ul>
+					<li><a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm" target="_blank">Link</a></li>
+				</ul>
+				<li>pip</li>
+				<li>AWS CLI</li>
+				<ul>
+					<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">Link</a>
+				</ul>
+				<li>CDK</li>
+				<ul>
+					<li>npm install -g aws-cdk</li>
+					<li>Validate: sdk version</li>
+				</ul>
 			</ul>
 		</ul>
+
+		<br/>
+        <div id="useful_commands">
+            <p><span style="font-size: 18px;"><strong>Useful Commands</strong></span></p>
+		</div>
+		<ul>
+			<li>For a complete list of commands, execute "cdk --help"</li>
+			<li>cdk list</li>
+			<ul>
+				<li>List all stacks in an application</li>
+			</ul>
+			<li>cdk synthesize</li>
+			<ul>
+				<li>Transpiles your code into CloudFormation</li>
+			</ul>
+			<li>cdk bootstrap</li>
+			<ul>
+				<li>If the code you create generates a CloudFormation script that is over 50kb, you will need to use this command </li>
+				<li>Additionally, if there are AWS resources that are required in order to deploy your stack you can accomodate this via bootstrap</li>
+			</ul>
+			<li>cdk deploy</li>
+			<li>cdk destroy</li>
+			<li>cdk diff</li>
+		</ul>
+
+		<br/>
+        <div id="getting_started">
+            <p><span style="font-size: 18px;"><strong>Getting Started</strong></span></p>
+		</div>
+		<ul>
+			<li>To start out with a bare bones application with nothing but raw files that requires you to fill everything else in </li>
+			<ul>
+				<li>cdk init app --language python</li>
+			</ul>
+			<li>To start with a framework that can be modified</li>
+			<ul>
+				<li>cdk init sample-app --language python </li>
+				<li>This will create a template with the following files</li>
+				<ul>
+					<li>source.bat (or source if on Linux/Mac)</li>
+					<ul>
+						<li>Script to activate your virtual environment</li>
+					</ul>
+					<li>requirements.txt</li>
+					<ul>
+						<li>As expected ...</li>
+						<li>It seems this functionality was previously encapsulated in a file called "setup.py" </li>
+					</ul>
+					<li>readme.txt</li>
+					<ul>
+						<li>Contains a listing of commands that are offered - good reference</li>
+					</ul>
+					<li>app.py</li>
+					<ul>
+						<li>Entry point for the application</li>
+						<ul>
+							<li>Creates an instance of the Core class, which is the construct provided by AWS CDK and serves as the building block for cloud apps</li>
+							<li>The "app" method returns a new instance of the Core class that is used to define cloud resources in the AWS CDK</li>
+							<li>The returned instance can then be used to interact with and manage the defined cloud resources, such as defining AWS Lambdas, Amazon S3 buckets, Amazon DynamoDB tables, and more</li>
+						</ul>
+						<li>Creates stacks</li>
+						<ul>
+							<li>Defaults to creating the CdkGettingStartedStack and takes the app variable and the stack name as parameters</li>
+							<li>What is a stack?</li>
+							<ul>
+								<li>Creates logical groupings of stacks</li>
+								<li>For example, you could create a stack for your infrastructure and another stack for a dashboard</li>
+								<li>Stacks can then be deployed independently since some deploys can be time consuming</li>
+							</ul>
+						</ul>						
+					</ul>
+					<li>cdk_getting_started/cdk_getting_started.py</li>
+					<ul>
+						<li>The default stack performs the following</li>
+						<ul>
+							<li>Creates a queue via the sqs library</li>
+							<li>Creates an sns topic</li>
+							<li>Add subscription between topic and queue</li>
+						</ul>
+						<li>However, typically remove this and insert your own code here</li>
+					</ul>
+
+				</ul>
+				<li>To get started, install dependencies</li>
+				<ul>
+					<li>Activate your venv by executing the source.bat file</li>
+					<li>pip install -r requirements.txt</li>
+				</ul>
+			</ul>
+		</ul>
+
+
 
 	 </body>
 </html>

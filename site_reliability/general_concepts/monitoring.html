@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">site reliability</a> : <a href="index.html">general concepts</a> : monitoring</h2>
+        
+		<p><span style="font-size: 20px;"><strong>Monitoring Distributed Systems</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#symptoms_vs_cause">Symptoms vs Causes</a></li>
+       
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+            <li>Definitions</li>
+            <ul>
+                <li>Monitoring</li>
+                <ul>
+                    <li>Collecting, processing, aggregating and displaying real time quantitative about a system</li>
+                    <li>Examples include query counts and types, error counts and types, processing times, server lifetimes</li>
+                    <li>It is typical to have one person who is best suited for this kind of development work</li>
+                    <li>The goal is never to have "eyes on glass"</li>
+                    <li>Its sometimes preferable to have simple and fast monitoring - avoiding "magic" systems</li>
+                </ul>
+                <li>White box monitoring</li>
+                <ul>
+                    <li>Monitoring based on the metric exposed by the internals of the system</li>
+                    <li>Includes logs, the underlying infrastructure, applications, and processes</li>
+                    <li>The main advantage of white box monitoring is that it provides a complete view of the system being monitored, making it easier to identify and resolve issues</li>
+                 
+                </ul>
+                <li>Black box monitoring</li>
+                <ul>
+                    <li>Focused on the external behavior and outputs of a system</li>
+                    <li>Typically used to monitor the availability and response time of software systems, including web applications, APIs, and other services</li>
+                    <li>The main advantage of black box monitoring is its simplicity</li>
+                </ul>
+                <li>Gray box monitoring</li>
+                <ul>
+                    <li>Combines aspects of both white box and black box monitoring</li>
+                    <li>Provides partial visibility into the internal workings of a system, without having complete access to the source code, configuration files, or other internal details</li>
+                    <li>The main advantage of gray box monitoring is that it provides a good balance between detail and simplicity</li>
+                </ul>
+                <li>Dashboard</li>
+                <ul>
+                    <li>Typically a web based application that provides a summary view of a services core metrics</li>
+                    <li>May have filters and selectors but is basically prebuilt to expose a specific set of metrics</li>
+                </ul>
+                <li>Alert</li>
+                <ul>
+                    <li>Notification intended to be read by a human</li>
+                    <li>Typically pushed to an incident system, queue, email, etc</li>
+                    <li>Alerts are typically triggered by a threshold being crossed</li>
+                </ul>
+                <li>Root cause</li>
+                <ul>
+                    <li>A defect in a software or human system that, if fixed, instills confidence that the even will not happen again in the exact same way</li>
+                    <li>Incidents may have multiple root causes</li>
+                </ul>
+                <li></li>
+            </ul>
+         </ul>
+
+      
+		<br/>
+        <div id="symptoms_vs_cause">
+            <p><span style="font-size: 18px;"><strong>Symptoms vs Causes</strong></span></p>
+		</div>
+        <ul>
+            <li>Monitoring should address two questions</li>
+            <ul>
+                <li>What is broken</li>
+                <ul>
+                    <li>What is the symptom</li>
+                    <li>What is the impact</li>
+                </ul>
+                <li>Why is it broken</li>
+                <ul>
+                    <li>What are the causes</li>
+                    <li>What is the root cause</li>
+                </ul>
+                <li>Black box vs white box testing</li>
+                <ul>
+                    <li>Generally preferred to have heavy white box monitoring and modest black box monitoring</li>
+                    <li>Black box monitoring is symptom oriented and represents active - not predicted - problems</li>
+                    <li>White box monitoring can detect imminent, but yet to be realized, failures</li>
+                </ul>
+            </ul>
+        </ul>
+
+        <br/>
+        <div id="golden_signals">
+            <p><span style="font-size: 18px;"><strong>Four Golden Signals</strong></span></p>
+		</div>
+        <ul>
+            <li>Latency</li>
+            <li>Traffic</li>
+            <li>Errors</li>
+            <li>Saturation</li>
+        </ul>
+	</body>
+</html>

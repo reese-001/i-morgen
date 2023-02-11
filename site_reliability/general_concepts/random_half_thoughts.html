@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="../images/logo.png" class="logo"></td>
+				<td><h1 style="color:#0B2042;">i morgen</h1></td>
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">site reliability</a> : <a href="index.html">general concepts</a> : random half thoughts</h2>
+        
+		<p><span style="font-size: 20px;"><strong>Random Half Thoughts</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#slope_intercept">y = mx + b</a></li>
+
+       
+
+		<br/>
+        <div id="slope_intercept">
+            <p><span style="font-size: 18px;"><strong>y = mx + b</strong></span></p>
+		</div>
+		<ul>
+            <li>Can the value of an SRE team be represented by this question?</li>
+            <ul>
+                <li>An environment where each new unit of work increases cost by one unit would be represented by y = (1)x + b</li>
+                <ul>
+                    <li>m = 1</li>
+                    <li>b = fixed cost</li>
+                    <li>There is nothing to leverage and costs and workload rise in tandom by equal units</li>
+                </ul>
+                <li>An environment where each new unit of work increases cost by .5 unit would be represented by y = .5x + b</li>
+                <ul>
+                    <li>m = .5</li>
+                    <li>b = fixed cost</li>
+                    <li>There is some automation and costs rise at 1/2 per increase in workload</li>
+                </ul>  
+                <li>An environment where each new unit of work increases cost by .25 unit would be represented by y = .25x + b</li>
+                <ul>
+                    <li>m = .25</li>
+                    <li>b = fixed cost</li>
+                    <li>There is a lot of automation and costs rise at 1/4 per increase in workload</li>
+                </ul>
+            </ul>
+            <li>The goal becomes two fold</li>
+            <ul>
+                <li>Decrease fixed costs b</li>
+                <li>Miminize the increase in cost per increase in work by reducing m</li>
+            </ul>
+            <li>The tools to reduce m are the tools of the SRE</li>
+         </ul>
+
+      
+       
+
+	</body>
+</html>
