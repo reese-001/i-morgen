@@ -13,7 +13,7 @@
 				
 			</tr>
 		</table>
-        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ci/cd</a>:overview</h2>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../../aws/aws.html">aws</a> : <a href="index.html">ci/cd</a> : overview</h2>
 
         <p><span style="font-size: 20px;"><strong>CI/CD</strong></span></p>
 
@@ -27,26 +27,133 @@
 			<p><span style="font-size: 18px;"><strong>Continuous Integration (CI)</strong></span></p>
 		</div>
 		<ul>
-			<li>Developers push the code into a code repo (GitHub, CodeCommit, BitBucket, etc)</li>
-			<li>A test of build server will perform predefined checks as soon as the code is pushed (CodeBuild, Jenkins CI, etc)</li>
-			<li>Developer gets feedback about which tests failed and passed</li>
+			<li>What is it?</li>
+			<ul>
+				<li>Software development practice that involves regularly merging code changes from multiple developers into a shared repository and then automatically building and testing the code</li>
+				<li>The goal of CI is to catch bugs and other issues as early as possible in the development process, making it easier and less expensive to fix them</li>
+				<li>Keep in mind the security aspect of this. <a href="../../devops/devsecops/overview.html#overview" target="_blank">Link</a></li>
+			</ul>
+	
+			<li>How does it work?</li>
+			<ul>
+				<li>Code is pushed to a central repository</li>
+				<li>Code is built</li>
+				<li>Code is tested</li>
+				<li>Code is deployed</li>
+			</ul>
+		
 			<li>Benefits</li>
 			<ul>
-				<li>Find bugs early</li>
-				<li>Deliver code faster</li>
-				<li>Deploy often</li>
+				<li>Automated builds</li>
+				<li>Automated testing</li>
+				<li>Continuous feedback</li>
+				<li>Faster releases</li>
+				<li>Collaberation</li>
+			</ul>
+			<li>Tool set</li>
+			<ul>
+				<li>Open Source</li>
+				<ul>
+					<li><a href="https://www.jenkins.io/" target="_blank">Jenkins</a></li>
+					<ul>
+						<li>Offers a high degree of flexibility and extensibility</li>
+						<li>Can build, test, and deploy software across a variety of platforms, languages, and tools</li>
+						<li>Can be more difficult to set up and configure than some other CI tools, and it may require more maintenance and resources to run</li>
+					</ul>
+					<li><a href="https://www.travis-ci.com/" target="_blank">Travis CI</a></li>
+					<ul>
+						<li>Similar to Circle CI</li>
+						<li>Cloud-based CI service that offers support for a wide variety of programming languages and platforms</li>
+						<li>Provides a variety of tools and integrations to help you automate your testing and deployment workflows, and it offers a free tier for open source projects</li>
+						<li>Can be more limited in terms of customization options and some users have reported issues with slow build times and unexpected behavior.</li>
+					</ul>
+					<li><a href="https://circleci.com/" target="_blank">Circle CI</a></li>
+					<ul>
+						<li>Similar to Travis CI</li>
+						<li>Cloud-based CI service that allows you to build and test your code in a variety of environments</li>
+						<li>Known for its ease of use and fast setup, which can make it a good choice for small to medium-sized projects or teams with limited resources</li>
+						<li>CircleCI can be more expensive than other CI tools, and some users have reported issues with slow build times and limited customization options</li>
+					</ul>
+				</ul>
+				<li>Commercial</li>
+				<ul>
+					<li><a href="https://www.jetbrains.com/teamcity/" target="_blank">TeamCity</a></li>
+					<ul>
+						<li>Product offering from JetBrains</li>
+					</ul>
+					<li><a href="https://www.atlassian.com/software/bamboo" target="_blank">Bamboo</a></li>
+					<ul>
+						<li>Product offering from Atlassian and integrates well with Jira and Hipchat</li>
+						
+					</ul>
+				</ul>
 			</ul>
 		</ul>
-		<div id="CD">
+
+		<br/>
+		<div id="cd">
 			<p><span style="font-size: 18px;"><strong>Continuous Delivery/Deployment (CD)</strong></span></p>
 		</div>
 		<ul>
-			<li>Ensures that code can be released reliably whenever needed</li>
-			<li>Ensures deployments happen often and quick</li>
-			<li>Automated deployment tools include Jenkins CD, CodeDeploy, Spinnaker, etc</li>
-			<li>Tech stack: <a href="../images/cicd_tech_stack.png">link</a></li>
+			<li>What is it?</li>
+			<ul>
+				<li>Extension of the Continuous Integration (CI) process that focuses on automating the software release process</li>
+				<li>Enable the rapid and frequent release of high-quality software with minimal manual intervention</li>
+				<li>Code changes are automatically built, tested, and deployed to production, allowing teams to release new features and fixes to customers quickly and with confidence</li>
+				<li>Continuous delivery vs continuous deployment</li>
+				<ul>
+					<li>Continuous Delivery</li>
+					<ul>
+						<li>Ability to deploy often using automation</li>
+						<li>May involve a manual step to approve prior to production deployment</li>
+					</ul>
+					<li>Continuous Deployment</li>
+					<ul>
+						<li>Expands upon continuous delivery</li>
+						<li>Full automation straight to production</li>
+					</ul>
+				</ul>
+			</ul>
+			<li>How does it work?</li>
+			<ul>
+				<li>Code changes are made and pushed to a repo</li>
+				<li>CI runs</li>
+				<li>Artifacts are created (ie. Docker) </li>
+				<li>Environments are provisioned</li>
+				<li>Artifacts are deployed</li>
+				<li>Automated (or manual) testing and approval</li>
+				<li>Deploy to production</li>
+			</ul>
+
+
+			<li>Benefits</li>
+			<ul>
+				<li>Automated testing</li>
+				<li>Continuous deployment</li>
+				<li>Continuous feedback</li>
+				<li>Faster time to market</li>
+				<li>Improved collaboration</li>
+			</ul>
+
+			<li>Tool set</li>
+			<ul>
+				<li>Open Source</li>
+				<ul>
+					<li><a href="https://www.jenkins.io/" target="_blank">Jenkins CD</a></li>
+					<li><a href="https://spinnaker.io/" target="_blank">Spinnaker</a></li>
+				</ul>
+				<li>Commercial</li>
+				<ul>
+					<li><a href="https://azure.microsoft.com/en-us/products/devops/" target="_blank">Azure Devops</a></li>
+					<li><a href="https://gitlab.com/" target="_blank">GitLab</a></li>
+				</ul>
+				
+				
+			</ul>
+			
 		</ul>
 
+		
 		
 	</body>
 </html>

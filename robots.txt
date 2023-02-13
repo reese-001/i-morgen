@@ -1,0 +1,9 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.example.com/sitemap.xml
+
+Sitemap: https://www.i-morgen.link/sitemap.xml

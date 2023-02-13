@@ -22,9 +22,11 @@
 			<li><a href="#what_is_it">What is it?</a></li>
 			<li><a href="#features">Features</a></li>
 			<li><a href="#authorization">Authorization</a></li>
+			<li><a href="#setup">Setup</a></li>
+			<li><a href="#vs_git">CodeCommit vs Git</a></li>
 			
 		</ul>
-
+		<br/>
 		<div id="what_is_it">
 			<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
 		</div>
@@ -34,6 +36,7 @@
 			<li>Based on Git and similar to GitHub, BitBucket and GitLab</li>
 		</ul>
 
+		<br/>
 		<div id="features">
 			<p><span style="font-size: 18px;"><strong>Features</strong></span></p>
 		</div>
@@ -46,6 +49,7 @@
 			<li>Integrates with IAM to control which users have access to specific repos</li>
 		</ul>
 
+		<br/>
 		<div id="authorization">
 			<p><span style="font-size: 18px;"><strong>Authorization</strong></span></p>
 		</div>
@@ -64,13 +68,71 @@
 			</ul>
 			<li>Git credentials</li>
 			<ul>
-				<li>hese are a username and password combination that can be used to authenticate with CodeCommit repositories over HTTPS. Git credentials are typically stored in a file on your local machine and are used by the Git command-line tool to authenticate with CodeCommit.</li>
+				<li>These are a username and password combination that can be used to authenticate with CodeCommit repositories over HTTPS. Git credentials are typically stored in a file on your local machine and are used by the Git command-line tool to authenticate with CodeCommit.</li>
 			</ul>
 			<li>SSH keys</li>
 			<ul>
 				<li>These are SSH keys that are associated with a user's local machine and can be used to authenticate the user when accessing CodeCommit repositories over SSH</li>
 			</ul>
 			<li>** Note that IAM user SSH keys and IAM user HTTPS credentials are specific to IAM users, while Git credentials and SSH keys are not tied to any particular AWS identity.</li>
+		</ul>
+
+		<br/>
+		<div id="setup">
+			<p><span style="font-size: 18px;"><strong>Setup</strong></span></p>
+		</div>
+		<ul>
+			<li>To create the repo, you must initially provide a repo name. Optionally you can provide descriptions and tags</li>
+			<li>There are three ways of connecting to the repo</li>
+			<ul>
+				<li>HTTPS</li>
+				<ul>
+					<li>For non root users, credentials are available via IAM user/security credentials</li>
+				</ul>
+				<li>SSH (non root access)</li>
+				<ul>
+					<li>For non root users, credentials are available via IAM user/security credentials</li>
+				</ul>
+				<li>HTTPS (GRC) </li>
+				<ul> 
+					<li>GRC = git-remote-codecommit</li>
+					<li>Provides a simple method for pushing and pulling code from CodeCommit repositories by extending Git</li>
+					<li>It is the recommended method for supporting connections made with federated access, identity providers, and temporary credentials</li>
+				</ul>
+			</ul>
+		</ul>
+
+		<br/>
+		<div id="vs_git">
+			<p><span style="font-size: 18px;"><strong>CodeCommit vs Git</strong></span></p>
+		</div>
+		<ul>
+			<li>For more information on git, see <a href="../../devops/git/overview.html" target="_blank">link</a></li>
+			<li>Hosting</li>
+			<ul>
+				<li>Git: Can be hosted in many locations</li>
+				<li>CodeCommit: Fully managed service hosted by AWS</li>
+			</ul>
+			<li>Integration with other AWS services</li>
+			<ul>
+				<li>Git: This can generally happen, but it requires additional setup</li>
+				<li>CodeCommit: Tightly integrated into CodeBuild and CodePipeline</li>
+			</ul>
+			<li>Access control</li>
+			<ul>
+				<li>Git: Offers fine grained controls, but the specifics will vary depending on the platform and configuration</li>
+				<li>CodeCommit: Also offers fine grained controls but controlled via IAM</li>
+			</ul>
+			<li>Scalability</li>
+			<ul>
+				<li>Git:  Can scale as needed, but you need to consider infrastructure requirements</li>
+				<li>CodeCommit: Designed to support large teams and complex workflows</li>
+			</ul>
+			<li>Cost</li>
+			<ul>
+				<li>Git: Generally free, but may accure costs associated with hosting and managing the infrastructure</li>
+				<li>CodeCommit: Pay as you go model, costs based on number of repos and users - as well as data transfer and storage usage</li>
+			</ul>
 		</ul>
 	</body>
 </html>

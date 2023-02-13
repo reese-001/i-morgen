@@ -3,3 +3,16 @@ body {background-color: #b9b4b4;}
     width: 75;
     height: 75px;
 }
+
+.essay-text-block {
+    width: 80%;
+    font-size: 18px;
+    padding: 10px;
+    white-space: pre-wrap;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    padding-left: 15px;
+    font-family: Arial, sans-serif;
+  }
