@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> : <a href="index.html">git</a> : merge</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Git Merge</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#walk_through">Walk Through</a></li>
+		<li><a href="#commands">Commands</a></li>
+		<li><a href="https://quizlet.com/_cskvwf?x=1qqt&i=1lmd96" target="_blank">Quizlet (external)</a></li>
+		
+		
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>Intent</li>
+			<ul>
+				<li>Putting a forked history back together again</li>
+				<li>Enables you to take the independent lines of development created by git branch and integrate them into a single branch</li>
+				<li>This often takes the form of integrating a feature branch into the main branch</li>
+			</ul>
+			<li>Types of behavoirs</li>
+			<ul>
+				<li>Fast forward merge</li>
+				<ul>
+					<li>If the branch you are merging into has no new changes since the branch you are merging from was created, a fast foward merge will be done</li>
+					<li>Simply movesthe current branch pointer to the same commit as the branch being merged</li>
+					<li>No new commit created</li>
+					<ul>
+						<li>Alternatively, force a new commit by using the "--no-ff" option</li>
+					</ul>
+					<li><a href="images/merge_fast_forward_before.jpg" target="_blank">Picture: before</a></li>
+					<li><a href="images/merge_fast_forward_after.jpg" target="_blank">Picture: after</a></li>
+
+					
+				</ul>
+				<li>Three way merge</li>
+				<ul>
+					<li>If both branches have new changes, a three way merge will be performed</li>
+					<li>Git will attempt to combine the changes from both branches and create a new commit that represents the merged changes</li>
+					<li><a href="images/merge_3_way_before.jpg" target="_blank">Picture: before</a></li>
+					<li><a href="images/merge_3_way_after.jpg" target="_blank">Picture: after</a></li>
+
+				</ul>
+				<li>Merge conflicts</li>
+				<ul>
+					<li>If Git is unable to automatically merge, you will need to resolve the conflicts manually</li>
+					<li>Git will mark the conflicted files in your working directory and you will need to edit</li>
+					<li>When complete, you can commit the changes to complete the merge</li>
+				</ul>
+				<li>Merge commit</li>
+				<ul>
+					<li>When a merge is complete, Git will create a new commit that represents the merged changes</li>
+					<li>This commit will have two or more parent commits, representing the branches that were merged</li>
+					<li><a href="images/merge_before.jpg" target="_blank">Picture: before</a></li>
+					<li><a href="images/merge_after.jpg" target="_blank">Picture: after</a></li>	
+				</ul>
+			</ul>		
+			
+		</ul>
+
+		<br/>
+        <div id="walk_through">
+            <p><span style="font-size: 18px;"><strong>Walk Through</strong></span></p>
+		</div>
+		<ul>
+			<li>Fast Forward Merge: Create new branch, add commits, integrate it back into main line</li>
+			<ul>
+				<li>## start new feature</li>
+				<li><strong>git checkout -b new-feature main</strong></strong></li>
+				<li>## edit file</li>
+				<li><strong>git add &ltfile&gt</strong></li>
+				<li><strong>git commit -m "Start a feature"</strong></li>
+				<li>## edit file</li>
+				<li><strong>git add &ltfile&gt</strong></li>
+				<li><strong>git commit -m "Finish a feature"</strong></li>
+				<li>## merge into a new feature branch</li>
+				<li><strong>git checkout main</strong></li>
+				<li><strong>git merge new-feature</strong></li>
+				<li><strong>git branch -d new-feature</strong></li>
+			</ul>
+		</ul>
+
+		
+		<br/>
+        <div id="commands">
+            <p><span style="font-size: 18px;"><strong>Commands</strong></span></p>
+		</div>
+
+		<table style="width:40%;">
+			<tr>
+				<td><strong>Intent</strong></td>
+				<td><strong>Command</strong></td>
+			</tr>
+			<tr>
+				<td>Standard merge</td>
+				<td>git merge &ltbranch&gt</td>
+			</tr>
+			<tr>
+				<td>Fast forward merge with commit</td>
+				<td>git merge --no-ff &ltbranch&gt</td>
+			</tr>
+			
+		</table>
+
+		<br/>
+		<div id="links">
+			<p><span style="font-size: 18px;"><strong>Links</strong></span></p>
+		</div>
+
+		<table style="width:40%;">
+			<tr>
+				<td style="width: 20%;"><strong>Category</strong></td>
+				<td style="width: 60%;"><strong>Description</strong></td>
+				<td style="width: 20%;"><strong>URL</strong></td>	
+			</tr>
+			<tr>
+				<td>Git</td>
+				<td>Git Merge</td>
+				<td><a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge" target="_blank">Link</a></td>
+			</tr>
+
+		</table>
+
+			
+
+
+
+
+	</body>
+</html>

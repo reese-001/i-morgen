@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> : <a href="index.html">git</a> : checkout</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Git Checkout</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#commands">Commands</a></li>
+		<li><a href="https://quizlet.com/_cskvwf?x=1qqt&i=1lmd96" target="_blank">Quizlet (external)</a></li>
+		
+		
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>A "checkout" allows the following actions</li>
+			<ul>
+				<li>Switching between different versions of a target entity</li>
+				<ul>
+					<li>Said another way, git checkout alllows you to navigate between the branches created by <a href="branching.html" target="_blank">git branch</a></li>
+					<li>Checking out a branch </li>
+					<ul>
+						<li>Updates the files in the working directory to match the version stored in that branch</li>
+						<li>Tells Git to record all new commits on that branch</li>
+					</ul>
+				</ul>
+				<li>Restoring files to a specific version</li>
+			</ul> 
+			<li>Benefits</li>
+			<ul>
+				<li>Makes it easy to try new experiements without fear of destroying existing functionality</li>
+				<li>Allows you to work on many unrelated features at the same time</li>
+			</ul>
+			<li>Dangers</li>
+			<ul>
+				<li>Allows you to overwrite changes in your working directory</li>
+				<li>Be sure you understand what you are doing (and potentially have a backup) before executing</li>
+			</ul>
+			
+		</ul>
+
+		
+		<br/>
+        <div id="commands">
+            <p><span style="font-size: 18px;"><strong>Commands</strong></span></p>
+		</div>
+
+		<table style="width:40%;">
+			<tr>
+				<td><strong>Intent</strong></td>
+				<td><strong>Command</strong></td>
+			</tr>
+			<tr>
+				<td>To switch to a different branch in your repository</td>
+				<td>git checkout &ltbranch-name&gt</td>
+			</tr>
+			<tr>
+				<td>To revert to specific version</td>
+				<td>git checkout HEAD -- &ltfile name&gt</td>
+			</tr>
+			<tr>
+				<td>To create a new branch and switch to it at the same time</td>
+				<td>git checkout -b &ltnew-branch-name&gt</td>
+			</tr>
+			<tr>
+				<td>Checkout a specific commit in your repositor</td>
+				<td>git checkout &ltcommit-hash&gt</td>
+			</tr>
+		</table>
+
+		<br/>
+		<div id="links">
+			<p><span style="font-size: 18px;"><strong>Links</strong></span></p>
+		</div>
+
+		<table style="width:40%;">
+			<tr>
+				<td style="width: 20%;"><strong>Category</strong></td>
+				<td style="width: 60%;"><strong>Description</strong></td>
+				<td style="width: 20%;"><strong>URL</strong></td>	
+			</tr>
+			<tr>
+				<td>Git</td>
+				<td>Git Checkout</td>
+				<td><a href="https://www.atlassian.com/git/tutorials/using-branches/git-checkout" target="_blank">Link</a></td>
+			</tr>
+
+		</table>
+
+			
+
+
+
+
+	</body>
+</html>

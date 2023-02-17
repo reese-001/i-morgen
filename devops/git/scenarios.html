@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> : <a href="index.html">git</a> : scenarios</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Git Scenarios</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#scenario_1">You have local code that you want to add to a new repo</a></li>
+	
+		
+		
+
+		<br/>
+        <div id="scenario_1">
+            <p><span style="font-size: 18px;"><strong>You have local code that you want to add to a new repo</strong></span></p>
+		</div>
+		<ul>
+			<li>git clone &lturl of repository&gt</li>
+			<li>## copy files into new directory</li>
+			<li>get add .</li>
+			<li>git commit -m "first commit"</li>
+			<li>git push</li>
+			
+		</ul>
+
+		<br/>
+        <div id="scenario_2">
+            <p><span style="font-size: 18px;"><strong>create branch, modify code, commit branch and merge to main</strong></span></p>
+		</div>
+		<ul>
+			<li>git checkout -b &ltnew-branch-name&gt</li>
+			<li>## modify code </li>
+			<li>git add .</li>
+			<li>git commit -m "pushing new feature code"</li>
+			<li>git push</li>
+			<ul>
+				<li>We get an error here because we are no longer on main </li>
+				<li>Use the command that is returned: git push --set-upstream origin new-branch-name</li>
+			</ul>
+			<li>Now that the feature branch is checked in, it has to be merged to main</li>
+			<ul>
+				<li>Within CodeCommit (similar to GitHub), perform the following steps</li>
+				<ul>
+					<li>Select "Pull requests"</li>
+					<li>Ensure the destination and source are correct and confirm the code is mergable </li>
+					<li>Give the pull request a name and select "Create pull request"</li>
+					<li>Review "Changes" tab and if appropriate, select "Merge"</li>
+					<li>Choose the correct merge type (ie FF, Squash and Merge, 3-Way), optionally select "Delete source branch ..." and select "Merge pull request</li>
+				</ul>
+			</ul>
+		</ul>
+		
+			
+
+
+
+
+	</body>
+</html>

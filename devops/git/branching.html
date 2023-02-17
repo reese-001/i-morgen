@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+		
+		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> : <a href="index.html">git</a> : branching</h2>
+		
+		<p><span style="font-size: 20px;"><strong>Git Branching</strong></span></p>
+
+
+        <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+        <li><a href="#overview">Overview</a></li>
+		<li><a href="#creating_branches">Creating Branches</a></li>
+		<li><a href="#deleting_branches">Deleting Branches</a></li>
+		<li><a href="https://quizlet.com/_cskvwf?x=1qqt&i=1lmd96" target="_blank">Quizlet (external)</a></li>
+		<li><a href="#commands">Commands</a></li>
+	
+		
+		
+
+		<br/>
+        <div id="overview">
+            <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+		</div>
+		<ul>
+			<li>Git branches are effectively a pointer to the snapshot of your related changes  </li>
+			<ul>
+				<li>In other words, instead of copying files from directoy to directory, git stores each branch as a reference to a commit</li>
+				<li>A branch is not a container for commits but rather represents the latest in a series in related commits</li>
+				
+			</ul>
+			
+		</ul>
+		
+		<br/>
+		<div id="creating_branches">
+			<p><span style="font-size: 18px;"><strong>Creating Branches</strong></span></p>
+		</div>
+		<ul>
+			<li>Remember that branches are simply pointers to commits</li>
+			<li>When you create a new branch, Git simply creates a new pointer. No other changes are made to the repository </li>
+			<ul>
+				<li>Specifically, "git branch new-branch" creates the branch but there are no commits associated to that branch yet</li>
+			</ul>
+			<li>To start adding commits, you need to select it with a "checkout command" and then standard "add" and "commit" commands</li>
+			<ul>
+				<li>Specifically, "git checkout new-branch", then "git add" and finally "git commit"</li>
+			</ul>
+			<li>The above commands create local branches, however the same ideas apply to creating remote branches</li>
+			<ul>
+				<li>Add a new remote repository to your local repository's configuration </li>
+				<ul>
+					</li>git remote add new-remote-repo https://bitbucket.com/user/repo.git</li>
+				</ul>
+				<li>Push the branch to the new-remote-repo</li>
+				<ul>
+					<li>git push new-remote-repo new-branch</li>
+				</ul>
+			</ul>
+		</ul>
+
+		<br/>
+		<div id="deleting_branches">
+			<p><span style="font-size: 18px;"><strong>Deleting Branches</strong></span></p>
+		</div>
+		<ul>
+			<li>Once the branch has been merged into the main code base, it can be safely deleted from the local repository</li>
+			<ul>
+				<li>git branch -d "branch-name"</li>
+			</ul>
+			<li>However, if the branch has not been merged, it will not be deleted and will generate a failure</li>
+			<ul>
+				<li>error: The branch 'crazy-experiment' is not fully merged. If you are sure you want to delete it, run 'git branch -D crazy-experiment'</li>
+				<li>Can be bypassed with git branch -D "branch-name"</li>
+			</ul>
+			<li>Deleting a remote branch is similar to deleting a local branch</li>
+			<ul>
+				<li>git push origin --delete "branch-name"</li>
+				<li>git push origin :"branch-name"</li>
+			</ul>
+		</ul>	
+
+
+
+		<br/>
+		<div id="commands">
+			<p><span style="font-size: 18px;"><strong>Commands</strong></span></p>
+		</div>
+
+		<table style="width:40%;">
+			<tr>
+				<td><strong>Intent</strong></td>
+				<td><strong>Command</strong></td>
+			</tr>
+			<tr>
+				<td>List all branches in your repository</td>
+				<td>git branch --list</td>
+			</tr>
+			<tr>
+				<td>Create a new branch called "branch"</td>
+				<td>git branch &ltbranch&gt</td>
+			</tr>
+			<tr>
+				<td>Safe delete a branch called "branch"</td>
+				<td>git branch -d &ltbranch&gt</td>
+			</tr>
+			<tr>
+				<td>Force delete a branch called "branch"</td>
+				<td>git branch -D &ltbranch&gt</td>
+			</tr>
+			<tr>
+				<td>Rename the current branch to "branch"</td>
+				<td>git branch -m &ltbranch&gt</td>
+			</tr>
+			<tr>
+				<td>List all remote branches</td>
+				<td>git branch -a</td>
+			</tr>
+		</table>
+
+		<br/>
+		<div id="links">
+			<p><span style="font-size: 18px;"><strong>Links</strong></span></p>
+		</div>
+
+		<table style="width:40%;">
+			<tr>
+				<td style="width: 20%;"><strong>Category</strong></td>
+				<td style="width: 60%;"><strong>Description</strong></td>
+				<td style="width: 20%;"><strong>URL</strong></td>	
+			</tr>
+			<tr>
+				<td>Code Commit</td>
+				<td>Using branches</td>
+				<td><a href="https://www.atlassian.com/git/tutorials/using-branches" target="_blank">Link</a></td>
+			</tr>
+
+		</table>
+
+
+	</body>
+</html>

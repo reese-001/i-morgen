@@ -21,6 +21,8 @@
 
         <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
         <li><a href="#overview">Overview</a></li>
+		<li><a href="#best_practices">Best Practices</a></li>
+		<li><a href="#storing_data">Storing Data</a></li>
 		<li><a href="#origin">Origin</a></li>
 	
 		
@@ -31,7 +33,100 @@
             <p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
 		</div>
 		<ul>
-		
+			<li>Git has three main types of entities that it tracks</li>
+			<ul>
+				<li>Files</li>
+				<ul>
+					<li>Git tracks changes made to individual files in your repository</li>
+					<li>Every time you make a change to a file, Git records that change as a "commit"</li>
+				</ul>
+				<li>Commits</li>
+				<ul>
+					<li>A commit is a snapshot of your repository at a specific point in time</li>
+					<li>Every commit contains a set of changes to the files in your repository, along with a message that describes the changes</li>
+					<li>Commits are identified by a unique hash, and they form a linear history of your repository</li>
+				</ul>
+				<li><a href="branching.html" target="_blank">Branches</a></li>
+				<ul>
+					<li>A branch is a pointer to a specific commit in your repository</li>
+					<li>By default, Git has a single branch named "master", but you can create additional branches to track different versions of your code</li>
+					<li>Branches allow you to work on multiple features or bug fixes simultaneously, without interfering with each other</li>
+				</ul>
+			</ul>
+		</ul>
+
+		<br/>
+        <div id="best_practices">
+            <p><span style="font-size: 18px;"><strong>Best Practices</strong></span></p>
+		</div>
+		<ul>
+			<li>Avoid checking in code to the main branch, use feature branches instead</li>
+			<ul>
+				<li>Why?</li>
+				<ul>
+					<li>Branches allow code reviews via pull requests</li>
+					<li>Branches help avoid breaking the code</li>
+				</ul>
+				<li>How? (specific to CodeCommit)</li>
+				<ul>
+					<li>Limit pushes and merges to branches via IAM deny policies</li>
+					<ul>
+						<li>Allows you to create groups (ie. senior vs junior devs) and allow seniors to initiate pull requests</li>
+					</ul>
+				</ul>
+			</ul>
+			<li>Keep commits small and focused</li>
+			<ul>
+				<li>Why?</li>
+				<ul>
+					<li>Makes it easier to track changes and revert changes if necessary</li>
+				</ul>
+				<li>How?</li>
+				<ul>
+					<li>Each commit should ideally have a single focus and should contain only related changes</li>
+				</ul>
+			</ul>
+			<li>Write clear and concise commit messages</li>
+			<ul>
+				<li>Why?</li>
+				<ul>
+					<li>Allow reviewers and others to understand what is going on</li>
+				</ul>
+				<li>How?</li>
+				<ul>
+					<li>The commit message should summarize the changes made in the commit and should be written in a clear and concise manner</li>
+				</ul>
+			</ul>
+		</ul>
+
+
+		<br/>
+        <div id="storing_data">
+            <p><span style="font-size: 18px;"><strong>Storing Data</strong></span></p>
+		</div>
+		<ul>
+			<li>Upon commit, Git stores a snapshot of the entire file, not a diff</li>
+			<ul>
+				<li>This allows Git to provide a clearer view of your code changes over time</li>
+				<li>Makes it easier to revert to a previous version in your codebase</li>
+			</ul>
+			<li>Git is built for speed, not for storage optimzation</li>
+			<ul>
+				<li>To see this, review the files in the .git/objects directory</li>
+				<li>There are no delta files</li>
+			</ul>
+			<li>Pack operation (git pack) is used to create a single compressed file that contains multiple Git objects, such as commits, trees, blobs</li>
+			<ul>
+				<li>Output is called a pack file</li>
+				<li>Typically performed automatically by Git (along with other routine items such as git gc)</li>
+				<li>You can perform manually however</li>
+				<li>Things to keep in mind</li>
+				<ul>
+					<li>Pack files are read only</li>
+					<li>When Git needs to access a Git object that is stored in a pack file, it will first look for an index file that maps the object's SHA-1 hash to its location in the pack file. If the index file does not exist, Git will create one automatically</li>
+					<li>If a Git object is not present in the pack file, Git will retrieve it from its original location in the repository</li>
+				</ul>
+			</ul>
 		</ul>
 
 

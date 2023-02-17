@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../../styles.css" />
+    <title>i morgen</title>
+    <link rel="icon" href="../../images/logo.png" />
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td><img src="../../images/logo.png" class="logo" /></td>
+        <td><h1 style="color:#0B2042;">i morgen</h1></td>
+      </tr>
+    </table>
+
+    <h2 style="color:#0A45A5;">
+      <a href="../../../index.html">home</a> : <a href="../../aws/aws.html">aws</a> : <a href="index.html">white papers</a> : well architected framework - reliability
+    </h2>
+    <p>
+      <strong
+        ><span style="font-size: 20px;">Well Architected Framework: Reliability</span></strong>
+    </p>
+
+    <span style="font-size: 18px;"><strong>Contents</strong></span>
+    <ul>
+       <li><a href="#understanding_availability_needs">Understanding Availability Needs</a></li>
+       <li><a href="#foundations">Foundations</a></li>
+       <li><a href="#plan_topology">Plan your Topology</a></li>
+       <li><a href="#workload_architecture">Workload Architecture</a></li>
+       <li><a href="#change_management">Change Management</a></li>
+    </ul>
+    <br/>
+    <div id="understanding_availability_needs">
+       <li>Understanding availability needs</li>
+    </div>
+    <ul>
+       <li>How do we measure application availability?</li>
+       <ul>
+          <li>It is tempting to assign a single target for the application as a whole, but there may be granularity that a single number cannot capture</li>
+          <li>Examples</li>
+          <ul>
+             <li>Some systems may prioritize the ability to receive data over the ability to retrieve existing data</li>
+             <li>Some systems may have higher availability requirements during certain hours of the day and can tolerate longer disruptions outside of those hours</li>
+          </ul>
+          <li>Consider decomposing the application into constituent parts and evaluating those parts seperately</li>
+          <li>Benefit: Engineering to the specific demands as opposed to the strictest requirment</li>
+       </ul>
+       <li>Deeper Dive into an AWS Example</li>
+       <ul>
+          <li>AWS commonly divides services into the "data plane" and "control plane"</li>
+          <ul>
+             <li>Data Plane: Responsible for delivering real time services</li>
+             <ul>
+                <li>EC2, RDS, DynamoDB read/write ops</li>
+             </ul>
+             <li>Control Plane: used to configure the environment</li>
+             <ul>
+                <li>Launching EC2 or RDS</li>
+                <li>Adding metadata in DynamoDB</li>
+             </ul>
+          </ul>
+          <li>Data planes have higher availability design goals than the control planes</li>
+          <li>Workloads with high availability requirements should avoid run time dependencies on control plane ops</li>
+       </ul>
+       <li>How to plan and execute for availability?</li>
+       <ul>
+          <li>AWS Solution Architects can help design appropriately for your availability goals</li>
+          <li>Understand this is a continuous process</li>
+          <ul>
+             <li>Refine your design as you gain operational experience</li>
+             <li>Learn from real world events</li>
+          </ul>
+       </ul>
+    </ul>
+    <div id="foundations">
+       <li>Foundations</li>
+    </div>
+    <ul>
+       <li>Foundational requirements are those that extend beyond the scope of a single workload or project</li>
+       <li>Manage service quotas and constraints</li>
+       <ul>
+          <li>Service quotas (aka service limits) exist to prevent you from accidently provisioning more resources then you need</li>
+          <li>Resouce constraints refer to such things as the rate you can push bits down a fiber cable or the amount of storage on a physical disk</li>
+          <li>Note: There are 6 Best Practices listed but not reviewed. Refer to this <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/plan-your-network-topology.html" target="_blank">link</a> </li>
+       </ul>
+    </ul>
+    <div id="plan_topology">
+       <li>Plan your network topology</li>
+    </div>
+    <ul>
+       <li>Consider if your workloads will exist in different environments</li>
+       <ul>
+          <li>Multiple cloud environment</li>
+          <li>Will you have your own data center hosting applications</li>
+       </ul>
+       <li>If so, you must include network considerations such as </li>
+       <ul>
+          <li>Intrasystem/Intersystem connectivty</li>
+          <li>Public IP management</li>
+          <li>Private IP management</li>
+          <li>Domain Name Resolution</li>
+       </ul>
+       <li>If you are using IP based networks, you must plan for network topology, possible failures and growth</li>
+       <li>AWS VPC allows the provisioning of a private and isolated network within the AWS cloud</li>
+       <li>Note: There are 5 Best Practices listed but not reviewed. Refer to this <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/plan-your-network-topology.html" target="_blank">link</a></li>
+    </ul>
+    </ul>
+    <div id="workload_architecture">
+       <li>Workload Architecture</li>
+    </div>
+    <ul>
+    <li>Design your workload service architecture</li>
+    <ul>
+       <li>Highly scalable and reliable workloads use one of two design patterns</li>
+       <ul>
+          <li>Service oriented architecture (SOA)</li>
+          <ul>
+             <li>Makes software components reusable via service interfaces</li>
+             <li>Use common communication standards so they can be rapidly incorporated into new workloads</li>
+             <li>Replaces the monolith architectures which consisted of interdependent, indivisible units</li>
+             <li>AWS historically uses SOA</li>
+          </ul>
+          <li>Microservices</li>
+          <ul>
+             <li>Takes SOA further by making components smaller and simpler</li>
+             <li>By reducing the workload to the smallest components, allows focus on microservices that have the greatest availability need</li>
+             <li>Example</li>
+             <ul>
+                <li>Amazon.com delivers product information pages which invokes hundreds of microservices to build discrete portions of the page</li>
+                <li>There are a few critical services to display price and product details</li>
+                <li>Others, such as those involved in displaying pictures, can be excluded if the service is not available</li>
+             </ul>
+             <li>Note: Additional thoughts here: <a href="../../quick_thoughts/soa_vs_microservices.html" target="_blank">SOA vs Microservices</a></li>
+             <li>Note: There are 3 Best Practices listed but not reviweed. Refer to this <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-your-workload-service-architecture.html" target="blank">link</a></a> </li>
+          </ul>
+       </ul>
+    </ul>
+    <li>Design interactions in a distributed system to prevent failures</li>
+    <ul>
+       <li>Distributed systems (SOA/Microservices) rely on communication networks to interconnect components</li>
+       <ul>
+          <li>Challenges include</li>
+          <ul>
+             <li>latency</li>
+             <li>scaling</li>
+             <li>understanding networking API's</li>
+             <li>marshalling and un-marshalling data</li>
+          </ul>
+          <li>Refer here for more information: <a href="https://aws.amazon.com/builders-library/challenges-with-distributed-systems/" target="_blank">https://aws.amazon.com/builders-library/challenges-with-distributed-systems/</a> </li>
+          <li>By properly accounting for possible failures on these networks, we can prevent failures and improve MTBF</li>
+          <li>Understand the different kinds of distributed systems</li>
+          <ul>
+             <li>Hard Real Time (request/reply): require responses be given synchronously and rapidly</li>
+             <ul>
+                <li>These are the most challenging systems</li>
+                <li>Requests lack predictability and require rapid response</li>
+                <li>Examples</li>
+                <ul>
+                   <li>front end web servers, order pipeline, CC transactions, telephony</li>
+                </ul>
+             </ul>
+             <li>Soft Real Time: provide a more generous time window of minutes or more for responses</li>
+             <li>Offline: handle responses via batch or asychronous processing</li>
+          </ul>
+          <li>Implement loosely coupled dependencies</li>
+          <ul>
+             <li>Tightly coupled implies changes to one component force changes to others that rely on it</li>
+             <li>Loosely coupling breaks this dependency</li>
+             <ul>
+                <li>Examples include: queuing, streaming, workflows and load balancers</li>
+             </ul>
+             <li>Benefits</li>
+             <ul>
+                <li>Increase resiliency and agility</li>
+                </li>
+                <li>Add additional code or features while minimizing risk to components that rely on it</li>
+                <li>Scalability is improved</li>
+             </ul>
+             <li>Additional benefits are seen by making components asychronous wherever possible</li>
+          </ul>
+          <li>Do constant work</li>
+          <ul>
+             <li>Create predictable workloads regardless of external factors</li>
+             <li>This prevents systems from failing when a large and rapid state change occurs</li>
+             <li>Example</li>
+             <ul>
+                <li>You have a health check system monitoring 100,000 servers</li>
+                <li>The response size of this system should be similar regardless if 0 servers are failing or all 100,000 are failing</li>
+                <li>ie. provide a full snapshot every time. State can be represented by a single bit which makes the entire report small</li>
+             </ul>
+          </ul>
+          <li>Make all responses idempotent</li>
+          <ul>
+             <li>Making multiple identical requests has the same effect as making a single request </li>
+             <li>Allows for retries without fear of duplicating workloads</li>
+             <li>This can be accomplished by a token in API requests</li>
+             <ul>
+                <li>The same token is used whenever the request is repeated</li>
+                <li>An idempotent API will reference this token and return the same response if requests are repeated</li>
+             </ul>
+             <li>For additional information: <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html" target="_blank">Ensuring idempotency</a> </li>
+          </ul>
+       </ul>
+    </ul>
+    <li>Design interactions in a distributed system to mitigate or withstand failures</li>
+    <ul>
+       <li>Implement graceful degradation to transform applicable hard dependencies into soft dependencies</li>
+       <ul>
+          <li>Consider the following example: Service A calls service b calls service c. Service c is in error. How do we protect service a?</li>
+          <ul>
+             <li>Service b can return the last good response from service c</li>
+             <li>Service b can return a static response and service a can acknowledge degraded behaviour without actually failing</li>
+             <li>A circuit breaker pattern can be implemented.</li>
+             <ul>
+                <li>Implement retries until the failures become predictable</li>
+                <li>Then stop retries and either cached or degraded response provided</li>
+                <li>Periodically retry to determine if the failed system is restored</li>
+             </ul>
+             <li>In no case should an alternative option exist to recompute server c's expected response. This is an anti-pattern </li>
+          </ul>
+       </ul>
+       <li>Throttle requests</li>
+       <ul>
+          <li>Used in response to an unexpected increase in demand</li>
+          <li>Some requests are honored but others over a defined limit are rejected</li>
+          <ul>
+             <li>Response should acknowledge that the request has been throttled</li>
+             <li>Expectation is that client will abandon or try again at a slower rate</li>
+          </ul>
+       </ul>
+       <li>Control and limit retry calls</li>
+       <ul>
+          <li>Avoid "retry storms"</li>
+          <ul>
+             <li>Typically retries are a technique to increase relability and availability of the application</li>
+             <li>However at scale they can saturate the network as new and retry traffic competes for bandwidth</li>
+             <li>If left to its own, a full system outage is possible</li>
+          </ul>
+          <li>To avoid retry storms, consider the following</li>
+          <ul>
+             <li>Backoff algorithms such as exponential backoff to decrease the rate of retires</li>
+             <li>There may still be a tendency for synchronous retries. This can be addressed with jitter. See <a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/" target="_blank">link</a></li>
+             <li>Max number of retries will further reduce risk</li>
+          </ul>
+       </ul>
+       <li>Fail fast and limit queues</li>
+       <ul>
+          <li>When the workload is unable to respond to a request, fail fast with the intent of releasing resources associated with the request</li>
+          <li>Queues can buffer incoming workload to guard against this scenario, but it can backfire</li>
+          <ul>
+             <li>If queued messages are not processed in the expected timeframe, they may be resent</li>
+             <li>Alternatively the intent of the queued message may not be applicable after some time</li>
+             <li>In a worst case scenaio, the queue will produce the exact scenario you are trying to guard agianst. </li>
+             <li>Addditional information: <a href="https://aws.amazon.com/builders-library/avoiding-insurmountable-queue-backlogs/" target="_blank">link</a> </li>
+          </ul>
+       </ul>
+       <li>Set client timeouts</li>
+       <ul>
+          <li>Review all connection and request timeouts. Often default timeouts are too high (or even infinite)</li>
+          <li>This specifically applied to client side (sender) requests</li>
+          <li>If its too high, resources will be consumed waiting for a response</li>
+          <li>If its too low, you will generate unnecessary retry traffic</li>
+       </ul>
+       <li>Make services stateless where possible</li>
+       <ul>
+          <li>By eliminating the need for services to require state, servers can be replaced without causing availability impact</li>
+          <li>Offload state requirements to a product such as ElasticCache or DynamoDB</li>
+          <li>Additional information: <a href="https://aws.amazon.com/builders-library/eliminating-state-in-serverless-applications/" target="_blank">link</a> </li>
+       </ul>
+       <li>Implement emergency levers</li>
+       <ul>
+          <li>Implement a mechanism to disable or limit the impact of a service</li>
+          <li>Example: A service that is causing a cascading failure</li>
+          <ul>
+             <li>Disable the service</li>
+             <li>Return a static response</li>
+             <li>Return a degraded response</li>
+             <li>Return a cached response</li>
+          </ul>
+       </ul>
+    </ul>
+    <li><div id="change_management">Change Management</div> </li>
+    <ul>
+      <li>Monitor all components for the workload (Generation)</li>
+      <ul>
+          <li>All components should be monitored and key metrics (that tie back to your KPI's) should trigger alarm events</li>
+          <li>PICK UP FROM  <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_monitor_aws_resources_monitor_resources.html">HERE</a></li>
+      </ul>
+    </ul>
+ </body>
+</html>
