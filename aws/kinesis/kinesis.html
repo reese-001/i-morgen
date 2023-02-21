@@ -18,7 +18,7 @@
 
         <p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
         <li><a href="#what_is_it">What is it?</a></li>
-        <li><a href="#define_streams">Define Streams</a></li>
+        <li><a href="#kinesis_streams">Kinesis Streams</a></li>
         <li><a href="#data_streams">Kinesis Data Streams</a></li>
         <li><a href="#firehose">Firehose Delivery Stream</a></li>
         <li><a href="#video_streams">Video Streams</a></li>
@@ -32,7 +32,7 @@
             <li>Fully managed solution for collecting, processing and analyzing streaming data in the cloud - alternative to Apache Kafka</li>
             <li>Create data processing applications known as Kinesis Data Stream applications</li>
             <li>Replicated synchronously to 3 AZ's </li>
-            <li>When you need real time, think Kinesis!</li>
+            <li>When you need real time, think Kinesis</li>
             <li>Streaming data examples</li>
             <ul>
                 <li>Streaming processing frameworks</li>
@@ -46,41 +46,84 @@
                 <li>Geospatial data</li>
                 <li>Click stream data</li>
             </ul>
-        <li>There are four different kinds of Kinesis Streams</li>
-        <ul>
-            <li>Data Streams: low latency streaming ingest at scale</li>
-            <li>Firehose Delivery stream: load streams into S3, Redshift, ElasticSearch and Splunk</li>
-            <li>Data Analytics: perform real time analytics on streams using SQL</li>
-            <li>Video Analytics: meant for streaming video in real time</li>
-        </ul>
+            <li>There are four different kinds of Kinesis Streams</li>
+            <ul>
+                <li>Data Streams: low latency streaming ingest at scale</li>
+                <li>Firehose Delivery stream: load streams into S3, Redshift, ElasticSearch and Splunk</li>
+                <li>Data Analytics: perform real time analytics on streams using SQL</li>
+                <li>Video Analytics: meant for streaming video in real time</li>
+            </ul>
+            <li>Sample Architecture</li>
+            <ul>
+                <li>[click streams, IoT devices, metrics and logs]  -->  Kinesis Streams  -->  Kinesis Analytics  -->  Kinesis Firehose  -->  [S3, Redshift]</li>
+            </ul>
         </ul>  
         
-        <div id="define_streams">
-            <p><strong><span style="font-size: 18px;">Define Streams</span>&nbsp;</strong></p>
-        </div>
-        <ul>
-            <li>In the context of Amazon Kinesis Streams, a stream is a sequence of data records</li>
-            <li>What is the difference between streams and files?</li>
-            <ul>
-                <li>Storage: Files are typically stored on a physical storage medium such as a hard drive, while streams are usually stored in memory or transmitted over a network</li>
-                <li>Access: Files are accessed in a sequential or random manner, while streams are usually processed as they are received in a continuous flow.</li>
-                <li>Size: Files can be any size, while streams are typically of an unbounded size.</li>
-                <li>Format: Files have a fixed format, while streams can have a variety of formats depending on how they are used.</li>
-                <li>Modification: Files can be modified by overwriting or appending data, while streams are generally consumed as they are produced and cannot be modified.</li>
-            </ul>
-        </ul>
-       
-        <div id="data_streams">
-            <p><strong><span style="font-size: 18px;"><a href="images_data_stream.html">Kinesis Data Streams</a></span></strong></p>    
+        <br/>
+        <div id="kinesis_streams">
+            <p><strong><span style="font-size: 18px;">Kinesis Streams</span>&nbsp;</strong></p>
         </div>
         <ul>
             <li>Purpose: Stream big data in your system</li>
+            <li>Streams consist of shards and partitions</li>
             <ul>
-                <li>Stream consists of shards</li>
                 <li>Shards are numbered (1, 2, 3, ..) and must be provisioned ahead of time</li>
                 <li>Shards define your capacity and ingestion rates</li>
-                <li>Pay per running shard</li>
             </ul>
+            <li>Charactoristics of stream</li>
+            <ul>
+                <li>Data retention is 24 hours by default with a max retention of 365 days</li>
+                <li>You can replay/reprocess this data within the retention period</li>
+                <li>Pub/sub architecture - multiple apps can consume the same stream</li>
+                <li>Once the data is inserted into Kinesis, it cannot be deleted (immutable)</li>
+                <li>Records can be up to 1mb in size</li>
+            </ul>
+            <li>Capacity modes</li>
+            <ul>
+                <li>Provisioned mode</li>
+                <ul>
+                    <li>You chose the number of shards provisioned</li>
+                    <ul>
+                        <li>You can manually scale or use API</li>
+                        <li>Each shard gets 1MB/s in (or 1000 records per second)</li>
+                        <li>Each shard gets 2MB/s out (classic or enhanced fan out consumer)</li>
+                        <li>Pay per shard per hour</li>
+                    </ul>
+                </ul>
+                <li>On demand mode</li>
+                <ul>
+                    <li>No need to provision or manage the capacity </li>
+                    <li>Default capacity provisioned (4Mb/s in or 4000 records per second)</li>
+                    <li>Scales automatically based on observed throughput peak during the last 30 days</li>
+                </ul>
+            </ul>
+            <li>Limits to know</li>
+            <ul>
+                <li>Producers</li>
+                <ul>
+                    <li>1MB/s for 1000 messages/s at write per shard</li>
+                    <ul>
+                        <li>If you exceed that limit, you will receive a "ProvisionedThroughputException"</li>
+                    </ul>
+                </ul>
+                <li>Consumers</li>
+                <ul>
+                    <li>2MB/s at read per shard across all consumers</li>
+                    <li>5 API calls per second per shard across all consumers</li>
+                </ul>
+                <li>What does this mean? If you want to scale, you must increase shards</li>
+            </ul>
+        </ul>
+        
+        <br/>
+        <div id="k">
+            <p><strong><span style="font-size: 18px;">Kinesis Streams</span>&nbsp;</strong></p>
+        </div>
+        <ul>
+            <li></li>
+        </ul>
+
+
             <li>Producers</li>
             <ul>
                 <li>Examples</li>
@@ -133,7 +176,7 @@
                         <li>Multiple consuming applications for the same stream</li>
                         <li>2 MB per second per shard</li>
                         <li>Latency: 70ms</li>
-                        <
+                 
                     </ul>
                 </ul>
             </ul>
@@ -144,14 +187,8 @@
                 <li>Kinesis Data Firehose</li>
                 <li>Kinesis Data Analytics</li>
             </ul>
-            <li>Data persists for a predetermined time frame (24h default, 168h max - or is it 365 days? Conflicting info. TODO. )</li>
-            <li>Typical use cases</li>
-            <ul>
-                <li>log and event data collection</li>
-                <li>IoT device data capture</li>
-                <li>mobile data collection</li>
-                <li>gaming data feed</li>
-            </ul>
+            <li>Data persists for a predetermined time frame (24h default, max 365 days)</li>
+    
         </ul>   
 
         <div id="firehose">

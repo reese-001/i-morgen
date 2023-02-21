@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles.css">
+		<title>i morgen</title>
+		<link rel="icon" href="../images/logo.png">
+	</head>
+	<body>
+		<table width="80%">
+			<tr>
+				<td width="5%"><img src="../images/logo.png" class="logo"></td>
+				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+				
+			</tr>
+		</table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../../aws/aws.html">aws</a> : <a href="index.html">code build</a> : walk through</h2>
+
+        <p><span style="font-size: 20px;"><strong>Code Build Walkthough</strong></span></p>
+
+		
+
+		<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+		<ul>
+			<li><a href="#creating_code_build_project">What Is It</a></li>
+			
+			
+		</ul>
+
+
+		<br/>
+		<div id="creating_code_build_project">
+			<p><span style="font-size: 18px;"><strong>Creating a Code Build Project</strong></span></p>
+		</div>
+		<ul>
+			<li>Assume a starting point of selecting "Create Build Project"</li>
+			<ul>
+				<li>Not all options will be called out</li>
+			</ul>
+			<li>Source</li>
+			<ul>
+				<li>Options include (Feb 2023)</li>
+				<ul>
+					<li>S3</li>
+					<li>CodeCommit</li>
+					<li>GitHub/Enterprise</li>
+					<li>BitBucket</li>
+				</ul>
+			
+				<li>Reference type</li>
+				<ul>
+					<li>Branch</li>
+					<ul>
+						<li>How to test ongoing code</li>
+					</ul>
+					<li>Git Tag</li>
+					<ul>
+						<li>For example, did you tag a commit to read "V1"? If so, you can select it here</li>
+					</ul>
+					<li>Commit ID</li>
+					<ul>
+						<li>Do you want to test a specific version of the repo</li>
+					</ul>
+					<li>Additional configuration</li>
+					<ul>
+						<li>This is more advanced and not yet reviewed</li>
+					</ul>
+				</ul>
+			</ul>
+			<li>Environment</li>
+			<ul>
+				<li>Environmental Image</li>
+				<ul>
+					<li>Managed vs Custom</li>
+					<ul>
+						<li>Do you need some specific software installed on your image to perform build and test</li>
+					</ul>
+				</ul>
+				<li>Additional Configuration</li>
+				<ul>
+					<li>Note that the range of timeouts is from 5 min -> 8 hrs</li>
+					<ul>
+						<li>This contrasts with Lambda with a timeout of 15 min which limits the ability to perform build and test ops</li>
+					</ul>
+					
+				</ul>
+			</ul>
+		</ul>
+	
+		
+	</body>
+</html>

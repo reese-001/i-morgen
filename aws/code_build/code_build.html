@@ -13,7 +13,7 @@
 				
 			</tr>
 		</table>
-        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">code build</a>:overview</h2>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../../aws/aws.html">aws</a> : <a href="index.html">code build</a> : overview</h2>
 
         <p><span style="font-size: 20px;"><strong>Code Build</strong></span></p>
 
@@ -129,6 +129,7 @@
 			<p><span style="font-size: 18px;"><strong>Buildspec.yml</strong></span></p>
 		</div>
 		<ul>
+			<li>Refer to link in <a href="links.html" target="_blank">links</a> section</li>
 			<li>Provides the build instructions and needs to be at the root of your project folder</li>
 			<li>Components</li>
 			<ul>
@@ -138,15 +139,48 @@
 					<li>v .1 runs each build command in a seperate instance</li>
 					<li>v .2 runns all build commands in the same instance</li>
 				</ul>
+				<li>Environmental variables and parameter store key/value pairs</li>
+		
 				<li>Phases: commands the run in each phase of the build</li>
 				<ul>
 					<li>install: only for installing packed in the build env</li>
 					<li>pre_build: commands that run before builing</li>
 					<li>build: commands that run during build</li>
 					<li>post-build: commands that run after build</li>
+					<ul>
+						<li>Can contain a 'finally' block in case something goes wrong and you need to clean up</li>
+					</ul>
 				</ul>
-				<li>Artifacts: where we can find the build output and how to prepare it for uploading to the S3 output bucket</li>
+				<li>Artifacts</li>
+				<ul>
+					<li>What is kept after the build is done</li>
+					<li>Anything that is created in the container during the build process will be destroyed when the container is removed</li>
+					<li>If you need those artificts, identify them here and they can be preserved in S3</li>
+					
+				</ul>
 			</ul>
+			<li>Example</li>
+			<pre>
+version: 0.2
+
+phases: 
+    install:
+        runtime-versions:
+            nodejs: 10
+        commands:
+            - echo "installing something"
+    pre_build:
+        commands: 
+            - echo "we are in the pre build phase"
+    build:
+        commands:
+            - echo "we are in the build block"
+            - echo "we will run some tests"
+            - grep -Fq "Congratulations" index.html
+    post_build:
+        commands:
+            - echo "we are in the post build phase"
+			</pre>
 		</ul>
 	</body>
 </html>
