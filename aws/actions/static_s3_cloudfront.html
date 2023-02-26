@@ -1,43 +1,489 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" href="../styles.css">
-		<title>i morgen</title>
-		<link rel="icon" href="../images/logo.png">
-	</head>
-	<body>
-		<table width="80%">
-			<tr>
-				<td width="5%"><img src="../images/logo.png" class="logo"></td>
-				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
-				
-			</tr>
-		</table>
-		<h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../aws.html">aws</a>:static s3 site using cloudfront</h2>
-		<p><span style="font-size: 20px;"><strong>Create Static S3 Site using CloudFront</strong>: <a href="https://www.youtube.com/watch?v=mls8tiiI3uc">Reference</a></span></p>
-		<p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
-		<ul>
-			<li>Create simple React app and upload to S3 - Link to create <a href="#react">React app</a></li>
-			<li>Modify DNS settings in Route53</li>
-			<li>Setup caching on CloudFront</li>
-			<ul>
-				<li>React will point to a DNS entry on Route53</li>
-				<li>DNS entry will point to our Amazon CloudFront Distribution</li>
-				<li>And that is going to point to our S3 bucket which contains web site files </li>
-				<li>Finally setup certificate in the distribution</li>
-			</ul>
-		</ul>
 
-		<p><span style="font-size: 18px;"><strong>Create S3 buckets</strong></span></p>
-		<ul>
-			<li>Creating two buckets, one prefixed with 'www' and one without the prefix.</li>
-			<ul>
-				<li>The intent is to forward traffic from none 'www' to the 'www'</li>
-			</ul>
-			<li>Upload content from local directory to 'www' folder</li>
-			<li>Allow public access via permissions tab</li>
-			<li>Set bucket policy as shown below and modify "Bucket-Name" as appropriate</li>
-			
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>i-morgen</title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../style_menu.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
+<script>
+        var path_to_root = "../../" // aws
+    </script>
+</head>
+<body>
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (General)</span>
+</a>
+<ul class="sub-menu active">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
+                </li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                    53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                    Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (Data Science)</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                    Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                    Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                    Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                    Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                    Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
+                    Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                    Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul></li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS (White Papers)</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Concepts</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Machine Learning</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                    Function</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
+                    Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                    Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                    Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                    Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
+                    BERT/GPT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                    Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                    Gradients</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Hold</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span></span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<div class="gcse-search"></div>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+</li></li></ul>
+<!-- end sidebar nav -->
+</div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table width="80%">
+<tr>
+<td width="5%"><img class="logo" src="../images/logo.png"/></td>
+<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+</tr>
+</table>
+<h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../aws.html">aws</a>:static s3 site using cloudfront</h2>
+<p><span style="font-size: 20px;"><strong>Create Static S3 Site using CloudFront</strong>: <a href="https://www.youtube.com/watch?v=mls8tiiI3uc">Reference</a></span></p>
+<p><span style="font-size: 18px;"><strong>Overview</strong></span></p>
+<ul>
+<li>Create simple React app and upload to S3 - Link to create <a href="#react">React app</a></li>
+<li>Modify DNS settings in Route53</li>
+<li>Setup caching on CloudFront</li>
+<ul>
+<li>React will point to a DNS entry on Route53</li>
+<li>DNS entry will point to our Amazon CloudFront Distribution</li>
+<li>And that is going to point to our S3 bucket which contains web site files </li>
+<li>Finally setup certificate in the distribution</li>
+</ul>
+</ul>
+<p><span style="font-size: 18px;"><strong>Create S3 buckets</strong></span></p>
+<ul>
+<li>Creating two buckets, one prefixed with 'www' and one without the prefix.</li>
+<ul>
+<li>The intent is to forward traffic from none 'www' to the 'www'</li>
+</ul>
+<li>Upload content from local directory to 'www' folder</li>
+<li>Allow public access via permissions tab</li>
+<li>Set bucket policy as shown below and modify "Bucket-Name" as appropriate</li>
 <pre>
 	{
 		"Version": "2012-10-17",
@@ -56,68 +502,65 @@
 		]
 	}
 </pre>
-		<li>Navigate to bucket properties and scroll down to "Static website hosting"</li>
-		<ul>
-			<li>Enable Static website hosting</li>
-			<li>Select "Host a static website"</li>		
-			<li>Type "index.html" for Index Document</li>
-		</ul>
-		<li>Navigate to non-www folder, the properties and scroll down to "Static website hosting"</li>
-		<ul>
-			<li>Enable Static website hosting</li>
-			<li>On Hosting type, select "Redirect requests for an object"</li>
-			<li>Populate host name with the 'www' prefix</li>
-			<li>select http as protocol (note: this option will be revisited at the end)</li>
-		</ul>
-		</ul>
-		
-
-		<p><span style="font-size: 18px;"><strong><a id="react">Route53</a></strong></span></p>
-		<ul>
-			<li>Navigate to Route53 and select appropriate hosted domain and select "Create record" </li>
-			<li>Populate the subdomain and ensure it matches the S3 bucket name</li>
-			<li>For record type, select "A - Routes traffic to an IPv4 address and some AWS resources</li>
-			<li>For "Value/Route traffic to", populate the subsequent three values as follows</li>
-			<ul>
-				<li>Alias to S3 website endpoint</li>
-				<li>[correct region for S3]</li>
-				<li>[bucket name]</li>
-			</ul>
-			<li>Evaluate target health can be set to no as we do not have a host behind the target</li>
-			<li>Repeat the same steps by defining another new target to account for non-www bucket. Differences noted below</li>
-			<ul>
-				<li>Record name = empty</li>
-				<li>bucket name is different</li>
-			</ul>
-		</ul>
-
-		<p><span style="font-size: 18px;"><strong><a id="react">Create Certificate</a></strong></span></p>
-		<ul>
-			<li>Navigate to Certificate Manager</li>
-			<li>Select "Request Certificate" </li>
-			<li>Select "Request Public Certificate" </li>
-			<li>Populate the domain names as needed and submit</li>
-			<li>Certificates will need to be validated, which will require you to insert records into the Route53 configuration. </li>
-		</ul>
-
-		<li>NOTE: Up until this point the content is served directly from S3. </li>
-		<li>Moving to CloudFront will allow for HTTPS and allow caching to take place</li>
-
-		<p><span style="font-size: 18px;"><strong><a id="react">Setup CloudFront</a></strong></span></p>
-		<ul>
-			<li>Navigate to CloudFront and create distribution</li>
-			<li>For "Origin domain", navigate to S3, your bucket, properties, and scroll down to bottom and copy the bucket endpoint address</li>
-			<li>For "Viewer Protocol Policy", select "Redirect to HTTPS"</li>
-			<li>For "Alternate Domain Names (CNAMEs)", populate the domain name</li>
-		</ul>
-		
-		<p><span style="font-size: 18px;"><strong><a id="react">React</a></strong></span></p>
-		<ol>
-			<li>install npx and execute the following in Power Shell: npx create-react-app demo-app</li>
-			<li>execute the following command and validate install: npm start</li>
-			<li>execute the following command to bundle the application: npm run build</li>
-		</ol>
-	
-		
-	</body>
+<li>Navigate to bucket properties and scroll down to "Static website hosting"</li>
+<ul>
+<li>Enable Static website hosting</li>
+<li>Select "Host a static website"</li>
+<li>Type "index.html" for Index Document</li>
+</ul>
+<li>Navigate to non-www folder, the properties and scroll down to "Static website hosting"</li>
+<ul>
+<li>Enable Static website hosting</li>
+<li>On Hosting type, select "Redirect requests for an object"</li>
+<li>Populate host name with the 'www' prefix</li>
+<li>select http as protocol (note: this option will be revisited at the end)</li>
+</ul>
+</ul>
+<p><span style="font-size: 18px;"><strong><a id="react">Route53</a></strong></span></p>
+<ul>
+<li>Navigate to Route53 and select appropriate hosted domain and select "Create record" </li>
+<li>Populate the subdomain and ensure it matches the S3 bucket name</li>
+<li>For record type, select "A - Routes traffic to an IPv4 address and some AWS resources</li>
+<li>For "Value/Route traffic to", populate the subsequent three values as follows</li>
+<ul>
+<li>Alias to S3 website endpoint</li>
+<li>[correct region for S3]</li>
+<li>[bucket name]</li>
+</ul>
+<li>Evaluate target health can be set to no as we do not have a host behind the target</li>
+<li>Repeat the same steps by defining another new target to account for non-www bucket. Differences noted below</li>
+<ul>
+<li>Record name = empty</li>
+<li>bucket name is different</li>
+</ul>
+</ul>
+<p><span style="font-size: 18px;"><strong><a id="react">Create Certificate</a></strong></span></p>
+<ul>
+<li>Navigate to Certificate Manager</li>
+<li>Select "Request Certificate" </li>
+<li>Select "Request Public Certificate" </li>
+<li>Populate the domain names as needed and submit</li>
+<li>Certificates will need to be validated, which will require you to insert records into the Route53 configuration. </li>
+</ul>
+<li>NOTE: Up until this point the content is served directly from S3. </li>
+<li>Moving to CloudFront will allow for HTTPS and allow caching to take place</li>
+<p><span style="font-size: 18px;"><strong><a id="react">Setup CloudFront</a></strong></span></p>
+<ul>
+<li>Navigate to CloudFront and create distribution</li>
+<li>For "Origin domain", navigate to S3, your bucket, properties, and scroll down to bottom and copy the bucket endpoint address</li>
+<li>For "Viewer Protocol Policy", select "Redirect to HTTPS"</li>
+<li>For "Alternate Domain Names (CNAMEs)", populate the domain name</li>
+</ul>
+<p><span style="font-size: 18px;"><strong><a id="react">React</a></strong></span></p>
+<ol>
+<li>install npx and execute the following in Power Shell: npx create-react-app demo-app</li>
+<li>execute the following command and validate install: npm start</li>
+<li>execute the following command to bundle the application: npm run build</li>
+</ol>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../script.js"></script>
+</body>
 </html>

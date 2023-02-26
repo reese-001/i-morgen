@@ -1,125 +1,692 @@
 <!DOCTYPE html>
+
 <html>
-	<head>
-		<link rel="stylesheet" href="../styles.css">
-		<title>i morgen</title>
-		<link rel="icon" href="../images/logo.png">
-	</head>
-	<body>
-		<table width="80%">
-			<tr>
-				<td width="5%"><img src="../images/logo.png" class="logo"></td>
-				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
-				
-			</tr>
-		</table>
-        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../../aws/aws.html">aws</a> : <a href="index.html">code deploy</a> : overview</h2>
 
-        <p><span style="font-size: 20px;"><strong>Code Deploy</strong></span></p>
-		<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
-		<ul>
-			<li>Fully managed deploy pipeline to staging or production environments</li>
-			<li>Can deploy on</li>
-			<ul>
-				<li>EC2</li>
-				<ul>
-					<li>Each EC2 instance must be running the CodeDeploy agent</li>
-				</ul>
-				<li>On-premises</li>
-				<ul>
-					<li>Each on-premise instance must be running the CodeDeploy agent</li>
-				</ul>
-				<li>Lambda</li>
-				<li>ECS</li>
-			</ul>
-			<li>Rapidly deploy new features</li>
-			<li>Update AWS Lambda functions versions</li>
-			<li>Avoid downtime during application deployment</li>
-			<li>Perform in place or blue/green deployments</li>
-			<li>Integrates with existing CI/CD tools such as Jenkins and CodePipeline</li>
-			<li>Integrates with existing config management tools such as Puppet, Chef, Ansible</li>
-		</ul>
+<head>
+    <meta charset="utf-8" />
+    <title>i-morgen</title>
+    <link
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png"
+        rel="apple-touch-icon" type="image/png" />
+    <meta content="CodePen" name="apple-mobile-web-app-title" />
+    <link
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"
+        rel="shortcut icon" type="image/x-icon" />
+    <link color="#111"
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg"
+        rel="mask-icon" type="image/x-icon" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet" />
+    <link href="../style_menu.css" rel="stylesheet" />
+    <link href="../styles.css" rel="stylesheet" />
+    <script>
+        var path_to_root = "../../" // aws
+    </script>
+</head>
 
-		<p><span style="font-size: 18px;"><strong>Core Components</strong></span></p>
-		<ul>
-			<li>Application</li>
-			<ul>
-				<li>Unique identifier for the application being deployed</li>
-				<li>Ensures the correct combination of revision, deployment config, and groups are referenced during deployment</li>
-			</ul>
-			<li>Deployment Groups</li>
-			<ul>
-				<li>Set of EC2 instances or Lambda functions where the new revision is deployed to</li>
-			</ul>
-			<li>Deployment</li>
-			<ul>
-				<li>Instance of a deployment group</li>
-				<li>Contains the revision, deployment config, and deployment group</li>
-				<li>Can be created manually or automatically</li>
-			</ul>
-			<li>Deployment Configuration</li>
-			<ul>
-				<li>Defines how a deployment is executed and rolled back</li>
-				<li>Can be created manually or automatically</li>
-			</ul>
-			<li>AppSpec file</li>
-			<ul>
-				<li>Contains instructions for how to deploy the application</li>
-				<li>Can be created manually or automatically</li>
-			</ul>
-			<li>Revision</li>
-			<ul>
-				<li>Version of the application to be deployed</li>
-				<li>Can be created manually or automatically</li>
-			</ul>
-		</ul>
+<body>
+    <div class="page-header-fixed page-sidebar-fixed" id="page-container">
+        <div class="sidebar" id="sidebar">
+            <!-- begin sidebar scrollbar -->
+            <div data-height="100%" data-scrollbar="true">
+                <!-- begin sidebar nav -->
+                <ul class="nav">
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-th-large"></i>
+                            <span>AWS (General)</span>
+                        </a>
+                        <ul class="sub-menu active">
+                            <li>
+                                <a href="javascript:void(0);"
+                                    onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>AWS Compute</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API
+                                            Gateway</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Database</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Developer Tools</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code
+                                            Commit</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code
+                                            Build</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code
+                                            Build</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>IaC</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Management</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter
+                                            Store</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Messaging</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Network</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC
+                                            Endpoints</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                                            53</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>SIC</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                                            Manager</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets
+                                            Manager</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security
+                                            Groups</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Storage</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance
+                                            Storage</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-th-large"></i>
+                            <span>AWS (Data Science)</span>
+                        </a>
+                        <ul class="sub-menu active">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>ML Toolset</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                                            Text</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep
+                                            AR</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                                            Classification</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                                            Learner</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                                            Topic Modeling</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                                            Detection</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random
+                                            Cut
+                                            Forest</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                                            Segmentation</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Analytics Toolset</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-list-ol"></i>
+                            <span>AWS (White Papers)</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Item 1</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>Hi</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-list-ol"></i>
+                            <span>DevOps</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Item 1</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>Hi</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-list-ol"></i>
+                            <span>Concepts</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Machine Learning</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                                            Function</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging
+                                            vs
+                                            Boosting</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                                            Matrix</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                                            Methods</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                                            Measurement</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP
+                                            with
+                                            BERT/GPT</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                                            Neural Networks</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                                            Gradients</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc
+                                            Concepts</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Data Ops</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-list-ol"></i>
+                            <span>Hold</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>Hi</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <div class="gcse-search"></div>
+                    </li>
+                    <!-- begin sidebar minify button -->
+                    <!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+                    <!-- end sidebar minify button -->
+                    </li>
+                    </li>
+                </ul>
+                <!-- end sidebar nav -->
+            </div>
+            <!-- end sidebar scrollbar -->
+        </div>
+        <div class="sidebar-bg"></div>
+        <!-- end #sidebar -->
+    </div>
+    <div class="content" id="content">
+        <table width="80%">
+            <tr>
+                <td width="5%"><img class="logo" src="../images/logo.png" /></td>
+                <td width="80%">
+                    <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+                </td>
+            </tr>
+        </table>
+        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../../aws/aws.html">aws</a> : <a
+                href="index.html">code deploy</a> : overview</h2>
+        <br />
+        <span style="font-size: 18px;"><strong>Contents</strong></span>
+        <ul>
+            <li><a href="#what_is_it">What is it?</a></li>
+            <li><a href="#core_components">Core Components</a></li>
+            <li><a href="#in_place_deployments">In Place Deployments</a></li>
+            <li><a href="#blue_green_deployments">Blue/Green Deployments</a></li>
+            <li><a href="#appspec">Appspec.yml</a></li>
+            <li><a href="#lifecycle_event_hooks">Lifecycle Event Hooks</a></li>
+            <li><a href="#agent">CodeDeploy Agent and ServiceRole</a></li>
+        </ul>
+        <div id="what_is_it"><span style="font-size: 18px;"><strong>What is it?</strong></span></div>
+        <ul>
+            <li>Fully managed deploy pipeline to staging or production environments</li>
+            <li>Can deploy on</li>
+            <ul>
+                <li>EC2</li>
+                <ul>
+                    <li>Each EC2 instance must be running the CodeDeploy agent</li>
+                </ul>
+                <li>On-premises</li>
+                <ul>
+                    <li>Each on-premise instance must be running the CodeDeploy agent</li>
+                </ul>
+                <li>Lambda</li>
+                <li>ECS</li>
+            </ul>
+            <li>Rapidly deploy new features</li>
+            <li>Update AWS Lambda functions versions</li>
+            <li>Avoid downtime during application deployment</li>
+            <li>Perform in place or blue/green deployments</li>
+            <li>Integrates with existing CI/CD tools such as Jenkins and CodePipeline</li>
+            <li>Integrates with existing config management tools such as Puppet, Chef, Ansible</li>
+        </ul>
+        <div id="core_components"><p><span style="font-size: 18px;"><strong>Core Components</strong></span></p></div>
+        <ul>
+            <li>Application</li>
+            <ul>
+                <li>Unique identifier for the application being deployed</li>
+                <li>Ensures the correct combination of revision, deployment config, and groups are referenced during
+                    deployment</li>
+            </ul>
+            <li>Deployment Groups</li>
+            <ul>
+                <li>Set of EC2 instances or Lambda functions where the new revision is deployed to</li>
+            </ul>
+            <li>Deployment</li>
+            <ul>
+                <li>Instance of a deployment group</li>
+                <li>Contains the revision, deployment config, and deployment group</li>
+                <li>Can be created manually or automatically</li>
+            </ul>
+            <li>Deployment Configuration</li>
+            <ul>
+                <li>Defines how a deployment is executed and rolled back</li>
+                <li>Can be created manually or automatically</li>
+            </ul>
+            <li>AppSpec file</li>
+            <ul>
+                <li>Contains instructions for how to deploy the application</li>
+                <li>Can be created manually or automatically</li>
+            </ul>
+            <li>Revision</li>
+            <ul>
+                <li>Version of the application to be deployed</li>
+                <li>Can be created manually or automatically</li>
+            </ul>
+        </ul>
+        <div id="in_place_deployments"><p><span style="font-size: 18px;"><strong>In Place Deployments</strong></span></p></div>
+        <ul>
+            <li>The app for each instance is stopped, the new version is deployed, and the app is started</li>
+            <li>You can use a load balancer so that each instance is de-registered during its deployment and then
+                restored to service after deployment is complete</li>
+            <li>Only deployments that use the EC2/On-Premise compute platform can use in place deployments (no
+                Lambda/ECS)</li>
+        </ul>
+        <div id="blue_green_deployments"><p><span style="font-size: 18px;"><strong>Blue/Green Deployments</strong></span></p></div>
+        <ul>
+            <li>tip: choose "automatically copy Amazon EC2 Auto Scaling Group</li>
+            <li>Instances are provisioned for the replacement environment</li>
+            <li>The latest application revision is installed on the replacement instances</li>
+            <li>Optional wait time occurs for activities such as application testing and system verification</li>
+            <li>Instances in the replacement environment are registered with an ELB, causing traffic to be rerouted to
+                them</li>
+            <li>Instances in the original environment are de-registered and can be terminated or used for
+                debugging/rollback</li>
+        </ul>
+        <div id="appspec"><p><span style="font-size: 18px;"><strong><a
+                        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html"
+                        target="_blank">Appspec.yml</a></strong></span></p></div>
+        <ul>
+            <li>Reponsible for describing where code should be installed and how to get it running </li>
+            <li>Can be created manually or automatically</li>
+            <li><a href="../images/code_deploy_appspec.png">Illustration</a> (ExamPro)</li>
+            <li>Components</li>
+            <ul>
+                <li>Choose OS version</li>
+                <li>Where to download the source</li>
+                <li>Apply permissions</li>
+                <li>Commands to stop the application (write bash files and point to the bash files in appspec.yml)</li>
+                <li>Commands to run before code is installed</li>
+                <li>Commands to run after code is installed</li>
+                <li>Commands to start the application</li>
+            </ul>
+        </ul>
+        <div id="lifecycle_hook_events"><p><span style="font-size: 18px;"><strong><a
+                        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html"
+                        target="_blank">Lifecycle Event Hooks</a></strong></span></p></div> 
+        <ul>
+            <li>Allows you to view the events from a deploy to see if there is anything that failed and how long each
+                event took. </li>
+            <li>Listed sequentially</li>
+            <li><a href="../images/code_deploy_lifecycle_events.png">Illustration</a> (ExamPro)</li>
+            <li>Failures are listed and can be drilled into. However some are cryptic and will require you to SSH into
+                EC2 instance</li>
+        </ul>
+        <div id="agent"><p><span style="font-size: 18px;"><strong><a
+                        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html"
+                        target="_blank">CodeDeploy Agent and ServiceRole</a></strong></span></p></div>
+        <ul>
+            <li>Need to install the CodeDeploy agent so the EC2 instance can report back to CodeDeploy</li>
+        </ul>
+    </div>
+    <script
+        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+    <script src="../script.js"></script>
+</body>
 
-		<p><span style="font-size: 18px;"><strong>In Place Deployments</strong></span></p>
-		<ul>
-			<li>The app for each instance is stopped, the new version is deployed, and the app is started</li>
-			<li>You can use a load balancer so that each instance is de-registered during its deployment and then restored to service after deployment is complete</li>
-			<li>Only deployments that use the EC2/On-Premise compute platform can use in place deployments (no Lambda/ECS)</li>
-		</ul>
-
-		<p><span style="font-size: 18px;"><strong>Blue/Green Deployments</strong></span></p>
-		<ul>
-			<li>tip: choose "automatically copy Amazon EC2 Auto Scaling Group</li>
-			<li>Instances are provisioned for the replacement environment</li>
-			<li>The latest application revision is installed on the replacement instances</li>
-			<li>Optional wait time occurs for activities such as application testing and system verification</li>
-			<li>Instances in the replacement environment are registered with an ELB, causing traffic to be rerouted to them</li>
-			<li>Instances in the original environment are de-registered and can be terminated or used for debugging/rollback</li>
-		</ul>
-
-		<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html" target="_blank">Appspec.yml</a></strong></span></p>
-		<ul>
-			<li>Reponsible for describing where code should be installed and how to get it running </li>
-			<li>Can be created manually or automatically</li>
-			<li><a href="../images/code_deploy_appspec.png">Illustration</a> (ExamPro)</li>
-			<li>Components</li>
-			<ul>
-				<li>Choose OS version</li>
-				<li>Where to download the source</li>
-				<li>Apply permissions</li>
-				<li>Commands to stop the application (write bash files and point to the bash files in appspec.yml)</li>
-				<li>Commands to run before code is installed</li>
-				<li>Commands to run after code is installed</li>
-				<li>Commands to start the application</li>
-			</ul>
-		</ul>
-
-		<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html" target="_blank">Lifecycle Event Hooks</a></strong></span></p>
-		<ul>
-			<li>Allows you to view the events from a deploy to see if there is anything that failed and how long each event took. </li>
-			<li>Listed sequentially</li>
-			<li><a href="../images/code_deploy_lifecycle_events.png">Illustration</a> (ExamPro)</li>
-			<li>Failures are listed and can be drilled into. However some are cryptic and will require you to SSH into EC2 instance</li>
-		</ul>
-
-		<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html" target="_blank">CodeDeploy Agent and ServiceRole</a></strong></span></p>
-		<ul>
-			<li>Need to install the CodeDeploy agent so the EC2 instance can report back to CodeDeploy</li>
-		</ul>
-
-		</body>
 </html>

@@ -1,238 +1,674 @@
 <!DOCTYPE html>
+
 <html>
-   <head>
-      <link rel="stylesheet" href="../styles.css">
-      <title>i morgen</title>
-      <link rel="icon" href="../images/logo.png">
-   </head>
-   <body>
-      <table width="80%">
-         <tr>
-            <td width="5%"><img src="../images/logo.png" class="logo"></td>
-            <td width="80%">
-               <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
-            </td>
-         </tr>
-      </table>
-      <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../../aws/aws.html">aws</a> : <a href="index.html">beanstalk</a> : overview</h2>
-      <p><span style="font-size: 20px;"><strong><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html" target="_blank">Beanstalk</a></strong></span></p>
-
-      <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
-      <ul>
-         <li><a href="#what_is_it">What is it?</a></li>
-         <li><a href="#components">Components</a></li>
-         <li><a href="#deployment_policies">Deployment Policies</a></li>
-         <li><a href="#blue_green">Blue Green</a></li>
-         <li><a href="#traffic_splititng">Traffic Splitting</a></li>
-         <li><a href="#cli">Beanstalk CLI</a></li>
-         <li><a href="#lifecycle">Beanstalk Lifecycle</a></li>
-         <li><a href="#extensions">Beanstalk Extensions</a></li>
-      </ul>
-
-      <div id="what_is_it">
-         <p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
-      </div>
-      <ul>
-         <li>Developer centric view of deploying an application on AWS</li>
-         <li>It uses familiar components (EC2, ASG, ELB, RDS, etc)</li>
-         <li>Managed service that will provide </li>
-         <ul>
-            <li>Capacity provisioning</li>
-            <li>Load balancing</li>
-            <li>Scaling</li>
-            <li>Application health monitoring</li>
-            <li>Instance configuration</li>
-         </ul>
-         <li>Still have full control over the configuration</li>
-         <li>Beanstalk is free but you pay for the underlying instances</li>
-      </ul>
-
-      <div id="components">
-         <p><span style="font-size: 18px;"><strong>Components</strong></span></p>
-      </div>
-      <ul>
-         <li>Application</li>
-         <ul>
-            <li>Collection of Elastic Beanstalk components (environment, version, configs)</li>
-         </ul>
-         <li>Application version</li>
-         <ul>
-            <li>An iteration of your application code</li>
-         </ul>
-         <li>Environment: </li>
-         <ul>
-            <li>Collection of AWS resources running an application version (only one application version at a time)</li>
-            <li>Tiers: </li>
-            <ul>
-               <li>Web server environment</li>
-               <ul>
-                  <li><a href="../images/beanstalk_web_env.png">Illustration</a></li>
-               </ul>
-               <li>Worker environment</li>
-               <ul>
-                  <li><a href="../images/beanstalk_worker_env.png">Illustration</a></li>
-               </ul>
-            </ul>
-            <li>You can create multiple environments (prod, test, dev)</li>
-         </ul>
-      </ul>
-
-      <div id="deployment_policies">
-         <p><span style="font-size: 18px;"><strong>Four deployment policies available</strong></span></p>
-      </div>
-      <ul>
-         <li>See AWS documentation for more details: <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html" target="_blank>">Link</a></li>
-      </ul>
-      <ol>
-         <li>All at once</li>
-		 <ul>
-		 	<li>Process</li>
-			<ul>
-				<li>deploy new app version to all instances at same time</li>
-				<li>takes all instances out of service during deployment</li>
-				<li>fastest but most dangerous, rollback = redeploy previous version to all instances</li>
-			</ul>
-			<li>Advantage: Fastest</li>
-			<li>Disadvantage: Loss of service during deployment</li>
-		</ul>
-         <li>Rolling (load balanced only)</li>
-         <ul>
-			<li>Process</li>
-			<ul>
-				<li>deploys new app version to batch of instances</li>
-				<li>each batch is out of service while deployment takes place</li>
-				<li>reattaches those instances when batch is completed</li>
-				<li>rollback requires an additional rolling update</li>
-			</ul>
-			<li>Advantage: Minimizes reduced availability</li>
-			<li>Disadvantage: Takes longer to deploy</li>
-            
-         </ul>
-         <li>Rolling with additional batch (load balanced only)</li>
-         <ul>
-			<li>Process</li>
-			<ul>
-				<li>same as above but with introduction of new batch</li>
-				<li>keeps capacity in place</li>
-				<li>rollbacks require additional rolling batch</li>
-			</ul>
-			<li>Advantage: Avoids reduced availability</li>
-			<li>Disadvantage: Takes longer to deploy</li>
-         </ul>
-         <li>Immutable</li>
-         <ul>
-			<li>Process</li>
-			<ul>
-				<li>create new asg group with ec2 instances</li>
-				<li>deploy new version to new asg instances</li>
-				<li>point elb to the new asg and delete old asg - which will terminate old ec2 instances</li>
-				<li>rollback just terminate the new instances</li>
-			</ul>
-			<li>Advantage: quick and safe rollback in case deployment fails</li>
-			<li>Disadvantage: takes longer to deploy</li>
-			<li>Disadvantage: Cost to maintain 2 asg's</li>
-			
-         </ul>
-      </ol>
-      <ul>
-         <li>In place refers to within the scope of the elb environment</li>
-         <li>Rolling deployments require elb so cannot be used with single instance web env</li>
-         <li><a href="../images/beanstalk_deployment_options.png" target="_blank">Illustration</a> (AWS)</li>
-      </ul>
-
-      <div id="blue_green">
-         <p><span style="font-size: 18px;"><strong>Blue/Green Deployments</strong></span></p>
-      </div>
-	   <ul>
-         <li>Not a direct feature of Beanstalk</li>
-         <li>Zero downtime</li>
-         <li>Create a new 'stage' environment and deploy v2 there</li>
-         <li>The new environment can be validated independently</li>
-         <li>Use Route 53 to redirect traffic a bit at a time</li>
-         <li>Using Beanstalk, swap url's when testing is done</li>
-      </ul>
-
-      <div id="traffic_splitting">
-         <p><span style="font-size: 18px;"><strong>Traffic Splitting</strong></span></p>
-      </div>
-      <ul>
-         <li>This uses Canary Testing</li>
-         <li>New application version deployed to a new ASG</li>
-         <li>Small % of traffic routed to new ASG for a configurable amount of time</li>
-         <li>If there is a failure, rollback is automated and occurs quickly</li>
-      </ul>
-
-      <div id="cli">
-         <p><span style="font-size: 18px;"><strong>Beanstalk CLI</strong></span></p>
-      </div>
-      <ul>
-         <li>There is an additional CLI called "EB cli" which makes working with Beanstalk from the CLI easier</li>
-         <li>Basic commands</li>
-         <ul>
-            <li>eb create</li>
-            <li>eb status</li>
-            <li>eb health</li>
-            <li>eb events</li>
-            <li>eb logs</li>
-            <li>eb open</li>
-            <li>eb deploy</li>
-            <li>eb config</li>
-            <li>eb terminate</li>
-         </ul>
-      </ul>
-
-      <div id="lifecycle">
-         <p><span style="font-size: 18px;"><strong>Beanstalk Lifecycle</strong></span></p>
-      </div>
-      <ul>
-         <li>Beanstalk can hold up to 1000 app versions</li>
-         <li>You must ultimately phase out old apps using a lifecycle policy</li>
-         <li>Conditions</li>
-         <ul>
-            <li>Based on time</li>
-            <li>Based on space</li>
-            <li>Versions in use will never be deleted</li>
-            <li>Option to keep source bundle in S3 to prevent data loss</li>
-         </ul>
-      </ul>
-
-      <div id="extensions">
-         <p><span style="font-size: 18px;"><strong>Beanstalk Extensions</strong></span></p>
-      </div>
-      <ul>
-         <li>Zip file containing code must be deployed to Beanstalk</li>
-         <li>All the parameters set in the UI can be configured with code using files</li>
-         <li>Requirements</li>
-         <ul>
-            <li>Must reside in .ebextensions/ directory</li>
-            <li>YAML or JSON, however extension must be .config</li>
-            <li>Can add resources such as RDS, ElasticCache, DynamoDB, etc</li>
-         </ul>
-         <li>Resources identified will go away when environment gets deleted</li>
-      </ul>
-
-      <div id="extensions">
-         <p><span style="font-size: 18px;"><strong>Beanstalk Clone</strong></span></p>
-      </div>
-
-      <div id="extensions">
-         <p><span style="font-size: 18px;"><strong>Beanstalk Migration</strong></span></p>
-      </div>
-      <ul>
-         <li>You cannot directly change the load balancer type once Beanstalk environment is created</li>
-         <li>However you can create a new environment with the correct load balancer and migrate the old one to the new one</li>
-         <li>Either swap cnames or update DNS records to route traffic to new environment</li>
-      </ul>
-
-      <div id="extensions">
-         <p><span style="font-size: 18px;"><strong>Beanstalk with RDS</strong></span></p>
-      </div>
-      <ul>
-         <li>If you provision an RDS from within Beanstalk, you are tying the RDS to the Beanstalk lifecycle</li>
-         <li>Potentially fine for lower environments, but good for prod</li>
-         <li>To correct this, create the RDS seperately and provide the EB app with a connection string via environmental variable</li>
-         
-      </ul>
-
-
-</html>
+<head>
+<meta charset="utf-8"/>
+<title>i-morgen</title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../style_menu.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
+<script>
+        var path_to_root = "../../" // aws
+    </script>
+</head>
+<body>
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (General)</span>
+</a>
+<ul class="sub-menu active">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
+                </li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                    53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                    Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (Data Science)</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                    Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                    Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                    Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                    Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                    Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
+                    Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                    Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul></li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS (White Papers)</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Concepts</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Machine Learning</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                    Function</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
+                    Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                    Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                    Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                    Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
+                    BERT/GPT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                    Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                    Gradients</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Hold</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span></span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<div class="gcse-search"></div>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+</li></li></ul>
+<!-- end sidebar nav -->
+</div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table width="80%">
+<tr>
+<td width="5%"><img class="logo" src="../images/logo.png"/></td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+</td>
+</tr>
+</table>
+<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../../aws/aws.html">aws</a> : <a href="index.html">beanstalk</a> : overview</h2>
+<br/>
+<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+<ul>
+<li><a href="#what_is_it">What is it?</a></li>
+<li><a href="#components">Components</a></li>
+<li><a href="#deployment_policies">Deployment Policies</a></li>
+<li><a href="#blue_green">Blue Green</a></li>
+<li><a href="#traffic_splititng">Traffic Splitting</a></li>
+<li><a href="#cli">Beanstalk CLI</a></li>
+<li><a href="#lifecycle">Beanstalk Lifecycle</a></li>
+<li><a href="#extensions">Beanstalk Extensions</a></li>
+</ul>
+<div id="what_is_it">
+<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+</div>
+<ul>
+<li>Developer centric view of deploying an application on AWS</li>
+<li>It uses familiar components (EC2, ASG, ELB, RDS, etc)</li>
+<li>Managed service that will provide </li>
+<ul>
+<li>Capacity provisioning</li>
+<li>Load balancing</li>
+<li>Scaling</li>
+<li>Application health monitoring</li>
+<li>Instance configuration</li>
+</ul>
+<li>Still have full control over the configuration</li>
+<li>Beanstalk is free but you pay for the underlying instances</li>
+</ul>
+<div id="components">
+<p><span style="font-size: 18px;"><strong>Components</strong></span></p>
+</div>
+<ul>
+<li>Application</li>
+<ul>
+<li>Collection of Elastic Beanstalk components (environment, version, configs)</li>
+</ul>
+<li>Application version</li>
+<ul>
+<li>An iteration of your application code</li>
+</ul>
+<li>Environment: </li>
+<ul>
+<li>Collection of AWS resources running an application version (only one application version at a time)</li>
+<li>Tiers: </li>
+<ul>
+<li>Web server environment</li>
+<ul>
+<li><a href="../images/beanstalk_web_env.png">Illustration</a></li>
+</ul>
+<li>Worker environment</li>
+<ul>
+<li><a href="../images/beanstalk_worker_env.png">Illustration</a></li>
+</ul>
+</ul>
+<li>You can create multiple environments (prod, test, dev)</li>
+</ul>
+</ul>
+<div id="deployment_policies">
+<p><span style="font-size: 18px;"><strong>Four deployment policies available</strong></span></p>
+</div>
+<ul>
+<li>See AWS documentation for more details: <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html" target="_blank&gt;">Link</a></li>
+</ul>
+<ol>
+<li>All at once</li>
+<ul>
+<li>Process</li>
+<ul>
+<li>deploy new app version to all instances at same time</li>
+<li>takes all instances out of service during deployment</li>
+<li>fastest but most dangerous, rollback = redeploy previous version to all instances</li>
+</ul>
+<li>Advantage: Fastest</li>
+<li>Disadvantage: Loss of service during deployment</li>
+</ul>
+<li>Rolling (load balanced only)</li>
+<ul>
+<li>Process</li>
+<ul>
+<li>deploys new app version to batch of instances</li>
+<li>each batch is out of service while deployment takes place</li>
+<li>reattaches those instances when batch is completed</li>
+<li>rollback requires an additional rolling update</li>
+</ul>
+<li>Advantage: Minimizes reduced availability</li>
+<li>Disadvantage: Takes longer to deploy</li>
+</ul>
+<li>Rolling with additional batch (load balanced only)</li>
+<ul>
+<li>Process</li>
+<ul>
+<li>same as above but with introduction of new batch</li>
+<li>keeps capacity in place</li>
+<li>rollbacks require additional rolling batch</li>
+</ul>
+<li>Advantage: Avoids reduced availability</li>
+<li>Disadvantage: Takes longer to deploy</li>
+</ul>
+<li>Immutable</li>
+<ul>
+<li>Process</li>
+<ul>
+<li>create new asg group with ec2 instances</li>
+<li>deploy new version to new asg instances</li>
+<li>point elb to the new asg and delete old asg - which will terminate old ec2 instances</li>
+<li>rollback just terminate the new instances</li>
+</ul>
+<li>Advantage: quick and safe rollback in case deployment fails</li>
+<li>Disadvantage: takes longer to deploy</li>
+<li>Disadvantage: Cost to maintain 2 asg's</li>
+</ul>
+</ol>
+<ul>
+<li>In place refers to within the scope of the elb environment</li>
+<li>Rolling deployments require elb so cannot be used with single instance web env</li>
+<li><a href="../images/beanstalk_deployment_options.png" target="_blank">Illustration</a> (AWS)</li>
+</ul>
+<div id="blue_green">
+<p><span style="font-size: 18px;"><strong>Blue/Green Deployments</strong></span></p>
+</div>
+<ul>
+<li>Not a direct feature of Beanstalk</li>
+<li>Zero downtime</li>
+<li>Create a new 'stage' environment and deploy v2 there</li>
+<li>The new environment can be validated independently</li>
+<li>Use Route 53 to redirect traffic a bit at a time</li>
+<li>Using Beanstalk, swap url's when testing is done</li>
+</ul>
+<div id="traffic_splitting">
+<p><span style="font-size: 18px;"><strong>Traffic Splitting</strong></span></p>
+</div>
+<ul>
+<li>This uses Canary Testing</li>
+<li>New application version deployed to a new ASG</li>
+<li>Small % of traffic routed to new ASG for a configurable amount of time</li>
+<li>If there is a failure, rollback is automated and occurs quickly</li>
+</ul>
+<div id="cli">
+<p><span style="font-size: 18px;"><strong>Beanstalk CLI</strong></span></p>
+</div>
+<ul>
+<li>There is an additional CLI called "EB cli" which makes working with Beanstalk from the CLI easier</li>
+<li>Basic commands</li>
+<ul>
+<li>eb create</li>
+<li>eb status</li>
+<li>eb health</li>
+<li>eb events</li>
+<li>eb logs</li>
+<li>eb open</li>
+<li>eb deploy</li>
+<li>eb config</li>
+<li>eb terminate</li>
+</ul>
+</ul>
+<div id="lifecycle">
+<p><span style="font-size: 18px;"><strong>Beanstalk Lifecycle</strong></span></p>
+</div>
+<ul>
+<li>Beanstalk can hold up to 1000 app versions</li>
+<li>You must ultimately phase out old apps using a lifecycle policy</li>
+<li>Conditions</li>
+<ul>
+<li>Based on time</li>
+<li>Based on space</li>
+<li>Versions in use will never be deleted</li>
+<li>Option to keep source bundle in S3 to prevent data loss</li>
+</ul>
+</ul>
+<div id="extensions">
+<p><span style="font-size: 18px;"><strong>Beanstalk Extensions</strong></span></p>
+</div>
+<ul>
+<li>Zip file containing code must be deployed to Beanstalk</li>
+<li>All the parameters set in the UI can be configured with code using files</li>
+<li>Requirements</li>
+<ul>
+<li>Must reside in .ebextensions/ directory</li>
+<li>YAML or JSON, however extension must be .config</li>
+<li>Can add resources such as RDS, ElasticCache, DynamoDB, etc</li>
+</ul>
+<li>Resources identified will go away when environment gets deleted</li>
+</ul>
+<div id="extensions">
+<p><span style="font-size: 18px;"><strong>Beanstalk Clone</strong></span></p>
+</div>
+<div id="extensions">
+<p><span style="font-size: 18px;"><strong>Beanstalk Migration</strong></span></p>
+</div>
+<ul>
+<li>You cannot directly change the load balancer type once Beanstalk environment is created</li>
+<li>However you can create a new environment with the correct load balancer and migrate the old one to the new one</li>
+<li>Either swap cnames or update DNS records to route traffic to new environment</li>
+</ul>
+<div id="extensions">
+<p><span style="font-size: 18px;"><strong>Beanstalk with RDS</strong></span></p>
+</div>
+<ul>
+<li>If you provision an RDS from within Beanstalk, you are tying the RDS to the Beanstalk lifecycle</li>
+<li>Potentially fine for lower environments, but good for prod</li>
+<li>To correct this, create the RDS seperately and provide the EB app with a connection string via environmental variable</li>
+</ul>
+</div></body></html>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../script.js"></script>

@@ -1,244 +1,683 @@
 <!DOCTYPE html>
+
 <html>
-	<head>
-        <link rel="stylesheet" href="../styles.css">
-		<title>i morgen</title>
-		<link rel="icon" href="../images/logo.png">
-	</head>
-	<body>
-       <table>
-			<tr>
-				<td><img src="../images/logo.png" class="logo"></td>
-				<td><h1 style="color:#0B2042;">i morgen</h1></td>
-			</tr>
-		</table>
-        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cloudfront</a>:overview</h2>
-
-    <p><strong><span style="font-size: 20px;">CloudFront</span></strong></p>
-
-    <p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
-		<li><a href="#what_is_it">What is it</a></li>
-        <li><a href="#verses_s3">What is it</a></li>
-        <li><a href="#cache">Cache</a></li>
-        <li><a href="#http_backend">ALB or EC2 as an Origin</a></li>
-        <li><a href="#geo_restrictions">Geographic Restrictions</a></li>
-		<li><a href="#core_components">Cloudfront vs S3 Cross Region Replication</a></li>
-        <li><a href="#distribution">Distribution</a></li>
-        <li><a href="#lambda_edge">Lambda@Edge</a></li>
-        <li><a href="#protection">Protection</a></li>
-        <li><a href="#key_pairs">Key Pairs</a></li>
-
-
-        
-    <div id="what_is_it">
-        <p><span style="font-size: 18px;">What is it?</span></p>
-    </div>	
-    <ul>
-        <li>CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds, all within a developer friendly environment.</li>
-        <li>What is a CDN?</li>
-        <ul>
-            <li>A CDN is a system of distributed servers (network) that deliver webpages and other web content to a user based on the geographic locations of the user, the origin of the webpage and a content delivery server.</li>
-            <li>CDNs help minimize delays in loading web page content by reducing the physical distance between the server and the user.</li>
-            <li>CDNs store cached copies of data in multiple locations across the world so that users can access content from the nearest edge location.</li>
-            <li>CDNs are useful for reducing latency, improving load time, and reducing the bandwidth and operating costs of serving content.</li>
-            <li><a href="../images/cloudfront_cdn.png">Illustration</a></li>
-        </ul>
-        <li>DDoS protection, integration with Shield (AWS Web App Firewall)</li>
-    </ul>
-
-    <div id="verse_s3">
-        <p><span style="font-size: 18px;">Cloudfront vs S3 Cross Region Replication</span></p>
-    </div>	
-    <ul>
-        <li>CloudFront</li>
-        <ul>
-            <li>Global edge network</li>
-            <li>Files are cached for a TTL (day?)</li>
-            <li>Great for static content</li>
-        </ul>
-        <li>S3 Cross Region Replication</li>
-        <ul>
-            <li>Must be setup for each region you want replication to happen</li>
-            <li>Files are updated in near real time</li>
-            <li>Read only</li>
-            <li>Great for dynamic content that needs low latency in a few regions</li>
-        </ul>
-    </ul>
-
-    <div id="cache">
-        <p><span style="font-size: 18px;">Cache</span></p>
-    </div>	
-    <ul>
-        <li>Cache based on </li>
-        <ul>
-            <li>Headers</li>
-            <li>Session Cookies</li>
-            <li>Query string parameters</li>
-        </ul>
-        <li>The cache lives at each CloudFront edge location</li>
-        <li>Goal is to maximize cache hit rate and minimize source requests</li>
-        <li>TTL can be set from 0 seconds to 1 year and set by the origin using the Cache-Control header</li>
-        <li>You can invalidate parts of the cache via the CreateInvalidation API (and via console)</li>
-    </ul>
-
-    <div id="http_backend">
-        <p><span style="font-size: 18px;">ALB or EC2 as an Origin</span></p>
-    </div>	
-    <ul>
-        <li>EC2 Backend</li>
-        <ul>
-            <li>EC2 instances must be public - no private VPC connectivity between edge locations and EC2</li>
-            <li>Must have security group that allows all edge locations. See <a href="http://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips" target="_blank">link</a></li>
-        </ul>
-        <li>ALB</li>
-        <ul>
-            <li>ALB must be public but EC2's can be private because there is private VPC connectivity between EC2 and ALB</li>
-            <li>ALB must have a SG that allows public IP's of edge locations</li>
-        </ul>
-    </ul>
-
-
-    <div id="geo_restrictions">
-        <p><span style="font-size: 18px;">Geographic Restrictions</span></p>
-        <ul>
-            <li>Can be Allowlist or a Blocklist</li>
-            <ul>
-                <li>Allows your users tom access content only if they are in one of the allowed countries, or ...</li>
-                <li>Blocks your users if they are originating from a banned country</li>
-            </ul>
-            <li>Typical use case is to restrict IP/copywrite content</li>
-        </ul>
-    </div>	
-    
-    <div id="core_components">
-        <p><span style="font-size: 18px;">Core Components</span></p>
-    </div>
-    <ul>
-        <li>Origin: The location where all the original files are located. Examples include:
-            <ul>
-                <li>S3 bucket (this is the typical use case)</li>
-                <ul>
-                    <li>Can be used to egress and ingress data</li>
-                </ul>
-                <li>EC2 instance</li>
-                <li>ELB</li>
-                <li>Route53</li>
-            </ul>
-        </li>
-        <li>Distribution: The CDN itself. This is the component that is responsible for caching the content and serving it to the end user.</li>
-        <ul>
-            <li>See <a href="#distribution">below</a> for more information</li>
-        </ul>
-        <li>Edge Location: The location where the web content is cached. This is different than an AWS Region or AZ</li>
-        <ul>
-            <li>Edge locations are not just read only</li>
-            <li>They can also be used to write</li>
-            <li>For example, if you have a form on your website that users can fill out and submit, the form data can be written to an S3 bucket via an edge location</li>
-        </ul>
-    </ul>
-
-    <div id="distribution">
-        <p><span style="font-size: 18px;">Distribution</span></p>
-    </div>
-    <ul>
-        <li>Collection of edge locations</li>
-        <li>Geopgraphic replication is based on Price Class</li>
-        <ul>
-            <li>"Only US, Canada, Europe"</li>
-            <li>"US, Cananda, Europe, Asia, Middle East and Africa"</li>
-            <li>"Use All Edge Locations (Best Perfomance)"</li>
-        </ul>
-        <li>There are two types of distributions</li>
-        <ol>
-            <li>Web (for websites)</li>
-            <li>RTMP (for streaming media) ** Depricated</li>
-            <li>Note that you can stream from web, but its not optimized</li>
-        </ol>
-        <li>Behavious</li>
-        <ul>
-            <li>Redirect to HTTPs</li>
-            <li>Restrict HTTP Methods</li>
-            <li>Restrict Viewer Access</li>
-            <li>Set TTLs</li>
-        </ul>
-        <li>Invalidations</li>
-        <ul>
-            <li>Allow you to expire the files outside the TTL window</li>
-            <li>Useful when you push changes from S3</li>
-        </ul>
-        <li>Error Page</li>
-        <ul>
-            <li>Serve custom error pages (ex 404)</li>
-        </ul>
-        <li>Restrictions</li>
-        <ul>
-            <li>Allow/Deny specific countries</li>
-        </ul>
-    </ul>
-
-    <div id="lambda_edge">
-        <p><span style="font-size: 18px;">Lambda@Edge</span></p>
-    </div>  
-    <ul>
-        <li>Override the behaviour of requests and responses</li>
-        <li>Use cases:</li>
-        <ul>
-            <li>If you have protected content and you want to authenticate against Cognito. </li>
-            <li>Setup A/B websites: 50% chance traffic goes to either A or B</li>
-        </ul>
-        <li>Four available Lambda@Edge functions. <a href="../images/cloudfront_lambda_edge.html">Illlustration</a> (ExamPro)</li>
-        <ol>
-            <li>Viewer request</li>
-            <ul>
-                <li>when CloudFront recieves a rquest from a viewer</li>
-            </ul>
-            <li>Origin request</li>
-            <ul>
-                <li>Before CloudFront forwards a request to the origin</li>
-            </ul>
-            <li>Origin response</li>
-            <ul>
-                <li>When CloudFront receives a response from the origin</li>
-            </ul>
-            <li>Viewer response</li>
-            <ul>
-                <li>Before CloudFront returns the response to the viewer</li>
-            </ul>
-        </ol>
-    </ul>
-
-    <div id="protection">
-    <p><span style="font-size: 18px;">Protection</span></p>
-    <ul>
-        <li>Restrict viewer access to allow for protected content</li>
-        <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html" target="_blank">AWS documentation</a></li>
-        <li><a href="https://medium.com/@ratulbasak93/serving-private-content-of-s3-through-cloudfront-signed-url-593ede788d0d" target="_blank">Medium</a></li>
-        <li>If selected, a virtual user identify will be used to give your CloudFront Distribution permission to fetch a private object</li>
-        <li>To use signed url's or signed cookies, you will need to have an OAI - which is created when you select this option</li>
-        <ul>
-            <li>Signed URL's</li>
-            <ul>
-                <li>URL's that are signed with a private key</li>
-                <li>URL's are only valid for a certain amount of time</li>
-                <li>URL's are only valid for a certain IP address</li>
-                <li>URL's are only valid for a certain resource</li>
-                <li>URL's are only valid for a certain user</li>
-            </ul>
-            <li>Signed Cookies</li>
-            <ul>
-                <li>A cookie which is passed along with the request to CloudFront</li>
-                <li>Advantage is if you want to provide access to multiple restricted files (ie video streaming)</li>
-            </ul>
-        </ul>
-    </ul>       
-    <div id="key_pairs">
-        <p><span style="font-size: 18px;">Key Pairs</span></p>
-    </div>
-    <ul>
-        <li>CloudFront Key Pairs are a pair of public and private keys that you can use to securely sign your Amazon CloudFront URLs and cookies. </li>
-        <li>They are used to authenticate your identity as the owner of a CloudFront distribution and to protect the content of your distribution from unauthorized access.</li>
-        <li>CloudFront key pairs can only be created by the root user of the AWS account.</li>
-    </ul>
+<head>
+<meta charset="utf-8"/>
+<title>i-morgen</title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../style_menu.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
+<script>
+        var path_to_root = "../../" // aws
+    </script>
+</head>
+<body>
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (General)</span>
+</a>
+<ul class="sub-menu active">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
 </ul>
-    </body> 
-</html> 
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
+                </li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                    53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                    Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (Data Science)</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                    Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                    Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                    Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                    Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                    Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
+                    Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                    Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul></li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS (White Papers)</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Concepts</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Machine Learning</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                    Function</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
+                    Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                    Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                    Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                    Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
+                    BERT/GPT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                    Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                    Gradients</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Hold</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span></span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<div class="gcse-search"></div>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+</li></li></ul>
+<!-- end sidebar nav -->
+</div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table>
+<tr>
+<td><img class="logo" src="../images/logo.png"/></td>
+<td><h1 style="color:#0B2042;">i morgen</h1></td>
+</tr>
+</table>
+<h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">cloudfront</a>:overview</h2>
+<p><strong><span style="font-size: 20px;">CloudFront</span></strong></p>
+<p><strong><span style="font-size: 18px;">Contents</span> </strong></p>
+<li><a href="#what_is_it">What is it</a></li>
+<li><a href="#verses_s3">What is it</a></li>
+<li><a href="#cache">Cache</a></li>
+<li><a href="#http_backend">ALB or EC2 as an Origin</a></li>
+<li><a href="#geo_restrictions">Geographic Restrictions</a></li>
+<li><a href="#core_components">Cloudfront vs S3 Cross Region Replication</a></li>
+<li><a href="#distribution">Distribution</a></li>
+<li><a href="#lambda_edge">Lambda@Edge</a></li>
+<li><a href="#protection">Protection</a></li>
+<li><a href="#key_pairs">Key Pairs</a></li>
+<div id="what_is_it">
+<p><span style="font-size: 18px;">What is it?</span></p>
+</div>
+<ul>
+<li>CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds, all within a developer friendly environment.</li>
+<li>What is a CDN?</li>
+<ul>
+<li>A CDN is a system of distributed servers (network) that deliver webpages and other web content to a user based on the geographic locations of the user, the origin of the webpage and a content delivery server.</li>
+<li>CDNs help minimize delays in loading web page content by reducing the physical distance between the server and the user.</li>
+<li>CDNs store cached copies of data in multiple locations across the world so that users can access content from the nearest edge location.</li>
+<li>CDNs are useful for reducing latency, improving load time, and reducing the bandwidth and operating costs of serving content.</li>
+<li><a href="../images/cloudfront_cdn.png">Illustration</a></li>
+</ul>
+<li>DDoS protection, integration with Shield (AWS Web App Firewall)</li>
+</ul>
+<div id="verse_s3">
+<p><span style="font-size: 18px;">Cloudfront vs S3 Cross Region Replication</span></p>
+</div>
+<ul>
+<li>CloudFront</li>
+<ul>
+<li>Global edge network</li>
+<li>Files are cached for a TTL (day?)</li>
+<li>Great for static content</li>
+</ul>
+<li>S3 Cross Region Replication</li>
+<ul>
+<li>Must be setup for each region you want replication to happen</li>
+<li>Files are updated in near real time</li>
+<li>Read only</li>
+<li>Great for dynamic content that needs low latency in a few regions</li>
+</ul>
+</ul>
+<div id="cache">
+<p><span style="font-size: 18px;">Cache</span></p>
+</div>
+<ul>
+<li>Cache based on </li>
+<ul>
+<li>Headers</li>
+<li>Session Cookies</li>
+<li>Query string parameters</li>
+</ul>
+<li>The cache lives at each CloudFront edge location</li>
+<li>Goal is to maximize cache hit rate and minimize source requests</li>
+<li>TTL can be set from 0 seconds to 1 year and set by the origin using the Cache-Control header</li>
+<li>You can invalidate parts of the cache via the CreateInvalidation API (and via console)</li>
+</ul>
+<div id="http_backend">
+<p><span style="font-size: 18px;">ALB or EC2 as an Origin</span></p>
+</div>
+<ul>
+<li>EC2 Backend</li>
+<ul>
+<li>EC2 instances must be public - no private VPC connectivity between edge locations and EC2</li>
+<li>Must have security group that allows all edge locations. See <a href="http://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips" target="_blank">link</a></li>
+</ul>
+<li>ALB</li>
+<ul>
+<li>ALB must be public but EC2's can be private because there is private VPC connectivity between EC2 and ALB</li>
+<li>ALB must have a SG that allows public IP's of edge locations</li>
+</ul>
+</ul>
+<div id="geo_restrictions">
+<p><span style="font-size: 18px;">Geographic Restrictions</span></p>
+<ul>
+<li>Can be Allowlist or a Blocklist</li>
+<ul>
+<li>Allows your users tom access content only if they are in one of the allowed countries, or ...</li>
+<li>Blocks your users if they are originating from a banned country</li>
+</ul>
+<li>Typical use case is to restrict IP/copywrite content</li>
+</ul>
+</div>
+<div id="core_components">
+<p><span style="font-size: 18px;">Core Components</span></p>
+</div>
+<ul>
+<li>Origin: The location where all the original files are located. Examples include:
+            <ul>
+<li>S3 bucket (this is the typical use case)</li>
+<ul>
+<li>Can be used to egress and ingress data</li>
+</ul>
+<li>EC2 instance</li>
+<li>ELB</li>
+<li>Route53</li>
+</ul>
+</li>
+<li>Distribution: The CDN itself. This is the component that is responsible for caching the content and serving it to the end user.</li>
+<ul>
+<li>See <a href="#distribution">below</a> for more information</li>
+</ul>
+<li>Edge Location: The location where the web content is cached. This is different than an AWS Region or AZ</li>
+<ul>
+<li>Edge locations are not just read only</li>
+<li>They can also be used to write</li>
+<li>For example, if you have a form on your website that users can fill out and submit, the form data can be written to an S3 bucket via an edge location</li>
+</ul>
+</ul>
+<div id="distribution">
+<p><span style="font-size: 18px;">Distribution</span></p>
+</div>
+<ul>
+<li>Collection of edge locations</li>
+<li>Geopgraphic replication is based on Price Class</li>
+<ul>
+<li>"Only US, Canada, Europe"</li>
+<li>"US, Cananda, Europe, Asia, Middle East and Africa"</li>
+<li>"Use All Edge Locations (Best Perfomance)"</li>
+</ul>
+<li>There are two types of distributions</li>
+<ol>
+<li>Web (for websites)</li>
+<li>RTMP (for streaming media) ** Depricated</li>
+<li>Note that you can stream from web, but its not optimized</li>
+</ol>
+<li>Behavious</li>
+<ul>
+<li>Redirect to HTTPs</li>
+<li>Restrict HTTP Methods</li>
+<li>Restrict Viewer Access</li>
+<li>Set TTLs</li>
+</ul>
+<li>Invalidations</li>
+<ul>
+<li>Allow you to expire the files outside the TTL window</li>
+<li>Useful when you push changes from S3</li>
+</ul>
+<li>Error Page</li>
+<ul>
+<li>Serve custom error pages (ex 404)</li>
+</ul>
+<li>Restrictions</li>
+<ul>
+<li>Allow/Deny specific countries</li>
+</ul>
+</ul>
+<div id="lambda_edge">
+<p><span style="font-size: 18px;">Lambda@Edge</span></p>
+</div>
+<ul>
+<li>Override the behaviour of requests and responses</li>
+<li>Use cases:</li>
+<ul>
+<li>If you have protected content and you want to authenticate against Cognito. </li>
+<li>Setup A/B websites: 50% chance traffic goes to either A or B</li>
+</ul>
+<li>Four available Lambda@Edge functions. <a href="../images/cloudfront_lambda_edge.html">Illlustration</a> (ExamPro)</li>
+<ol>
+<li>Viewer request</li>
+<ul>
+<li>when CloudFront recieves a rquest from a viewer</li>
+</ul>
+<li>Origin request</li>
+<ul>
+<li>Before CloudFront forwards a request to the origin</li>
+</ul>
+<li>Origin response</li>
+<ul>
+<li>When CloudFront receives a response from the origin</li>
+</ul>
+<li>Viewer response</li>
+<ul>
+<li>Before CloudFront returns the response to the viewer</li>
+</ul>
+</ol>
+</ul>
+<div id="protection">
+<p><span style="font-size: 18px;">Protection</span></p>
+<ul>
+<li>Restrict viewer access to allow for protected content</li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html" target="_blank">AWS documentation</a></li>
+<li><a href="https://medium.com/@ratulbasak93/serving-private-content-of-s3-through-cloudfront-signed-url-593ede788d0d" target="_blank">Medium</a></li>
+<li>If selected, a virtual user identify will be used to give your CloudFront Distribution permission to fetch a private object</li>
+<li>To use signed url's or signed cookies, you will need to have an OAI - which is created when you select this option</li>
+<ul>
+<li>Signed URL's</li>
+<ul>
+<li>URL's that are signed with a private key</li>
+<li>URL's are only valid for a certain amount of time</li>
+<li>URL's are only valid for a certain IP address</li>
+<li>URL's are only valid for a certain resource</li>
+<li>URL's are only valid for a certain user</li>
+</ul>
+<li>Signed Cookies</li>
+<ul>
+<li>A cookie which is passed along with the request to CloudFront</li>
+<li>Advantage is if you want to provide access to multiple restricted files (ie video streaming)</li>
+</ul>
+</ul>
+</ul>
+<div id="key_pairs">
+<p><span style="font-size: 18px;">Key Pairs</span></p>
+</div>
+<ul>
+<li>CloudFront Key Pairs are a pair of public and private keys that you can use to securely sign your Amazon CloudFront URLs and cookies. </li>
+<li>They are used to authenticate your identity as the owner of a CloudFront distribution and to protect the content of your distribution from unauthorized access.</li>
+<li>CloudFront key pairs can only be created by the root user of the AWS account.</li>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../script.js"></script>
+</div></body>
+</html>

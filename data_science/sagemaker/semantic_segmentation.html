@@ -1,137 +1,590 @@
 <!DOCTYPE html>
+
 <html>
-   <head>
-      <link rel="stylesheet" href="../styles.css">
-      <title>i morgen</title>
-      <link rel="icon" href="../images/logo.png">
-   </head>
-   <body>
-      <table>
-         <tr>
-            <td><img src="../images/logo.png" class="logo"></td>
-            <td>
-               <h1 style="color:#0B2042;">i morgen</h1>
-            </td>
-         </tr>
-      </table>
-      <h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : sagemaker ml toolset : semantic segmentation</h2>
-      <br/>
-      <p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
-      <li><a href="#what_is_it">What Is It</a></li>
-      <li><a href="#useful">Usefulness</a></li>
-      <li><a href="#training">Training Data</a></li>
-      <li><a href="#how_is_it_used">How is it used</a></li>
-      <li><a href="#hyperparameters">Hyperparameters</a></li>
-      <li><a href="#instance_types">Instance Types</a></li>
-      <br/>
-      <div id="what_is_it">
-         <p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
-      </div>
-      <ul>
-         <li>Pixel level object classification</li>
-         <li>Hierarchy with similar technology</li>
-         <ul>
-            <li>Image Classification: Tells you what is in the image</li>
-            <li>Object Detectiopn: Tells you what objects exist in the image and where they are in the image</li>
-            <li>Semantic Segmentation: Tells you what each pixel in the image is part of</li>
-         </ul>
-         <li>Produces a segmentation mask</li>
-      </ul>
-      <br/>
-      <div id="useful">
-         <p><span style="font-size: 18px;"><strong>Usefulness</strong></span></p>
-      </div>
-      <ul>
-         <li>Self driving cars</li>
-         <li>Medical imaging</li>
-         <li>Robot sensing</li>
-      </ul>
-      <div id="traininig">
-         <p><span style="font-size: 18px;"><strong>Training Data</strong></span></p>
-      </div>
-      <ul>
-         <li>JPG images and PNG annotations</li>
-         <li>Can accept augmented manifest image format that enables support for Pipe mode</li>
-         <li>JPEG images accepted for inference</li>
-      </ul>
-      <br/>
-      <div id="how_is_it_used">
-         <p><span style="font-size: 18px;"><strong>How Is It Used</strong></span></p>
-      </div>
-      <ul>
-         <li>Built on <a href="https://mxnet.apache.org/versions/1.9.1/api/python/docs/tutorials/packages/gluon/index.html" target="_blank">MXNet Gluon</a> and <a href="https://cv.gluon.ai/" target="_blank">GluonCV</a></li>
-         <ul>
-            <li>MXNet Gluon</li>
-            <ul>
-               <li>High-level, easy-to-use deep learning API for building, training, and deploying deep learning models</li>
-               <li>Part of the MXNet deep learning framework, which is an open-source deep learning framework that provides a wide range of tools for building and deploying deep learning models</li>
-               <li>Similar to</li>
-               <ul>
-                  <li>TensorFlow</li>
-                  <li>PyTorch</li>
-                  <li>Caffe</li>
-               </ul>
-            </ul>
-            <li>Gluon CV</li>
-            <ul>
-               <li>Computer vision toolkit based on the MXNet deep learning framework.</li>
-               <li>Provides a collection of pre-trained models and pre-written building blocks for computer vision tasks, including object detection, semantic segmentation, instance segmentation, and image classification</li>
-               <li>Similar to</li>
-               <ul>
-                  <li>TensorFlow Object Detection API</li>
-                  <li>TorchVision</li>
-                  <li>OpenCV</li>
-               </ul>
-            </ul>
-         </ul>
-         <li>Choice of 3 algorithms</li>
-         <ul>
-            <li>Fully Convolutional Network (FCN)</li>
-            <li><a href="https://arxiv.org/pdf/1612.01105.pdf" target="_blank">Pyramid Scene Parsing (PSP)</a></li>
-            <li><a href="https://paperswithcode.com/method/deeplabv3#:~:text=DeepLabv3%20is%20a%20semantic%20segmentation,by%20adopting%20multiple%20atrous%20rates." target="_blank">DeepLabV3</a></li>
-         </ul>
-         <li>Choice of backbones</li>
-         <ul>
-            <li>ResNet Models</li>
-            <ul>
-               <li>ResNet (Residual Network) models that were designed to address the vanishing gradient problem in deep CNNs</li>
-               <li>ResNet models address this problem by introducing residual connections between layers that allow gradients to flow more easily through the network.</li>
-               <li>ResNet50: 50 layer CNN</li>
-               <li>Resnet101: 101 layer CNN</li>
-            </ul>
-            <li>Both trainined on ImageNet</li>
-         </ul>
-         <li>Both incremental training or training from scratch supported</li>
-      </ul>
-      <br/>
-      <div id="hyperparameters">
-         <p><span style="font-size: 18px;"><strong>Hyperparameters</strong></span></p>
-      </div>
-      <ul>
-         <li>Epochs</li>
-         <li>Learning Rate</li>
-         <li>Batch size</li>
-         <li>Optimizer, etc</li>
-         <li>Choice of algorithms, as discussed above</li>
-         <li>Choice of backbone, as discussed above</li>
-      </ul>
-      <br/>
-      <div id="instance_types">
-         <p><span style="font-size: 18px;"><strong>Instance Types</strong></span></p>
-      </div>
-      <ul>
-         <li>Training</li>
-         <ul>
-            <li>More restrictive because it is a very intensive </li>
-            <li>You must use GPU nodes (P2 or P3)</li>
-            <li>Supports single machine - cant be parallelized</li>
-         </ul>
-         <li>Inference</li>
-         <ul>
-            <li>CPU (C5 or M5)</li>
-            <li>GPU (P2 or P3</li>
-         </ul>
-      </ul>
-      
-   </body>
+<head>
+<meta charset="utf-8"/>
+<title>i-morgen</title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../../css/style_menu.css" rel="stylesheet"/>
+<link href="../../css/styles.css" rel="stylesheet"/>
+<script>
+        var path_to_root = "../../" // data_science/sagemaker
+    </script>
+</head>
+<body>
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (General)</span>
+</a>
+<ul class="sub-menu active">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec2.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
+                </li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                    53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                    Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (Data Science)</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                    Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                    Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                    Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                    Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                    Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
+                    Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                    Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul></li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS (White Papers)</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Concepts</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Machine Learning</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                    Function</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
+                    Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                    Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                    Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                    Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
+                    BERT/GPT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                    Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                    Gradients</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Hold</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span></span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<div class="gcse-search"></div>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+</li></li></ul>
+<!-- end sidebar nav -->
+</div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table>
+<tr>
+<td><img class="logo" src="../images/logo.png"/></td>
+<td>
+<h1 style="color:#0B2042;">i morgen</h1>
+</td>
+</tr>
+</table>
+<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../index.html">data science</a> : <a href="index.html">sagemaker toolset</a> : semantic segmentation</h2>
+<br/>
+<p><span style="font-size: 18px;"><strong>Contents</strong></span></p>
+<li><a href="#what_is_it">What Is It</a></li>
+<li><a href="#useful">Usefulness</a></li>
+<li><a href="#training">Training Data</a></li>
+<li><a href="#how_is_it_used">How is it used</a></li>
+<li><a href="#hyperparameters">Hyperparameters</a></li>
+<li><a href="#instance_types">Instance Types</a></li>
+<br/>
+<div id="what_is_it">
+<p><span style="font-size: 18px;"><strong>What Is It</strong></span></p>
+</div>
+<ul>
+<li>Pixel level object classification</li>
+<li>Hierarchy with similar technology</li>
+<ul>
+<li>Image Classification: Tells you what is in the image</li>
+<li>Object Detectiopn: Tells you what objects exist in the image and where they are in the image</li>
+<li>Semantic Segmentation: Tells you what each pixel in the image is part of</li>
+</ul>
+<li>Produces a segmentation mask</li>
+</ul>
+<br/>
+<div id="useful">
+<p><span style="font-size: 18px;"><strong>Usefulness</strong></span></p>
+</div>
+<ul>
+<li>Self driving cars</li>
+<li>Medical imaging</li>
+<li>Robot sensing</li>
+</ul>
+<div id="traininig">
+<p><span style="font-size: 18px;"><strong>Training Data</strong></span></p>
+</div>
+<ul>
+<li>JPG images and PNG annotations</li>
+<li>Can accept augmented manifest image format that enables support for Pipe mode</li>
+<li>JPEG images accepted for inference</li>
+</ul>
+<br/>
+<div id="how_is_it_used">
+<p><span style="font-size: 18px;"><strong>How Is It Used</strong></span></p>
+</div>
+<ul>
+<li>Built on <a href="https://mxnet.apache.org/versions/1.9.1/api/python/docs/tutorials/packages/gluon/index.html" target="_blank">MXNet Gluon</a> and <a href="https://cv.gluon.ai/" target="_blank">GluonCV</a></li>
+<ul>
+<li>MXNet Gluon</li>
+<ul>
+<li>High-level, easy-to-use deep learning API for building, training, and deploying deep learning models</li>
+<li>Part of the MXNet deep learning framework, which is an open-source deep learning framework that provides a wide range of tools for building and deploying deep learning models</li>
+<li>Similar to</li>
+<ul>
+<li>TensorFlow</li>
+<li>PyTorch</li>
+<li>Caffe</li>
+</ul>
+</ul>
+<li>Gluon CV</li>
+<ul>
+<li>Computer vision toolkit based on the MXNet deep learning framework.</li>
+<li>Provides a collection of pre-trained models and pre-written building blocks for computer vision tasks, including object detection, semantic segmentation, instance segmentation, and image classification</li>
+<li>Similar to</li>
+<ul>
+<li>TensorFlow Object Detection API</li>
+<li>TorchVision</li>
+<li>OpenCV</li>
+</ul>
+</ul>
+</ul>
+<li>Choice of 3 algorithms</li>
+<ul>
+<li>Fully Convolutional Network (FCN)</li>
+<li><a href="https://arxiv.org/pdf/1612.01105.pdf" target="_blank">Pyramid Scene Parsing (PSP)</a></li>
+<li><a href="https://paperswithcode.com/method/deeplabv3#:~:text=DeepLabv3%20is%20a%20semantic%20segmentation,by%20adopting%20multiple%20atrous%20rates." target="_blank">DeepLabV3</a></li>
+</ul>
+<li>Choice of backbones</li>
+<ul>
+<li>ResNet Models</li>
+<ul>
+<li>ResNet (Residual Network) models that were designed to address the vanishing gradient problem in deep CNNs</li>
+<li>ResNet models address this problem by introducing residual connections between layers that allow gradients to flow more easily through the network.</li>
+<li>ResNet50: 50 layer CNN</li>
+<li>Resnet101: 101 layer CNN</li>
+</ul>
+<li>Both trainined on ImageNet</li>
+</ul>
+<li>Both incremental training or training from scratch supported</li>
+</ul>
+<br/>
+<div id="hyperparameters">
+<p><span style="font-size: 18px;"><strong>Hyperparameters</strong></span></p>
+</div>
+<ul>
+<li>Epochs</li>
+<li>Learning Rate</li>
+<li>Batch size</li>
+<li>Optimizer, etc</li>
+<li>Choice of algorithms, as discussed above</li>
+<li>Choice of backbone, as discussed above</li>
+</ul>
+<br/>
+<div id="instance_types">
+<p><span style="font-size: 18px;"><strong>Instance Types</strong></span></p>
+</div>
+<ul>
+<li>Training</li>
+<ul>
+<li>More restrictive because it is a very intensive </li>
+<li>You must use GPU nodes (P2 or P3)</li>
+<li>Supports single machine - cant be parallelized</li>
+</ul>
+<li>Inference</li>
+<ul>
+<li>CPU (C5 or M5)</li>
+<li>GPU (P2 or P3</li>
+</ul>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../../javascript/script.js"></script>
+</body>
 </html>

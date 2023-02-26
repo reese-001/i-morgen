@@ -1,157 +1,602 @@
 <!DOCTYPE html>
+
 <html>
-	<head>
-		<link rel="stylesheet" href="../styles.css">
-		<title>i morgen</title>
-		<link rel="icon" href="../images/logo.png">
-	</head>
-	<body>
-<table>
-			<tr>
-				<td><img src="../images/logo.png" class="logo"></td>
-				<td><h1 style="color:#0B2042;">i morgen</h1></td>
-			</tr>
-		</table>
-        <h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">s3</a>:security</h2>
-
-        <p><strong><span style="font-size: 20px;">S3 Security</a></span></strong></p>
-
-        
-		<p><strong><span style="font-size: 18px;">Contents</span>&nbsp;</strong></p>
-		<li><a href="#object_encryption">Object Encryption</a></li>
-        <li><a href="#cors">CORS</a></li>
-        <li><a href="#mfa_delete">MFA Delete</a></li>
-        <li><a href="#access_logs">Access Logs</a></li>
-        <li><a href="#presigned_urls">Pre-Signed URLs</a></li>
-        <li><a href="#access_points">Access Points</a></li>
-
-        <div id="object_encryption">
-            <p><strong><span style="font-size: 18px;">Object Encryption</a></span></strong></p>
-        </div>  
-        <ul>
-            <li>Four different methods exist to encrypt data in S3</li>
-            <ul>
-                <li>Server Side Encryption (SSE)</li>
-                <ul>
-                    <li>SSE with Amazon S3-managed keys (SSE-S3)</li>
-                    <li>SSE with KMS keys stored in KMS (SSE-KMS)</li>
-                    <li>SSE with customer provided key (SSE-C)</li>
-                </ul>
-                <li>Client Side Encryption</li>
-            </ul>
-            <li>SSE with Amazon S3-managed keys (SSE-S3)</li>
-            <ul>
-                <li>Encryption using keys handled, managed and owned by AWS (you will never see it)</li>
-                <li>Object is encrypted server side</li>
-                <li>Encryption type is AES-256</li>
-                <li>Must set header to "x-amz-server-side-encryption":"AES256"</li>
-            </ul>
-            <li>SSE with KMS keys stored in KMS (SSE-KMS)</li>
-            <ul>
-                <li>Advantages: user control + audit key usage using CloudTrail</li>
-                <li>Limitations: you will create calls to KMS API to generate thje key and to decrypt</li>
-                <ul>
-                    <li>This will count against your KMS per second quotas</li>
-                    <li>Impactful for very high usage buckets</li>
-                </ul>
-                <li>Object is encrypted server side</li>
-                <li>Set header to "x-amz-server-side-encryption":"aws:kms"</li>
-
-            </ul>
-            <li>SSE with customer provided key (SSE-C)</li>
-            <ul>
-                <li>Key fully managed by client</li>
-                <li>AWS does not store key</li>
-                <li>HTTPS must be used</li>
-                <li>Encryption key must be provided in HTTP headers for every HTTP request made</li>
-            </ul>
-            <li>SSE with KMS keys stored in KMS (SSE-KMS)</li>
-            <ul>
-                <li>Use client libraries such as Amazon S3 Client-Side Encryption Library</li>
-                <li>Client must encrypt data themselves before sending to S3</li>
-                <li>Client must decrypt data themselves when retreiving from S3</li>
-            </ul>
-            <li>Notes:</li>
-            <ul>
-                <li>Encryption can be forced through the use of bucket policies</li>
-                <li>Alternatively encryption can be forced through the use of "default encryption" option in S3</li>
-        </ul>
+<head>
+<meta charset="utf-8"/>
+<title>i-morgen</title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../style_menu.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
+<script>
+        var path_to_root = "../../" // aws
+    </script>
+</head>
+<body>
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (General)</span>
+</a>
+<ul class="sub-menu active">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
 </ul>
-        <div id="cors">
-            <p><strong><span style="font-size: 18px;">CORS</a></span></strong></p>
-        </div>
-            <ul>
-                <li>What is it?</li>
-                <ul>
-                    <li>Cross Origin Resource Sharing</li>
-                    <li>Origin = scheme (protocol) + host (domain) + port</li>
-                    <ul>
-                        <li>https://www.example.com:443</li>
-                    </ul>
-                    <li>Web browser based mechanism to allow requests to other origins while visiting the main origin</li>
-                </ul>
-                <ul>If a client makes a cross origin request on our S3 bucket, we need to enable the correct CORS headers</ul>
-                <li>Sample question:</li>
-                <ul>
-                    <li>You have a website that loads files from an S3 bucket. When you try the URL of the files directly in your Chrome browser it works, but when the website you're visiting tries to load these files it doesn't. What's the problem?</li>
-                    <li>Answer: CORS is wrong</li>
-                </ul>
-            </ul>
-       
-        <div id="mfa_delete">
-            <p><strong><span style="font-size: 18px;">mfa_delete</a></span></strong></p>
-        </div>
-        <ul>
-            <li>Force users to generate a code on a device (usually a mobile phone or hardware) before doing important operations on S3</li>
-            <li>Required when</li>
-            <ul>
-                 <li>Permanently delete an object version</li>
-                 <li>Suspend versioning on a bucket</li>
-            </ul>
-            <li>To use MFA, versioning must be enabled</li>
-            <li>Only bucket owner (root account) can enable/disable MFA delete</li>
-            <li>Can only be enabled via CLI</li>
-        </ul>
-
-        <div id="access_logs">
-            <p><strong><span style="font-size: 18px;">Access Logs</a></span></strong></p>
-        </div>
-        <ul>
-            <li>For audit puroposes you may want to log access to S3 buckets</li>
-            <li>Any request made to S3, from any account, authorized or denied, will be logged into another S3 bucket</li>
-            <li>That data can be analyzed using data analysis tools</li>
-            <li>Target logging bucket must be in the same AWS region</li>
-        </ul>
-        
-        <div id="presigned_urls">
-            <p><strong><span style="font-size: 18px;">Pre-signed URLs</a></span></strong></p>
-        </div>
-        <ul>
-            <li>Generate pre-signed URLs using S3 console, AWS CLI or SDK</li>
-            <li>URL expiration</li>
-            <ul>
-                <li>Console: 1 min up to 720 min</li>
-                <li>CLU: measured in seconds. 3600 default. Max 604800 seconds = about 168 hours</li>
-            </ul>
-            <li>Users given a presigned URL inherit permissions of the user that generated the URL</li>
-        </ul>
-
-        <div id="access_points">
-            <p><strong><span style="font-size: 18px;">Access Points</a></span></strong></p>
-        </div>
-        <ul>
-           <li>Allows you to segment a bucket into different "access points"</li>
-           <li>Each access point can get its own access control policy</li>
-           <li>S3 Object Lambda</li>
-           <ul>
-                <li>Use Lambda functions to change an object before it is retreived from caller app</li>
-                <li>Typical setup:</li>
-                <ul>
-                    <li>Ecomm app --> S3</li>
-                    <li>Analytics app --> S3 Object Lambda Access Point --> Lambda function to redact data (ie PII) --> S3 access point --> Ecomm S3 bucket</li>
-                    <li>Marketing app --> S3 Object Lambda Access Point --> Lambda function to enhance data  -|> Customer Loyalty DB -|> Ecomm S3 bucket</li>
-                </ul>
-           </ul>
-        </ul>
-    </body>
-</html> 
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
+                </li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                    53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                    Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (Data Science)</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                    Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                    Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                    Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                    Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                    Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
+                    Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                    Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul></li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS (White Papers)</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Concepts</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Machine Learning</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                    Function</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
+                    Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                    Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                    Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                    Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
+                    BERT/GPT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                    Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                    Gradients</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Hold</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span></span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<div class="gcse-search"></div>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+</li></li></ul>
+<!-- end sidebar nav -->
+</div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table>
+<tr>
+<td><img class="logo" src="../images/logo.png"/></td>
+<td><h1 style="color:#0B2042;">i morgen</h1></td>
+</tr>
+</table>
+<h2 style="color:#0A45A5;"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">s3</a>:security</h2>
+<p><strong><span style="font-size: 20px;">S3 Security</span></strong></p>
+<p><strong><span style="font-size: 18px;">Contents</span> </strong></p>
+<li><a href="#object_encryption">Object Encryption</a></li>
+<li><a href="#cors">CORS</a></li>
+<li><a href="#mfa_delete">MFA Delete</a></li>
+<li><a href="#access_logs">Access Logs</a></li>
+<li><a href="#presigned_urls">Pre-Signed URLs</a></li>
+<li><a href="#access_points">Access Points</a></li>
+<div id="object_encryption">
+<p><strong><span style="font-size: 18px;">Object Encryption</span></strong></p>
+</div>
+<ul>
+<li>Four different methods exist to encrypt data in S3</li>
+<ul>
+<li>Server Side Encryption (SSE)</li>
+<ul>
+<li>SSE with Amazon S3-managed keys (SSE-S3)</li>
+<li>SSE with KMS keys stored in KMS (SSE-KMS)</li>
+<li>SSE with customer provided key (SSE-C)</li>
+</ul>
+<li>Client Side Encryption</li>
+</ul>
+<li>SSE with Amazon S3-managed keys (SSE-S3)</li>
+<ul>
+<li>Encryption using keys handled, managed and owned by AWS (you will never see it)</li>
+<li>Object is encrypted server side</li>
+<li>Encryption type is AES-256</li>
+<li>Must set header to "x-amz-server-side-encryption":"AES256"</li>
+</ul>
+<li>SSE with KMS keys stored in KMS (SSE-KMS)</li>
+<ul>
+<li>Advantages: user control + audit key usage using CloudTrail</li>
+<li>Limitations: you will create calls to KMS API to generate thje key and to decrypt</li>
+<ul>
+<li>This will count against your KMS per second quotas</li>
+<li>Impactful for very high usage buckets</li>
+</ul>
+<li>Object is encrypted server side</li>
+<li>Set header to "x-amz-server-side-encryption":"aws:kms"</li>
+</ul>
+<li>SSE with customer provided key (SSE-C)</li>
+<ul>
+<li>Key fully managed by client</li>
+<li>AWS does not store key</li>
+<li>HTTPS must be used</li>
+<li>Encryption key must be provided in HTTP headers for every HTTP request made</li>
+</ul>
+<li>SSE with KMS keys stored in KMS (SSE-KMS)</li>
+<ul>
+<li>Use client libraries such as Amazon S3 Client-Side Encryption Library</li>
+<li>Client must encrypt data themselves before sending to S3</li>
+<li>Client must decrypt data themselves when retreiving from S3</li>
+</ul>
+<li>Notes:</li>
+<ul>
+<li>Encryption can be forced through the use of bucket policies</li>
+<li>Alternatively encryption can be forced through the use of "default encryption" option in S3</li>
+</ul>
+</ul>
+<div id="cors">
+<p><strong><span style="font-size: 18px;">CORS</span></strong></p>
+</div>
+<ul>
+<li>What is it?</li>
+<ul>
+<li>Cross Origin Resource Sharing</li>
+<li>Origin = scheme (protocol) + host (domain) + port</li>
+<ul>
+<li>https://www.example.com:443</li>
+</ul>
+<li>Web browser based mechanism to allow requests to other origins while visiting the main origin</li>
+</ul>
+<ul>If a client makes a cross origin request on our S3 bucket, we need to enable the correct CORS headers</ul>
+<li>Sample question:</li>
+<ul>
+<li>You have a website that loads files from an S3 bucket. When you try the URL of the files directly in your Chrome browser it works, but when the website you're visiting tries to load these files it doesn't. What's the problem?</li>
+<li>Answer: CORS is wrong</li>
+</ul>
+</ul>
+<div id="mfa_delete">
+<p><strong><span style="font-size: 18px;">mfa_delete</span></strong></p>
+</div>
+<ul>
+<li>Force users to generate a code on a device (usually a mobile phone or hardware) before doing important operations on S3</li>
+<li>Required when</li>
+<ul>
+<li>Permanently delete an object version</li>
+<li>Suspend versioning on a bucket</li>
+</ul>
+<li>To use MFA, versioning must be enabled</li>
+<li>Only bucket owner (root account) can enable/disable MFA delete</li>
+<li>Can only be enabled via CLI</li>
+</ul>
+<div id="access_logs">
+<p><strong><span style="font-size: 18px;">Access Logs</span></strong></p>
+</div>
+<ul>
+<li>For audit puroposes you may want to log access to S3 buckets</li>
+<li>Any request made to S3, from any account, authorized or denied, will be logged into another S3 bucket</li>
+<li>That data can be analyzed using data analysis tools</li>
+<li>Target logging bucket must be in the same AWS region</li>
+</ul>
+<div id="presigned_urls">
+<p><strong><span style="font-size: 18px;">Pre-signed URLs</span></strong></p>
+</div>
+<ul>
+<li>Generate pre-signed URLs using S3 console, AWS CLI or SDK</li>
+<li>URL expiration</li>
+<ul>
+<li>Console: 1 min up to 720 min</li>
+<li>CLU: measured in seconds. 3600 default. Max 604800 seconds = about 168 hours</li>
+</ul>
+<li>Users given a presigned URL inherit permissions of the user that generated the URL</li>
+</ul>
+<div id="access_points">
+<p><strong><span style="font-size: 18px;">Access Points</span></strong></p>
+</div>
+<ul>
+<li>Allows you to segment a bucket into different "access points"</li>
+<li>Each access point can get its own access control policy</li>
+<li>S3 Object Lambda</li>
+<ul>
+<li>Use Lambda functions to change an object before it is retreived from caller app</li>
+<li>Typical setup:</li>
+<ul>
+<li>Ecomm app --&gt; S3</li>
+<li>Analytics app --&gt; S3 Object Lambda Access Point --&gt; Lambda function to redact data (ie PII) --&gt; S3 access point --&gt; Ecomm S3 bucket</li>
+<li>Marketing app --&gt; S3 Object Lambda Access Point --&gt; Lambda function to enhance data  -|&gt; Customer Loyalty DB -|&gt; Ecomm S3 bucket</li>
+</ul>
+</ul>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../script.js"></script>
+</body>
+</html>
