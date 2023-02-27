@@ -107,7 +107,7 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
 </li>
 <li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
@@ -173,16 +173,13 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
 </li>
 <li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
-                </li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
+</li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
@@ -455,15 +452,28 @@
 <!-- end #sidebar -->
 </div>
 <div class="content" id="content">
-<table>
-<tr>
-<td><img class="logo" src="../images/logo.png"/></td>
-<td><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
-</tr>
+<table width="80%">
+    <tr>
+        <td width="5%"><img class="logo" src="../images/logo.png"/></td>
+        <td width="80%">
+        <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+    </td>
+    </tr>
 </table>
-<h3 style="color:hsl(241, 74%, 46%)"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">security groups</a>:overview</h3>
-<p><strong><span style="font-size: 20px;">Security Groups</span></strong></p>
-<p><strong><span style="font-size: 18px;">What are they?</span></strong></p>
+<br/>
+<h3 style="color:hsl(241, 74%, 46%)">Security Groups</h3>
+
+<br/>
+<p><span style="font-size: 18px;">Contents</span></p>
+<li><a href="#what_is_it">What is it?</a></li>
+<li><a href="#use_cases">Use Cases</a></li>
+<li><a href="#limitations">Limitations</a></li>
+
+<br/>
+
+<div id="what_is_it">
+<p><strong><span style="font-size: 18px;">What is it?</span></strong></p>
+</div>
 <ul>
 <li>Act as a virtual firewall at the EC2 instance level</li>
 <li>Each SG contains a set of rules that filter traffic coming into and out of EC2 instances</li>
@@ -474,25 +484,31 @@
 <li><a href="../images/security_group_view.png">Illustration</a></li>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html" target="_blank">AWS documentation</a></li>
 </ul>
+
+<div id="use_cases">
 <p><strong><span style="font-size: 18px;">Use Cases</span></strong></p>
+</div>
 <ul>
 <li>Web site wanting to talk to backend database (scenario 1)</li>
 <ul>
 <li>You can specify the source to be an IP range or specific address (/32 is a specific address)</li>
-<li><a href="../images/security_group_use_case_1.png">Illustration</a></li>
+<li><a href="images_security_group_use_case_1.html">Illustration</a></li>
 </ul>
 <li>Web site wanting to talk to backend database (scenario 2)</li>
 <ul>
 <li>You can specify the source to be another security group</li>
-<li><a href="../images/security_group_use_case_2.png">Illustration</a></li>
+<li><a href="images_security_group_use_case_2.html">Illustration</a></li>
 </ul>
 <li>Instance can belong to multiple security groups</li>
 <ul>
 <li>Rules are permissive, meaning if you have one SG which has no Allow and another to Allow, then it will Allow</li>
-<li><a href="../images/security_group_use_case_3.png">Illustration</a></li>
+<li><a href="images_security_group_use_case_3.html">Illustration</a></li>
 </ul>
 </ul>
+
+<div id="limitations">
 <p><strong><span style="font-size: 18px;">Limitations</span></strong></p>
+</div>
 <ul>
 <li>You can have up to 10,000 SG's in a region (default is 2,500)</li>
 <li>You can have 60 inbound rules and 60 outbound rules per group</li>

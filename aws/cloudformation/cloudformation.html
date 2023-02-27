@@ -1,923 +1,805 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <title>i-morgen</title>
-    <link
-        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png"
-        rel="apple-touch-icon" type="image/png" />
-    <meta content="CodePen" name="apple-mobile-web-app-title" />
-    <link
-        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"
-        rel="shortcut icon" type="image/x-icon" />
-    <link color="#111"
-        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg"
-        rel="mask-icon" type="image/x-icon" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-        rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet" />
-    <link href="../style_menu.css" rel="stylesheet" />
-    <link href="../styles.css" rel="stylesheet" />
-    <script>
+<meta charset="utf-8"/>
+<title>i-morgen</title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../style_menu.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
+<script>
         var path_to_root = "../../" // aws
     </script>
 </head>
-
 <body>
-    <div class="page-header-fixed page-sidebar-fixed" id="page-container">
-        <div class="sidebar" id="sidebar">
-            <!-- begin sidebar scrollbar -->
-            <div data-height="100%" data-scrollbar="true">
-                <!-- begin sidebar nav -->
-                <ul class="nav">
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-th-large"></i>
-                            <span>AWS (General)</span>
-                        </a>
-                        <ul class="sub-menu active">
-                            <li>
-                                <a href="javascript:void(0);"
-                                    onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>AWS Compute</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API
-                                            Gateway</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Database</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Developer Tools</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code
-                                            Commit</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code
-                                            Build</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code
-                                            Build</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>IaC</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Management</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter
-                                            Store</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Messaging</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Network</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC
-                                            Endpoints</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
-                                            53</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>SIC</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
-                                            Manager</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets
-                                            Manager</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security
-                                            Groups</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Storage</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance
-                                            Storage</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-th-large"></i>
-                            <span>AWS (Data Science)</span>
-                        </a>
-                        <ul class="sub-menu active">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>ML Toolset</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
-                                            Text</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep
-                                            AR</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
-                                            Classification</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
-                                            Learner</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
-                                            Topic Modeling</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
-                                            Detection</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random
-                                            Cut
-                                            Forest</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
-                                            Segmentation</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Analytics Toolset</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-list-ol"></i>
-                            <span>AWS (White Papers)</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Item 1</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>Hi</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-list-ol"></i>
-                            <span>DevOps</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Item 1</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>Hi</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-list-ol"></i>
-                            <span>Concepts</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Machine Learning</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
-                                            Function</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging
-                                            vs
-                                            Boosting</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
-                                            Matrix</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
-                                            Methods</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
-                                            Measurement</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP
-                                            with
-                                            BERT/GPT</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
-                                            Neural Networks</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
-                                            Gradients</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc
-                                            Concepts</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Data Ops</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-list-ol"></i>
-                            <span>Hold</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span></span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>Hi</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <div class="gcse-search"></div>
-                    </li>
-                    <!-- begin sidebar minify button -->
-                    <!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
-                    <!-- end sidebar minify button -->
-                    </li>
-                    </li>
-                </ul>
-                <!-- end sidebar nav -->
-            </div>
-            <!-- end sidebar scrollbar -->
-        </div>
-        <div class="sidebar-bg"></div>
-        <!-- end #sidebar -->
-    </div>
-    <div class="content" id="content">
-        <table width="80%">
-            <tr>
-                <td width="5%"><img class="logo" src="../images/logo.png" /></td>
-                <td width="80%">
-                    <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
-                </td>
-            </tr>
-        </table>
-        <br />
-        <h3 style="color:hsl(241, 74%, 46%)">Cloud Formation</h3>
-        <br />
-        <span style="font-size: 18px;"><strong>Contents</strong></span>
-        <li><a href="#what_is_it">What is it</a></li>
-        <li><a href="#template_sections">Template Sections</a></li>
-        <li><a href="#stack_updates">Stack Updates</a></li>
-        <li><a href="#nested_stacks">Nested Stacks</a></li>
-        <li><a href="#drift">Drift Detection</a></li>
-        <li><a href="#rollback">Rollback</a></li>
-        <li><a href="#parameters">Parameters</a></li>
-        <li><a href="#exported_values">Exporting Stack Output Values</a></li>
-        <li><a href="#resource_attributes">Resource Attributes</a></li>
-        <li><a href="#intrinsic_functions">Intrinsic Functions</a></li>
-        <li><a href="#wait_condition">Wait Conditions</a></li>
-        <li><a href="cloudformation_understand_yaml.html">Understanding YAML</a></li>
-        <li><a href="cloudformation_step_by_step.html">Step by StepL</a></li>
-        <li><a href="cloudformation_pros_cons.html">Pros and Cons</a></li>
-        <li><a href="#images">Images</a></li>
-        <li><a href="#images">Images</a></li>
-        <li><a href="#images">Images</a></li>
-        <br />
-        <div id="what_is_it">
-            <p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
-        </div>
-        <ul>
-            <li>Helps you model and set up your AWS resources so that you can spend less time managing those resources
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (General)</span>
+</a>
+<ul class="sub-menu active">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                    53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                    Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (Data Science)</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                    Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                    Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                    Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                    Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                    Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
+                    Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                    Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul></li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS (White Papers)</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Concepts</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Machine Learning</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                    Function</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
+                    Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                    Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                    Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                    Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
+                    BERT/GPT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                    Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                    Gradients</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Hold</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span></span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<div class="gcse-search"></div>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+</li></li></ul>
+<!-- end sidebar nav -->
+</div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table width="80%">
+<tr>
+<td width="5%"><img class="logo" src="../images/logo.png"/></td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+</td>
+</tr>
+</table>
+<br/>
+<h3 style="color:hsl(241, 74%, 46%)">Cloud Formation</h3>
+<br/>
+<span style="font-size: 18px;"><strong>Contents</strong></span>
+<li><a href="#what_is_it">What is it</a></li>
+<li><a href="#template_sections">Template Sections</a></li>
+<li><a href="#stack_updates">Stack Updates</a></li>
+<li><a href="#nested_stacks">Nested Stacks</a></li>
+<li><a href="#drift">Drift Detection</a></li>
+<li><a href="#rollback">Rollback</a></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#exported_values">Exporting Stack Output Values</a></li>
+<li><a href="#resource_attributes">Resource Attributes</a></li>
+<li><a href="#intrinsic_functions">Intrinsic Functions</a></li>
+<li><a href="#wait_condition">Wait Conditions</a></li>
+<li><a href="cloudformation_understand_yaml.html">Understanding YAML</a></li>
+<li><a href="cloudformation_step_by_step.html">Step by StepL</a></li>
+<li><a href="cloudformation_pros_cons.html">Pros and Cons</a></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#images">Images</a></li>
+<br/>
+<div id="what_is_it">
+<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+</div>
+<ul>
+<li>Helps you model and set up your AWS resources so that you can spend less time managing those resources
                 and more time focusing on your applications that run in AWS</li>
-            <li>You create a template that describes all the AWS resources that you want (like Amazon EC2 instances or
+<li>You create a template that describes all the AWS resources that you want (like Amazon EC2 instances or
                 Amazon RDS DB instances), and CloudFormation takes care of provisioning and configuring those resources
                 for you.</li>
-            <li><a href="../images/cloudformation_template.png">Illustration</a></li>
-        </ul>
-        <div id="template_sections">
-            <p><span style="font-size: 18px;"><strong>Template sections</strong></span></p>
-        </div>
-        <ul>
-            <li>MetaData</li>
-            <ul>
-                <li>Additional information about the template</li>
-            </ul>
-            <li>Description</li>
-            <ul>
-                <li>A description of what this template is supposed to do</li>
-            </ul>
-            <li>Parameters</li>
-            <ul>
-                <li>Values to pass to your template at runtime</li>
-            </ul>
-            <li>Mappings</li>
-            <ul>
-                <li>Lookup table. Maps keys to values so you change your values to something else</li>
-            </ul>
-            <li>Conditions</li>
-            <ul>
-                <li>Whether resources are created or properties are assigned</li>
-            </ul>
-            <li>Transform</li>
-            <ul>
-                <li>Applies macros (like applying a mod which which change the anatomy to be custom</li>
-            </ul>
-            <li>Resources</li>
-            <ul>
-                <li>A resource you want to create (ie IAM role, EC2 instance, Lambda)</li>
-            </ul>
-            <li>Outputs</li>
-            <ul>
-                <li>Values that returned (ie ip-address of new server created)</li>
-                <li>Cannot accept Conditions. However if you want to control the output based on conditions, use
+<li><a href="../images/cloudformation_template.png">Illustration</a></li>
+</ul>
+<div id="template_sections">
+<p><span style="font-size: 18px;"><strong>Template sections</strong></span></p>
+</div>
+<ul>
+<li>MetaData</li>
+<ul>
+<li>Additional information about the template</li>
+</ul>
+<li>Description</li>
+<ul>
+<li>A description of what this template is supposed to do</li>
+</ul>
+<li>Parameters</li>
+<ul>
+<li>Values to pass to your template at runtime</li>
+</ul>
+<li>Mappings</li>
+<ul>
+<li>Lookup table. Maps keys to values so you change your values to something else</li>
+</ul>
+<li>Conditions</li>
+<ul>
+<li>Whether resources are created or properties are assigned</li>
+</ul>
+<li>Transform</li>
+<ul>
+<li>Applies macros (like applying a mod which which change the anatomy to be custom</li>
+</ul>
+<li>Resources</li>
+<ul>
+<li>A resource you want to create (ie IAM role, EC2 instance, Lambda)</li>
+</ul>
+<li>Outputs</li>
+<ul>
+<li>Values that returned (ie ip-address of new server created)</li>
+<li>Cannot accept Conditions. However if you want to control the output based on conditions, use
                     'Fn::If'</li>
-            </ul>
-        </ul>
-        <div id="stack_updates">
-            <p><span style="font-size: 18px;"><strong>Stack Updates</strong></span></p>
-        </div>
-        <ul>
-            <li>Updating and re-executing the script will only make the desired changes. Will not recreate everything
+</ul>
+</ul>
+<div id="stack_updates">
+<p><span style="font-size: 18px;"><strong>Stack Updates</strong></span></p>
+</div>
+<ul>
+<li>Updating and re-executing the script will only make the desired changes. Will not recreate everything
             </li>
-            <li>There are two ways to preform a stack update. <a
-                    href="../images/cloudformation_direct_change_set.png">Illustration</a> (ExampPro)</li>
-            <ul>
-                <li>Direct</li>
-                <ul>
-                    <li>You submit and AWS immediately deploys them</li>
-                    <li>Use when you want to quickly deploy your updates</li>
-                </ul>
-                <li>Executing change sets</li>
-                <ul>
-                    <li>Allows you to preview the changes and then to apply them</li>
-                    <li>Use when you want to review the changes before you deploy them</li>
-                </ul>
-            </ul>
-            <li>CloudFormation updates differently depending on the state of your resources and circumstances</li>
-            <ul>
-                <li>Update with no interruption</li>
-                <ol>
-                    <li>Updates the resource without disrupting the operation</li>
-                    <li>and without changing the resource's physical id</li>
-                    <li>ie. changing security group on EC2 server</li>
-                </ol>
-                <li>Update with some interruption</li>
-                <ol>
-                    <li>Updates the resource with some interruption</li>
-                    <li>and retains the physical id</li>
-                    <li>ie. changing the load balancer </li>
-                </ol>
-                <li>Replacement</li>
-                <ol>
-                    <li>recreates the resource during an update</li>
-                    <li>and generates a new physical id</li>
-                    <li>ie. launch configurations</li>
-                </ol>
-                <li>Preventing updates</li>
-                <ul>
-                    <li>In some cases you will not want to allow updates - for example when an action could drop a
+<li>There are two ways to preform a stack update. <a href="../images/cloudformation_direct_change_set.png">Illustration</a> (ExampPro)</li>
+<ul>
+<li>Direct</li>
+<ul>
+<li>You submit and AWS immediately deploys them</li>
+<li>Use when you want to quickly deploy your updates</li>
+</ul>
+<li>Executing change sets</li>
+<ul>
+<li>Allows you to preview the changes and then to apply them</li>
+<li>Use when you want to review the changes before you deploy them</li>
+</ul>
+</ul>
+<li>CloudFormation updates differently depending on the state of your resources and circumstances</li>
+<ul>
+<li>Update with no interruption</li>
+<ol>
+<li>Updates the resource without disrupting the operation</li>
+<li>and without changing the resource's physical id</li>
+<li>ie. changing security group on EC2 server</li>
+</ol>
+<li>Update with some interruption</li>
+<ol>
+<li>Updates the resource with some interruption</li>
+<li>and retains the physical id</li>
+<li>ie. changing the load balancer </li>
+</ol>
+<li>Replacement</li>
+<ol>
+<li>recreates the resource during an update</li>
+<li>and generates a new physical id</li>
+<li>ie. launch configurations</li>
+</ol>
+<li>Preventing updates</li>
+<ul>
+<li>In some cases you will not want to allow updates - for example when an action could drop a
                         database</li>
-                    <li>Create a stack policy that defines the updates actions that be be performed on designated
+<li>Create a stack policy that defines the updates actions that be be performed on designated
                         resources</li>
-                    <li><a href="../images/cloudformation_deny.png">Illustration</a></li>
-                </ul>
-            </ul>
-        </ul>
-        <div id="nested_stacks">
-            <p><span style="font-size: 18px;"><strong><a
-                            href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html"
-                            target="_blank">Nested Stacks</a></strong></span></p>
-        </div>
-        <ul>
-            <li>Allow you to reference CFN templates inside another CFN template</li>
-            <li>Two benefits</li>
-            <ol>
-                <li>Create modular templates (resusability)</li>
-                <li>Assemble large templates (reduce complexity)</li>
-            </ol>
-            <li><a href="../images/cloudformation_nested_stack.png">Illustration</a></li>
-        </ul>
-        <div id="drift">
-            <p><span style="font-size: 18px;"><strong><a
-                            href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/detect-drift-stack.html"
-                            target="_blank">Drift Detection</a></strong></span></p>
-        </div>
-        <ul>
-            <li>When your stacks actual configuration differs (has drifted) by what CloudFormation expects</li>
-            <li>Why does it happen?</li>
-            <ul>
-                <li>Developers start making ad hoc changes to the stack (ie deleting resources)</li>
-                <li>As opposed to updating config and relaunching template</li>
-            </ul>
-            <li>CloudFormation can detect drift and tell you if resources have been deleted or modified</li>
-            <li>Nested Stacks and Drift Detection</li>
-            <ul>
-                <li>CloudFormation can detect drift in nested stacks</li>
-                <li>However, it cannot detect drift in resources that are created outside of the stack</li>
-                <li>ie. if you create an EC2 instance outside of the stack, CloudFormation will not detect it</li>
-            </ul>
-        </ul>
-        <div id="rollback">
-            <p><span style="font-size: 18px;"><strong><a
-                            href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-rollback-triggers.html"
-                            target="_blank">Rollback</a></strong></span></p>
-        </div>
-        <ul>
-            <li>Examples of errors requiring rollback</li>
-            <ul>
-                <li>CloudFormation template has a syntax error</li>
-                <li>Stack is trying to delete a resource which no longer exists</li>
-            </ul>
-            <li>In these cases, CloudFormation will attempt to put the stack to its previous state</li>
-            <li>Rollback is the default behavior</li>
-            <ul>
-                <li>This can be overriden for troubleshooting</li>
-            </ul>
-        </ul>
-        <div id="parameters">
-            <p><span style="font-size: 18px;"><strong><a
-                            href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/pseudo-parameter-reference.html"
-                            target="_blank">Parameters</a></strong></span></p>
-        </div>
-        <ul>
-            <li>Parameters that are predefined by CloudFormation</li>
-            <li>Do not declare them in your template</li>
-            <li>Use them the same was you would a parameter</li>
-            <li>Examples</li>
-            <table border="1">
-                <tr>
-                    <td>AWS::Partition</td>
-                    <td>Returns the partition that the resource is in</td>
-                    <td>aws-us-gov</td>
-                </tr>
-                <tr>
-                    <td>AWS::Region</td>
-                    <td>Returns the region that the stack is in</td>
-                    <td>us-east-1</td>
-                </tr>
-                <tr>
-                    <td>AWS::StackId</td>
-                    <td>Returns the stack id</td>
-                    <td>arn:aws:cloudformation:us-east-1:123456789012:stack/MyStack/1a2b3c4d</td>
-                </tr>
-                <tr>
-                    <td>AWS::StackName</td>
-                    <td>Returns the stack name</td>
-                    <td>MyStack</td>
-                </tr>
-                <tr>
-                    <td>AWS::URLSuffix</td>
-                    <td>Returns the URL suffix for the region</td>
-                    <td>amazonaws.com</td>
-                </tr>
-            </table>
-        </ul>
-        <div id="exported_values">
-            <p><span style="font-size: 18px;"><strong><a
-                            href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html"
-                            target="_blank">Exporting Stack Output Values</a></strong></span></p>
-        </div>
-        <ul>
-            <li>An exported output is a value that is made available to other stacks, and it can be imported using the
+<li><a href="../images/cloudformation_deny.png">Illustration</a></li>
+</ul>
+</ul>
+</ul>
+<div id="nested_stacks">
+<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html" target="_blank">Nested Stacks</a></strong></span></p>
+</div>
+<ul>
+<li>Allow you to reference CFN templates inside another CFN template</li>
+<li>Two benefits</li>
+<ol>
+<li>Create modular templates (resusability)</li>
+<li>Assemble large templates (reduce complexity)</li>
+</ol>
+<li><a href="../images/cloudformation_nested_stack.png">Illustration</a></li>
+</ul>
+<div id="drift">
+<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/detect-drift-stack.html" target="_blank">Drift Detection</a></strong></span></p>
+</div>
+<ul>
+<li>When your stacks actual configuration differs (has drifted) by what CloudFormation expects</li>
+<li>Why does it happen?</li>
+<ul>
+<li>Developers start making ad hoc changes to the stack (ie deleting resources)</li>
+<li>As opposed to updating config and relaunching template</li>
+</ul>
+<li>CloudFormation can detect drift and tell you if resources have been deleted or modified</li>
+<li>Nested Stacks and Drift Detection</li>
+<ul>
+<li>CloudFormation can detect drift in nested stacks</li>
+<li>However, it cannot detect drift in resources that are created outside of the stack</li>
+<li>ie. if you create an EC2 instance outside of the stack, CloudFormation will not detect it</li>
+</ul>
+</ul>
+<div id="rollback">
+<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-rollback-triggers.html" target="_blank">Rollback</a></strong></span></p>
+</div>
+<ul>
+<li>Examples of errors requiring rollback</li>
+<ul>
+<li>CloudFormation template has a syntax error</li>
+<li>Stack is trying to delete a resource which no longer exists</li>
+</ul>
+<li>In these cases, CloudFormation will attempt to put the stack to its previous state</li>
+<li>Rollback is the default behavior</li>
+<ul>
+<li>This can be overriden for troubleshooting</li>
+</ul>
+</ul>
+<div id="parameters">
+<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/pseudo-parameter-reference.html" target="_blank">Parameters</a></strong></span></p>
+</div>
+<ul>
+<li>Parameters that are predefined by CloudFormation</li>
+<li>Do not declare them in your template</li>
+<li>Use them the same was you would a parameter</li>
+<li>Examples</li>
+<table border="1">
+<tr>
+<td>AWS::Partition</td>
+<td>Returns the partition that the resource is in</td>
+<td>aws-us-gov</td>
+</tr>
+<tr>
+<td>AWS::Region</td>
+<td>Returns the region that the stack is in</td>
+<td>us-east-1</td>
+</tr>
+<tr>
+<td>AWS::StackId</td>
+<td>Returns the stack id</td>
+<td>arn:aws:cloudformation:us-east-1:123456789012:stack/MyStack/1a2b3c4d</td>
+</tr>
+<tr>
+<td>AWS::StackName</td>
+<td>Returns the stack name</td>
+<td>MyStack</td>
+</tr>
+<tr>
+<td>AWS::URLSuffix</td>
+<td>Returns the URL suffix for the region</td>
+<td>amazonaws.com</td>
+</tr>
+</table>
+</ul>
+<div id="exported_values">
+<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html" target="_blank">Exporting Stack Output Values</a></strong></span></p>
+</div>
+<ul>
+<li>An exported output is a value that is made available to other stacks, and it can be imported using the
                 Fn::ImportValue function. </li>
-            <li>Exported values need to have unique names across all regions. When you create an exported output in a
+<li>Exported values need to have unique names across all regions. When you create an exported output in a
                 CloudFormation stack, the output is made </li>
-        </ul>
-        <div id="resource_attributes">
-            <p><span style="font-size: 18px;"><strong><a
-                            href="https://www.google.com/search?q=aws+resource+attributes&amp;oq=aws+resource+attr&amp;aqs=edge.0.0i512j69i57j0i22i30i625j0i390j69i64.7380j0j4&amp;sourceid=chrome&amp;ie=UTF-8"
-                            target="_blank">Resource Attributes</a></strong></span></p>
-        </div>
-        <ul>
-            <li>Creation Policy</li>
-            <ul>
-                <li>Prevent its status from reaching create complete status until ASW CloudFormation receives a
+</ul>
+<div id="resource_attributes">
+<p><span style="font-size: 18px;"><strong><a href="https://www.google.com/search?q=aws+resource+attributes&amp;oq=aws+resource+attr&amp;aqs=edge.0.0i512j69i57j0i22i30i625j0i390j69i64.7380j0j4&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank">Resource Attributes</a></strong></span></p>
+</div>
+<ul>
+<li>Creation Policy</li>
+<ul>
+<li>Prevent its status from reaching create complete status until ASW CloudFormation receives a
                     specified number of success signals or the timeout period is exceeded</li>
-                <li>Useful for cases where you need to ensure that your instances have successfully joined the load
+<li>Useful for cases where you need to ensure that your instances have successfully joined the load
                     balancer before the stack status is updated</li>
-            </ul>
-            <li>Deletion Policy</li>
-            <ul>
-                <li>reserve (or in some cases, backup) a resource when its stack is deleted (ie database being removed)
+</ul>
+<li>Deletion Policy</li>
+<ul>
+<li>reserve (or in some cases, backup) a resource when its stack is deleted (ie database being removed)
                 </li>
-            </ul>
-            <li>Update Policy</li>
-            <ul>
-                <li>Control how updates are applied to the stack or its resources</li>
-                <li>Only for ASG, ElasticCache, Domain or Lambda Alias</li>
-                <li>Useful for cases where you need to ensure that your instances have successfully joined the load
+</ul>
+<li>Update Policy</li>
+<ul>
+<li>Control how updates are applied to the stack or its resources</li>
+<li>Only for ASG, ElasticCache, Domain or Lambda Alias</li>
+<li>Useful for cases where you need to ensure that your instances have successfully joined the load
                     balancer before the stack status is updated</li>
-            </ul>
-            <li>UpdateReplace Policy</li>
-            <ul>
-                <li>Control whether a resource is replaced during an update</li>
-                <li>Only for ASG, ElasticCache, Domain or Lambda Alias</li>
-                <li>Useful for cases where you need to ensure that your instances have successfully joined the load
+</ul>
+<li>UpdateReplace Policy</li>
+<ul>
+<li>Control whether a resource is replaced during an update</li>
+<li>Only for ASG, ElasticCache, Domain or Lambda Alias</li>
+<li>Useful for cases where you need to ensure that your instances have successfully joined the load
                     balancer before the stack status is updated</li>
-            </ul>
-            <li>DependsOn</li>
-            <ul>
-                <li>Specify that a resource depends on another resource</li>
-                <li>Useful for cases where you need to ensure that your instances have successfully joined the load
+</ul>
+<li>DependsOn</li>
+<ul>
+<li>Specify that a resource depends on another resource</li>
+<li>Useful for cases where you need to ensure that your instances have successfully joined the load
                     balancer before the stack status is updated</li>
-            </ul>
-        </ul>
-        <div id="intrinsic_functions">
-            <p><span style="font-size: 18px;"><strong><a
-                            href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html"
-                            target="_blank">Intrinsic Functions</a></strong></span></p>
-        </div>
-        <ul>
-            <li>Use Instrinsic Functions in your templates to assign values to properties that are not available until
+</ul>
+</ul>
+<div id="intrinsic_functions">
+<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html" target="_blank">Intrinsic Functions</a></strong></span></p>
+</div>
+<ul>
+<li>Use Instrinsic Functions in your templates to assign values to properties that are not available until
                 run time</li>
-            <li>Examples</li>
-            <ul>
-                <li>Fn::Base64</li>
-                <li>Fn::FindInMap</li>
-                <ul>
-                    <li>Return named value from specific key</li>
-                    <li>!FindInMap [MapName, TopLevelKey, SecondLevelKey]</li>
-                    <li>Example: Create map of AMI's per AZ per 32/64 bit and name the map "RegionMap". Use this:
+<li>Examples</li>
+<ul>
+<li>Fn::Base64</li>
+<li>Fn::FindInMap</li>
+<ul>
+<li>Return named value from specific key</li>
+<li>!FindInMap [MapName, TopLevelKey, SecondLevelKey]</li>
+<li>Example: Create map of AMI's per AZ per 32/64 bit and name the map "RegionMap". Use this:
                         !FindInMap [RegionMap, !Ref "AWS::Region", 32]</li>
-                </ul>
-                <li>Fn::GetAZs</li>
-                <li>Fn::ImportValue</li>
-                <ul>
-                    <li>Import values that are exported in other templates</li>
-                    <li>Reference the variable identified by Export in another function</li>
-                </ul>
-                <li>Fn::Join</li>
-                <ul>
-                    <li>Join values with a delimiter</li>
-                    <li>Example: !Join [":", [a, b, c] ]. This produces a:b:c</li>
-                </ul>
-                <li>Fn::Select</li>
-                <li>Fn::Split</li>
-                <li>Fn::Sub</li>
-                <ul>
-                    <li>Substitute variables from a text</li>
-                    <li>Useful to fully customer your templates</li>
-                </ul>
-                <li>Fn::Transform</li>
-                <li>Fn::GetAtt [most common]</li>
-                <ul>
-                    <li>Fn::GetAtt returns the value of an attribute from a resource in the template</li>
-                    <li>Useful for cases where you need to ensure that your instances have successfully joined the load
+</ul>
+<li>Fn::GetAZs</li>
+<li>Fn::ImportValue</li>
+<ul>
+<li>Import values that are exported in other templates</li>
+<li>Reference the variable identified by Export in another function</li>
+</ul>
+<li>Fn::Join</li>
+<ul>
+<li>Join values with a delimiter</li>
+<li>Example: !Join [":", [a, b, c] ]. This produces a:b:c</li>
+</ul>
+<li>Fn::Select</li>
+<li>Fn::Split</li>
+<li>Fn::Sub</li>
+<ul>
+<li>Substitute variables from a text</li>
+<li>Useful to fully customer your templates</li>
+</ul>
+<li>Fn::Transform</li>
+<li>Fn::GetAtt [most common]</li>
+<ul>
+<li>Fn::GetAtt returns the value of an attribute from a resource in the template</li>
+<li>Useful for cases where you need to ensure that your instances have successfully joined the load
                         balancer before the stack status is updated</li>
-                    <li>Example: create EC2 instance named "EC2Instance". Create EBS in the AZ of your EC2. Use this:
+<li>Example: create EC2 instance named "EC2Instance". Create EBS in the AZ of your EC2. Use this:
                         !GetAtt EC2Instance.AvailabilityZone</li>
-                </ul>
-                <li>Ref [most common]</li>
-                <ul>
-                    <li>Shorthand is !Ref</li>
-                    <li>Leveraged to reference</li>
-                    <ul>
-                        <li>Parameters =&gt; returns value of parameter</li>
-                        <li>Returns the physical id of the underlying resource (ex EC2 ID)</li>
-                    </ul>
-                </ul>
-                <li>Condition Functions</li>
-                <ul>
-                    <li>Example: Conditions: CreateProdResources: !Equals [ !Ref EnvType, prod ]. In this case if
+</ul>
+<li>Ref [most common]</li>
+<ul>
+<li>Shorthand is !Ref</li>
+<li>Leveraged to reference</li>
+<ul>
+<li>Parameters =&gt; returns value of parameter</li>
+<li>Returns the physical id of the underlying resource (ex EC2 ID)</li>
+</ul>
+</ul>
+<li>Condition Functions</li>
+<ul>
+<li>Example: Conditions: CreateProdResources: !Equals [ !Ref EnvType, prod ]. In this case if
                         EnvType == prod, the entire statement will return true</li>
-                    <li>Fn::And</li>
-                    <li>Fn::Equals</li>
-                    <li>Fn::If</li>
-                    <li>Fn::Not</li>
-                    <li>Fn::Or</li>
-                </ul>
-            </ul>
-        </ul>
-        <div id="wait_condition">
-            <p><span style="font-size: 18px;"><strong><a
-                            href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waitcondition.html"
-                            target="_blank">Wait Conditions</a></strong></span></p>
-        </div>
-        <ul>
-            <li>Waits for a condition</li>
-            <li>Two use cases</li>
-            <ol>
-                <li>Coordinate stack resource creation with the configuration actions that are external to the stack
+<li>Fn::And</li>
+<li>Fn::Equals</li>
+<li>Fn::If</li>
+<li>Fn::Not</li>
+<li>Fn::Or</li>
+</ul>
+</ul>
+</ul>
+<div id="wait_condition">
+<p><span style="font-size: 18px;"><strong><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waitcondition.html" target="_blank">Wait Conditions</a></strong></span></p>
+</div>
+<ul>
+<li>Waits for a condition</li>
+<li>Two use cases</li>
+<ol>
+<li>Coordinate stack resource creation with the configuration actions that are external to the stack
                     creation</li>
-                <li>Track status of a configuration process (ie. wait for the resource to become available)</li>
-            </ol>
-        </ul>
-
-        <div id="images">
-            <p><span style="font-size: 18px;"><strong>Images</strong></span></p>
-        </div>
-        <ul>
-            <li><a href="images_cloudformation_cheat_sheet_1.html">Cheat sheet 1</a></li>
-            <li><a href="images_cloudformation_cheat_sheet_2.html">Cheat sheet 2</a></li>
-            <li><a href="images_cloudformation_cheat_sheet_3.html">Cheat sheet 3</a></li>
-            <li><a href="images_cloudformation_deny.html">Deny</a></li>
-            <li><a href="images_cloudformation_direct_change.html">Direct change</a></li>
-            <li><a href="images_cloudformation_nested_stack.html">Nested stack</a></li>
-            <li><a href="images_cloudformation_template.html">Template</a></li>
-        </ul>
-
-    </div>
-    <script
-        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
-    <script src="../script.js"></script>
+<li>Track status of a configuration process (ie. wait for the resource to become available)</li>
+</ol>
+</ul>
+<div id="images">
+<p><span style="font-size: 18px;"><strong>Images</strong></span></p>
+</div>
+<ul>
+<li><a href="images_cloudformation_cheat_sheet_1.html">Cheat sheet 1</a></li>
+<li><a href="images_cloudformation_cheat_sheet_2.html">Cheat sheet 2</a></li>
+<li><a href="images_cloudformation_cheat_sheet_3.html">Cheat sheet 3</a></li>
+<li><a href="images_cloudformation_deny.html">Deny</a></li>
+<li><a href="images_cloudformation_direct_change.html">Direct change</a></li>
+<li><a href="images_cloudformation_nested_stack.html">Nested stack</a></li>
+<li><a href="images_cloudformation_template.html">Template</a></li>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../script.js"></script>
 </body>
-
 </html>

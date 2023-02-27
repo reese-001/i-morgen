@@ -107,7 +107,7 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
 </li>
 <li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
@@ -173,16 +173,13 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
 </li>
 <li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
-                </li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
+</li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
@@ -455,15 +452,17 @@
 <!-- end #sidebar -->
 </div>
 <div class="content" id="content">
-<table>
-<tr>
-<td><img class="logo" src="../images/logo.png"/></td>
-<td><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
-</tr>
+<table width="80%">
+    <tr>
+        <td width="5%"><img class="logo" src="../images/logo.png"/></td>
+        <td width="80%">
+        <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+    </td>
+    </tr>
 </table>
 <h3 style="color:hsl(241, 74%, 46%)"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">s3</a>:overview</h3>
 <p><strong><span style="font-size: 20px;"><a href="https://docs.aws.amazon.com/s3/index.html" target="_blank">Simple Storage Service (S3)</a></span></strong></p>
-<p><strong><span style="font-size: 18px;">Contents</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Contents</span></strong></p>
 <li><a href="#buckets">Buckets</a></li>
 <li><a href="#use_cases">Use Cases</a></li>
 <li><a href="#use_cases">Security</a></li>
@@ -480,7 +479,7 @@
 <li><a href="s3_lifecycle.html">Lifecycle (opens new page)</a></li>
 <li><a href="s3_security.html">Security (opens new page)</a></li>
 <div id="buckets">
-<p><strong><span style="font-size: 18px;">Buckets</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Buckets</span></strong></p>
 </div>
 <ul>
 <li>Allows people to store objects (files) in "buckets" (directories)</li>
@@ -495,7 +494,7 @@
 </ul>
 </ul>
 <div id="use_cases">
-<p><strong><span style="font-size: 18px;">Use Cases</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Use Cases</span></strong></p>
 </div>
 <ul>
 <li>Backup and storage</li>
@@ -506,7 +505,7 @@
 </ul>
 </div>
 <div id="security">
-<p><strong><span style="font-size: 18px;">Security</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Security</span></strong></p>
 </div>
 <ul>
 <li>User based</li>
@@ -531,7 +530,7 @@
 </ul>
 </ul>
 <div id="versioning">
-<p><strong><span style="font-size: 18px;">Versioning</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Versioning</span></strong></p>
 </div>
 <ul>
 <li>Enabled at the bucket level</li>
@@ -553,7 +552,7 @@
 </ul>
 </ul>
 <div id="replication">
-<p><strong><span style="font-size: 18px;">Replication</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Replication</span></strong></p>
 </div>
 <ul>
 <li>Must enable versioning in source and destination buckets</li>
@@ -579,7 +578,7 @@
 </ul>
 </ul>
 <div id="storage_classes">
-<p><strong><span style="font-size: 18px;">Storage Classes</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Storage Classes</span></strong></p>
 <ul>
 <li>Durability</li>
 <ul>
@@ -649,13 +648,13 @@
 </ul>
 </div>
 <div id="permissions">
-<p><strong><span style="font-size: 18px;">Permissions</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Permissions</span></strong></p>
 </div>
 <ul>
 <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws-dates.html" target="_blank">Time Bound Constraints</a></li>
 </ul>
 <div id="object_lock">
-<p><strong><span style="font-size: 18px;">Object Lock</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Object Lock</span></strong></p>
 </div>
 <ul>
 <li>Amazon S3 Object Lock is a feature that enables customers to store objects in an immutable state, meaning that they cannot be deleted or overwritten for a specified retention period. </li>
@@ -667,7 +666,7 @@
 </ol>
 </ul>
 <div id="analytics">
-<p><strong><span style="font-size: 18px;">S3 Analytics</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">S3 Analytics</span></strong></p>
 </div>
 <ul>
 <li>Amazon S3 Analytics is a feature that enables customers to collect, store, and analyze data stored in Amazon S3</li>
@@ -679,7 +678,7 @@
 </ul>
 </ul>
 <div id="multi_part_uploads">
-<p><strong><span style="font-size: 18px;">Multi Part Uploads</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Multi Part Uploads</span></strong></p>
 </div>
 <ul>
 <li>Amazon Simple Storage Service (S3) multi-part uploads allow you to upload large objects, such as videos or backups, more efficiently to S3.</li>
@@ -692,7 +691,7 @@
 </ul>
 </ul>
 <div id="event_notifications">
-<p><strong><span style="font-size: 18px;">Event Notifications</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Event Notifications</span></strong></p>
 </div>
 <ul>
 <li>You get notified by specific actions occuring in the S3 bucket, such as</li>
@@ -716,7 +715,7 @@
 </ul>
 </ul>
 <div id="performance">
-<p><strong><span style="font-size: 18px;">Performance</span>�</strong></p>
+<p><strong><span style="font-size: 18px;">Performance</span></strong></p>
 </div>
 <ul>
 <li>Baseline</li>

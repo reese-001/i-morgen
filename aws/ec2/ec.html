@@ -1,876 +1,758 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <title>i-morgen</title>
-    <link
-        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png"
-        rel="apple-touch-icon" type="image/png" />
-    <meta content="CodePen" name="apple-mobile-web-app-title" />
-    <link
-        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"
-        rel="shortcut icon" type="image/x-icon" />
-    <link color="#111"
-        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg"
-        rel="mask-icon" type="image/x-icon" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-        rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet" />
-    <link href="../style_menu.css" rel="stylesheet" />
-    <link href="../styles.css" rel="stylesheet" />
-    <script>
+<meta charset="utf-8"/>
+<title>i-morgen</title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../style_menu.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
+<script>
         var path_to_root = "../../" // aws
     </script>
 </head>
-
 <body>
-    <div class="page-header-fixed page-sidebar-fixed" id="page-container">
-        <div class="sidebar" id="sidebar">
-            <!-- begin sidebar scrollbar -->
-            <div data-height="100%" data-scrollbar="true">
-                <!-- begin sidebar nav -->
-                <ul class="nav">
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-th-large"></i>
-                            <span>AWS (General)</span>
-                        </a>
-                        <ul class="sub-menu active">
-                            <li>
-                                <a href="javascript:void(0);"
-                                    onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>AWS Compute</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API
-                                            Gateway</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Database</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Developer Tools</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code
-                                            Commit</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code
-                                            Build</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code
-                                            Build</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>IaC</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Management</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter
-                                            Store</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Messaging</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Network</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC
-                                            Endpoints</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
-                                            53</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>SIC</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
-                                            Manager</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets
-                                            Manager</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security
-                                            Groups</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Storage</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance
-                                            Storage</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-th-large"></i>
-                            <span>AWS (Data Science)</span>
-                        </a>
-                        <ul class="sub-menu active">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>ML Toolset</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
-                                            Text</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep
-                                            AR</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
-                                            Classification</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
-                                            Learner</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
-                                            Topic Modeling</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
-                                            Detection</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random
-                                            Cut
-                                            Forest</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
-                                            Segmentation</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Analytics Toolset</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-list-ol"></i>
-                            <span>AWS (White Papers)</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Item 1</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>Hi</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-list-ol"></i>
-                            <span>DevOps</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Item 1</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>Hi</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-list-ol"></i>
-                            <span>Concepts</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Machine Learning</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
-                                            Function</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging
-                                            vs
-                                            Boosting</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
-                                            Matrix</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
-                                            Methods</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
-                                            Measurement</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP
-                                            with
-                                            BERT/GPT</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
-                                            Neural Networks</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
-                                            Gradients</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc
-                                            Concepts</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Data Ops</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-list-ol"></i>
-                            <span>Hold</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span></span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>Hi</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <div class="gcse-search"></div>
-                    </li>
-                    <!-- begin sidebar minify button -->
-                    <!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
-                    <!-- end sidebar minify button -->
-                    </li>
-                    </li>
-                </ul>
-                <!-- end sidebar nav -->
-            </div>
-            <!-- end sidebar scrollbar -->
-        </div>
-        <div class="sidebar-bg"></div>
-        <!-- end #sidebar -->
-    </div>
-    <div class="content" id="content">
-        <div id="home"></div>
-        <table width="80%">
-            <tr>
-                <td width="5%"><img class="logo" src="../images/logo.png" /></td>
-                <td width="80%">
-                    <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
-                </td>
-            </tr>
-        </table>
-        <br />
-        <h3 style="color:hsl(241, 74%, 46%)">EC2</h3>
-
-        <br />
-        <div id="contents"><strong><span style="font-size: 18px;">Contents</strong></span></div>
-        <ul>
-            <li><a href="#what_is_it">What is it?</a></li>
-            <li><a href="#instance_types_and_usage">Instance Types and Usage</a></li>
-            <li><a href="#purchasing_options">Purchasing Options</a></li>
-            <li><a href="#instance_profile">Instance Profile</a></li>
-            <li><a href="#metadata">Metadata</a></li>
-            <li><a href="#user_data">User Type</a></li>
-            <li><a href="#types_reserved_instances">Types of Reserved Instances</a></li>
-            <li><a href="#dedicated_host_instance">Dedicated vs Host Instance</a></li>
-            <li><a href="purchasing_options.html">Purchasing Options</a></li>
-            <li><a href="#notes">Notes</a></li>
-        </ul>
-
-        <div id="what_is_it">
-            <p><strong><span style="font-size: 18px;">What is it?</strong></span></p>
-        </div>
-        <ul>
-            <li>EC2 is a highly configurable server</li>
-            <li>Resizable compute capacity</li>
-            <li>Takes minutes to launch new instances</li>
-            <li>Anything and everything on AWS uses EC2 instance underneath</li>
-
-        </ul>
-        <div id="instance_types_and_usage">
-            <p><span style="font-size: 18px"><strong>Instance Types and Usage</strong></span></p>
-        </div>
-        <ul>
-            <li>General Purpose</li>
-            <ul>
-                <li>A1, T3, T3a, T2, M5, M5a, M4</li>
-                <li>Balance of compute, memory, and network resources</li>
-                <li>Use case: web and code repos</li>
-            </ul>
-            <li>Compute Optimized</li>
-            <ul>
-                <li>C5, C5n, C4</li>
-                <li>Ideal for compute bound applicaitons that benefit from high performance processor</li>
-                <li>Use case: scientific modeling, dedicated gaming servers, ad server images</li>
-            </ul>
-            <li>Memory optimized</li>
-            <ul>
-                <li>R5, R5a, X1e, X1, High Memory, z1d</li>
-                <li>Ideal for fast performance worklaods that process large datasets in memory</li>
-                <li>Use case: in memory caches, in memory databases, real time big data analytics</li>
-            </ul>
-            <li>Accelerated Optimized</li>
-            <ul>
-                <li>P3, P2, G3, F1</li>
-                <li>hardware accelerators, or co-processors</li>
-                <li>Use case: machine learning, computation finance, seismic analysis, speech recognition</li>
-            </ul>
-            <li>Storage optimized</li>
-            <ul>
-                <li>I3, I3en, D2, H1</li>
-                <li>Ideal for high sequential read and write access to very large datasets on local storage</li>
-                <li>Use case: NoSql, in memory or transactional databases, data warehousing</li>
-            </ul>
-
-        </ul>
-        <div id="purchasing_options">
-            <p><span style="font-size: 18px"><strong>Purchasing Options</strong></span></p>
-        </div>
-        <ul>
-            <li>Note: more details <a href="purchasing_options.html" target="_blank">here</a></li>
-            <li>On-Demand instances</li>
-            <ul>
-                <li>Short lived, predictable, pay by second</li>
-            </ul>
-            <li>Reserved (1 and 3 years)</li>
-            <ul>
-                <li>Reserved instances: long workloads</li>
-                <li>Convertable reserved instances: long workloads with flexible instances </li>
-                <li> <a href="reserved_instances.html" target="_blank">Link</a> (i-morgen)</li>
-            </ul>
-            <ul>
-                <li>Savings plans (1 and 3 years)</li>
-                <ul>
-                    <li>Commitment to an amount of usage and workload</li>
-                </ul>
-            </ul>
-            <ul>
-                <li>Spot Instances</li>
-                <ul>
-                    <li>Short workloads, cheap, can lose instance (less reliable)</li>
-                </ul>
-            </ul>
-            <li>Dedicated hosts</li>
-            <ul>
-                <li>Book an entire physcial server, control <a href="#instance_placement">instance placement</a></li>
-            </ul>
-            <li>Dedicated instance</li>
-            <ul>
-                <li>No other customer will share your hardware</li>
-            </ul>
-            <li>Capacity reservations</li>
-            <ul>
-                <li>Reserve capacvity in a specific AZ for any duration</li>
-            </ul>
-
-        </ul>
-        <div id="instance_profile">
-            <p><span style="font-size: 18px"><strong>Instance Profile</strong></span></p>
-        </div>
-        <ul>
-            <li>Instead of embedding your AWS credentials in your code so your instance has permissions to access
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (General)</span>
+</a>
+<ul class="sub-menu active">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                    53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                    Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS (Data Science)</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                    Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                    Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                    Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                    Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                    Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
+                    Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                    Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul></li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>AWS (White Papers)</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Item 1</span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Concepts</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Machine Learning</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                    Function</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
+                    Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                    Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                    Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                    Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
+                    BERT/GPT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                    Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                    Gradients</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Hold</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span></span>
+</a>
+<ul class="sub-menu">
+<li>Hi</li>
+</ul>
+</li>
+</ul>
+</li>
+<div class="gcse-search"></div>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+</li></li></ul>
+<!-- end sidebar nav -->
+</div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<div id="home"></div>
+<table width="80%">
+<tr>
+<td width="5%"><img class="logo" src="../images/logo.png"/></td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+</td>
+</tr>
+</table>
+<br/>
+<h3 style="color:hsl(241, 74%, 46%)">EC2</h3>
+<br/>
+<div id="contents"><strong><span style="font-size: 18px;">Contents</span></strong></div>
+<ul>
+<li><a href="#what_is_it">What is it?</a></li>
+<li><a href="#instance_types_and_usage">Instance Types and Usage</a></li>
+<li><a href="#purchasing_options">Purchasing Options</a></li>
+<li><a href="#instance_profile">Instance Profile</a></li>
+<li><a href="#metadata">Metadata</a></li>
+<li><a href="#user_data">User Type</a></li>
+<li><a href="#types_reserved_instances">Types of Reserved Instances</a></li>
+<li><a href="#dedicated_host_instance">Dedicated vs Host Instance</a></li>
+<li><a href="purchasing_options.html">Purchasing Options</a></li>
+<li><a href="#notes">Notes</a></li>
+</ul>
+<div id="what_is_it">
+<p><strong><span style="font-size: 18px;">What is it?</span></strong></p>
+</div>
+<ul>
+<li>EC2 is a highly configurable server</li>
+<li>Resizable compute capacity</li>
+<li>Takes minutes to launch new instances</li>
+<li>Anything and everything on AWS uses EC2 instance underneath</li>
+</ul>
+<div id="instance_types_and_usage">
+<p><span style="font-size: 18px"><strong>Instance Types and Usage</strong></span></p>
+</div>
+<ul>
+<li>General Purpose</li>
+<ul>
+<li>A1, T3, T3a, T2, M5, M5a, M4</li>
+<li>Balance of compute, memory, and network resources</li>
+<li>Use case: web and code repos</li>
+</ul>
+<li>Compute Optimized</li>
+<ul>
+<li>C5, C5n, C4</li>
+<li>Ideal for compute bound applicaitons that benefit from high performance processor</li>
+<li>Use case: scientific modeling, dedicated gaming servers, ad server images</li>
+</ul>
+<li>Memory optimized</li>
+<ul>
+<li>R5, R5a, X1e, X1, High Memory, z1d</li>
+<li>Ideal for fast performance worklaods that process large datasets in memory</li>
+<li>Use case: in memory caches, in memory databases, real time big data analytics</li>
+</ul>
+<li>Accelerated Optimized</li>
+<ul>
+<li>P3, P2, G3, F1</li>
+<li>hardware accelerators, or co-processors</li>
+<li>Use case: machine learning, computation finance, seismic analysis, speech recognition</li>
+</ul>
+<li>Storage optimized</li>
+<ul>
+<li>I3, I3en, D2, H1</li>
+<li>Ideal for high sequential read and write access to very large datasets on local storage</li>
+<li>Use case: NoSql, in memory or transactional databases, data warehousing</li>
+</ul>
+</ul>
+<div id="purchasing_options">
+<p><span style="font-size: 18px"><strong>Purchasing Options</strong></span></p>
+</div>
+<ul>
+<li>Note: more details <a href="purchasing_options.html" target="_blank">here</a></li>
+<li>On-Demand instances</li>
+<ul>
+<li>Short lived, predictable, pay by second</li>
+</ul>
+<li>Reserved (1 and 3 years)</li>
+<ul>
+<li>Reserved instances: long workloads</li>
+<li>Convertable reserved instances: long workloads with flexible instances </li>
+<li> <a href="reserved_instances.html" target="_blank">Link</a> (i-morgen)</li>
+</ul>
+<ul>
+<li>Savings plans (1 and 3 years)</li>
+<ul>
+<li>Commitment to an amount of usage and workload</li>
+</ul>
+</ul>
+<ul>
+<li>Spot Instances</li>
+<ul>
+<li>Short workloads, cheap, can lose instance (less reliable)</li>
+</ul>
+</ul>
+<li>Dedicated hosts</li>
+<ul>
+<li>Book an entire physcial server, control <a href="#instance_placement">instance placement</a></li>
+</ul>
+<li>Dedicated instance</li>
+<ul>
+<li>No other customer will share your hardware</li>
+</ul>
+<li>Capacity reservations</li>
+<ul>
+<li>Reserve capacvity in a specific AZ for any duration</li>
+</ul>
+</ul>
+<div id="instance_profile">
+<p><span style="font-size: 18px"><strong>Instance Profile</strong></span></p>
+</div>
+<ul>
+<li>Instead of embedding your AWS credentials in your code so your instance has permissions to access
                 certain services, you attach a role to an instance via Instance Profile</li>
-            <li>The instance profile holds reference to the role</li>
-            <li>The EC2 instance is associated with the instance profile</li>
-            <li>Automatically created when launching instance via console</li>
-        </ul>
-        <p><span style="font-size: 18px"><strong>Placement Groups</strong></span></p>
-        <ul>
-            <li>Placement groups allow you to choose the logicial placement of your instances to optimize for ...</li>
-            <ul>
-                <li>Communication</li>
-                <li>Performance</li>
-                <li>Durability</li>
-            </ul>
-            <li>Cost: Free</li>
-            <li>Types of placement groups</li>
-            <ul>
-                <li>Cluster: packs instances close together in AZ. Cluster cannot be multi-AZ</li>
-                <li>Partition: spreads instances across logical partitions. Partitions do not share underlying hardware
+<li>The instance profile holds reference to the role</li>
+<li>The EC2 instance is associated with the instance profile</li>
+<li>Automatically created when launching instance via console</li>
+</ul>
+<p><span style="font-size: 18px"><strong>Placement Groups</strong></span></p>
+<ul>
+<li>Placement groups allow you to choose the logicial placement of your instances to optimize for ...</li>
+<ul>
+<li>Communication</li>
+<li>Performance</li>
+<li>Durability</li>
+</ul>
+<li>Cost: Free</li>
+<li>Types of placement groups</li>
+<ul>
+<li>Cluster: packs instances close together in AZ. Cluster cannot be multi-AZ</li>
+<li>Partition: spreads instances across logical partitions. Partitions do not share underlying hardware
                 </li>
-                <li>Spread: each instance is placed in a seperate rack. Must be multi-AZ</li>
-            </ul>
-
-        </ul>
-        <div id="metadata">
-            <p><span style="font-size: 18px"><strong>MetaData</strong></span></p>
-        </div>
-        <ul>
-            <li>From within your EC2 instance, you can access information via http://169.254.169.254/latest/meta-data
+<li>Spread: each instance is placed in a seperate rack. Must be multi-AZ</li>
+</ul>
+</ul>
+<div id="metadata">
+<p><span style="font-size: 18px"><strong>MetaData</strong></span></p>
+</div>
+<ul>
+<li>From within your EC2 instance, you can access information via http://169.254.169.254/latest/meta-data
             </li>
-            <li>Examples: </li>
-            <ul>
-                <li>/public-ipv4</li>
-                <li>/ami-id</li>
-                <li>/instance-type</li>
-            </ul>
-            <li>Can combine metadata with userdata scripts to perform all sorts of advanced aws staging automation</li>
-
-        </ul>
-        <div id="user_data">
-            <p><span style="font-size: 18px"><strong>User Data</strong></span></p>
-        </div>
-        <ul>
-            <li>Allows you to specify data (such as a script or configuration file) that should be executed when an EC2
+<li>Examples: </li>
+<ul>
+<li>/public-ipv4</li>
+<li>/ami-id</li>
+<li>/instance-type</li>
+</ul>
+<li>Can combine metadata with userdata scripts to perform all sorts of advanced aws staging automation</li>
+</ul>
+<div id="user_data">
+<p><span style="font-size: 18px"><strong>User Data</strong></span></p>
+</div>
+<ul>
+<li>Allows you to specify data (such as a script or configuration file) that should be executed when an EC2
                 instance is launched.</li>
-            <ul>
-                <li>The user data specified when launching an Amazon Elastic Compute Cloud (EC2) instance is only
+<ul>
+<li>The user data specified when launching an Amazon Elastic Compute Cloud (EC2) instance is only
                     executed once, when the instance is launched</li>
-                <li>Once the user data has been executed, it is not executed again unless the instance is stopped and
+<li>Once the user data has been executed, it is not executed again unless the instance is stopped and
                     restarted.</li>
-            </ul>
-            <li>The user data is passed to the instance as part of the instance metadata, and can be accessed from
+</ul>
+<li>The user data is passed to the instance as part of the instance metadata, and can be accessed from
                 within the instance using the EC2 metadata service.</li>
-            <li>You can use the user data feature to automate tasks such as installing software packages, configuring
+<li>You can use the user data feature to automate tasks such as installing software packages, configuring
                 the instance, or joining the instance to a domain</li>
-            <li>The user data that is specified when launching an Amazon Elastic Compute Cloud (EC2) instance is
+<li>The user data that is specified when launching an Amazon Elastic Compute Cloud (EC2) instance is
                 executed with root privileges on the instance</li>
-
-        </ul>
-        <div id="types_reserved_instances">
-            <p><span style="font-size: 18px"><strong>Types of Reserved Instances</strong></span></p>
-        </div>
-        <ul>
-            <li>AWS Reserve Instances are a pricing option for Amazon EC2 and Amazon RDS instances that offer a
+</ul>
+<div id="types_reserved_instances">
+<p><span style="font-size: 18px"><strong>Types of Reserved Instances</strong></span></p>
+</div>
+<ul>
+<li>AWS Reserve Instances are a pricing option for Amazon EC2 and Amazon RDS instances that offer a
                 significant discount compared to on-demand pricing</li>
-            <li>Require a one-time payment up front and provide a discounted hourly rate for the duration of the
+<li>Require a one-time payment up front and provide a discounted hourly rate for the duration of the
                 reservation</li>
-            <li>Can be purchased for a period of 1 or 3 years, and the discount is applied to the hourly usage of the
+<li>Can be purchased for a period of 1 or 3 years, and the discount is applied to the hourly usage of the
                 instances</li>
-            <li>Flexible and can be exchanged or returned for a full or partial refund within the first 75 days of the
+<li>Flexible and can be exchanged or returned for a full or partial refund within the first 75 days of the
                 reservation</li>
-            <li>Ideal for steady-state or predictable workloads that run for an extended period of time, as they provide
+<li>Ideal for steady-state or predictable workloads that run for an extended period of time, as they provide
                 a predictable and lower cost for instances over the duration of the reservation</li>
-            <li>There are three types of AWS Reserve Instances</li>
-            <ul>
-                <li>Standard: offer the highest discount and provide the most flexibility for modifying the instance
+<li>There are three types of AWS Reserve Instances</li>
+<ul>
+<li>Standard: offer the highest discount and provide the most flexibility for modifying the instance
                     size or instance family within the same instance type</li>
-                    <ul>
-                        <li>EC2 instance reservation that allows you to purchase a reservation for a specific instance type in a
+<ul>
+<li>EC2 instance reservation that allows you to purchase a reservation for a specific instance type in a
                             specific Availability Zone</li>
-                        <li>In general, Scheduled Reserved Instances are more specific and are best suited for workloads that
+<li>In general, Scheduled Reserved Instances are more specific and are best suited for workloads that
                             have a predictable schedule, while Standard Reserved Instances are more general and are suitable for
                             any workload that runs on EC2 instances</li>
-                    </ul>
-                <li>Convertable: offer a lower discount than Standard Reserve Instances, but allow you to exchange the
+</ul>
+<li>Convertable: offer a lower discount than Standard Reserve Instances, but allow you to exchange the
                     reservation for another instance type within the same instance family, subject to some restrictions
                 </li>
-                <ul>
-                    <li>A type of EC2 instance reservation that allows you to purchase a reservation for a specific instance
+<ul>
+<li>A type of EC2 instance reservation that allows you to purchase a reservation for a specific instance
                         type and then exchange it for a different instance type at a later time</li>
-                    <li>This can be useful if your workload requirements change over time and you need to use a different
+<li>This can be useful if your workload requirements change over time and you need to use a different
                         instance type to meet those requirements</li>
-                </ul>
-                <li>Scheduled: allow you to specify the time when your instances will be running in advance, and offer a
+</ul>
+<li>Scheduled: allow you to specify the time when your instances will be running in advance, and offer a
                     discount for instances that are running during a specified time window</li>
-                    <ul>
-                        <li>Type of EC2 instance that allows you to reserve capacity in advance for a specific time period</li>
-                <li>Scheduled Reserve instances are ideal for workloads that have predictable start and end times, or
+<ul>
+<li>Type of EC2 instance that allows you to reserve capacity in advance for a specific time period</li>
+<li>Scheduled Reserve instances are ideal for workloads that have predictable start and end times, or
                     that require a consistent number of instances over a fixed period of time</li>
-                <li>They are available for one or three year terms</li>
-                <li>Limitations</li>
-                <ul>
-                    <li>must be launched within the specified time period. If you do not launch the instances within the
+<li>They are available for one or three year terms</li>
+<li>Limitations</li>
+<ul>
+<li>must be launched within the specified time period. If you do not launch the instances within the
                         time period, the reservation will expire and you will not be able to use it.</li>
-                    <li>Cannot be used with Auto Scaling or with EC2 Auto Scaling groups.</li>
-                    <li>Cannot be stopped or terminated, but they can be modified or unmodified</li>
-                </ul>
-                    </ul>
-            </ul>
-            
-            
-        
-        <br />
-        <p><span style="font-size: 18;"><strong>Differences Between Standard and Convertable Reserved
+<li>Cannot be used with Auto Scaling or with EC2 Auto Scaling groups.</li>
+<li>Cannot be stopped or terminated, but they can be modified or unmodified</li>
+</ul>
+</ul>
+</ul>
+<br/>
+<p><span style="font-size: 18;"><strong>Differences Between Standard and Convertable Reserved
                     Instances</strong></span></p>
-        <table border="1" cellpadding="5" cellspacing="0" style="width: 80%">
-            <tr>
-                <td <="" style="width: 20%" td="">
-                <td style="width: 40%"><strong>Standard Reserve Instance</strong></td>
-                <td style="width: 40%"><strong>Convertable Reserve Instance</strong></td>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Modify Reserved Instances</strong></td>
-                <td>Some attributes can be modified. <br /> For more information, see <a
-                        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html"
-                        target="_blank">Modify Reserved Instances</a></td>
-                <td>Some attributes can be modified. <br /> For more information, see <a
-                        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html"
-                        target="_blank">Modify Reserved Instances</a></td>
-            </tr>
-            <tr>
-                <td><strong>Exchange Reserved Instances</strong></td>
-                <td>Can't be exchanged.</td>
-                <td>Can be exchanged during the term for another Convertible Reserved Instance with new attributes,
-                    including instance family, instance type, platform, scope, or tenancy.<br /> For more information,
-                    see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html"
-                        target="_blank">Exchange Convertible Reserved Instances</a></td>
-            </tr>
-            <tr>
-                <td><strong>Sell in the Reserved Instance Marketplace</strong></td>
-                <td>Can be sold in the Reserved Instance Marketplace</td>
-                <td>Can't be sold in the Reserved Instance Marketplace</td>
-            </tr>
-            <tr>
-                <td><strong>Buy in the Reserved Instance Marketplace</strong></td>
-                <td>Can be bought in the Reserved Instance Marketplace</td>
-                <td>Can't be bought in the Reserved Instance Marketplace</td>
-            </tr>
-        </table>
-
-        </ul>
-        <div id="dedicated_host_instance">
-            <p><span style="font-size: 18px"><strong>Dedicated Host vs Dedicated Instance</strong></span></p>
-        </div>
-        <ul>
-            <li>Dedicated Hosts</li>
-            <ul>
-                <li>AWS Dedicated Hosts are physical servers that are dedicated for your use and that you can use to
+<table border="1" cellpadding="5" cellspacing="0" style="width: 80%">
+<tr>
+<td <="" style="width: 20%" td="">
+<td style="width: 40%"><strong>Standard Reserve Instance</strong></td>
+<td style="width: 40%"><strong>Convertable Reserve Instance</strong></td>
+</td>
+</tr>
+<tr>
+<td><strong>Modify Reserved Instances</strong></td>
+<td>Some attributes can be modified. <br/> For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html" target="_blank">Modify Reserved Instances</a></td>
+<td>Some attributes can be modified. <br/> For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html" target="_blank">Modify Reserved Instances</a></td>
+</tr>
+<tr>
+<td><strong>Exchange Reserved Instances</strong></td>
+<td>Can't be exchanged.</td>
+<td>Can be exchanged during the term for another Convertible Reserved Instance with new attributes,
+                    including instance family, instance type, platform, scope, or tenancy.<br/> For more information,
+                    see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html" target="_blank">Exchange Convertible Reserved Instances</a></td>
+</tr>
+<tr>
+<td><strong>Sell in the Reserved Instance Marketplace</strong></td>
+<td>Can be sold in the Reserved Instance Marketplace</td>
+<td>Can't be sold in the Reserved Instance Marketplace</td>
+</tr>
+<tr>
+<td><strong>Buy in the Reserved Instance Marketplace</strong></td>
+<td>Can be bought in the Reserved Instance Marketplace</td>
+<td>Can't be bought in the Reserved Instance Marketplace</td>
+</tr>
+</table>
+</ul>
+<div id="dedicated_host_instance">
+<p><span style="font-size: 18px"><strong>Dedicated Host vs Dedicated Instance</strong></span></p>
+</div>
+<ul>
+<li>Dedicated Hosts</li>
+<ul>
+<li>AWS Dedicated Hosts are physical servers that are dedicated for your use and that you can use to
                     host one or more Amazon EC2 instances.</li>
-                <li>You can purchase Dedicated Hosts on a monthly basis and specify the number of instances that you
+<li>You can purchase Dedicated Hosts on a monthly basis and specify the number of instances that you
                     want to run on each host</li>
-                <li>Dedicated Hosts give you full visibility and control over the physical infrastructure that your
+<li>Dedicated Hosts give you full visibility and control over the physical infrastructure that your
                     instances are running on, including the hardware, operating system, and virtualization technology.
                 </li>
-            </ul>
-            <li>Dedicated Instance</li>
-            <ul>
-                <li>AWS Dedicated Instances are Amazon EC2 instances that run on hardware that is dedicated to a single
+</ul>
+<li>Dedicated Instance</li>
+<ul>
+<li>AWS Dedicated Instances are Amazon EC2 instances that run on hardware that is dedicated to a single
                     customer</li>
-                <li>hey are launched in a VPC and can be used like any other EC2 instances, with the added benefit of
+<li>hey are launched in a VPC and can be used like any other EC2 instances, with the added benefit of
                     being physically isolated from instances that belong to other customers</li>
-                <li>They are not tied to a specific host and can be migrated between hosts as needed</li>
-                <li>Dedicated Instances are a good option if you want the benefits of running on dedicated
+<li>They are not tied to a specific host and can be migrated between hosts as needed</li>
+<li>Dedicated Instances are a good option if you want the benefits of running on dedicated
                     infrastructure but do not need the full visibility and control that Dedicated Hosts provide.</li>
-            </ul>
-
-        </ul>
-        <div id="notes">
-            <p><span style="font-size: 18px"><strong>Notes</strong></span></p>
-        </div>
-        <ul>
-            <li>Burst balance: refers to the balance of credits that are available to a burstable performance instance
+</ul>
+</ul>
+<div id="notes">
+<p><span style="font-size: 18px"><strong>Notes</strong></span></p>
+</div>
+<ul>
+<li>Burst balance: refers to the balance of credits that are available to a burstable performance instance
                 (t2, t3, and t3a instance types).</li>
-            <ul>
-                <li>When a burstable performance instance is launched, it is allocated a certain number of credits that
+<ul>
+<li>When a burstable performance instance is launched, it is allocated a certain number of credits that
                     can be used to support bursts of higher CPU usage</li>
-                <li>The instance uses these credits to support bursts of CPU usage that exceed the baseline CPU
+<li>The instance uses these credits to support bursts of CPU usage that exceed the baseline CPU
                     performance of the instance</li>
-                <li>The number of credits that are allocated to an instance is based on the instance type and the size
+<li>The number of credits that are allocated to an instance is based on the instance type and the size
                     of the instance</li>
-                <li>As the instance uses credits to support bursts of CPU usage, the burst balance of the instance
+<li>As the instance uses credits to support bursts of CPU usage, the burst balance of the instance
                     decreases. </li>
-                <li>When the burst balance reaches zero, the instance's CPU performance will be limited to the baseline
+<li>When the burst balance reaches zero, the instance's CPU performance will be limited to the baseline
                     performance of the instance until the balance is replenished.</li>
-            </ul>
-
-        </ul>
-    </div>
-    <script
-        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
-    <script src="../script.js"></script>
+</ul>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../script.js"></script>
 </body>
-
 </html>

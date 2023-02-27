@@ -107,7 +107,7 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
 </li>
 <li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
@@ -173,16 +173,13 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
 </li>
 <li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
-                </li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
+</li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
@@ -455,14 +452,14 @@
 <!-- end #sidebar -->
 </div>
 <div class="content" id="content">
-        <table width="80%">
-                <tr>
-                    <td width="5%"><img class="logo" src="../images/logo.png" /></td>
-                    <td width="80%">
-                        <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
-                    </td>
-                </tr>
-            </table>
+<table width="80%">
+<tr>
+<td width="5%"><img class="logo" src="../images/logo.png"/></td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+</td>
+</tr>
+</table>
 <h3 style="color:hsl(241, 74%, 46%)"><a href="dynamo_db.html">DynamoDB</a> : Walkthrough Local Secondary Index</h3>
 <img src="../../aws/images/dynamo_subject_index_lsi.png"/>
 <p><strong><span style="font-size: 20px;">Senario: Table is defined as shown. How to query Forum Name and Subject</span></strong></p>
@@ -472,7 +469,7 @@
 <li>Apply filter condition on scan where forum == 'xx' and subject = 'yy' </li>
 <li>Con: expensive since you are performing entire table scan</li>
 </ol>
-        <p><strong><span style="font-size: 18;">Option 2</span></strong></p>
+<p><strong><span style="font-size: 18;">Option 2</span></strong></p>
 <ol>
 <li>Filter for forum name = 'xx'</li>
 <li>Scan result set for subject = 'yy'</li>
