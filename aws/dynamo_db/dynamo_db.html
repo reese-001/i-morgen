@@ -1,798 +1,991 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<meta charset="utf-8"/>
-<title>i-morgen</title>
-<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
-<meta content="CodePen" name="apple-mobile-web-app-title"/>
-<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
-<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
-<link href="../style_menu.css" rel="stylesheet"/>
-<link href="../styles.css" rel="stylesheet"/>
-<script>
+    <meta charset="utf-8" />
+    <title>i-morgen</title>
+    <link
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png"
+        rel="apple-touch-icon" type="image/png" />
+    <meta content="CodePen" name="apple-mobile-web-app-title" />
+    <link
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"
+        rel="shortcut icon" type="image/x-icon" />
+    <link color="#111"
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg"
+        rel="mask-icon" type="image/x-icon" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet" />
+    <link href="../style_menu.css" rel="stylesheet" />
+    <link href="../styles.css" rel="stylesheet" />
+    <script>
         var path_to_root = "../../" // aws
     </script>
 </head>
-<body>
-<div class="page-header-fixed page-sidebar-fixed" id="page-container">
-<div class="sidebar" id="sidebar">
-<!-- begin sidebar scrollbar -->
-<div data-height="100%" data-scrollbar="true">
-<!-- begin sidebar nav -->
-<ul class="nav">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-th-large"></i>
-<span>AWS (General)</span>
-</a>
-<ul class="sub-menu active">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>AWS Compute</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Database</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Developer Tools</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>IaC</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Management</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Messaging</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Network</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
-                </li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
-                    53</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>SIC</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
-                    Manager</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Storage</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
-</li>
-</ul>
-</li>
-</ul>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-th-large"></i>
-<span>AWS (Data Science)</span>
-</a>
-<ul class="sub-menu active">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>ML Toolset</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
-                    Text</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
-                    Classification</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
-                    Learner</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
-                    Topic Modeling</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
-                    Detection</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
-                    Forest</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
-                    Segmentation</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
-</li>
-</ul></li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Analytics Toolset</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
-</li>
-</ul>
-</li>
-</ul>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>AWS (White Papers)</span>
-</a>
-<ul class="sub-menu">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Item 1</span>
-</a>
-<ul class="sub-menu">
-<li>Hi</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>DevOps</span>
-</a>
-<ul class="sub-menu">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Item 1</span>
-</a>
-<ul class="sub-menu">
-<li>Hi</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Concepts</span>
-</a>
-<ul class="sub-menu">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Machine Learning</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
-                    Function</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
-                    Boosting</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
-                    Matrix</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
-                    Methods</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
-                    Measurement</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
-                    BERT/GPT</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
-                    Neural Networks</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
-                    Gradients</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Data Ops</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
-</li>
-</ul>
-</li>
-</ul>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Hold</span>
-</a>
-<ul class="sub-menu">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span></span>
-</a>
-<ul class="sub-menu">
-<li>Hi</li>
-</ul>
-</li>
-</ul>
-</li>
-<div class="gcse-search"></div>
-</li>
-<!-- begin sidebar minify button -->
-<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
-<!-- end sidebar minify button -->
-</li></li></ul>
-<!-- end sidebar nav -->
-</div>
-<!-- end sidebar scrollbar -->
-</div>
-<div class="sidebar-bg"></div>
-<!-- end #sidebar -->
-</div>
-<div class="content" id="content">
-    <table width="80%">
-        <tr>
-        <td width="5%"><img class="logo" src="../images/logo.png"/></td>
-        <td width="80%">
-        <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
-        </td>
-        </tr>
-        </table>
-<h2 style="color:#0A45A5;"><a href="../../index.html">home</a> : <a href="../aws.html">aws</a> : <a href="index.html">dynamo db</a> : overview</h2>
-<br/>
-<strong><span style="font-size: 18px">Contents</span></strong>
-<ul>
-<li><a href="#what_does_it_do">What does it do?</a><br/></li>
-<li><a href="#read_consistency">Read Consistency</a></li>
-<li><a href="#partitions">Partitions</a></li>
-<li><a href="#primary_keys">Primary Keys</a></li>
-<li><a href="#query_and_scan">Query and Scan</a></li>
-<li><a href="#provisioned_capacity">Provisioned Capacity</a></li>
-<li><a href="#on_demand_capacity">On Demand Capacity</a></li>
-<li><a href="#calculate_reads">Calculate Reads</a></li>
-<li><a href="#calculate_writes">Calculate Writes</a></li>
-<li><a href="#global_tables">Global Tables</a></li>
-<li><a href="#transactions">Transactions</a></li>
-<li><a href="#ttl">Time to Live</a></li>
-<li><a href="#streams">Streams</a></li>
-<li><a href="#dynamo_errors">Dynamo Errors</a></li>
-<li><a href="#secondary_indexes">Secondary Indexes</a></li>
-<li><a href="#accelerator ">Accelerator</a></li>
-</ul>
 
-<div id="what_does_it_do"><p><strong><span style="font-size: 18px;">What does it do?</span></strong></p></div>
-<ul>
-<li>No SQL key/value database and document database for internet scale applications</li>
-<li>Features</li>
-<ul>
-<li>Fully managed</li>
-<li>Multi region</li>
-<li>Multi master</li>
-<li>Durable</li>
-<li>Build in security</li>
-<li>Backup and restore</li>
-<li>In-memory caching</li>
-</ul>
-<li>Provides</li>
-<ul>
-<li>Eventual Consistant Reads (default)</li>
-<li>Stronly Consistant Reads</li>
-</ul>
-<li>You can specift the read/write capacity per second</li>
-<li>Data is split between at least three different AZ's on SSD storage</li>
-</ul>
-<div id="read_consistency"><p><strong><span style="font-size: 18px;"><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html" target="_blank">Read Consistency</a></span></strong></p></div>
-<ul>
-<li>Data is stored individually across all availability zones</li>
-<ul>
-<li>This creates a situation where data needs to replicate across AZ's after a write operation</li>
-<li>The data will eventually be consistant across all locations, usually in a second or less</li>
-<li>It is possible for the data to be inconsistent when reading from a copy that has not been updated</li>
-</ul>
-<li>Two options: Eventual Consistant Reads and Strongly Consistant Reads</li>
-<ol>
-<li>Eventual Consistant Reads (default)</li>
-<ul>
-<li>reads are fast but no guarentee of immediate consistency</li>
-<li>all copies become consistent within a second</li>
-</ul>
-<li>Strongly Consistent Reads</li>
-<ul>
-<li>returns a response with the most up-to-date data, reflecting the updates from all prior write operations that were successful. </li>
-<li>guarentee of consistency but the trade off is higher latency (slower reads)</li>
-<li>not supported on global secondary indexes (GSI) </li>
-<li>To use, add "ConsistentRead = True" on your query</li>
-</ul>
-</ol>
-</ul>
-<div id="partitions"><p><strong><span style="font-size: 18px;">Partitions</span></strong></p></div>
-<ul>
-<li><a href="../../aws/images/dynamo_partitions.png">Partition</a> is an allocation of storage for a table, backe dby SSD and automatically replicated across multiple AZ's within a Region</li>
-<li>It speeds up reads for very large tables by logically grouping similar data together</li>
-<li>DynamoDB starts with a single partition and automatically creates partitions as your data grows</li>
-<ul>
-<li>Partition add scenario #1: For every 10gb of data</li>
-<li>When you exceed the RCUs or WCUs for a single partition</li>
-<ul>
-<li>RCUs = read capacity units</li>
-<li>WCU = write capacity units</li>
-<li>each partition has a max of 3000 RCUs and 1000 WCUs</li>
-<li>DynamoDB evenly splits RCUs and WCUs across partitions</li>
-<li><a href="../../aws/images/dynamo_provisioned_capacity.png">illustration</a></li>
-</ul>
-</ul>
-</ul>
-<div id="primary_keys"><p><strong><span style="font-size: 18px;">Primary Keys</span></strong></p></div>
-<ul>
-<li>You must identify your PK when creating table</li>
-<li>PK identifies where and how your data will be stores in partitions</li>
-<li>PK will either be simple (PK only) or composite (PK + sort key)</li>
-<li>Sort key also called the Range key</li>
-<li>Keep in mind the following two objectives in assigning PKs</li>
-<ul>
-<li>Distinct: the key should be as distinct as possible</li>
-<li>Uniform: the key should evenly divide data</li>
-</ul>
-<li>NOTE: The PK cannot be changed later</li>
-<li><a href="../../aws/images/dynamo_primary_key_1.png">Illustration on Primary and Sort keys</a></li>
-<li>How does DynamoDB determine partition when given a simple primary key?</li>
-<ul>
-<li>"Secret" function takes primary key and determines what partition to store the item</li>
-</ul>
-<li>How does DynamoDB determine partition when given a composite primary key?</li>
-<ul>
-<li>Similar to simple primary key</li>
-<li>However it also groups data by partition key and is sorted A-Z </li>
-<li><a href="../../aws/images/dynamo_composite_key.png">Illustration</a></li>
-</ul>
-</ul>
-<div id="query_and_scan"><p><strong><span style="font-size: 18px;">Query and Scan</span></strong></p></div>
-<ul>
-<li>Query: A query operation searches only primary key attribute values and supports a subset of comparison operators on key attribute values to refine the search process.</li>
-<ul>
-<li>Query operations only support an equal operator evaluation of the Primary Key, but conditional (=, &lt;, &lt;=, &gt;, &gt;=, Between, Begin) on the Sort Key</li>
-</ul>
-<li>Scan: A scan operation scans the entire table. You can specify filters to apply to the results to refine the values returned to you, after the complete scan.</li>
-<ul>
-<li>Scan operations are generally slower and more expensive as the operation has to iterate through each item in your table to get the items you are requesting.</li>
-</ul>
-<li>Example</li>
-<li>Table: CustomerId, AccountType, Country, LastPurchase *  Primary Key: CustomerId + AccountType</li>
-<li>Query would get</li>
-<ul>
-<li>A CustomerId with a conditional filter on AccountType</li>
-</ul>
-<li>Scan would get</li>
-<ul>
-<li>All Customers with a specific AccountType</li>
-<li>Items based on conditional filters by Country, ie All Customers from USA</li>
-<li>Items based on conditional filters by LastPurchase, ie All Customers that made a purchase in the last month</li>
-</ul>
-</ul>
-<div id="provisioned_capacity"><p><strong><span style="font-size: 18px;">Provisioned Capacity</span></strong></p></div>
-<ul>
-<li>Maximum amount of capacity your application is allowed to read or write per second from a table or index</li>
-<li>Auto scaling allows us to go beyond RCU/WCU without dropping requests </li>
-<li>Free tier eligible</li>
-</ul>
-<div id="on_demand_capacity"><p><strong><span style="font-size: 18px;">On Demand Capacity</span></strong></p></div>
-<ul>
-<li>Pay per request, only pay what you use</li>
-<li>Use case</li>
-<ul>
-<li>New table and unknown workloads</li>
-<li>Unpredictable application traffic</li>
-<li>ease of paying for only what you use</li>
-</ul>
-<li>Throughput is limited by default upper limits</li>
-<ul>
-<li>40,000 RCU/WCU</li>
-</ul>
-</ul>
-<div id="calculate_reads"><p><strong><span style="font-size: 18px;">Calculate Reads</span></strong></p></div>
-<ul>
-<li>1 RCU = </li>
-<ul>
-<li>one strongly consistent read per second</li>
-<li>two eventual consistent reads per second</li>
-<li>up to 4kb in size</li>
-</ul>
-<li>How to calculate RCUs for Strong</li>
-<ol>
-<li>Round data up to nearest 4</li>
-<li>Divide data by 4</li>
-<li>Times by number of reads</li>
-<li><a href="../../aws/images/dynamo_rcu_strong_example.png">Example</a></li>
-</ol>
-<li>How to calculate RCUs for Eventual</li>
-<ol>
-<li>Round data up to nearest 4</li>
-<li>Divide data by 4</li>
-<li>Times by number of reads</li>
-<li>Divide final number by 2</li>
-<li>Round up to the nearest whole number</li>
-<li><a href="../../aws/images/dynamo_rcu_eventual_example.png">Example</a></li>
-</ol>
-<li>How to calculate RCUs for Eventual</li>
-</ul>
-<div id="calculate writes"><p><strong><span style="font-size: 18px;">Calculate Writes</span></strong></p></div>
-<ul>
-<li>1 WCU = </li>
-<ul>
-<li>one write per second</li>
-<li>for up to 1kb</li>
-</ul>
-<li>How to calculate WCUs</li>
-<ol>
-<li>Round data up the nearest 1</li>
-<li>Times by writes</li>
-<li><a href="../../aws/images/dynamo_wcu_example.png">Example</a></li>
-</ol>
-</ul>
-<div id="global_tables"><p><strong><span style="font-size: 18px;">Global Tables</span></strong></p></div>
-<ul>
-<li>Global tables replicate your DynamoDB tables automatically across your choice of AWS Regions</li>
-<li>Global tables eliminate the difficult work of replicating data between Regions and resolving update conflicts, enabling you to focus on your application's business logic.</li>
-<li>Three requirements</li>
-<ul>
-<li>Use KMS CMK</li>
-<li>Enable Streams</li>
-<li>Stream Type of new and Old Image</li>
-</ul>
-</ul>
-<div id="transactions"><p><strong><span style="font-size: 18px;">Transactions</span></strong></p></div>
-<ul>
-<li>Dynamo provides transactions at no additional cosrt</li>
-<li>Two operations are provided</li>
-<or>
-<li>TransactWriteItems</li>
-<ul>
-<li>Synchronous and idempotent</li>
-<li>Groups up to 100 write actions in a single all-or-nothing operation</li>
-<li>Aggregate size of all items in transactions cannot exceed 4mb</li>
-</ul>
-<li>TransactGetItems</li>
-<ul>
-<li>Synchronous read operation</li>
-<li>Groups up to 100 get actions together</li>
-<li>Aggregate size of all items in transactions cannot exceed 4mb</li>
-</ul>
-</or>
-<li>Transactions allow for all or nothing changes to multiple items both within and across tables</li>
-<li>Two underlying read and writes are made for every transaction. This will increase the cost.</li>
-<ol>
-<li>Prepare the transaction</li>
-<li>Commit the transaction</li>
-</ol>
-</ul>
-<div id="ttl"><p><strong><span style="font-size: 18px;">Time To Live (TTL)</span></strong></p></div>
-<ul>
-<li>Lets you have items in DynamoDB expire at a given time</li>
-<li>TTL is great for keeping DB's small and manageable</li>
-<li>Use cases</li>
-<ul>
-<li>Session Data</li>
-<li>Event Logs</li>
-<li>Usage patterns</li>
-</ul>
-<li><a href="../../aws/images/dynamo_enable_ttl.png">Illustration</a></li>
-</ul>
-<div id="streams"><p><strong><span style="font-size: 18px;">Streams</span></strong></p></div>
-<ul>
-<li>When enabled, DynamoDB captures every modification to the data items so you can react to those changes</li>
-<li>When an insert, update or delete is executed, the change will be sent to a lambda function</li>
-<ul>
-<li>Changes are sent in batches at time to your custom Lambda</li>
-<li>Changes are sent to your custom Lambda in near real time</li>
-<li>Each stream record appears exactlyonce in a stream</li>
-<li>For each item that is modified, the stream records appear in the same sequence as the actual modifications</li>
-</ul>
-</ul>
-<div id="dynamo_errors"><p><strong><span style="font-size: 18px;">Dynamo Errors</span></strong></p></div>
-<ul>
-<li>Two common types of errors</li>
-<ul>
-<li>ThrottlingException: the rate requests exceeds the allowed throughput</li>
-<li>ProvisionedThroughputExceededException: Exceeded allowed provisioned throughput for a table or one or more global secondary indexes</li>
-<li>As a reminder there are two capacity modes - throughput and on demand. ProvisionedThroughputExceededException is only for throughput </li>
-</ul>
-<li>SDK will automatically retry with exponential backoffs when error occurs (50ms, 100ms, 200ms, ..., 1 minute</li>
-</ul>
-<div id="secondary indexes"><p><strong><span style="font-size: 18px;">Secondary Indexes</span></strong></p></div>
-<ul>
-<li>Index is a copy of selected columns of data in a database which is used to quickly sort</li>
-<li>DynamoDB has two types of indexes: Global is preferred</li>
-<ol>
-<li>LSI: Local Secondary Index</li>
-<ul>
-<li>can only be created during initial table creation</li>
-<li>in effect it extends the SortKey</li>
-<li>limited to 5 LSI's</li>
-<li>no extra cost</li>
-<li>see <a href="walkthrough_local_secondary_index.html">walkthrough</a></li>
-</ul>
-<li>GSI: Global Secondary Index</li>
-<ul>
-<li>Similar to LSI in function but creates a new table behind the scenes</li>
-<li>This table is kept in sync with the original table but has the primary key changed to the attribute you created the GSI on</li>
-<li>Must define RCU/WCU again on the second table</li>
-<li>Cons:</li>
-<ul>
-<li>Writes to the main table result in a write to the GSI, effectively doubling the cost of writing</li>
-<li>Writes to the main table are eventual replicated on the GSI quickly, but no SLA</li>
-<li>Race conditions due to eventual consistency - your GSI can potentially return stale data</li>
-<li>Throttling. Keep your WCU capacity on your GSI tables &gt;= the WCU on your main table</li>
-</ul>
-</ul>
-</ol>
-<li>Strong consistency is a deciding factor</li>
-<ul>
-<li>local secondary index can provide strong consistency</li>
-<li>global secondary index cannot provide strong consistency</li>
-</ul>
-</ul>
-<div id="accelerator"><p><strong><span style="font-size: 18px;">Accelerator (DAX)</span></strong></p></div>
-<ul>
-<li>Fully managed in memory cache for DynamoDB that runs in cluster</li>
-<li>DynamoDB response times can be in single digit milliseconds. With DAX it can be in microseconds</li>
-<li>Details</li>
-<ul>
-<li>DAX cluster consists of one or more nodes (called cache in illustration above) </li>
-<li>Each node runs its own instance of the DAX caching software</li>
-<li>One of the nodes serves as the primary node for cluster</li>
-<li>Additional nodes (if present) serve as read replicas</li>
-<li>Your app can access DAX by specifying the endpoint for the DAX cluster</li>
-<li>The DAX client software works with the cluster endpoint to perform intelligent load balancing and routing</li>
-<li>Incoming requests are evenly distributed across all nodes in cluster</li>
-</ul>
-<li>Use Cases</li>
-<ul>
-<li>Good for</li>
-<ul>
-<li>apps that require fastest possible response time for reads (real time bidding, social gaming, trading apps</li>
-<li>apps that read a small number of items more frequently then others</li>
-<li>apps that are read intensive but also cost sensitive</li>
-<li>apps that require repeated reads against a large set of data</li>
-</ul>
-<li>Not good for (consider ElasticCache/Redis)</li>
-<ul>
-<li>apps that require strongly consistent reads</li>
-<li>apps that do not require microsecond reads or unable to offlad repeated read activities from underlying tables</li>
-<li>apps that are write intensive</li>
-<li>apps that already are using a different caching solution for DynamoDB</li>
-</ul>
-</ul>
-<li><a href="../../images/dynamo_dax_cluster.html">Image</a></li>
-</ul>
-</div>
-<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
-<script src="../script.js"></script>
+<body>
+    <div class="page-header-fixed page-sidebar-fixed" id="page-container">
+        <div class="sidebar" id="sidebar">
+            <!-- begin sidebar scrollbar -->
+            <div data-height="100%" data-scrollbar="true">
+                <!-- begin sidebar nav -->
+                <ul class="nav">
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-th-large"></i>
+                            <span>AWS (General)</span>
+                        </a>
+                        <ul class="sub-menu active">
+                            <li>
+                                <a href="javascript:void(0);"
+                                    onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>AWS Compute</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API
+                                            Gateway</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Database</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Developer Tools</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code
+                                            Commit</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code
+                                            Build</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code
+                                            Build</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>IaC</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Management</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter
+                                            Store</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Messaging</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Network</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC
+                                            Endpoints</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
+                                            53</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>SIC</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
+                                            Manager</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets
+                                            Manager</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security
+                                            Groups</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Storage</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance
+                                            Storage</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-th-large"></i>
+                            <span>AWS (Data Science)</span>
+                        </a>
+                        <ul class="sub-menu active">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>ML Toolset</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
+                                            Text</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep
+                                            AR</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
+                                            Classification</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
+                                            Learner</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
+                                            Topic Modeling</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
+                                            Detection</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random
+                                            Cut
+                                            Forest</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
+                                            Segmentation</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Analytics Toolset</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-list-ol"></i>
+                            <span>AWS (White Papers)</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Item 1</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>Hi</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-list-ol"></i>
+                            <span>DevOps</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Item 1</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>Hi</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-list-ol"></i>
+                            <span>Concepts</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Machine Learning</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
+                                            Function</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging
+                                            vs
+                                            Boosting</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
+                                            Matrix</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
+                                            Methods</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
+                                            Measurement</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP
+                                            with
+                                            BERT/GPT</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
+                                            Neural Networks</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
+                                            Gradients</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc
+                                            Concepts</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span>Data Ops</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-list-ol"></i>
+                            <span>Hold</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <i class="fa fa-list-ol"></i>
+                                    <span></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>Hi</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <div class="gcse-search"></div>
+                    </li>
+                    <!-- begin sidebar minify button -->
+                    <!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+                    <!-- end sidebar minify button -->
+                    </li>
+                    </li>
+                </ul>
+                <!-- end sidebar nav -->
+            </div>
+            <!-- end sidebar scrollbar -->
+        </div>
+        <div class="sidebar-bg"></div>
+        <!-- end #sidebar -->
+    </div>
+    <div class="content" id="content">
+        <table width="80%">
+            <tr>
+                <td width="5%"><img class="logo" src="../images/logo.png" /></td>
+                <td width="80%">
+                    <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <h3 style="color:hsl(241, 74%, 46%)">DynamoDB</h3>
+        <br />
+        <strong><span style="font-size: 18px">Contents</span></strong>
+        <ul>
+            <li><a href="#what_does_it_do">What does it do?</a><br /></li>
+            <li><a href="#read_consistency">Read Consistency</a></li>
+            <li><a href="#partitions">Partitions</a></li>
+            <li><a href="#primary_keys">Primary Keys</a></li>
+            <li><a href="#query_and_scan">Query and Scan</a></li>
+            <li><a href="#provisioned_capacity">Provisioned Capacity</a></li>
+            <li><a href="#on_demand_capacity">On Demand Capacity</a></li>
+            <li><a href="#calculate_reads">Calculate Reads</a></li>
+            <li><a href="#calculate_writes">Calculate Writes</a></li>
+            <li><a href="#global_tables">Global Tables</a></li>
+            <li><a href="#transactions">Transactions</a></li>
+            <li><a href="#ttl">Time to Live</a></li>
+            <li><a href="#streams">Streams</a></li>
+            <li><a href="#dynamo_errors">Dynamo Errors</a></li>
+            <li><a href="#secondary_indexes">Secondary Indexes</a></li>
+            <li><a href="#accelerator ">Accelerator</a></li>
+            <li><a href="#commands ">Commands</a></li>
+            <li><a href="#images ">Images</a></li>
+        </ul>
+
+        <div id="what_does_it_do">
+            <p><strong><span style="font-size: 18px;">What does it do?</span></strong></p>
+        </div>
+        <ul>
+            <li>No SQL key/value database and document database for internet scale applications</li>
+            <li>Features</li>
+            <ul>
+                <li>Fully managed</li>
+                <li>Multi region</li>
+                <li>Multi master</li>
+                <li>Durable</li>
+                <li>Build in security</li>
+                <li>Backup and restore</li>
+                <li>In-memory caching</li>
+            </ul>
+            <li>Provides</li>
+            <ul>
+                <li>Eventual Consistant Reads (default)</li>
+                <li>Stronly Consistant Reads</li>
+            </ul>
+            <li>You can specift the read/write capacity per second</li>
+            <li>Data is split between at least three different AZ's on SSD storage</li>
+        </ul>
+        <div id="read_consistency">
+            <p><strong><span style="font-size: 18px;"><a
+                            href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html"
+                            target="_blank">Read Consistency</a></span></strong></p>
+        </div>
+        <ul>
+            <li>Data is stored individually across all availability zones</li>
+            <ul>
+                <li>This creates a situation where data needs to replicate across AZ's after a write operation</li>
+                <li>The data will eventually be consistant across all locations, usually in a second or less</li>
+                <li>It is possible for the data to be inconsistent when reading from a copy that has not been updated
+                </li>
+            </ul>
+            <li>Two options: Eventual Consistant Reads and Strongly Consistant Reads</li>
+            <ol>
+                <li>Eventual Consistant Reads (default)</li>
+                <ul>
+                    <li>reads are fast but no guarentee of immediate consistency</li>
+                    <li>all copies become consistent within a second</li>
+                </ul>
+                <li>Strongly Consistent Reads</li>
+                <ul>
+                    <li>returns a response with the most up-to-date data, reflecting the updates from all prior write
+                        operations that were successful. </li>
+                    <li>guarentee of consistency but the trade off is higher latency (slower reads)</li>
+                    <li>not supported on global secondary indexes (GSI) </li>
+                    <li>To use, add "ConsistentRead = True" on your query</li>
+                </ul>
+            </ol>
+        </ul>
+        <div id="partitions">
+            <p><strong><span style="font-size: 18px;">Partitions</span></strong></p>
+        </div>
+        <ul>
+            <li><a href="../../aws/images/dynamo_partitions.png">Partition</a> is an allocation of storage for a table,
+                backe dby SSD and automatically replicated across multiple AZ's within a Region</li>
+            <li>It speeds up reads for very large tables by logically grouping similar data together</li>
+            <li>DynamoDB starts with a single partition and automatically creates partitions as your data grows</li>
+            <ul>
+                <li>Partition add scenario #1: For every 10gb of data</li>
+                <li>When you exceed the RCUs or WCUs for a single partition</li>
+                <ul>
+                    <li>RCUs = read capacity units</li>
+                    <li>WCU = write capacity units</li>
+                    <li>each partition has a max of 3000 RCUs and 1000 WCUs</li>
+                    <li>DynamoDB evenly splits RCUs and WCUs across partitions</li>
+                    <li><a href="../../aws/images/dynamo_provisioned_capacity.png">illustration</a></li>
+                </ul>
+            </ul>
+        </ul>
+        <div id="primary_keys">
+            <p><strong><span style="font-size: 18px;">Primary Keys</span></strong></p>
+        </div>
+        <ul>
+            <li>You must identify your PK when creating table</li>
+            <li>PK identifies where and how your data will be stores in partitions</li>
+            <li>PK will either be simple (PK only) or composite (PK + sort key)</li>
+            <li>Sort key also called the Range key</li>
+            <li>Keep in mind the following two objectives in assigning PKs</li>
+            <ul>
+                <li>Distinct: the key should be as distinct as possible</li>
+                <li>Uniform: the key should evenly divide data</li>
+            </ul>
+            <li>NOTE: The PK cannot be changed later</li>
+            <li><a href="../../aws/images/dynamo_primary_key_1.png">Illustration on Primary and Sort keys</a></li>
+            <li>How does DynamoDB determine partition when given a simple primary key?</li>
+            <ul>
+                <li>"Secret" function takes primary key and determines what partition to store the item</li>
+            </ul>
+            <li>How does DynamoDB determine partition when given a composite primary key?</li>
+            <ul>
+                <li>Similar to simple primary key</li>
+                <li>However it also groups data by partition key and is sorted A-Z </li>
+                <li><a href="../../aws/images/dynamo_composite_key.png">Illustration</a></li>
+            </ul>
+        </ul>
+        <div id="query_and_scan">
+            <p><strong><span style="font-size: 18px;">Query and Scan</span></strong></p>
+        </div>
+        <ul>
+            <li>Query: A query operation searches only primary key attribute values and supports a subset of comparison
+                operators on key attribute values to refine the search process.</li>
+            <ul>
+                <li>Query operations only support an equal operator evaluation of the Primary Key, but conditional (=,
+                    &lt;, &lt;=, &gt;, &gt;=, Between, Begin) on the Sort Key</li>
+            </ul>
+            <li>Scan: A scan operation scans the entire table. You can specify filters to apply to the results to refine
+                the values returned to you, after the complete scan.</li>
+            <ul>
+                <li>Scan operations are generally slower and more expensive as the operation has to iterate through each
+                    item in your table to get the items you are requesting.</li>
+            </ul>
+            <li>Example</li>
+            <li>Table: CustomerId, AccountType, Country, LastPurchase * Primary Key: CustomerId + AccountType</li>
+            <li>Query would get</li>
+            <ul>
+                <li>A CustomerId with a conditional filter on AccountType</li>
+            </ul>
+            <li>Scan would get</li>
+            <ul>
+                <li>All Customers with a specific AccountType</li>
+                <li>Items based on conditional filters by Country, ie All Customers from USA</li>
+                <li>Items based on conditional filters by LastPurchase, ie All Customers that made a purchase in the
+                    last month</li>
+            </ul>
+        </ul>
+        <div id="provisioned_capacity">
+            <p><strong><span style="font-size: 18px;">Provisioned Capacity</span></strong></p>
+        </div>
+        <ul>
+            <li>Maximum amount of capacity your application is allowed to read or write per second from a table or index
+            </li>
+            <li>Auto scaling allows us to go beyond RCU/WCU without dropping requests </li>
+            <li>Free tier eligible</li>
+        </ul>
+        <div id="on_demand_capacity">
+            <p><strong><span style="font-size: 18px;">On Demand Capacity</span></strong></p>
+        </div>
+        <ul>
+            <li>Pay per request, only pay what you use</li>
+            <li>Use case</li>
+            <ul>
+                <li>New table and unknown workloads</li>
+                <li>Unpredictable application traffic</li>
+                <li>ease of paying for only what you use</li>
+            </ul>
+            <li>Throughput is limited by default upper limits</li>
+            <ul>
+                <li>40,000 RCU/WCU</li>
+            </ul>
+        </ul>
+        <div id="calculate_reads">
+            <p><strong><span style="font-size: 18px;">Calculate Reads</span></strong></p>
+        </div>
+        <ul>
+            <li>1 RCU = </li>
+            <ul>
+                <li>one strongly consistent read per second</li>
+                <li>two eventual consistent reads per second</li>
+                <li>up to 4kb in size</li>
+            </ul>
+            <li>How to calculate RCUs for Strong</li>
+            <ol>
+                <li>Round data up to nearest 4</li>
+                <li>Divide data by 4</li>
+                <li>Times by number of reads</li>
+                <li><a href="../../aws/images/dynamo_rcu_strong_example.png">Example</a></li>
+            </ol>
+            <li>How to calculate RCUs for Eventual</li>
+            <ol>
+                <li>Round data up to nearest 4</li>
+                <li>Divide data by 4</li>
+                <li>Times by number of reads</li>
+                <li>Divide final number by 2</li>
+                <li>Round up to the nearest whole number</li>
+                <li><a href="../../aws/images/dynamo_rcu_eventual_example.png">Example</a></li>
+            </ol>
+            <li>How to calculate RCUs for Eventual</li>
+        </ul>
+        <div id="calculate writes">
+            <p><strong><span style="font-size: 18px;">Calculate Writes</span></strong></p>
+        </div>
+        <ul>
+            <li>1 WCU = </li>
+            <ul>
+                <li>one write per second</li>
+                <li>for up to 1kb</li>
+            </ul>
+            <li>How to calculate WCUs</li>
+            <ol>
+                <li>Round data up the nearest 1</li>
+                <li>Times by writes</li>
+                <li><a href="../../aws/images/dynamo_wcu_example.png">Example</a></li>
+            </ol>
+        </ul>
+        <div id="global_tables">
+            <p><strong><span style="font-size: 18px;">Global Tables</span></strong></p>
+        </div>
+        <ul>
+            <li>Global tables replicate your DynamoDB tables automatically across your choice of AWS Regions</li>
+            <li>Global tables eliminate the difficult work of replicating data between Regions and resolving update
+                conflicts, enabling you to focus on your application's business logic.</li>
+            <li>Three requirements</li>
+            <ul>
+                <li>Use KMS CMK</li>
+                <li>Enable Streams</li>
+                <li>Stream Type of new and Old Image</li>
+            </ul>
+        </ul>
+        <div id="transactions">
+            <p><strong><span style="font-size: 18px;">Transactions</span></strong></p>
+        </div>
+        <ul>
+            <li>Dynamo provides transactions at no additional cosrt</li>
+            <li>Two operations are provided</li>
+            <or>
+                <li>TransactWriteItems</li>
+                <ul>
+                    <li>Synchronous and idempotent</li>
+                    <li>Groups up to 100 write actions in a single all-or-nothing operation</li>
+                    <li>Aggregate size of all items in transactions cannot exceed 4mb</li>
+                </ul>
+                <li>TransactGetItems</li>
+                <ul>
+                    <li>Synchronous read operation</li>
+                    <li>Groups up to 100 get actions together</li>
+                    <li>Aggregate size of all items in transactions cannot exceed 4mb</li>
+                </ul>
+            </or>
+            <li>Transactions allow for all or nothing changes to multiple items both within and across tables</li>
+            <li>Two underlying read and writes are made for every transaction. This will increase the cost.</li>
+            <ol>
+                <li>Prepare the transaction</li>
+                <li>Commit the transaction</li>
+            </ol>
+        </ul>
+        <div id="ttl">
+            <p><strong><span style="font-size: 18px;">Time To Live (TTL)</span></strong></p>
+        </div>
+        <ul>
+            <li>Lets you have items in DynamoDB expire at a given time</li>
+            <li>TTL is great for keeping DB's small and manageable</li>
+            <li>Use cases</li>
+            <ul>
+                <li>Session Data</li>
+                <li>Event Logs</li>
+                <li>Usage patterns</li>
+            </ul>
+            <li><a href="../../aws/images/dynamo_enable_ttl.png">Illustration</a></li>
+        </ul>
+        <div id="streams">
+            <p><strong><span style="font-size: 18px;">Streams</span></strong></p>
+        </div>
+        <ul>
+            <li>When enabled, DynamoDB captures every modification to the data items so you can react to those changes
+            </li>
+            <li>When an insert, update or delete is executed, the change will be sent to a lambda function</li>
+            <ul>
+                <li>Changes are sent in batches at time to your custom Lambda</li>
+                <li>Changes are sent to your custom Lambda in near real time</li>
+                <li>Each stream record appears exactlyonce in a stream</li>
+                <li>For each item that is modified, the stream records appear in the same sequence as the actual
+                    modifications</li>
+            </ul>
+        </ul>
+        <div id="dynamo_errors">
+            <p><strong><span style="font-size: 18px;">Dynamo Errors</span></strong></p>
+        </div>
+        <ul>
+            <li>Two common types of errors</li>
+            <ul>
+                <li>ThrottlingException: the rate requests exceeds the allowed throughput</li>
+                <li>ProvisionedThroughputExceededException: Exceeded allowed provisioned throughput for a table or one
+                    or more global secondary indexes</li>
+                <li>As a reminder there are two capacity modes - throughput and on demand.
+                    ProvisionedThroughputExceededException is only for throughput </li>
+            </ul>
+            <li>SDK will automatically retry with exponential backoffs when error occurs (50ms, 100ms, 200ms, ..., 1
+                minute</li>
+        </ul>
+        <div id="secondary_indexes">
+            <p><strong><span style="font-size: 18px;">Secondary Indexes</span></strong></p>
+        </div>
+        <ul>
+            <li>Index is a copy of selected columns of data in a database which is used to quickly sort</li>
+            <li>DynamoDB has two types of indexes: Global is preferred</li>
+            <ol>
+                <li>LSI: Local Secondary Index</li>
+                <ul>
+                    <li>can only be created during initial table creation</li>
+                    <li>in effect it extends the SortKey</li>
+                    <li>limited to 5 LSI's</li>
+                    <li>no extra cost</li>
+                    <li>see <a href="walkthrough_local_secondary_index.html">walkthrough</a></li>
+                </ul>
+                <li>GSI: Global Secondary Index</li>
+                <ul>
+                    <li>Similar to LSI in function but creates a new table behind the scenes</li>
+                    <li>This table is kept in sync with the original table but has the primary key changed to the
+                        attribute you created the GSI on</li>
+                    <li>Must define RCU/WCU again on the second table</li>
+                    <li>Cons:</li>
+                    <ul>
+                        <li>Writes to the main table result in a write to the GSI, effectively doubling the cost of
+                            writing</li>
+                        <li>Writes to the main table are eventual replicated on the GSI quickly, but no SLA</li>
+                        <li>Race conditions due to eventual consistency - your GSI can potentially return stale data
+                        </li>
+                        <li>Throttling. Keep your WCU capacity on your GSI tables &gt;= the WCU on your main table</li>
+                    </ul>
+                    <li>see <a href="walkthrough_global_secondary_index.html">walkthrough</a></li>
+                </ul>
+            </ol>
+            <li>Strong consistency is a deciding factor</li>
+            <ul>
+                <li>local secondary index can provide strong consistency</li>
+                <li>global secondary index cannot provide strong consistency</li>
+            </ul>
+        </ul>
+        <div id="accelerator">
+            <p><strong><span style="font-size: 18px;">Accelerator (DAX)</span></strong></p>
+        </div>
+        <ul>
+            <li>Fully managed in memory cache for DynamoDB that runs in cluster</li>
+            <li>DynamoDB response times can be in single digit milliseconds. With DAX it can be in microseconds</li>
+            <li>Details</li>
+            <ul>
+                <li>DAX cluster consists of one or more nodes (called cache in illustration above) </li>
+                <li>Each node runs its own instance of the DAX caching software</li>
+                <li>One of the nodes serves as the primary node for cluster</li>
+                <li>Additional nodes (if present) serve as read replicas</li>
+                <li>Your app can access DAX by specifying the endpoint for the DAX cluster</li>
+                <li>The DAX client software works with the cluster endpoint to perform intelligent load balancing and
+                    routing</li>
+                <li>Incoming requests are evenly distributed across all nodes in cluster</li>
+            </ul>
+            <li>Use Cases</li>
+            <ul>
+                <li>Good for</li>
+                <ul>
+                    <li>apps that require fastest possible response time for reads (real time bidding, social gaming,
+                        trading apps</li>
+                    <li>apps that read a small number of items more frequently then others</li>
+                    <li>apps that are read intensive but also cost sensitive</li>
+                    <li>apps that require repeated reads against a large set of data</li>
+                </ul>
+                <li>Not good for (consider ElasticCache/Redis)</li>
+                <ul>
+                    <li>apps that require strongly consistent reads</li>
+                    <li>apps that do not require microsecond reads or unable to offlad repeated read activities from
+                        underlying tables</li>
+                    <li>apps that are write intensive</li>
+                    <li>apps that already are using a different caching solution for DynamoDB</li>
+                </ul>
+            </ul>
+            <li><a href="../../images/dynamo_dax_cluster.html">Images</a></li>
+        </ul>
+
+
+        <div id="commands">
+            <p><strong><span style="font-size: 18px;">Images</span></strong></p>
+        </div>
+        <ul>
+            <li>See breakout: <a href="commands.html">link</a></li>
+        </ul>
+
+        <div id="images">
+            <p><strong><span style="font-size: 18px;">Images</span></strong></p>
+        </div>
+
+        <ul>
+            <li><a href="images_dynamo_provisioned_capacity.html">Provisioning capacity</a></li>
+            <li><a href="images_dynamo_table_anatomy.html">Table anatomy</a></li>
+            <li><a href="images_dynamo_partitions.html">Partitions</a></li>
+            <li><a href="images_dynamo_primary_key.html">Primary key creation</a></li>
+            <li><a href="images_dynamo_composite_key_grouping.html">Composite key grouping</a></li>
+            <li><a href="images_dynamo_rcu_strong_example.html">RCU strong example</a></li>
+            <li><a href="images_dynamo_rcu_eventual_example.html">RCU eventual example</a></li>
+            <li><a href="images_dynamo_wcu_example.html">WCU eventual example</a></li>
+            <li><a href="images_dynamo_enable_ttl.html">Enable TTL</a></li>
+            <li><a href="images_dynamo_lsi_vs_gsi.html">LSA vs GSI</a></li>
+            <li><a href="images_dynamo_dax_cluster.html">Dax cluster</a></li>
+            <li>Cheat Sheets (freeCodeCamp.org)</li>
+            <ol>
+                <li><a href="images_dynamo_cheat_1.html">Cheat sheet 1</a></li>
+                <li><a href="images_dynamo_cheat_2.html">Cheat sheet 2</a></li>
+                <li><a href="images_dynamo_cheat_3.html">Cheat sheet 3</a></li>
+                <li><a href="images_dynamo_cheat_4.html">Cheat sheet 4</a></li>
+                <li><a href="images_dynamo_cheat_5.html">Cheat sheet 5</a></li>
+                <li><a href="images_dynamo_cheat_6.html">Cheat sheet 6</a></li>
+                <li><a href="images_dynamo_cheat_7.html">Cheat sheet 7</a></li>
+                <li><a href="images_dynamo_cheat_8.html">Cheat sheet 8 (CLI commands)</a></li>
+            </ol>
+        </ul>
+
+    </div>
+    <script
+        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+    <script src="../script.js"></script>
 </body>
+
 </html>

@@ -1,33 +1,48 @@
 var floatSubMenuTimeout, targetFloatMenu, handleSlimScroll = function() {
-    "use strict";
-    $.when($("[data-scrollbar=true]").each(function() {
-      generateSlimScroll($(this))
-    })).done(function() {
-      $('[data-scrollbar="true"]').mouseover()
-    })
-  },
-  handleSidebarMenu = function() {
-    "use strict";
-    var t = $(".sidebar").attr("data-disable-slide-animation") ? 0 : 250;
-    $(".sidebar .nav > .has-sub > a").click(function() {
-      var a = $(this).next(".sub-menu"),
-      e = $(".sidebar .nav > li.has-sub > .sub-menu").not(a);
-      0 === $(".page-sidebar-minified").length && ($(e).closest("li").addClass("closing"), $(e).slideUp(t, function() {
-        $(e).closest("li").addClass("closed").removeClass("expand closing")
-      }), $(a).is(":visible") ? $(a).closest("li").addClass("closing").removeClass("expand") : $(a).closest("li").addClass("expanding").removeClass("closed"), $(a).slideToggle(t, function() {
+  "use strict";
+  $.when($("[data-scrollbar=true]").each(function() {
+    generateSlimScroll($(this))
+  })).done(function() {
+    $('[data-scrollbar="true"]').mouseover()
+  })
+},
+handleSidebarMenu = function() {
+  "use strict";
+  var t = $(".sidebar").attr("data-disable-slide-animation") ? 0 : 250;
+  $(".sidebar .nav > .has-sub > a").click(function() {
+    var a = $(this).next(".sub-menu"),
+    e = $(".sidebar .nav > li.has-sub > .sub-menu").not(a);
+    0 === $(".page-sidebar-minified").length && ($(e).closest("li").addClass("closing"), $(e).slideUp(t, function() {
+      $(e).closest("li").addClass("closed").removeClass("expand closing")
+    }), $(a).is(":visible") ? $(a).closest("li").addClass("closing").removeClass("expand") : $(a).closest("li").addClass("expanding").removeClass("closed"), $(a).slideToggle(t, function() {
+      var e = $(this).closest("li");
+      $(a).is(":visible") ? ($(e).addClass("expand"), $(e).removeClass("closed")) : ($(e).addClass("closed"), $(e).removeClass("expand")), $(e).removeClass("expanding closing")
+    }))
+  }), $(".sidebar .nav > .has-sub .sub-menu li.has-sub > a").click(function() {
+    if (0 === $(".page-sidebar-minified").length) {
+      var a = $(this).next(".sub-menu");
+      $(a).is(":visible") ? $(a).closest("li").addClass("closing").removeClass("expand") : $(a).closest("li").addClass("expanding").removeClass("closed"), $(a).slideToggle(t, function() {
         var e = $(this).closest("li");
         $(a).is(":visible") ? ($(e).addClass("expand"), $(e).removeClass("closed")) : ($(e).addClass("closed"), $(e).removeClass("expand")), $(e).removeClass("expanding closing")
-      }))
-    }), $(".sidebar .nav > .has-sub .sub-menu li.has-sub > a").click(function() {
-      if (0 === $(".page-sidebar-minified").length) {
-        var a = $(this).next(".sub-menu");
-        $(a).is(":visible") ? $(a).closest("li").addClass("closing").removeClass("expand") : $(a).closest("li").addClass("expanding").removeClass("closed"), $(a).slideToggle(t, function() {
-          var e = $(this).closest("li");
-          $(a).is(":visible") ? ($(e).addClass("expand"), $(e).removeClass("closed")) : ($(e).addClass("closed"), $(e).removeClass("expand")), $(e).removeClass("expanding closing")
-        })
-      }
-    })
-  },
+      })
+    }
+  });
+  
+  // Add bottom to each parent menu item to cause all submenus to fully expand
+  $(".sidebar .nav > .has-sub").each(function() {
+    var subMenu = $(this).find(".sub-menu");
+    if (subMenu.length) {
+      $(this).addClass("expand-all");
+    }
+  });
+  
+  $(".sidebar .nav > .has-sub > a").click(function() {
+    var subMenu = $(this).next(".sub-menu");
+    if (subMenu.length) {
+      $(this).closest(".has-sub").toggleClass("expand-all");
+    }
+  });
+},
   handleMobileSidebarToggle = function() {
     var n = !1;
     $(".sidebar").bind("click touchstart", function(e) {

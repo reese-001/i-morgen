@@ -455,21 +455,23 @@
 <!-- end #sidebar -->
 </div>
 <div class="content" id="content">
-<table>
-<tr>
-<td><img class="logo" src="../images/logo.png"/></td>
-<td><h1 style="color:#0B2042;">i morgen</h1></td>
-</tr>
-</table>
-<h2 style="color:#0A45A5;"><a href="../../aws/aws.html">aws</a>:<a href="index.html">dynamo db</a>:walkthrough local secondary index</h2>
+        <table width="80%">
+                <tr>
+                    <td width="5%"><img class="logo" src="../images/logo.png" /></td>
+                    <td width="80%">
+                        <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+                    </td>
+                </tr>
+            </table>
+<h3 style="color:hsl(241, 74%, 46%)"><a href="dynamo_db.html">DynamoDB</a> : Walkthrough Local Secondary Index</h3>
 <img src="../../aws/images/dynamo_subject_index_lsi.png"/>
 <p><strong><span style="font-size: 20px;">Senario: Table is defined as shown. How to query Forum Name and Subject</span></strong></p>
 <p><strong><span style="font-size: 18;">Option 1</span></strong></p>
 <ol>
 <li>Scan entire table</li>
-<li>Apply filter condition on scan where forum == 'xx' and subject = 'yy </li>
+<li>Apply filter condition on scan where forum == 'xx' and subject = 'yy' </li>
 <li>Con: expensive since you are performing entire table scan</li>
-</ol>&gt;
+</ol>
         <p><strong><span style="font-size: 18;">Option 2</span></strong></p>
 <ol>
 <li>Filter for forum name = 'xx'</li>

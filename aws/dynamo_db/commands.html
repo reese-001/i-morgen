@@ -455,25 +455,28 @@
 <!-- end #sidebar -->
 </div>
 <div class="content" id="content">
-<table>
-<tr>
-<td><img class="logo" src="../images/logo.png"/></td>
-<td><h1 style="color:#0B2042;">i morgen</h1></td>
-</tr>
-</table>
-<h2 style="color:#0A45A5;"><a href="../../aws/aws.html">aws</a>:<a href="index.html">dynamo db</a>:commands</h2>
+    <table width="80%">
+        <tr>
+            <td width="5%"><img class="logo" src="../images/logo.png" /></td>
+            <td width="80%">
+                <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+            </td>
+        </tr>
+    </table>
+    <br/>
+<h3 style="color:hsl(241, 74%, 46%)"><a href="dynamo_db.html">DynamoDB</a> : Commands</h3>
 <p><strong><span style="font-size: 18px;">Create Table</span></strong></p>
 <p><strong>Two attributes with HASH (PK) and RANGE (SORT) defined</strong></p>
 <p>aws dynamodb create-table  \ <br/>
-                  --table-name Starships \<br/>
-                  --attribute-definitions \<br/>
-                   AttributeName=ShipClass,AttributeType=S \<br/>
-                   AttributeName=Registry,AttributeType=S \<br/>
-                  --key-schema \<br/>
-                   AttributeName=ShipClass,KeyType=HASH \<br/>
-                   AttributeName=Registry,KeyType=RANGE \<br/>
-                  --provisioned-throughput \<br/>
-                   ReadCapacityUnits=5,WriteCapacityUnits=5 <br/>
+                --table-name Starships \<br/>
+                --attribute-definitions \<br/>
+                AttributeName=ShipClass,AttributeType=S \<br/>
+                AttributeName=Registry,AttributeType=S \<br/>
+                --key-schema \<br/>
+                AttributeName=ShipClass,KeyType=HASH \<br/>
+                AttributeName=Registry,KeyType=RANGE \<br/>
+                --provisioned-throughput \<br/>
+                ReadCapacityUnits=5,WriteCapacityUnits=5 <br/>
 </p>
 <p><strong><span style="font-size: 18px;">Describe Table</span></strong></p>
 <p><strong>output = table. Other option is 'text'. Default is json</strong></p>
