@@ -1,14 +1,15 @@
 import os
+
 from bs4 import BeautifulSoup
 
-top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\aws\\cicd\\'
+top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\devops\\git\\'
 
 
 # Define the paths to the directory containing HTML files and the common template file
 # html_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\aws\\code_build_copy\\'
 template_menu_file = 'templates\menu.html'
 template_head_file = 'templates\head.html'
-
+temp = input(top_dir)
 # Read in the contents of the common template file
 with open(template_menu_file, 'r') as f:
     template_menu_contents = f.read()
@@ -18,10 +19,9 @@ with open(template_head_file, 'r') as f:
 
 
 for dirpath, dirnames, filenames in os.walk(top_dir):
-    
     # Loop through each HTML file in the directory
     for filename in os.listdir(dirpath):
-        if filename.endswith('cicd.html'):
+        if filename.endswith('.html'):
             # Read in the contents of the HTML file
             with open(os.path.join(dirpath, filename), 'r') as f:
                 html_contents = f.read()

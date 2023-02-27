@@ -1,4 +1,21 @@
+<!DOCTYPE html>
+
 <html>
+<head>
+<meta charset="utf-8"/>
+<title>i-morgen</title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../../../css/style_menu.css" rel="stylesheet"/>
+<link href="../../../css/styles.css" rel="stylesheet"/>
+<script>
+        var path_to_root = "../../../" // data_science/sagemaker
+    </script>
+</head>
 <body>
 <div class="page-header-fixed page-sidebar-fixed" id="page-container">
 <div class="sidebar" id="sidebar">
@@ -438,520 +455,90 @@
 <!-- end #sidebar -->
 </div>
 <div class="content" id="content">
-<div class="page-header-fixed page-sidebar-fixed" id="page-container">
-<div class="sidebar" id="sidebar">
-<!-- begin sidebar scrollbar -->
-<div data-height="100%" data-scrollbar="true">
-<!-- begin sidebar nav -->
-<ul class="nav">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-th-large"></i>
-<span>AWS (General)</span>
-</a>
-<ul class="sub-menu active">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/aws.html';">Home</a>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>AWS Compute</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk.html';">Beanstalk</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec2.html';">EC</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Database</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Developer Tools</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Build</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>IaC</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Management</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Messaging</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Network</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>s
-                </li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc_endpoints/vpc_endpoints.html';">VPC Endpoints</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route
-                    53</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>SIC</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate
-                    Manager</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Storage</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
-</li>
-</ul>
-</li>
-</ul>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-th-large"></i>
-<span>AWS (Data Science)</span>
-</a>
-<ul class="sub-menu active">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>ML Toolset</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing
-                    Text</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image
-                    Classification</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear
-                    Learner</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural
-                    Topic Modeling</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object
-                    Detection</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut
-                    Forest</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic
-                    Segmentation</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
-</li>
-</ul></li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Analytics Toolset</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
-</li>
-</ul>
-</li>
-</ul>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>AWS (White Papers)</span>
-</a>
-<ul class="sub-menu">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Item 1</span>
-</a>
-<ul class="sub-menu">
-<li>Hi</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>DevOps</span>
-</a>
-<ul class="sub-menu">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Item 1</span>
-</a>
-<ul class="sub-menu">
-<li>Hi</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Concepts</span>
-</a>
-<ul class="sub-menu">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Machine Learning</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation
-                    Function</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs
-                    Boosting</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion
-                    Matrix</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble
-                    Methods</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model
-                    Measurement</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP with
-                    BERT/GPT</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning
-                    Neural Networks</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing
-                    Gradients</a>
-</li>
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
-</li>
-</ul>
-</li>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Data Ops</span>
-</a>
-<ul class="sub-menu">
-<li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
-</li>
-</ul>
-</li>
-</ul>
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span>Hold</span>
-</a>
-<ul class="sub-menu">
-<li class="has-sub">
-<a href="javascript:;">
-<b class="caret"></b>
-<i class="fa fa-list-ol"></i>
-<span></span>
-</a>
-<ul class="sub-menu">
-<li>Hi</li>
-</ul>
-</li>
-</ul>
-</li>
-<div class="gcse-search"></div>
-</li>
-<!-- begin sidebar minify button -->
-<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
-<!-- end sidebar minify button -->
-</li></li></ul>
-<!-- end sidebar nav -->
-</div>
-<!-- end sidebar scrollbar -->
-</div>
-<div class="sidebar-bg"></div>
-<!-- end #sidebar -->
-</div>
-<div class="content" id="content">
-<pre <div="" style="width: 60%;">
-<strong>Eric:</strong> 
-What is clickstream data?
+<table width="80%">
+    <tr>
+        <td width="5%"><img class="logo" src="../../images/logo.png"/></td>
+        <td width="80%">
+        <h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+    </td>
+    </tr>
+</table>
+<br/>
+<h3 class="title" style="color:hsl(241, 74%, 46%)"><a class="title" href="kinesis.html">Kinesis</a> : Data Analytics</h3>
+<br/>
+<pre style="font-size: 16px;">
+    Question:
+    What is clickstream data?
+    
+    ChatGPT:
+    Clickstream data is a type of data that records the sequence of clicks or interactions that a user makes while using a website or an application. Clickstream data is collected through web analytics tools or tracking software, which capture user behavior and activity on a site or application, including page views, time spent on each page, clicks on links and buttons, and other interactions.
+    
+    Clickstream data is used by businesses to understand how users navigate their website or application, what content or products are most popular, and what areas may need improvement. This data is also used for marketing and advertising purposes, such as retargeting users with relevant ads based on their browsing history. Clickstream data can be a valuable source of insights for businesses looking to optimize their online presence and user experience.
+    
+    Question:
+    Where is clickstream data typically sent?
+    
+    ChatGPT:
+    Clickstream data is typically sent to web analytics tools or tracking software that are used to capture and analyze user behavior on a website or application. Some common examples of web analytics tools include Google Analytics, Adobe Analytics, and Mixpanel.
+    
+    These tools use tracking codes or cookies to capture user interactions on a site or application and send that data to their servers. The data is then processed and analyzed to generate reports and insights that can help businesses improve their online presence and user experience.
+    
+    In some cases, clickstream data may also be sent to third-party advertising and marketing platforms for the purpose of retargeting users with relevant ads based on their browsing history. However, it is important for businesses to ensure that they are following data privacy and security regulations when collecting and sharing user data.
+    
+    
+    
+    Question: 
+    Where does a streaming platform like Kinesis fit into this?
+    
+    ChatGPT: 
+    Amazon Kinesis is a real-time data streaming platform that can be used to collect, process, and analyze large volumes of data in real-time, including clickstream data. With Kinesis, businesses can ingest clickstream data from multiple sources and process it in real-time, making it easier to capture and respond to user behavior as it happens.
+    
+    Kinesis provides several tools for processing and analyzing clickstream data, including Kinesis Data Streams, Kinesis Data Firehose, and Kinesis Data Analytics. Kinesis Data Streams allows businesses to ingest and process real-time data streams, while Kinesis Data Firehose can be used to load clickstream data into data stores such as Amazon S3 or Redshift. Kinesis Data Analytics provides a way to analyze clickstream data using SQL, and can be used to generate real-time insights and alerts.
+    
+    By using Kinesis to process clickstream data in real-time, businesses can gain a deeper understanding of user behavior and optimize their online presence and user experience. For example, they can use Kinesis to detect anomalies in user behavior, identify popular pages or products, and personalize content based on user preferences.
+    
+    
+    Question:
+    When you mention "ingest clickstream data from multiple sources", what does that mean? I understand one source is the web site, but where else is clickstream data being generated?
+    
+    ChatGPT:
+    Clickstream data can be generated from a variety of sources beyond just a website. Here are some common sources of clickstream data:
+    <ol>
+        <li>Websites and mobile apps: As you mentioned, the most common source of clickstream data is from users interacting with websites and mobile apps. Every time a user clicks on a link or button, scrolls, or views a page, that information can be recorded as part of their clickstream.</li>
+        <li>Internet of Things (IoT) devices: Clickstream data can also be generated by IoT devices such as smart appliances or wearables. For example, a smart fridge might generate clickstream data as users interact with its touchscreen interface.</li>
+        <li>Streaming services: Streaming services like Netflix or Spotify generate clickstream data as users navigate through their content and make choices about what to watch or listen to.</li>
+        <li>E-commerce marketplaces: Clickstream data can also be generated by e-commerce marketplaces like Amazon or eBay, as users browse products and make purchases.</li>
+        <li>By ingesting clickstream data from multiple sources, businesses can gain a more complete picture of their users' behavior and preferences across a variety of touchpoints. This can help them optimize their online presence and improve their user experience.</li>
+    </ol>
+    
+    Question:
+    When you have multiple sources providing clickstream data like you just mentioned, are they typically aggregated into a single feed into Kinesis?
+    
+    ChatGPT:
+    Yes, when using a data streaming platform like Kinesis, it is common to aggregate data from multiple sources into a single feed. By consolidating data from different sources into a single feed, businesses can analyze clickstream data in a more comprehensive and centralized manner, making it easier to extract insights and optimize their online presence and user experience.
+    
+    For example, a business might use Kinesis to ingest clickstream data from their website, mobile app, and streaming service into a single Kinesis data stream. They could then use Kinesis Data Analytics to process and analyze this data, generating real-time insights about user behavior and preferences across all of these touchpoints.
+    
+    The process of aggregating clickstream data from multiple sources into a single feed typically involves configuring each data source to send its data to a centralized location, such as an Amazon Kinesis data stream. This can involve configuring tracking codes, cookies, or other data collection methods for each source. Once the data is ingested into the data stream, it can be processed and analyzed using Kinesis Data Analytics or other data processing tools.
+    
+    
+    Question:
+    What is an example of an insight that could be produced by this method - especially when you have multiple sources of clickstream data such as web site and netflix data coming in (for example)?
+    
+    ChatGPT:
+    One example of an insight that could be produced by aggregating clickstream data from multiple sources is identifying cross-channel patterns in user behavior. For instance, a business could use Kinesis to ingest and analyze clickstream data from both their website and Netflix, and then identify patterns in how users interact with both channels.
+    
+    For example, the business might find that users who spend a lot of time watching movies and TV shows in the "Action" category on Netflix also tend to spend more time on the "Action" category pages on their website. Armed with this insight, the business could personalize their website experience to feature more "Action" content, or promote their "Action" content more prominently to users who have demonstrated a preference for that type of content.
+    
+    Another example might be identifying cross-channel patterns in user demographics or geographic location. The business might find that users who live in a certain region or have a certain demographic profile are more likely to interact with their website during specific hours of the day or week. Armed with this insight, the business could optimize their marketing and advertising campaigns to target those users during those times, or personalize content for those users based on their geographic or demographic information.
+    
+    By analyzing clickstream data from multiple sources in this way, businesses can gain a more comprehensive understanding of user behavior and preferences across all of their channels, and use that information to optimize their online presence and user experience.
+    </pre>
 
-<strong>ChatGPT:</strong> 
-Clickstream data is a type of data that records the sequence of clicks or interactions that a user makes while using a website or an application. Clickstream data is collected through web analytics tools or tracking software, which capture user behavior and activity on a site or application, including page views, time spent on each page, clicks on links and buttons, and other interactions.
-
-Clickstream data is used by businesses to understand how users navigate their website or application, what content or products are most popular, and what areas may need improvement. This data is also used for marketing and advertising purposes, such as retargeting users with relevant ads based on their browsing history. Clickstream data can be a valuable source of insights for businesses looking to optimize their online presence and user experience.
-
-<strong>Eric:</strong> 
-Where is clickstream data typically sent?
-
-<strong>ChatGPT:</strong> 
-Clickstream data is typically sent to web analytics tools or tracking software that are used to capture and analyze user behavior on a website or application. Some common examples of web analytics tools include Google Analytics, Adobe Analytics, and Mixpanel.
-
-These tools use tracking codes or cookies to capture user interactions on a site or application and send that data to their servers. The data is then processed and analyzed to generate reports and insights that can help businesses improve their online presence and user experience.
-
-In some cases, clickstream data may also be sent to third-party advertising and marketing platforms for the purpose of retargeting users with relevant ads based on their browsing history. However, it is important for businesses to ensure that they are following data privacy and security regulations when collecting and sharing user data.
-
-
-
-<strong>Eric:</strong> 
-Where does a streaming platform like Kinesis fit into this?
-
-<strong>ChatGPT:</strong> 
-Amazon Kinesis is a real-time data streaming platform that can be used to collect, process, and analyze large volumes of data in real-time, including clickstream data. With Kinesis, businesses can ingest clickstream data from multiple sources and process it in real-time, making it easier to capture and respond to user behavior as it happens.
-
-Kinesis provides several tools for processing and analyzing clickstream data, including Kinesis Data Streams, Kinesis Data Firehose, and Kinesis Data Analytics. Kinesis Data Streams allows businesses to ingest and process real-time data streams, while Kinesis Data Firehose can be used to load clickstream data into data stores such as Amazon S3 or Redshift. Kinesis Data Analytics provides a way to analyze clickstream data using SQL, and can be used to generate real-time insights and alerts.
-
-By using Kinesis to process clickstream data in real-time, businesses can gain a deeper understanding of user behavior and optimize their online presence and user experience. For example, they can use Kinesis to detect anomalies in user behavior, identify popular pages or products, and personalize content based on user preferences.
-
-
-<strong>Eric:</strong> 
-When you mention "ingest clickstream data from multiple sources", what does that mean? I understand one source is the web site, but where else is clickstream data being generated?
-
-<strong>ChatGPT:</strong> 
-Clickstream data can be generated from a variety of sources beyond just a website. Here are some common sources of clickstream data:
-<ol>
-    <li>Websites and mobile apps: As you mentioned, the most common source of clickstream data is from users interacting with websites and mobile apps. Every time a user clicks on a link or button, scrolls, or views a page, that information can be recorded as part of their clickstream.</li>
-    <li>Internet of Things (IoT) devices: Clickstream data can also be generated by IoT devices such as smart appliances or wearables. For example, a smart fridge might generate clickstream data as users interact with its touchscreen interface.</li>
-    <li>Streaming services: Streaming services like Netflix or Spotify generate clickstream data as users navigate through their content and make choices about what to watch or listen to.</li>
-    <li>E-commerce marketplaces: Clickstream data can also be generated by e-commerce marketplaces like Amazon or eBay, as users browse products and make purchases.</li>
-    <li>By ingesting clickstream data from multiple sources, businesses can gain a more complete picture of their users' behavior and preferences across a variety of touchpoints. This can help them optimize their online presence and improve their user experience.</li>
-</ol>
-
-<strong>Eric:</strong> 
-When you have multiple sources providing clickstream data like you just mentioned, are they typically aggregated into a single feed into Kinesis?
-
-<strong>ChatGPT:</strong> 
-Yes, when using a data streaming platform like Kinesis, it is common to aggregate data from multiple sources into a single feed. By consolidating data from different sources into a single feed, businesses can analyze clickstream data in a more comprehensive and centralized manner, making it easier to extract insights and optimize their online presence and user experience.
-
-For example, a business might use Kinesis to ingest clickstream data from their website, mobile app, and streaming service into a single Kinesis data stream. They could then use Kinesis Data Analytics to process and analyze this data, generating real-time insights about user behavior and preferences across all of these touchpoints.
-
-The process of aggregating clickstream data from multiple sources into a single feed typically involves configuring each data source to send its data to a centralized location, such as an Amazon Kinesis data stream. This can involve configuring tracking codes, cookies, or other data collection methods for each source. Once the data is ingested into the data stream, it can be processed and analyzed using Kinesis Data Analytics or other data processing tools.
-
-
-<strong>Eric:</strong> 
-What is an example of an insight that could be produced by this method - especially when you have multiple sources of clickstream data such as web site and netflix data coming in (for example)?
-
-<strong>ChatGPT:</strong> 
-One example of an insight that could be produced by aggregating clickstream data from multiple sources is identifying cross-channel patterns in user behavior. For instance, a business could use Kinesis to ingest and analyze clickstream data from both their website and Netflix, and then identify patterns in how users interact with both channels.
-
-For example, the business might find that users who spend a lot of time watching movies and TV shows in the "Action" category on Netflix also tend to spend more time on the "Action" category pages on their website. Armed with this insight, the business could personalize their website experience to feature more "Action" content, or promote their "Action" content more prominently to users who have demonstrated a preference for that type of content.
-
-Another example might be identifying cross-channel patterns in user demographics or geographic location. The business might find that users who live in a certain region or have a certain demographic profile are more likely to interact with their website during specific hours of the day or week. Armed with this insight, the business could optimize their marketing and advertising campaigns to target those users during those times, or personalize content for those users based on their geographic or demographic information.
-
-By analyzing clickstream data from multiple sources in this way, businesses can gain a more comprehensive understanding of user behavior and preferences across all of their channels, and use that information to optimize their online presence and user experience.
-</pre></div>
-<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
-<script src="../script.js"></script>
 </div>
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
-<script src="../../javascript/script.js"></script>
+<script src="../../../javascript/script.js"></script>
 </body>
 </html>

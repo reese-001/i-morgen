@@ -418,6 +418,18 @@
 </li>
 </ul>
 </li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Networking</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/ssl_basics.html';">SSL</a>
+</li>
+</ul>
+</li>
 </ul>
 <li class="has-sub">
 <a href="javascript:;">
@@ -455,12 +467,15 @@
 <table width="80%">
 <tr>
 <td width="5%"><img class="logo" src="../images/logo.png"/></td>
-<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+</td>
 </tr>
 </table>
-<h3 style="color:hsl(241, 74%, 46%)"><a href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">ec2 instance storage</a>:overview</h3>
-<p><span style="font-size: 20px;"><strong>EC2 Instance Storage</strong></span></p>
-<p>Contents</p>
+<br/>
+<h3 class="title">EC2 instance storage</h3>
+<br/>
+<span style="font-size: 18px;"><strong>Contents</strong></span>
 <ul>
 <li><a href="#what_is_it">What is it?</a></li>
 <li><a href="#snapshots">Snapshots</a></li>
@@ -472,7 +487,9 @@
 <li><a href="#efs_storage_classes">EFS Storage Classes</a></li>
 <li><a href="#ebs_vs_efs">EBS vs EFS</a></li>
 </ul>
-<div id="what_is_it"><p><span style="font-size: 18px;"><strong>What is it?</strong></span></p></div>
+<div id="what_is_it">
+<p><span style="font-size: 18px;"><strong>What is it?</strong></span></p>
+</div>
 <ul>
 <li>Network drive that you can attach to your instances while they run</li>
 <ul>
@@ -496,12 +513,14 @@
 <li>Billed for this provisioned capacity</li>
 <li>Can be increased over time</li>
 </ul>
-<li>Delete on Termination feature allows you to control what happens to the volume when the EC2 instance is terminated</li>
+<li>Delete on Termination feature allows you to control what happens to the volume when the EC2 instance is
+                terminated</li>
 <ul>
 <li>By default the root volume is set to terminate</li>
 </ul>
 </ul>
-<div id="snapshots"></div><p><span style="font-size: 18px;"><strong>Snapshots</strong></span></p>
+<div id="snapshots"></div>
+<p><span style="font-size: 18px;"><strong>Snapshots</strong></span></p>
 <ul>
 <li>Make a backup (snapshot) of your EBS volume at a point in time</li>
 <li>Not required to detach volume to do a snapshot but it is recommended</li>
@@ -522,7 +541,8 @@
 <li>Caution: $$$</li>
 </ul>
 </ul>
-<div id="ami"></div><p><span style="font-size: 18px;"><strong>AMI's</strong></span></p>
+<div id="ami"></div>
+<p><span style="font-size: 18px;"><strong>AMI's</strong></span></p>
 <ul>
 <li>Amazon Machine Image</li>
 <li>AMI's are a customization of an EC2 instance</li>
@@ -545,7 +565,8 @@
 <li>Launch instances from other AMI's</li>
 </ul>
 </ul>
-<div id="instance_store"></div><p><span style="font-size: 18px;"><strong>EC2 Instance Store</strong></span></p>
+<div id="instance_store"></div>
+<p><span style="font-size: 18px;"><strong>EC2 Instance Store</strong></span></p>
 <ul>
 <li>EBS volumes are network drives with good but 'limited' perfomance</li>
 <li>If you need a high performance hardware disk, use EC2 Instance Store</li>
@@ -558,12 +579,15 @@
 <li>Good for buffer, cache, scratch data, or temp content</li>
 </ul>
 </ul>
-<div id="ebs_volume_types"></div><p><span style="font-size: 18px;"><strong>EBS Volume Types</strong></span></p>
+<div id="ebs_volume_types"></div>
+<p><span style="font-size: 18px;"><strong>EBS Volume Types</strong></span></p>
 <ul>
 <li>EBS volumes come in 6 different types</li>
 <ul>
-<li>gp2/gp3 (SSD): General purpose SSD volume that balances price and performance for a while variety of workloads</li>
-<li>io1/io2 (SSD): Highest perfomance SSD volume for mission critical, low latency or high throughput workloads</li>
+<li>gp2/gp3 (SSD): General purpose SSD volume that balances price and performance for a while variety of
+                    workloads</li>
+<li>io1/io2 (SSD): Highest perfomance SSD volume for mission critical, low latency or high throughput
+                    workloads</li>
 <li>st1 (HDD): Low cost HDD volume designed for frequently accessed, throughout intensive workloads</li>
 <li>sc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads</li>
 </ul>
@@ -624,7 +648,9 @@
 <li>Max 250 IOPS</li>
 </ul>
 </ul>
-</ul></ul></div><p><span style="font-size: 18px;"><strong>EBS Multi-Attach</strong></span></p>
+</ul>
+</ul>
+<p><span style="font-size: 18px;"><strong>EBS Multi-Attach</strong></span></p>
 <ul>
 <li>Attach same EBS volume to multiple EC2's in the same AZ</li>
 <li>Only available in io1/io2 family</li>
@@ -641,7 +667,8 @@
 <li>File system must be cluster aware (not XFS, EX4, etc)</li>
 </ul>
 </ul>
-<div id="efs"></div><p><span style="font-size: 18px;"><strong>Elastic File System (EFS)</strong></span></p>
+<div id="efs"></div>
+<p><span style="font-size: 18px;"><strong>Elastic File System (EFS)</strong></span></p>
 <ul>
 <li>Overview</li>
 <ul>
@@ -676,12 +703,13 @@
 </ul>
 <li>Throughput mode</li>
 <ul>
-<li>Bursting (Default): 1 Tb storage  = 50 MiB/s + burst up to 100 MiB/s</li>
+<li>Bursting (Default): 1 Tb storage = 50 MiB/s + burst up to 100 MiB/s</li>
 <li>Provisioned: set your throughput regardless of storage size. Example: 1 GiB/s for 1 TiB storage</li>
 </ul>
 </ul>
 </ul>
-<div id="efs_storage_classes"></div><p><span style="font-size: 18px;"><strong>EFS Storage Classes</strong></span></p>
+<div id="efs_storage_classes"></div>
+<p><span style="font-size: 18px;"><strong>EFS Storage Classes</strong></span></p>
 <ul>
 <li>Storage Tiers (lifecycle management feature - move file after N days)</li>
 <ul>
@@ -700,7 +728,8 @@
 <li>One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone IA)</li>
 </ul>
 </ul>
-<div id="ebs_vs_efs"></div><p><span style="font-size: 18px;"><strong>EBS vs EFS</strong></span></p>
+<div id="ebs_vs_efs"></div>
+<p><span style="font-size: 18px;"><strong>EBS vs EFS</strong></span></p>
 <ul>
 <li>EBS</li>
 <ul>
@@ -730,5 +759,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
 <script src="../script.js"></script>
-</body>
+</div></body>
 </html>
