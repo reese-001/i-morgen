@@ -2,7 +2,7 @@ import os
 
 from bs4 import BeautifulSoup
 
-top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\devops\\git\\'
+top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\management\\'
 
 
 # Define the paths to the directory containing HTML files and the common template file

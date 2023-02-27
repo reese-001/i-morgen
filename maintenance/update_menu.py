@@ -1,8 +1,8 @@
 import os
 from bs4 import BeautifulSoup
 
-directory_list = ["aws", "devops", "data_science"]
-top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\aws\\'
+
+top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\'
 
 
 # Define the paths to the directory containing HTML files and the common template file
@@ -16,10 +16,10 @@ with open(template_menu_file, 'r') as f:
 
 
 for dirpath, dirnames, filenames in os.walk(top_dir):
-    if dirnames in directory_list:
+
     # Loop through each HTML file in the directory
         for filename in os.listdir(dirpath):
-            if filename.endswith('.html'):
+            if filename.endswith('index.html'):
                 # Read in the contents of the HTML file
                 with open(os.path.join(dirpath, filename), 'r') as f:
                     html_contents = f.read()
@@ -47,5 +47,5 @@ for dirpath, dirnames, filenames in os.walk(top_dir):
 
                 # Save the updated HTML file to disk
                 with open(os.path.join(dirpath, filename), 'w') as f:
-                    print("saving")
+                    print("saving", dirpath, filename)
                     f.write(str(soup))
