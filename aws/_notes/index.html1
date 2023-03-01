@@ -322,6 +322,9 @@
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/operational_excellence.html';">Operational Excellence</a>
 </li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/reliability.html';">Reliability</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -562,42 +565,15 @@
 <table width="80%">
 <tr>
 <td width="5%"><img class="logo" src="../images/logo.png"/></td>
-<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+</td>
 </tr>
 </table>
-<h3 class="title"><a class="title" href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">notes</a>:cloudformation jupyter notebook</h3>
-<p><span style="font-size: 20px;"><strong>Create CloudFormation script to generate a Jupyter Notebook</strong></span></p>
-<p><span style="font-size: 18px;"><strong>Source: ChatGPT</strong></span></p>
-<pre>
-AWSTemplateFormatVersion: '2010-09-09'
-
-Description: 'CloudFormation template to create a Jupyter notebook in AWS'
-
-Resources:
-  JupyterNotebook:
-    Type: 'AWS::EMR::NotebookInstance'
-    Properties:
-      Name: 'MyJupyterNotebook'
-      RoleArn: 'arn:aws:iam::<your_aws_account_id>:role/<emr_notebook_role>'
-      DirectInternetAccess: 'Enabled'
-      VolumeSizeInGB: 10
-      InstanceType: 'ml.t2.medium'
-      SubnetId: '<your_subnet_id>'
-      SecurityGroupIds:
-      - '<your_security_group_id>'
-      DefaultCodeRepository: 'https://github.com/<your_github_username>/<your_repo>.git'
-
-		</your_repo></your_github_username></your_security_group_id></your_subnet_id></emr_notebook_role></your_aws_account_id></pre>
+<h3 class="title"><a class="title" href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">notes</a></h3>
 <ul>
-<li>You will need to replace the following:</li>
-<ul>
-<li>YOUR_AWS_ACCOUNT_ID: Your AWS account ID.</li>
-<li>EMR_NOTEBOOK_ROLE: The ARN of the IAM role that you created for the EMR Notebook.</li>
-<li>YOUR_SUBNET_ID: The ID of the subnet in which to launch the EMR Notebook.</li>
-<li>YOUR_SECURITY_GROUP_ID: The ID of the security group to associate with the EMR Notebook.</li>
-<li>YOUR_GITHUB_USERNAME: Your GitHub username.</li>
-<li>YOUR_REPO: The name of your repository on GitHub.</li>
-</ul>
+<li><a href="cloudwatch_vs_xray.html">difference between cloudwatch and xray</a></li>
+<li><a href="cloudformation_jupyter.html">create jupyter notebook from cloudformation</a></li>
 </ul>
 </div>
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>

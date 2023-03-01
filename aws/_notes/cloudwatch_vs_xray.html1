@@ -322,6 +322,9 @@
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/operational_excellence.html';">Operational Excellence</a>
 </li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/reliability.html';">Reliability</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -562,16 +565,31 @@
 <table width="80%">
 <tr>
 <td width="5%"><img class="logo" src="../images/logo.png"/></td>
-<td width="80%">
-<h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
-</td>
+<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
 </tr>
 </table>
-<h3 class="title"><a class="title" href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">notes</a></h3>
-<ul>
-<li><a href="cloudwatch_vs_xray.html">difference between cloudwatch and xray</a></li>
-<li><a href="cloudformation_jupyter.html">create jupyter notebook from cloudformation</a></li>
-</ul>
+<h3 class="title"><a class="title" href="../../index.html">home</a>:<a href="../../aws/aws.html">aws</a>:<a href="index.html">notes</a>:cloudwatch vs xray</h3>
+<p><span style="font-size: 20px;"><strong>CloudWatch vs Xray</strong></span></p>
+<p><span style="font-size: 18px;"><strong>Source: ChatGPT</strong></span></p>
+<pre>
+Amazon CloudWatch and AWS X-Ray are two separate Amazon Web Services (AWS) products that serve different purposes.
+
+Amazon CloudWatch is a monitoring service that allows you to collect and track metrics, set alarms, and view and analyze log data. 
+CloudWatch provides visibility into the performance and availability of your AWS resources, applications, and services. You can use 
+CloudWatch to monitor resource utilization, application performance, and other key metrics, and to set alarms to be notified when certain
+thresholds are breached. CloudWatch can be used to monitor a wide range of AWS resources, including Amazon Elastic Compute Cloud (EC2) 
+instances, Amazon DynamoDB tables, and AWS Lambda functions.
+
+AWS X-Ray, on the other hand, is a distributed tracing system that allows you to track the performance and behavior of applications 
+built using AWS services. X-Ray enables you to analyze and debug distributed applications, such as microservices or serverless applications, 
+by providing a detailed view of the request and response data sent between the various components of your application. X-Ray can help you 
+identify performance bottlenecks and errors in your application, and it provides tools for debugging and troubleshooting issues. It can
+ also help you understand the dependencies between different components of your application, and how they interact with one another.
+
+In summary, CloudWatch is a monitoring service that allows you to track metrics and logs, while X-Ray is a distributed tracing system
+that enables you to analyze and debug the performance and behavior of your applications. Both tools can be used together to gain a more 
+complete view of the health and performance of your AWS resources and applications.
+		</pre>
 </div>
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>

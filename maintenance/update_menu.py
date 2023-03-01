@@ -19,9 +19,9 @@ for dirpath, dirnames, filenames in os.walk(top_dir):
 
     # Loop through each HTML file in the directory
         for filename in os.listdir(dirpath):
-            if filename.endswith('index.html'):
+            if filename.endswith('html'):
                 # Read in the contents of the HTML file
-                with open(os.path.join(dirpath, filename), 'r') as f:
+                with open(os.path.join(dirpath, filename), 'r', errors="ignore") as f:
                     html_contents = f.read()
 
                 soup_text = html_contents

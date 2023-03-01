@@ -1,247 +1,226 @@
 <!DOCTYPE html>
+
 <html>
-	<head>
-		<link rel="stylesheet" href="styles.css">
-		<title>i morgen</title>
-		<link rel="icon" href="images/logo.png">
-	</head>
-	<body>
-		<table width="80%">
-			<tr>
-				<td width="5%"><img src="images/logo.png" class="logo"></td>
-				<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
-				
-			</tr>
-		</table>
-        <h3 style="color:hsl(241, 74%, 46%)"><a href="../index.html">home</a> : <a href="index.html">definitions</a> : concepts</h3>
-
-
-
-
-		<p><span style="font-size: 20px;"><strong>Concepts</strong></span></p>
-		<br/>
-		<span style="font-size: 18px;"><strong>Contents</strong></span>
-		<li><a href="#blue_green_deployments">Blue/Green Deployments</a></li>
-		<li><a href="#data_lakes">Data Lakes</a></li>
-		<li><a href="#linear_activation_problems">Linear Activation Problems</a></li>
-		<li><a href="#vanishing_gradient">Vanishing Gradient</a></li>
-		<li><a href="#sparsity">Sparsity</a></li>
-		<li><a href="#ml_evaluation_metrics">Machine Learning Evaluation Metrics</a></li>
-
-
-		<br/>
-		<div id="blue_green_deployments">
-            <p><span style="font-size: 18px;"><strong>Blue/Green Deployments</strong></span></p>
-		</div> 
-		<ul>
-			<li>Blue/Green Deploymnent</li>
-			<ul>
-				<li>Blue/green deployment is a technique for releasing software updates where two identical environments, referred to as "blue" and "green," are used to deploy the application.</li>
-				<li>During a blue/green deployment, the application is first deployed to the "green" environment, while the "blue" environment continues to serve the live application.</li>
-				<li>After the new version of the application has been deployed and tested in the green environment, traffic is routed to the green environment, and the application in the blue environment is decommissioned</li>
-				<li>There are several ways to do this</li>
-				<ul>
-					<li>Use a load balancer to route traffic between the blue and green environments</li>
-					<li>Use a DNS service to route traffic between the blue and green environments</li>
-					<li>Use blue/green deployment patterns with serverless architectures, such as AWS Lambda, by using aliases or canaries to control traffic to different versions of a function.</li>
-				</ul>
-				<li>What tools does AWS specifically have to facilitate Blue/Green deploys?</li>
-				<ul>
-					<li>CodeDeploy: This is a fully managed deployment service that makes it easy to deploy code to a variety of compute platforms, including Amazon EC2, AWS Lambda, and Amazon ECS. CodeDeploy supports blue/green deployments and allows you to specify the percentage of traffic that should be routed to the new version of the application.</li>
-					<li>Elastic Beanstalk: This is a fully managed service for deploying web applications and services. Elastic Beanstalk supports blue/green deployments and allows you to specify the percentage of traffic that should be routed to the new version of the application.</li>
-					<li>AWS CloudFormation: This is a service that allows you to use templates to create and manage AWS resources. You can use CloudFormation to define the infrastructure for a blue/green deployment, including the resources needed for the blue and green environments, and use the service to automate the process of rolling out updates and rolling back to previous versions if needed.</li>
-					<li>AWS Lambda traffic shifting: This feature allows you to specify the percentage of traffic that should be directed to a new version of a Lambda function. You can use traffic shifting to gradually shift traffic from the old version to the new version, allowing you to test the new version with a small portion of the traffic before directing all traffic to the new version.</li>
-					<li>AWS Lambda Aliases: An alias is a pointer to a specific version of a Lambda function, and you can use aliases to control traffic to different versions of a function. You can use an alias to specify the percentage of traffic that should be directed to a particular version of the function, and you can easily update the alias to point to a different version if needed.</li>
-					<li>AWS Lambda canaries: This is a deployment pattern that allows you to test a new version of a Lambda function by directing a small percentage of traffic to the new version. You can use canaries to validate the new version before directing all traffic to the new version.</li>
-					<li>What are the differences between traffic shifting, aliases and canaries?</li>
-					<ul>
-						<li>Traffic shifting allows you to gradually shift traffic from one version to another, while aliases and canaries allow you to direct a fixed percentage of traffic to a specific version.</li>
-						<li>Traffic shifting is configured at the function level, while aliases and canaries are configured at the alias or canary level.</li>
-						<li>Aliases and canaries are both pointers to specific versions of a function, but aliases are intended to be long-lived and used to represent the current version of the function, while canaries are temporary and used to test new versions of the function.</li>
-					</ul>
-				</ul>
-			</ul>
-		</ul>
-
-		
-		
-		<br/>
-		<div id="data_lakes">
-			<p><span style="font-size: 18px;"><strong>Data Lakes</strong></span></p>
-		</div> 
-		<ul>
-			<li>Centralized repository that allows organizations to store and manage large volumes of structured and unstructured data at any scale</li>
-			<li>It is designed to handle data from various sources and in various formats, and enables organizations to store data in its raw, unprocessed form for later access and analysis</li>
-			<li>Data lakes can be accessed using a variety of tools and technologies, and can be integrated with other data management and analysis tools to enable more advanced data processing and analysis</li>
-			<li>Data lakes provide organizations with a scalable and flexible solution for storing and managing large volumes of data, enabling them to derive value from their data more effectively.</li>
-		</ul>
-		
-		
-		<br/>
-		<div id="linear_activation_problems">
-			<p><span style="font-size: 18px;"><strong>Linear Activation Problems</strong></span></p>
-		</div> 
-		<ul>
-			<li>Context: In a neural network the activation function will either be linear or non-linear. Linear functions introduce problems that are discussed here  </li>
-			<ul>
-				<li>Discontinuity</li>
-				<ul>
-					<li>Like all piecewise constant functions, linear functions do not have a smooth, continuous change in their output values</li>
-					<li>They are not differentiable at the points where the output value changes abruptly </li>
-					<li>Without the ability to differentiable, the concept of gradient based optimizations becomes difficult</li>
-					<ul>
-						<li>The gradient at the points where the output changes abruptly is undefined, making it impossible to calculate the gradients required for optimization</li>
-						<li>This makes it difficult to train neural networks with binary step functions as activation functions, as the optimization process would be hindered</li>
-					</ul>
-				</ul>
-
-			</ul>
-		</ul>
-
-		<br/>
-		<div id="vanishing_gradient">
-			<p><span style="font-size: 18px;"><strong>Vanishing Gradient</strong></span></p>
-		</div> 
-		<ul>
-			<li>TODO</li>
-		</ul>
-
-		<div id="sparsity">
-			<p><span style="font-size: 18px;"><strong>Sparsity</strong></span></p>
-		</div> 
-		<ul>
-			<li>Refers to the property of having many zero or near-zero values in a data representation or activation function</li>
-			<li>This implies most of the parameters are not contributing to the model's predictions</li>
-			<li>Benefits</li>
-			<ul>
-				<li>Computational efficiency</li>
-				<ul>
-					<li>Require less memory to store the model parameters</li>
-					<li>Faster to compute as fewer parameters need to be updated during training</li>
-				</ul>
-				<li>Improved interpretability</li>
-				<ul>
-					<li>Often easier to interpret, as only a small subset of the parameters are driving the predictions</li>
-				</ul>
-				<li>Better generalization</li>
-				<ul>
-					<li> Sparse models can generalize better to new data, as they are less likely to overfit the training data and capture noise instead of the underlying patterns</li>
-				</ul>
-			</ul>
-
-			<li>Techniques uses to encourage sparsity</li>
-			<ul>
-				<li>L1 Regularization</li>
-				<li>Pruning</li>
-				<li>Using activation functions such as <a href="../data_science/core/activation_functions.html#rectified_linear_unit" target="_blank">ReLU</a></li>
-			</ul>
-		</ul>
-
-		<br/>
-		<div id="machine_learning_evaluation_metrics">
-			<p><span style="font-size: 18px;"><strong>Machine Learning Evaluation Metrics</strong></span></p>
-		</div> 
-		<ul>
-			<li>BLEU (Bilingual Evaluation Understudy)</li>
-			<ul>
-				<li>Measures the similarity between the predicted translation and the reference translation</li>
-				<li>Similarity is determined by the number of overlapping n-grams (contiguous sequences of words) between the two</li>
-				<li>BLEU score is a weighted average of the precision of the predicted translation with respect to the reference translation, with weights that decrease as the length of the n-grams increases</li>
-				<li>The score ranges from 0 to 1, with 1 indicating a perfect match between the predicted and reference translations.</li>
-			</ul>
-			<li>Perplexity</li>
-			<ul>
-				<li>Commonly used evaluation metric in natural language processing and specifically in language modeling where the goal is to predict the next word in a sequence given the previous words</li>
-				<li>Perplexity is a measure of how well a language model is able to predict the next word in a sequence</li>
-			</ul>
-			<li>Accuracy</li>
-			<ul>
-				<li>Accuracy shows us how comfortable the model is with detecting the positive and negative classes</li>
-				<li>It’s computed by the sum of True Positives and True Negatives divided by the total population</li>
-			</ul>
-			<li>Recall</li>
-			<ul>
-				<li>Recall explains how sensitive the model is towards identifying the positive class</li>
-				<li>It’s computed as the number of True Positives divided by the sum of True Positives and False Negatives</li>
-			</ul>
-			<li>Precision</li>
-			<ul>
-				<li>Precision tells us about the success probability of making a correct positive class classification</li>
-				<li>It’s computed as the number of True Positives divided by the total number of positive calls</li>
-			</ul>
-			<li>F1</li>
-			<ul>
-				<li>The harmonic mean of precision and recall, used as a single metric to represent the overall performance of a binary classifier</li>
-			</ul>
-			<li>Mean Absolute Error (MAE)</li>	
-			<ul>
-				<li>The average magnitude of the difference between the predicted and actual values for a regression task</li>
-			</ul>
-			<li>Mean Squared Error (MSE)</li>	
-			<ul>
-				<li>The average squared difference between the predicted and actual values for a regression task</li>
-			</ul>
-			<li>R-Squared</li>
-			<ul>
-				<li>A measure of the goodness of fit of a regression model, representing the proportion of variance in the target variable that is explained by the model</li>
-			</ul>
-			<li>AUC-ROC</li>
-			<ul>
-				<li>A measure of a binary classifier's ability to distinguish between positive and negative cases, represented as the area under a curve that plots true positive rate against false positive rate</li>
-			</ul>
-			<li>Log-Loss</li>
-			<ul>
-				<li>A measure of the performance of a classifier that outputs probabilities, representing the average cross-entropy between the predicted and actual class probabilities.</li>
-			</ul>
-		
-		</ul>
-
-
-		<br/>
-		<div id="machine_learning_optimizers">
-			<p><span style="font-size: 18px;"><strong>Machine Learning Optimizers</strong></span></p>
-		</div> 
-		<ul>
-			<li>Optimization is a crucial step in the training of machine learning models</li>
-			<li>Determines the values of model parameters that minimize the difference between the predicted and actual values</li>
-			<li>Stochastic Gradient Descent (SGD)</li>
-			<ul>
-				<li>A simple optimization algorithm that updates model parameters based on the gradient of the loss function with respect to the parameters, calculated using a single training example (or batch of examples) at a time</li>
-				<li>Simple and efficient optimization algorithm that can be used in many different applications, including</li>
-				<ul>
-					<li>Linear regression</li>
-					<li>Logistic regression</li>
-					<li>Support Vector Machines (SVM)</li>
-					<li>Neural networks</li>
-					<li>Recommender systems</li>
-					<li>Clustering</li>
-				</ul>
-			</ul>
-			<li>Adam (Adaptive Moment Estimation)</li>
-			<ul>
-				<li>An optimization algorithm that uses a combination of gradient information and historical running averages to determine the learning rate for each parameter, designed to be highly effective and widely used in practice.</li>
-				<li>Can be used in a variety of applications where the goal is to minimize the difference between the predicted and actual values</li>
-				<ul>
-					<li>Image classification</li>
-					<li>Natural language processing</li>
-					<li>Recommender systems</li>
-					<li>Anomaly detection</li>
-					<li>Speech recognition</li>
-				</ul>
-			</ul>
-			<li>RMSprop</li>
-			<ul>
-				<li>An optimization algorithm that uses the root mean squared historical gradient information to determine the learning rate for each parameter, designed to address some limitations of the Adagrad algorithm.</li>
-				<ul>
-					<li>Neural networks</li>
-					<li>CNN</li>
-					<li>Reinforcement learning</li>
-					<li>Generative models</li>
-					<li>Online learning</li>
-				</ul>
-			</ul>
-		</ul>
-
-
-    </body> 
+<head>
+<link href="styles.css" rel="stylesheet"/>
+<title>i morgen</title>
+<link href="images/logo.png" rel="icon"/>
+</head>
+<body>
+<table width="80%">
+<tr>
+<td width="5%"><img class="logo" src="images/logo.png"/></td>
+<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+</tr>
+</table>
+<h3 style="color:hsl(241, 74%, 46%)"><a href="../index.html">home</a> : <a href="index.html">definitions</a> : concepts</h3>
+<p><span style="font-size: 20px;"><strong>Concepts</strong></span></p>
+<br/>
+<span style="font-size: 18px;"><strong>Contents</strong></span>
+<li><a href="#blue_green_deployments">Blue/Green Deployments</a></li>
+<li><a href="#data_lakes">Data Lakes</a></li>
+<li><a href="#linear_activation_problems">Linear Activation Problems</a></li>
+<li><a href="#vanishing_gradient">Vanishing Gradient</a></li>
+<li><a href="#sparsity">Sparsity</a></li>
+<li><a href="#ml_evaluation_metrics">Machine Learning Evaluation Metrics</a></li>
+<br/>
+<div id="blue_green_deployments">
+<p><span style="font-size: 18px;"><strong>Blue/Green Deployments</strong></span></p>
+</div>
+<ul>
+<li>Blue/Green Deploymnent</li>
+<ul>
+<li>Blue/green deployment is a technique for releasing software updates where two identical environments, referred to as "blue" and "green," are used to deploy the application.</li>
+<li>During a blue/green deployment, the application is first deployed to the "green" environment, while the "blue" environment continues to serve the live application.</li>
+<li>After the new version of the application has been deployed and tested in the green environment, traffic is routed to the green environment, and the application in the blue environment is decommissioned</li>
+<li>There are several ways to do this</li>
+<ul>
+<li>Use a load balancer to route traffic between the blue and green environments</li>
+<li>Use a DNS service to route traffic between the blue and green environments</li>
+<li>Use blue/green deployment patterns with serverless architectures, such as AWS Lambda, by using aliases or canaries to control traffic to different versions of a function.</li>
+</ul>
+<li>What tools does AWS specifically have to facilitate Blue/Green deploys?</li>
+<ul>
+<li>CodeDeploy: This is a fully managed deployment service that makes it easy to deploy code to a variety of compute platforms, including Amazon EC2, AWS Lambda, and Amazon ECS. CodeDeploy supports blue/green deployments and allows you to specify the percentage of traffic that should be routed to the new version of the application.</li>
+<li>Elastic Beanstalk: This is a fully managed service for deploying web applications and services. Elastic Beanstalk supports blue/green deployments and allows you to specify the percentage of traffic that should be routed to the new version of the application.</li>
+<li>AWS CloudFormation: This is a service that allows you to use templates to create and manage AWS resources. You can use CloudFormation to define the infrastructure for a blue/green deployment, including the resources needed for the blue and green environments, and use the service to automate the process of rolling out updates and rolling back to previous versions if needed.</li>
+<li>AWS Lambda traffic shifting: This feature allows you to specify the percentage of traffic that should be directed to a new version of a Lambda function. You can use traffic shifting to gradually shift traffic from the old version to the new version, allowing you to test the new version with a small portion of the traffic before directing all traffic to the new version.</li>
+<li>AWS Lambda Aliases: An alias is a pointer to a specific version of a Lambda function, and you can use aliases to control traffic to different versions of a function. You can use an alias to specify the percentage of traffic that should be directed to a particular version of the function, and you can easily update the alias to point to a different version if needed.</li>
+<li>AWS Lambda canaries: This is a deployment pattern that allows you to test a new version of a Lambda function by directing a small percentage of traffic to the new version. You can use canaries to validate the new version before directing all traffic to the new version.</li>
+<li>What are the differences between traffic shifting, aliases and canaries?</li>
+<ul>
+<li>Traffic shifting allows you to gradually shift traffic from one version to another, while aliases and canaries allow you to direct a fixed percentage of traffic to a specific version.</li>
+<li>Traffic shifting is configured at the function level, while aliases and canaries are configured at the alias or canary level.</li>
+<li>Aliases and canaries are both pointers to specific versions of a function, but aliases are intended to be long-lived and used to represent the current version of the function, while canaries are temporary and used to test new versions of the function.</li>
+</ul>
+</ul>
+</ul>
+</ul>
+<br/>
+<div id="data_lakes">
+<p><span style="font-size: 18px;"><strong>Data Lakes</strong></span></p>
+</div>
+<ul>
+<li>Centralized repository that allows organizations to store and manage large volumes of structured and unstructured data at any scale</li>
+<li>It is designed to handle data from various sources and in various formats, and enables organizations to store data in its raw, unprocessed form for later access and analysis</li>
+<li>Data lakes can be accessed using a variety of tools and technologies, and can be integrated with other data management and analysis tools to enable more advanced data processing and analysis</li>
+<li>Data lakes provide organizations with a scalable and flexible solution for storing and managing large volumes of data, enabling them to derive value from their data more effectively.</li>
+</ul>
+<br/>
+<div id="linear_activation_problems">
+<p><span style="font-size: 18px;"><strong>Linear Activation Problems</strong></span></p>
+</div>
+<ul>
+<li>Context: In a neural network the activation function will either be linear or non-linear. Linear functions introduce problems that are discussed here  </li>
+<ul>
+<li>Discontinuity</li>
+<ul>
+<li>Like all piecewise constant functions, linear functions do not have a smooth, continuous change in their output values</li>
+<li>They are not differentiable at the points where the output value changes abruptly </li>
+<li>Without the ability to differentiable, the concept of gradient based optimizations becomes difficult</li>
+<ul>
+<li>The gradient at the points where the output changes abruptly is undefined, making it impossible to calculate the gradients required for optimization</li>
+<li>This makes it difficult to train neural networks with binary step functions as activation functions, as the optimization process would be hindered</li>
+</ul>
+</ul>
+</ul>
+</ul>
+<br/>
+<div id="vanishing_gradient">
+<p><span style="font-size: 18px;"><strong>Vanishing Gradient</strong></span></p>
+</div>
+<ul>
+<li>TODO</li>
+</ul>
+<div id="sparsity">
+<p><span style="font-size: 18px;"><strong>Sparsity</strong></span></p>
+</div>
+<ul>
+<li>Refers to the property of having many zero or near-zero values in a data representation or activation function</li>
+<li>This implies most of the parameters are not contributing to the model's predictions</li>
+<li>Benefits</li>
+<ul>
+<li>Computational efficiency</li>
+<ul>
+<li>Require less memory to store the model parameters</li>
+<li>Faster to compute as fewer parameters need to be updated during training</li>
+</ul>
+<li>Improved interpretability</li>
+<ul>
+<li>Often easier to interpret, as only a small subset of the parameters are driving the predictions</li>
+</ul>
+<li>Better generalization</li>
+<ul>
+<li> Sparse models can generalize better to new data, as they are less likely to overfit the training data and capture noise instead of the underlying patterns</li>
+</ul>
+</ul>
+<li>Techniques uses to encourage sparsity</li>
+<ul>
+<li>L1 Regularization</li>
+<li>Pruning</li>
+<li>Using activation functions such as <a href="../data_science/core/activation_functions.html#rectified_linear_unit" target="_blank">ReLU</a></li>
+</ul>
+</ul>
+<br/>
+<div id="machine_learning_evaluation_metrics">
+<p><span style="font-size: 18px;"><strong>Machine Learning Evaluation Metrics</strong></span></p>
+</div>
+<ul>
+<li>BLEU (Bilingual Evaluation Understudy)</li>
+<ul>
+<li>Measures the similarity between the predicted translation and the reference translation</li>
+<li>Similarity is determined by the number of overlapping n-grams (contiguous sequences of words) between the two</li>
+<li>BLEU score is a weighted average of the precision of the predicted translation with respect to the reference translation, with weights that decrease as the length of the n-grams increases</li>
+<li>The score ranges from 0 to 1, with 1 indicating a perfect match between the predicted and reference translations.</li>
+</ul>
+<li>Perplexity</li>
+<ul>
+<li>Commonly used evaluation metric in natural language processing and specifically in language modeling where the goal is to predict the next word in a sequence given the previous words</li>
+<li>Perplexity is a measure of how well a language model is able to predict the next word in a sequence</li>
+</ul>
+<li>Accuracy</li>
+<ul>
+<li>Accuracy shows us how comfortable the model is with detecting the positive and negative classes</li>
+<li>It’s computed by the sum of True Positives and True Negatives divided by the total population</li>
+</ul>
+<li>Recall</li>
+<ul>
+<li>Recall explains how sensitive the model is towards identifying the positive class</li>
+<li>It’s computed as the number of True Positives divided by the sum of True Positives and False Negatives</li>
+</ul>
+<li>Precision</li>
+<ul>
+<li>Precision tells us about the success probability of making a correct positive class classification</li>
+<li>It’s computed as the number of True Positives divided by the total number of positive calls</li>
+</ul>
+<li>F1</li>
+<ul>
+<li>The harmonic mean of precision and recall, used as a single metric to represent the overall performance of a binary classifier</li>
+</ul>
+<li>Mean Absolute Error (MAE)</li>
+<ul>
+<li>The average magnitude of the difference between the predicted and actual values for a regression task</li>
+</ul>
+<li>Mean Squared Error (MSE)</li>
+<ul>
+<li>The average squared difference between the predicted and actual values for a regression task</li>
+</ul>
+<li>R-Squared</li>
+<ul>
+<li>A measure of the goodness of fit of a regression model, representing the proportion of variance in the target variable that is explained by the model</li>
+</ul>
+<li>AUC-ROC</li>
+<ul>
+<li>A measure of a binary classifier's ability to distinguish between positive and negative cases, represented as the area under a curve that plots true positive rate against false positive rate</li>
+</ul>
+<li>Log-Loss</li>
+<ul>
+<li>A measure of the performance of a classifier that outputs probabilities, representing the average cross-entropy between the predicted and actual class probabilities.</li>
+</ul>
+</ul>
+<br/>
+<div id="machine_learning_optimizers">
+<p><span style="font-size: 18px;"><strong>Machine Learning Optimizers</strong></span></p>
+</div>
+<ul>
+<li>Optimization is a crucial step in the training of machine learning models</li>
+<li>Determines the values of model parameters that minimize the difference between the predicted and actual values</li>
+<li>Stochastic Gradient Descent (SGD)</li>
+<ul>
+<li>A simple optimization algorithm that updates model parameters based on the gradient of the loss function with respect to the parameters, calculated using a single training example (or batch of examples) at a time</li>
+<li>Simple and efficient optimization algorithm that can be used in many different applications, including</li>
+<ul>
+<li>Linear regression</li>
+<li>Logistic regression</li>
+<li>Support Vector Machines (SVM)</li>
+<li>Neural networks</li>
+<li>Recommender systems</li>
+<li>Clustering</li>
+</ul>
+</ul>
+<li>Adam (Adaptive Moment Estimation)</li>
+<ul>
+<li>An optimization algorithm that uses a combination of gradient information and historical running averages to determine the learning rate for each parameter, designed to be highly effective and widely used in practice.</li>
+<li>Can be used in a variety of applications where the goal is to minimize the difference between the predicted and actual values</li>
+<ul>
+<li>Image classification</li>
+<li>Natural language processing</li>
+<li>Recommender systems</li>
+<li>Anomaly detection</li>
+<li>Speech recognition</li>
+</ul>
+</ul>
+<li>RMSprop</li>
+<ul>
+<li>An optimization algorithm that uses the root mean squared historical gradient information to determine the learning rate for each parameter, designed to address some limitations of the Adagrad algorithm.</li>
+<ul>
+<li>Neural networks</li>
+<li>CNN</li>
+<li>Reinforcement learning</li>
+<li>Generative models</li>
+<li>Online learning</li>
+</ul>
+</ul>
+</ul>
+</body>
 </html>

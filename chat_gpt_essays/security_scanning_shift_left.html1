@@ -10,10 +10,13 @@
 <table width="80%">
 <tr>
 <td width="5%"><img class="logo" src="../images/logo.png"/></td>
-<td width="80%"><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">i morgen</h1>
+</td>
 </tr>
 </table>
-<h3 style="color:hsl(241, 74%, 46%)"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> : security scanning shift left</h3>
+<h3 style="color:hsl(241, 74%, 46%)"><a href="../../index.html">home</a> : <a href="../index.html">devops</a> :
+        security scanning shift left</h3>
 <div class="essay-text-block">
 <pre>
 <h3><strong>The benefits of "shifting left" when it comes to security scanning in CICD pipeline</strong></h3>

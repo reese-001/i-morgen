@@ -2,7 +2,7 @@ import os
 
 from bs4 import BeautifulSoup
 
-top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\management\\'
+top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\'
 
 
 # Define the paths to the directory containing HTML files and the common template file
@@ -21,7 +21,7 @@ with open(template_head_file, 'r') as f:
 for dirpath, dirnames, filenames in os.walk(top_dir):
     # Loop through each HTML file in the directory
     for filename in os.listdir(dirpath):
-        if filename.endswith('.html'):
+        if filename.endswith('home_index.html'):
             # Read in the contents of the HTML file
             with open(os.path.join(dirpath, filename), 'r') as f:
                 html_contents = f.read()
