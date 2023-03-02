@@ -13,7 +13,7 @@
 <td><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
 </tr>
 </table>
-<h3 style="color:hsl(241, 74%, 46%)"><a href="../../../index.html">home</a> : <a href="../../index.html">data science</a> : machine learning on the cloud with aws</h3>
+<h3 class="title" style="color:hsl(241, 74%, 46%)"><a href="../../../index.html">home</a> : <a href="../../index.html">data science</a> : machine learning on the cloud with aws</h3>
 <table>
 <tr>
 <td> ** NOTE: this class is in progress and notes have not been transferred to this site yet. </td>

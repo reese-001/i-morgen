@@ -3,32 +3,76 @@
 <html>
 <head>
 <link href="../../styles.css" rel="stylesheet"/>
-<title>i morgen</title>
+<title>
+            i morgen
+        </title>
 <link href="../../images/logo.png" rel="icon"/>
 </head>
 <body>
 <table>
 <tr>
-<td><img class="logo" src="../../images/logo.png"/></td>
-<td><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+<td>
+<img class="logo" src="../../images/logo.png"/>
+</td>
+<td>
+<h1 style="color:hsl(241, 74%, 46%)">
+                        i morgen
+                    </h1>
+</td>
 </tr>
 </table>
-<h3 style="color:hsl(241, 74%, 46%)"><a href="../index.html">home</a> : <a href="../index.html">data science</a> : quick reference</h3>
+<h3 class="title" style="color:hsl(241, 74%, 46%)">
+<a href="../index.html">
+                home
+            </a>
+            :
+            <a href="../index.html">
+                data science
+            </a>
+            : quick reference
+        </h3>
 <br/>
 <table width="80%">
 <tr>
-<td width="20%"><strong>Code</strong></td>
-<td width="20%"><strong>Issue/Error</strong></td>
-<td width="50%"><strong>Resolution</strong></td>
-<td width="10%"><strong>Reference</strong></td>
+<td width="20%">
+<strong>
+                        Code
+                    </strong>
+</td>
+<td width="20%">
+<strong>
+                        Issue/Error
+                    </strong>
+</td>
+<td width="50%">
+<strong>
+                        Resolution
+                    </strong>
+</td>
+<td width="10%">
+<strong>
+                        Reference
+                    </strong>
+</td>
 </tr>
 <tr>
-<td>role = get_execution_role()</td>
-<td>The user with name [] cannot be found</td>
+<td>
+                    role = get_execution_role()
+                </td>
+<td>
+                    The user with name [] cannot be found
+                </td>
 <td>
 <pre>iam = boto3.client('iam')
 role = iam.get_role(RoleName='AmazonSageMaker-ExecutionRole-[xxx]')['Role']['Arn']
-</pre></td>
-<td><a href="https://github.com/aws/sagemaker-python-sdk/issues/300" target="_blank">github.com</a></td>
+</pre>
+</td>
+<td>
+<a href="https://github.com/aws/sagemaker-python-sdk/issues/300" target="_blank">
+                        github.com
+                    </a>
+</td>
 </tr>
-</table></body></html>
+</table>
+</body>
+</html>

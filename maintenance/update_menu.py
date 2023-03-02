@@ -1,7 +1,7 @@
 import os
 from bs4 import BeautifulSoup
 
-
+exclusion_list = ['menu.html']
 top_dir = 'C:\\Users\\erees\\OneDrive\\Documents\\development\\i-morgen\\'
 
 
@@ -19,7 +19,7 @@ for dirpath, dirnames, filenames in os.walk(top_dir):
 
     # Loop through each HTML file in the directory
         for filename in os.listdir(dirpath):
-            if filename.endswith('html'):
+            if filename.endswith('html') and filename not in exclusion_list:
                 # Read in the contents of the HTML file
                 with open(os.path.join(dirpath, filename), 'r', errors="ignore") as f:
                     html_contents = f.read()

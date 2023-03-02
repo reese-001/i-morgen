@@ -3,76 +3,190 @@
 <html>
 <head>
 <link href="../../../styles.css" rel="stylesheet"/>
-<title>i morgen</title>
+<title>
+            i morgen
+        </title>
 <link href="../../../images/logo.png" rel="icon"/>
 </head>
 <body>
 <table>
 <tr>
-<td><img class="logo" src="../../../images/logo.png"/></td>
-<td><h1 style="color:hsl(241, 74%, 46%)">i morgen</h1></td>
+<td>
+<img class="logo" src="../../../images/logo.png"/>
+</td>
+<td>
+<h1 style="color:hsl(241, 74%, 46%)">
+                        i morgen
+                    </h1>
+</td>
 </tr>
 </table>
-<h3 style="color:hsl(241, 74%, 46%)"><a href="../../../../index.html">home</a> : <a href="../../../index.html">data science</a> : <a href="../index.html">machine learning on the cloud with aws</a> : <a href="index.html">introduction to cloud, aws and sagemaker</a> : overview</h3>
-<p><strong><span style="font-size: 18px;">Introduction to Cloud, AWS and SageMaker</span></strong></p>
-<p><strong><span style="font-size: 18px;">What does a typical machine learning lifecycle look like?</span></strong></p>
+<h3 class="title" style="color:hsl(241, 74%, 46%)">
+<a href="../../../../index.html">
+                home
+            </a>
+            :
+            <a href="../../../index.html">
+                data science
+            </a>
+            :
+            <a href="../index.html">
+                machine learning on the cloud with aws
+            </a>
+            :
+            <a href="index.html">
+                introduction to cloud, aws and sagemaker
+            </a>
+            : overview
+        </h3>
+<p>
+<strong>
+<span style="font-size: 18px;">
+                    Introduction to Cloud, AWS and SageMaker
+                </span>
+</strong>
+</p>
+<p>
+<strong>
+<span style="font-size: 18px;">
+                    What does a typical machine learning lifecycle look like?
+                </span>
+</strong>
+</p>
 <ul>
-<li><a href="https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-mlconcepts.html">AWS documentation</a></li>
-<li><a href="../images/ml_lifecycle.png">Illustration</a></li>
-<li>Steps (defined in class)</li>
+<li>
+<a href="https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-mlconcepts.html">
+                    AWS documentation
+                </a>
+</li>
+<li>
+<a href="../images/ml_lifecycle.png">
+                    Illustration
+                </a>
+</li>
+<li>
+                Steps (defined in class)
+            </li>
 <ul>
-<li>Business Context</li>
+<li>
+                    Business Context
+                </li>
 <ul>
-<li>Define the problem and business value</li>
+<li>
+                        Define the problem and business value
+                    </li>
 </ul>
-<li>Pre-process</li>
+<li>
+                    Pre-process
+                </li>
 <ul>
-<li>Clear, transform and create new features</li>
-<li>SageMaker offers Feature Store and Data Wrangler</li>
+<li>
+                        Clear, transform and create new features
+                    </li>
+<li>
+                        SageMaker offers Feature Store and Data Wrangler
+                    </li>
 </ul>
-<li>Train</li>
+<li>
+                    Train
+                </li>
 <ul>
-<li>Model building, training, evaluation</li>
-<li>SageMaker offers Spot Training and One Click Train</li>
+<li>
+                        Model building, training, evaluation
+                    </li>
+<li>
+                        SageMaker offers Spot Training and One Click Train
+                    </li>
 </ul>
-<li>Tune</li>
+<li>
+                    Tune
+                </li>
 <ul>
-<li>Change parameters to enhance performance</li>
-<li>SageMaker offers Auto Model Tune and Experiments</li>
+<li>
+                        Change parameters to enhance performance
+                    </li>
+<li>
+                        SageMaker offers Auto Model Tune and Experiments
+                    </li>
 </ul>
-<li>Deploy</li>
+<li>
+                    Deploy
+                </li>
 <ul>
-<li>Publish the model into production for use</li>
-<li>SageMaker offers Pipelines and One Click Deploy</li>
+<li>
+                        Publish the model into production for use
+                    </li>
+<li>
+                        SageMaker offers Pipelines and One Click Deploy
+                    </li>
 </ul>
-<li>Monitor</li>
+<li>
+                    Monitor
+                </li>
 <ul>
-<li>Manage, Validate, Manage Costs</li>
-<li>SageMaker offers Clarify and Model Monitor</li>
+<li>
+                        Manage, Validate, Manage Costs
+                    </li>
+<li>
+                        SageMaker offers Clarify and Model Monitor
+                    </li>
 </ul>
 </ul>
-<li>SageMaker offers the following general tools</li>
+<li>
+                SageMaker offers the following general tools
+            </li>
 <ul>
-<li>Studio: platform where we implement these services</li>
-<li>Jumpstart: collection of prebuilt models, algos and frameworks</li>
-<li>Autopilot: helps with entire lifecycle in a no code way</li>
-<li>Debugger: validating ML code </li>
+<li>
+                    Studio: platform where we implement these services
+                </li>
+<li>
+                    Jumpstart: collection of prebuilt models, algos and frameworks
+                </li>
+<li>
+                    Autopilot: helps with entire lifecycle in a no code way
+                </li>
+<li>
+                    Debugger: validating ML code
+                </li>
 </ul>
 </ul>
-<p><strong><span style="font-size: 18px;">SageMaker back end architecture</span></strong></p>
+<p>
+<strong>
+<span style="font-size: 18px;">
+                    SageMaker back end architecture
+                </span>
+</strong>
+</p>
 <ul>
-<li>Domain</li>
+<li>
+                Domain
+            </li>
 <ul>
-<li>Consists of</li>
+<li>
+                    Consists of
+                </li>
 <ul>
-<li>Amazon Elastic File System (EFS) volume</li>
-<li>List of authorized users</li>
-<li>Variety of security, application, policy and VPC configs</li>
+<li>
+                        Amazon Elastic File System (EFS) volume
+                    </li>
+<li>
+                        List of authorized users
+                    </li>
+<li>
+                        Variety of security, application, policy and VPC configs
+                    </li>
 </ul>
-<li></li>
-<li>Can be implemented by Quick setup or Standard onboarding process</li>
-<li><a href="https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-vpc.html">VPC information</a></li>
+<li>
+</li>
+<li>
+                    Can be implemented by Quick setup or Standard onboarding process
+                </li>
+<li>
+<a href="https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-vpc.html">
+                        VPC information
+                    </a>
+</li>
 </ul>
 </ul>
 </body>
-</html> 
+</html>
