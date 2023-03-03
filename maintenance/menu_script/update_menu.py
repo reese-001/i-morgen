@@ -35,7 +35,6 @@ def iterate_bucket_items(bucket):
             else:
                 log_failures(bucket, key)
                 
-            
     update_history(bucket, count)
 
 def get_template(bucket):
