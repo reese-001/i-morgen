@@ -1,68 +1,82 @@
 import os
 from bs4 import BeautifulSoup
 import boto3
+import codecs
+from datetime import datetime
 
-exclusion_list = ['menu.html']
+
+exclusion_list = ['menu.html', "status.html"]
 s3 = boto3.client('s3')
 
 
 
 def iterate_bucket_items(bucket):
-
+    clear_failures(bucket)
     response = s3.list_objects_v2(Bucket=bucket)
-
+    count = 0
     for obj in response['Contents']:
         key = obj['Key']
+        template_menu_contents = get_template(bucket)
         if key.endswith('.html') and not key.startswith('templates') and key not in exclusion_list:
+
             print(key)
             obj = s3.get_object(Bucket=bucket, Key=key)
-            body = obj['Body'].read()
-
-            s3.put_object(Bucket=bucket, Key=key, Body=str(body).encode('utf-8'))
-            obj = s3.get_object(Bucket=bucket, Key=key)
             body = obj['Body'].read().decode('utf-8')
+            soup = BeautifulSoup(body, 'html.parser')
+        
+            existing_menu = soup.find('div', {'class': 'page-header-fixed page-sidebar-fixed'})
+
+            new_menu = BeautifulSoup(template_menu_contents, 'html.parser').find('div', {'class': 'page-header-fixed page-sidebar-fixed'})
+            if new_menu and existing_menu:
+                existing_menu.replace_with(new_menu) 
+                s3.put_object(Bucket=bucket, Key=key, Body=soup.prettify(formatter=None), ContentType='text/html')
+     
+                count += 1
+            else:
+                log_failures(bucket, key)
+                
             
-            # soup = BeautifulSoup(body, 'html.parser')
-           
-            # # Find the existing menu element in the HTML file
-            # existing_menu = soup.find('div', {'class': 'page-header-fixed page-sidebar-fixed'})
-            # # if key == 'app_dev/python/quick_commands.html': 
-            # #     existing_menu = handle_failures(body, key, soup, bucket)
-            # #     continue
-            # # else:
-            # print("outside")
-            # new_menu = BeautifulSoup(template_menu_contents, 'html.parser').find('div', {'class': 'page-header-fixed page-sidebar-fixed'})
-            # if new_menu:
-            #     existing_menu.replace_with(new_menu) 
-            #     s3.put_object(Bucket=bucket, Key=key, Body=str(soup).encode('utf-8'))
+    update_history(bucket, count)
 
-
-def get_template(bucket)         :
+def get_template(bucket):
 
     template_menu_file = 'templates/menu.html'
-    obj = s3.get_object(Bucket='test-340846', Key=template_menu_file)
-    template_menu_contents = obj['Body'].read().decode('utf-8')
+    obj = s3.get_object(Bucket=bucket, Key=template_menu_file)
+    return obj['Body'].read().decode('utf-8')
 
-def handle_failures(body, key, soup, bucket):
-    print("## FAILURE IN", key)
-    dirpath = "C:\\Users\\erees\\OneDrive\\Documents\\development\\temp\\"
-    filename = key.split('/')[-1]
+def update_history(bucket, count):
+    key_status = "status.html"
+    body_status = s3.get_object(Bucket=bucket, Key=key_status)
+    body_status = body_status['Body'].read().decode('utf-8')
+    soup_status = BeautifulSoup(body_status, 'html.parser')
 
-    # save and reopen the file
-    with open(os.path.join(dirpath, filename), 'w') as f:
-        f.write(str(soup))
-    with open(os.path.join(dirpath, filename), 'r', errors="ignore") as f:
-        html_contents = f.read()
+    history = soup_status.find('div', {'class': 'history'})
+    history.append("<a>" + str(datetime.now()) + ":  Files Updates: " + str(count) + "</a><br/>")
+    s3.put_object(Bucket=bucket, Key=key_status, Body=soup_status.prettify(formatter=None), ContentType='text/html')      
 
-    # save and reopen the file from S3
-    s3.put_object(Bucket=bucket, Key=key, Body=str(soup).encode('utf-8'))
 
-    # parse the re-opened file   
-    soup = BeautifulSoup(body, 'html.parser')
-    existing_menu = soup.find('div', {'class': 'page-header-fixed page-sidebar-fixed'})
+def log_failures(bucket, key):
+    key_status = "status.html"
+    body_status = s3.get_object(Bucket=bucket, Key=key_status)
 
-    new_menu = BeautifulSoup(template_menu_contents, 'html.parser').find('div', {'class': 'page-header-fixed page-sidebar-fixed'})
-    existing_menu.replace_with(new_menu) 
-    s3.put_object(Bucket=bucket, Key=key, Body=str(soup).encode('utf-8'))
-    print("returning from failure")
+    body_status = body_status['Body'].read().decode('utf-8')
 
+    soup_status = BeautifulSoup(body_status, 'html.parser')
+
+    failed_menu_updates = soup_status.find('div', {'class': 'failed_menu_updates'})
+    failed_menu_updates.append("<br/>" + key + " at " + str(datetime.now()))
+
+    s3.put_object(Bucket=bucket, Key=key_status, Body=soup_status.prettify(formatter=None), ContentType='text/html')
+
+def clear_failures(bucket):
+    key_status = "status.html"
+    body_status = s3.get_object(Bucket=bucket, Key=key_status)
+
+    body_status = body_status['Body'].read().decode('utf-8')
+
+    soup_status = BeautifulSoup(body_status, 'html.parser')
+
+    failed_menu_updates = soup_status.find('div', {'class': 'failed_menu_updates'})
+    failed_menu_updates.clear()
+
+    s3.put_object(Bucket=bucket, Key=key_status, Body=soup_status.prettify(formatter=None), ContentType='text/html')
