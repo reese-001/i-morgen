@@ -27,3 +27,14 @@ pre {
     font-size: 25px;
 }
 
+pre.code_sample {
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 10px;
+    background-color: #dfdce6;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  
+

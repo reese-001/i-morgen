@@ -627,8 +627,29 @@
             </li>
           </ul>
         </li>
-        <li>
-          <a href="javascript:void(0);" onclick="location.href = path_to_root + 'status.html';">Status</a>
+        <li class="has-sub">
+          <a href="javascript:;">
+            <b class="caret"></b>
+            <i class="fa fa-list-ol"></i>
+            <span>Site Status</span>
+          </a>
+          <ul class="sub-menu">
+            <li class="has-sub">
+              <a href="javascript:;">
+                <b class="caret"></b>
+                <i class="fa fa-list-ol"></i>
+                <span>Infrastructure</span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="javascript:void(0);" onclick="location.href = path_to_root + 'status.html';">Recent Deployments</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" onclick="location.href = path_to_root + 'system_design/load_balancers.html';">Load Balancing</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="javascript:void(0);" onclick="location.href = path_to_root + 'search.html';">Search</a>
