@@ -8,8 +8,6 @@ from datetime import datetime
 exclusion_list = ['menu.html', "status.html"]
 s3 = boto3.client('s3')
 
-
-
 def iterate_bucket_items(bucket):
     clear_failures(bucket)
     response = s3.list_objects_v2(Bucket=bucket)

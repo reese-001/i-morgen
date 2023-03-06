@@ -21,8 +21,9 @@ for dirpath, dirnames, filenames in os.walk(top_dir):
         for filename in os.listdir(dirpath):
             if filename.endswith('html') and filename not in exclusion_list:
                 # Read in the contents of the HTML file
-                with open(os.path.join(dirpath, filename), 'r', errors="ignore") as f:
+                with open(os.path.join(dirpath, filename), 'r', encoding='utf-8', errors="ignore") as f:
                     html_contents = f.read()
+
 
                 soup_text = html_contents
 
@@ -46,6 +47,6 @@ for dirpath, dirnames, filenames in os.walk(top_dir):
             
 
                 # Save the updated HTML file to disk
-                with open(os.path.join(dirpath, filename), 'w') as f:
+                with open(os.path.join(dirpath, filename), 'w', encoding='utf-8') as f:
                     print("saving", dirpath, filename)
                     f.write(str(soup))
