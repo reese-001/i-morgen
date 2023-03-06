@@ -140,6 +140,9 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
 </li>
 <li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudwatch/cloudwatch.html';">CloudWatch</a>
+</li>
+<li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
 </li>
 <li>
@@ -154,6 +157,9 @@
 <span>Messaging</span>
 </a>
 <ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eventbridge/eventbridge.html';">EventBridge</a>
+</li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
 </li>
@@ -646,6 +652,30 @@
 </li>
 </ul>
 </li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Site Status</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Infrastructure</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'status.html';">Recent Deployments</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'system_design/load_balancers.html';">Load Balancing</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'search.html';">Search</a>
 </li>
@@ -661,24 +691,23 @@
 <!-- end #sidebar -->
 </div>
 <div class="content" id="content">
-    <table width="80%">
-        <tr>
-            <td width="5%">
-                <img class="logo" src="../images/logo.png" />
-            </td>
-            <td width="80%">
-                <h1 style="color:hsl(241, 74%, 46%)">
+<table width="80%">
+<tr>
+<td width="5%">
+<img class="logo" src="../images/logo.png"/>
+</td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">
                     i morgen
                 </h1>
-            </td>
-        </tr>
-    </table>
-    <br />
-    <h3 class="title" style="color:hsl(241, 74%, 46%)">
+</td>
+</tr>
+</table>
+<br/>
+<h3 class="title" style="color:hsl(241, 74%, 46%)">
         Status Page
     </h3>
-    <br />
-
+<br/>
 <h3>History</h3>
 <div class="history">
 </div>
@@ -692,5 +721,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
 <script src="../../javascript/script.js"></script>
-
 </html>
