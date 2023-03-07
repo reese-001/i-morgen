@@ -801,13 +801,7 @@
                 <!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
                 <!-- end sidebar minify button -->
                 <!-- end sidebar nav -->
-                </li>
-                </li>
-                </li>
-                </li>
-                </li>
-                </li>
-                </ul>
+           
             </div>
             <!-- end sidebar scrollbar -->
         </div>
@@ -832,7 +826,8 @@
         <br />
         <h3 class="title"
             style="color:hsl(241, 74%, 46%)">
-            CloudWatch
+            <a class="title"
+               href="code_deploy.html">CodeDeploy</a> : : Appspec.yml Deep Dive
         </h3>
         <br />
         <span style="font-size: 18px;">
@@ -842,262 +837,134 @@
         </span>
         <ul>
             <li>
-                <a href="#what_is_it">
-                    What Is It?
+                <a href="#sample_document">
+                    Sample Document
                 </a>
             </li>
             <li>
-                <a href="#components">
-                    CloudWatch Components
+                <a href="#description">
+                    Description
                 </a>
             </li>
             <li>
-                <a href="#metrics">
-                    Metrics
+                <a href="#hooks">
+                    Hooks/Environmental Variables
                 </a>
             </li>
-            <li>
-                <a href="#alarms">
-                    Alarms
-                </a>
-            </li>
-        </ul>
         </ul>
         <br />
-        <div id="what_is_it">
+        <div id="sample_document">
             <p>
                 <span style="font-size: 18px;">
                     <strong>
-                        What Is It?
+                        Sample Document
                     </strong>
                 </span>
             </p>
-            
         </div>
         <ul>
-            <li>AWS CloudWatch is a monitoring and observability service provided by AWS</li>
-            <ul>
-                <li>Allows you to collect and track metrics, including custom metrics and metrics from AWS services such as EC2, RDS, and Lambda</li>
-                <li>Allows you to collect and monitor log files from AWS resources, third-party applications, and custom applications, and provides features for analyzing and visualizing log data</li>
-                <li>Provides real-time insights into your AWS environment, including metrics and log data, which can help you identify issues, troubleshoot problems, and optimize performance</li>
-            </ul>
-            <li>CloudWatch supports dashboards and visualization tools, which allow you to create custom dashboards and charts to visualize your data and gain insights into your AWS environment</li>
-            <ul>
-                <li>Enables you to monitor metrics, alarms, and events in real-time, and can be customized to display the data most relevant to your use case</li>
-            </ul>
-            <li>CloudWatch allows you to set alarms and trigger automated actions in response to events or changes in resource usage, which can help you automate operational tasks and ensure that your systems are running smoothly</li>
-            <ul>
-                <li>Alarms can be set on individual metrics, such as CPU utilization or network traffic, and can trigger automated actions such as scaling or notifications</li>
-                <li>Integrates with other AWS services, such as EC2 Auto Scaling, to enable automated scaling based on CloudWatch metrics and alarms</li>
-            </ul>
-            <li>CloudWatch provides APIs and other tools for automating management tasks, which can help you streamline your operations and reduce the time and effort required to manage your AWS environment</li>
+            <pre class="code_sample">
+version: 0.0
+os: linux
+files:
+    - source: /index.html
+    destination: /var/www/html/
+hooks:
+    ApplicationStop:
+    - location: scripts/stop_server.sh
+        timeout: 300
+        runas: root
+
+    AfterInstall:
+    - location: scripts/after_install.sh
+        timeout: 300
+        runas: root
+
+    BeforeInstall:
+    - location: scripts/install_dependencies.sh
+        timeout: 300
+        runas: root
+
+    ApplicationStart:
+    - location: scripts/start_server.sh
+        timeout: 300
+        runas: root
+
+    ValidateService:
+    - location: scripts/validate_service.sh
+        timeout: 300
+      
+            </pre>
         </ul>
 
+       
         <br />
-        <div id="components">
+        <div id="description">
             <p>
                 <span style="font-size: 18px;">
-                    <strong>
-                        CloudWatch Components
-                    </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>There are six different components of CloudWatch</li>
-            <ul>
-                <li>Metrics</li>
-                <li>Alarms</li>
-                <li>Dashboards</li>
-                <li>Logs</li>
-                <li>Insights</li>
-                <li>Events</li>
-            </ul>
-        </ul>
-        
-        <br/>
-        <div id="metrics">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
-                        CloudWatch Metrics
-                    </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>CloudWatch provides metrics for every service in AWS</li>
-            <li>A metric is a variable to monitor (CPUUtilization, NetworkIn, etc)</li>
-            <li>Metrics belong to namespaces</li>
-            <ul>
-                <li>A namespace is a container for CloudWatch metrics, which provides a way to group related metrics together</li>
-                <li>Metrics that share a namespace are typically related to the same resource or application</li>
-                <li>May have common characteristics such as units of measure or dimensions</li>
-            </ul>
-            <li>Dimensions is an attribute of a metric (instance id, environment, etc)</li>
-            <ul>
-                <li>A dimension is a name-value pair that helps to identify and categorize the data being collected by the metric</li>
-                <li>By specifying dimensions, you can more easily filter and analyze the metrics based on specific attributes</li>
-            </ul>
-            <li>You can have up to 30 dimensions per metric</li>
-            <li>Metrics have timestamps</li>
-            <li>Can create CloudWatch dashboards of metrics</li>
-        </ul>
-
-        <br/>
-        <div id="alarms">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
-                        CloudWatch Alarms
-                    </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>Alarms are used to trigger notifications for any metric</li>
-            <li>Various options exist to create alarms (sampling, %, max, min, etc)</li>
-            <li>Alarms can take one of three states</li>
-            <ul>
-                <li>OK</li>
-                <li>INSUFFICIENT_DATA</li>
-                <li>ALARM</li>
-            </ul>
-            <li>Period: the length of time in seconds to evaluate the metric</li>
-            <li>There are three types of alarm targets</li>
-            <ul>
-                <li>EC2 instances</li>
-                <ul>
-                    <li>Stop</li>
-                    <li>Terminate</li>
-                    <li>Reboot</li>
-                    <li>Recover </li>
-                </ul>
-                <li>ECR</li>
-                <ul>
-                    <li>Trigger autoscaling action (scale out/in)</li>
-                </ul>
-                <li>SNS</li>
-                <ul>
-                    <li>Send notification to SNS</li>
-                    <li>From there you can do almost anything</li>
-                </ul>
-               
-            </ul>
-            <li>Composite Alarms</li>
-            <ul>
-                <li>Used to monitor the state of multiple other alarms</li>
-                <li>You can use AND and OR conditions</li>
-            </ul>
-            <li>EC2 Instance Recovery</li>
-            <ul>
-                <li>Status check</li>
-                <ul>
-                    <li>Instance status = check the EC2 VM</li>
-                    <li>System check = check the underlying hardware</li>
-                </ul>
-                <li>In the event the alarm is activated, you can initiate the EC2 instance recovery</li>
-            </ul>
-        </ul>
-
-        <br/>
-        <div id="logs">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
-                        CloudWatch Logs
-                    </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>Service that allows you to monitor, store, and access log files from your AWS resources and applications</li>
-            
-        </ul>
-
-        <br/>
-        <div id="events">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
-                        CloudWatch Events
-                    </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>Schedules can be triggered in the following ways</li>
-            <ul>
-                <li>CloudWatch event patterns</li>
-                <ul>
-                    <li>Allows you to set up rules that trigger based on a specific set of event pattern</li>
-                    <li>You can use CloudWatch Event Patterns to trigger CodeBuild builds based on a variety of events, such as changes to an AWS CodeCommit repository, an AWS CloudFormation stack update, or an AWS CodePipeline state change</li>
-                    <li>CodePipeline may be a more suitable way to do this however</li>
-                </ul>
-                <li>CodeBuild events</li>
-                <ul>
-                    <li>This allows you to create rules that trigger based on the build state changes</li>
-                    <ul>
-                        <li>STARTED</li>
-                        <li>SUCCEEDED</li>
-                        <li>FAILED</li>
-                        <li>etc...</li>
-                    </ul>
-                    <li>You can use these events to automate actions based on build state changed</li>
-                </ul>
-                <li>Triggered on a scheduled time event</li>
-                <ul>
-                    <li>There will be numerous targets avaiable, in this case however choose CodeBuild and provide the ARN</li>
-                </ul>
-            </ul>           
-        </ul>
-
-
-
-        <div id="links">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
-                        Links
-                    </strong>
-                </span>
-            </p>
-        </div>
-        <table style="width:60%;">
-            <tr>
-                <td style="width: 10%;">
-                    <strong>
-                        Category
-                    </strong>
-                </td>
-                <td style="width: 70%;">
                     <strong>
                         Description
                     </strong>
-                </td>
-                <td style="width: 20%;">
-                    <strong>
-                        URL
-                    </strong>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    CloudWatch
-                </td>
-                <td>
-                    Overview
-                </td>
-                <td>
-                    <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html"
-                       target="_blank">
-                        Link
-                    </a>
-                </td>
-            </tr>
-            
-        </table>
+                </span>
+            </p>
+        </div>
+        <ul>
+            <li>version</li>
+            <ul>
+                <li>The version number of the deployment specification format</li>
+            </ul>
+            <li>os</li>
+            <ul>
+                <li>The operating system the deployment package is designed to run on</li>
+            </ul>
+            <li>files</li>
+            <ul>
+                <li>A list of files that should be included in the deployment package</li>
+                <li>In this case, we are copying the source (/index.html) to a destination (/var/www/html/)</li>
+            </ul>
+            <li>hooks</li>
+            <ul>
+                <li>A mapping of lifecycle hooks to scripts that should be executed during the deployment process</li>
+            </ul>
+        </ul>
 
+        <br />
+        <div id="hooks">
+            <p>
+                <span style="font-size: 18px;">
+                    <strong>
+                        Hooks/Environmental Variables
+                    </strong>
+                </span>
+            </p>
+        </div>
+        <ul>
+            <li>Review the documentation <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-server" target="_blank">here</a>
+            <li>Availability of hooks is dependent on the type of deployment you are doing</li>    
+            <ul>
+                <li>In place depends on whether you have a load balancer</li>
+                <ul>
+                    <li>Without load balancer, you get a subset</li>
+                    <li>With load balancer, you get all to include those that block traffic</li>
+                </ul>
+                <li>Blue/green depends on whether you are in blue or green environment and whether you are deploying or rolling back</li>
+                <ul>
+                    <li>For example, it does not make sense to use BlockTraffic on replacement instances</li>
+                </ul>
+            </ul>
+            <li>Environmental variables available for hooks</li>
+            <ul>
+                <li>APPLICATION_NAME</li>
+                <li>DEPLOYMENT_ID</li>
+                <LI>DEPLOYMENT_GROUP_NAME</LI>
+                <li>DEPLOYMENT_GROUP_ID</li>
+                <li>LIFECYCLE_EVENT</li>
+                <li>Use case</li>
+                <ul>
+                    <li>If you wanted to do something different in development as compared to production, you could use the DEPLOYMENT_GROUP_NAME</li>
+                </ul>
+            </ul>
+        </ul>
 
     </div>
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>

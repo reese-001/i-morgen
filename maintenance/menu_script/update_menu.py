@@ -7,6 +7,7 @@ from datetime import datetime
 
 exclusion_list = ['menu.html', "status.html"]
 s3 = boto3.client('s3')
+logs = boto3.client('logs')
 
 def iterate_bucket_items(bucket):
     clear_failures(bucket)
@@ -14,6 +15,7 @@ def iterate_bucket_items(bucket):
     count = 0
     for obj in response['Contents']:
         key = obj['Key']
+        print("Reviewing file", key)
         template_menu_contents = get_template(bucket)
         if key.endswith('.html') and not key.startswith('templates') and key not in exclusion_list:
 
@@ -42,6 +44,19 @@ def get_template(bucket):
     return obj['Body'].read().decode('utf-8')
 
 def update_history(bucket, count):
+    response = logs.put_log_events(
+        logGroupName="i-morgen/build",
+        logStreamName="update_menu.py",
+        logEvents=[
+            {
+                'timestamp': datetime.now(),
+                'message': f"Files Updates: {str(count)}"
+            }
+        ]
+    )
+
+
+    print("Writing Summary:", str(datetime.now()) + ":  Files Updates: " + str(count))
     key_status = "status.html"
     body_status = s3.get_object(Bucket=bucket, Key=key_status)
     body_status = body_status['Body'].read().decode('utf-8')
@@ -53,6 +68,7 @@ def update_history(bucket, count):
 
 
 def log_failures(bucket, key):
+    print("Failure on", key)
     key_status = "status.html"
     body_status = s3.get_object(Bucket=bucket, Key=key_status)
 

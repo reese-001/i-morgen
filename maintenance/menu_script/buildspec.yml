@@ -9,8 +9,6 @@ phases:
   build:
     commands:
       - python menu_script.py
-artifacts:
-  files:
-    - 'templates/menu.html'
+
 
 
