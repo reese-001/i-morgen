@@ -13,9 +13,10 @@ phases:
   build:
     commands:
       - python menu_script.py
-artifacts:
-    files:
-      - 'build-artifacts/*'
+  post_build:
+    commands:
+      - aws s3 sync $SOURCE_ARTIFACTS_PATH s3://www.i-morgen.link/test 
+
 
 
 
