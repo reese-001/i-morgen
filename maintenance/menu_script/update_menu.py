@@ -9,6 +9,21 @@ exclusion_list = ['menu.html', "status.html"]
 s3 = boto3.client('s3')
 logs = boto3.client('logs')
 
+
+def test():
+    source_artifacts = "source-artifacts/"
+    for dirpath, dirnames, filenames in os.walk(source_artifacts):
+
+    # Loop through each HTML file in the directory
+        for filename in os.listdir(dirpath):
+            if filename.endswith('html') and filename not in exclusion_list:
+                # Read in the contents of the HTML file
+                with open(os.path.join(dirpath, filename), 'r', encoding='utf-8', errors="ignore") as f:
+                    html_contents = f.read()
+                print(filename, html_contents)
+            break
+
+
 def iterate_bucket_items(bucket):
     clear_failures(bucket)
     response = s3.list_objects_v2(Bucket=bucket)
