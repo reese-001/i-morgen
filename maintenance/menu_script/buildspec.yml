@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     SOURCE_ARTIFACTS_PATH="source-artifacts/"
+    BUILD_ARTIFACTS_PATH="build-artifacts/"
 
 phases:
   install:
@@ -15,7 +16,7 @@ phases:
       - python menu_script.py
   post_build:
     commands:
-      - aws s3 sync $SOURCE_ARTIFACTS_PATH s3://www.i-morgen.link/test 
+      - aws s3 sync $BUILD_ARTIFACTS_PATH s3://www.i-morgen.link/test 
 
 
 

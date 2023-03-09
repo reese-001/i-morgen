@@ -13,6 +13,12 @@ logs = boto3.client('logs')
 def test():
     source_artifacts = "source-artifacts/"
     build_artifacts = "build-artifacts/"
+
+    with open(os.path.join(build_artifacts, filename), 'w', encoding='utf-8') as f:
+        print("saving", dirpath, filename)
+        f.write("Hi!")
+
+
     for dirpath, dirnames, filenames in os.walk(source_artifacts):
 
     # Loop through each HTML file in the directory
