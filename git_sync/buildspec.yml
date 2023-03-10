@@ -1,0 +1,7 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - git diff --name-only $CODEBUILD_SOURCE_VERSION > include.txt
+      - aws s3 sync . s3://www.i-morgen.link/ --exclude "*" --include-from include.txt
