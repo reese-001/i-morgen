@@ -19,11 +19,25 @@ a.title {
     font-size: 24px;
 } 
 
+a.text {
+  color:hsl(241, 74%, 46%);
+  font-size: 18px;
+} 
+
 li {
     font-size: 14px;
 }
 
 pre.code_sample {
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+  background-color: #dfdce6;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+div.highlight {
   font-size: 14px;
   line-height: 1.5;
   padding: 10px;

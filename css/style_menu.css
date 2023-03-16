@@ -1493,3 +1493,20 @@ table.dataTable thead .sorting_desc_disabled:after {
     margin-left: 220px;
     padding: 20px 30px;
 }
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+    width: 220px;
+}
+
+.bottom-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px; /* adjust padding as needed */
+    background-color: inherit; /* optional, you can set a background color */
+}
