@@ -1,0 +1,1013 @@
+<head>
+<meta charset="utf-8"/>
+<title>
+        i-morgen
+    </title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../../css/style_menu.css" rel="stylesheet"/>
+<link href="../../css/styles.css" rel="stylesheet"/>
+<script>
+        var path_to_root = "../../" // data_science/sagemaker
+    </script>
+</head>
+<body>
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS Toolset</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudwatch/cloudwatch.html';">CloudWatch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eventbridge/eventbridge.html';">EventBridge</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route 53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Tutorials</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/sam_rest_api.html';">REST API via SAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/allow_internet_access_from_vpc.html';">Internet Access VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/static_s3_cloudfront.html';">Static S3 Site</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>White Papers</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>6 Pillars</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/operational_excellence.html';">Operational Excellence</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/reliability.html';">Reliability</a>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>General</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/overview.html';">AWS Overview</a>
+</li>
+</ul>
+</li>
+</li></ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>App Dev</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Databases</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/databases/time_series.html';">Time Series</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Structures</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/data_structures/complexity_analysis.html';">Complexity Analysis</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/data_structures/big_o.html';">Big O</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Python</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/python/quick_commands.html';">Quick Commands</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Data Science</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Core Functions</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation Functions</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP BERT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/supervised_learning.html';">Supervised Learning</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing Gradients</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Overview</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/devops_history.html';">Brief History</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/cloud_technologies.html';">Cloud Technologies</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/containers.html';">Containers</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/infrastructure_as_code.html';">Infra as Code</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/ci_cd.html';">CI/CD</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/observability.html';">Observability</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Git</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/branching.html';">Branching</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/checkout.html';">Checkout</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/merge.html';">Merge</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/rebase.html';">Rebase</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/scenarios.html';">Scenarios</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevSecOps</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/devsecops/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/devsecops/security_scanning_shift_left.html';">Security Scanning</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Infrastructure</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/infrastructure/understanding_performance.html';">Perf Engineering</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/kubernetes/kubernetes.html';">Kubernetes</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/docker/docker.html';">Docker</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Networking</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/ssl_basics.html';">SSL</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Goal Setting</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/goal_setting/okr.html';">OKRs</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/goal_setting/mission_statements.html';">Mission Statements</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Books</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/books/joy.html';">Joy, Inc</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/books/first_90_days.html';">First 90 Days</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Personal</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Professional Accomplishments</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'personal/professional_accomplishments/classes.html';">Classes</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Site Reliability</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Overview</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Activities</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/hiring_sre.html';">Hiring</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/monitoring.html';">Monitoring</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/shifts.html';">Shifts</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/toil.html';">Toil</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Observability</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/observability/foundations/index.html';">Foundations</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>System Design</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Infrastructure</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'system_design/caching.html';">Caching</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'system_design/load_balancers.html';">Load Balancing</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'index.html';">Home</a>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+<!-- end sidebar nav -->
+</ul></div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table width="80%">
+<tr>
+<td width="5%">
+<img class="logo" src="../images/logo.png"/>
+</td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">
+                        i morgen
+                    </h1>
+</td>
+</tr>
+</table>
+<br/>
+<h3 class="title" style="color:hsl(241, 74%, 46%)">
+            Containers
+        </h3>
+<br/>
+<span style="font-size: 18px;">
+<strong>
+                Contents
+            </strong>
+</span>
+<ul>
+<li>
+<a href="#history">
+                    Brief History of Containers
+                </a>
+</li>
+<li>
+<a href="#docker">
+                    Docker - What's Under the Hood?
+                </a>
+</li>
+<li>
+<a href="#kubernetes">
+                    Kubernetes - Why Do We Need It?
+                </a>
+</li>
+<li>
+<a href="#walk_through_docker">
+                    Walk Through: Docker
+                </a>
+</li>
+<li>
+<a href="#is_docker_dead">
+                    Is Docker Dead
+                </a>
+</li>
+<li>
+<a href="#emerging_tech">
+                    Emerging Tech
+                </a>
+</li>
+</ul>
+<br/>
+<div id="history">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                        Brief History of Containers
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>1970's: chroot became available which allowed you to change the root directory for a process and its children to a new directory, effectively creating a new, isolated environment </li>
+<li>2001-2004: Solaris introduced Zones and BSD came up with jails which were similar to what we can Linux Containers/OS virtualization </li>
+<ul>
+<li>In this configuration, you had to run the virtual environment with the same OS as the host</li>
+</ul>
+<li>2005: OpenVZ was created which allowed all containers to share a single kernel</li>
+<ul>
+<li>Due to lack of orchestration and complexity of software, it did not gain a large following</li>
+</ul>
+<li>2003-2006: Google's container orchestration tool called Borg was being developed <a href="devops_history.html#2008_2009">See DevOps History 2008-2009</a></li>
+<ul>
+<li>Contributed cgroups to the Linux kernel to allow for resource restrictions cpu, memory, etc for containers</li>
+<li>Additionally Google contributed namespace code to the kernel</li>
+<li>In 2008 these two contributions lead to the release of LXC (Linux Containers)</li>
+</ul>
+<li>In 2009 a company called dotCloud released a web based application that utilized LXC</li>
+<ul>
+<li>This product lead to the creation of Docker in 2012</li>
+<li>See <a href="devops_history#2010_2015">DevOps History 2010-2015</a></li>
+</ul>
+<li>In 2014 Google release Kubernetes and Docker releases Swarm</li>
+<ul>
+<li>See <a href="devops_history#2010_2015">DevOps History 2010-2015</a> </li>
+<li>AWS released EKS and AKS</li>
+<li>Kubernetes has an interface (CLI) that allows for multiple other container platforms to be operated</li>
+</ul>
+<li>In about the same time period, Marathon was also released by Apache</li>
+</ul>
+<br/>
+<div id="docker">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                        Docker - What's Under the Hood?
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Allows the creation of a containerized environment without requiring a virtual machine</li>
+<li>This occurs via the following technologies</li>
+<ul>
+<li>Namespaces</li>
+<ul>
+<li>What appears as containers is actually just Linux Namespaces</li>
+<li>Functions like network, root file system, users, etc are virtualized</li>
+<li>Nothing else is however</li>
+</ul>
+<li>Cgroups</li>
+<ul>
+<li>Offer resource isolation</li>
+</ul>
+<li>Layered file system</li>
+<ul>
+<li>When you create a Docker image, Docker uses a layered file system to build the image</li>
+<li>Each layer in the file system represents a change to the file system made by the Dockerfile instruction that created it</li>
+</ul>
+</ul>
+</ul>
+<br/>
+<div id="kubernetes">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       Kubernetes - Why Do We Need It?
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Kubernetes offers two things</li>
+<ul>
+<li>Packaging format </li>
+<li>Ability to run that package in a contained environment</li>
+</ul>
+<li>Docker Compose allows you to run multiple containers on a single machine</li>
+<li>However there are a few problems with this</li>
+<ul>
+<li>Scheduling: how do you decide what container runs where?</li>
+<li>Network: How do you network the containers together?</li>
+</ul>
+<li>In addition there are the typical non functional requirements (NFR's)</li>
+<ul>
+<li>Availability</li>
+<li>Scalability</li>
+<li>Security</li>
+</ul>
+<li>Kubernetes solves these problems by taking these servers and creating one logical entity</li>
+<ul>
+<li>No matter how many workloads we have, you submit it to Kubernetes and it schedules it for you</li>
+<ul>
+<li>Workload refers to a set of instructions that define how a container or group of containers should be deployed and managed on a Kubernetes cluster.</li>
+<li>Workloads are used to define the desired state of the application and Kubernetes is responsible for maintaining that state</li>
+</ul>
+<li>Facilitates the creation of the networking for you</li>
+<ul>
+<li>Kubernetes does not do this itself, but has numerous plugins to assist with this</li>
+</ul>
+<li>Takes care of the NFR's mentioned above</li>
+<ul>
+<li>You get HA out of the box</li>
+<li>Allows for a variety of scaling schemes</li>
+<li>Provides many tools for a secure deployment and operation</li>
+</ul>
+</ul>
+<li>See <li><a href="../kubernetes/kubernetes.html" target="_blank">Kubernetes</a></li></li>
+</ul>
+<br/>
+<div id="walk_through_docker">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       Walk Through: Docker
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Goal: Clone Git repo, create and load Docker image</li>
+<ul>
+<li>Locate a repository that is designed to work with Docker - for example "https://github.com/lfs161/facebooc.git"</li>
+<li>Copy the code and execute: git clone https://github.com/lfs161/facebooc.git</li>
+<li>Build Docker image: docker image build -t facebooc:v1 .</li>
+<li>Run Docker image: docker run -idt --name fb -p 16000:16000 facebooc:v1</li>
+<li>Navigate to local ip and correct port in browser</li>
+</ul>
+</ul>
+<br/>
+<div id="is_docker_dead">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       Is Docker Dead?
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>In 2015 the Linux Foundation created the <a href="_linux_foundation_oci_2015.html" target="_blank">Open Container Standards (OCI)</a></li>
+<ul>
+<li>Among other things, it created a standardized format for container images that can be used by any container runtime that supports the OCI standards</li>
+<li>This led to the creation of a runtime known as runc</li>
+<ul>
+<li>Responsible for creating namespaces, control groups, etc</li>
+</ul>
+<li>Docker created its own runtime based on runc that is called containerd</li>
+<ul>
+<li>Pulls image, pulls registry, runs as a daemon</li>
+</ul>
+</ul>
+<li>Docker was primary in the early years, however now Kubernetes is primary</li>
+<ul>
+<li>The world of containers revolves around Kubernetes</li>
+<li>The Kubernetes/Docker interface is called DockerShim</li>
+<li>However for everything else, Kubernetes uses CRI (Container Runtime Interface)</li>
+<li>Kubernetes has indicated they will stop supporting DockerShim due to stability issues</li>
+</ul>
+<li>This means that Docker will not be supported in production environments that require orchestation</li>
+<ul>
+<li>However Docker will still be used for dev and personal use due to simplicity </li>
+<li>Docker images should be compatible with CRI-O and ContainerD runtime</li>
+</ul>
+</ul>
+<br/>
+<div id="emerging_tech">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       Emerging Tech
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li><a href="https://podman.io/" target="_blank">podman</a></li>
+<ul>
+<li>Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System</li>
+<li>Containers can either be run as root or in rootless mode</li>
+</ul>
+<li><a href="https://buildah.io/" target="_blank">buildah</a></li>
+<ul>
+<li>Facilitates building OCI container images</li>
+</ul>
+<li><a href="https://docs.gitlab.com/ee/ci/docker/using_kaniko.html" target="_blank">kaniko</a> </li>
+<ul>
+<li>Used to build container images from a Dockerfile, inside a container or Kubernetes cluster</li>
+</ul>
+<li><a href="https://github.com/containers/skopeo" target="_blank">skopeo</a></li>
+<ul>
+<li>Helps manage your images and work with multiple registries</li>
+</ul>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../../javascript/script.js"></script>
+</body>

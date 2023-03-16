@@ -19,6 +19,11 @@ a.title {
     font-size: 24px;
 } 
 
+a.note {
+    color:hsl(241, 74%, 46%);
+    font-size: 16px;
+} 
+
 li {
     font-size: 14px;
 }

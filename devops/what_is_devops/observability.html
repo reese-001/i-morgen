@@ -1,0 +1,950 @@
+<head>
+<meta charset="utf-8"/>
+<title>
+        i-morgen
+    </title>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../../css/style_menu.css" rel="stylesheet"/>
+<link href="../../css/styles.css" rel="stylesheet"/>
+<script>
+        var path_to_root = "../../" // data_science/sagemaker
+    </script>
+</head>
+<body>
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS Toolset</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudwatch/cloudwatch.html';">CloudWatch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eventbridge/eventbridge.html';">EventBridge</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route 53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Tutorials</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/sam_rest_api.html';">REST API via SAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/allow_internet_access_from_vpc.html';">Internet Access VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/static_s3_cloudfront.html';">Static S3 Site</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>White Papers</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>6 Pillars</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/operational_excellence.html';">Operational Excellence</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/reliability.html';">Reliability</a>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>General</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/overview.html';">AWS Overview</a>
+</li>
+</ul>
+</li>
+</li></ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>App Dev</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Databases</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/databases/time_series.html';">Time Series</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Structures</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/data_structures/complexity_analysis.html';">Complexity Analysis</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/data_structures/big_o.html';">Big O</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Python</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/python/quick_commands.html';">Quick Commands</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Data Science</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Core Functions</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation Functions</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP BERT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/supervised_learning.html';">Supervised Learning</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing Gradients</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Overview</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/devops_history.html';">Brief History</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/cloud_technologies.html';">Cloud Technologies</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/containers.html';">Containers</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/infrastructure_as_code.html';">Infra as Code</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/ci_cd.html';">CI/CD</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/observability.html';">Observability</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Git</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/branching.html';">Branching</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/checkout.html';">Checkout</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/merge.html';">Merge</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/rebase.html';">Rebase</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/scenarios.html';">Scenarios</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevSecOps</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/devsecops/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/devsecops/security_scanning_shift_left.html';">Security Scanning</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Infrastructure</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/infrastructure/understanding_performance.html';">Perf Engineering</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/kubernetes/kubernetes.html';">Kubernetes</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/docker/docker.html';">Docker</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Networking</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/ssl_basics.html';">SSL</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Goal Setting</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/goal_setting/okr.html';">OKRs</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/goal_setting/mission_statements.html';">Mission Statements</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Books</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/books/joy.html';">Joy, Inc</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/books/first_90_days.html';">First 90 Days</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Personal</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Professional Accomplishments</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'personal/professional_accomplishments/classes.html';">Classes</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Site Reliability</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Overview</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Activities</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/hiring_sre.html';">Hiring</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/monitoring.html';">Monitoring</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/shifts.html';">Shifts</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/toil.html';">Toil</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Observability</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/observability/foundations/index.html';">Foundations</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>System Design</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Infrastructure</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'system_design/caching.html';">Caching</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'system_design/load_balancers.html';">Load Balancing</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'index.html';">Home</a>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+<!-- end sidebar nav -->
+</ul></div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table width="80%">
+<tr>
+<td width="5%">
+<img class="logo" src="../images/logo.png"/>
+</td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">
+                        i morgen
+                    </h1>
+</td>
+</tr>
+</table>
+<br/>
+<h3 class="title" style="color:hsl(241, 74%, 46%)">
+            Observability
+        </h3>
+<br/>
+<span style="font-size: 18px;">
+<strong>
+                Contents
+            </strong>
+</span>
+<ul>
+<li>
+<a href="#why_bother">
+                    Why Bother
+                </a>
+</li>
+<li>
+<a href="#what_to_observe">
+                    Metrics, Logs and Traces: What To Observe and Why
+                </a>
+</li>
+<li>
+<a href="#sla_slo_sli_observability">
+                    SLAs, SLOs, SLIs and Observability
+                </a>
+</li>
+</ul>
+<br/>
+<div id="why_bother">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                        Why Bother
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Observability is crucial in application design for several reasons, as it directly impacts the reliability, performance, and maintainability of an application.</li>
+<li>Key reasons</li>
+<ul>
+<li>Monitoring and troubleshooting</li>
+<li>Performance optimization</li>
+<li>Reducing mean time to resolution (MTTR)</li>
+<li>Proactive issue detection</li>
+<li>Enhanced collaboration</li>
+<li>Continuous improvement</li>
+</ul>
+<li>Can be divided into three components - Refer to the Three Pillars of Observability <a href="https://www.oreilly.com/library/view/distributed-systems-observability/9781492033431/ch04.html" target="_blank">link</a></li>
+<ul>
+<li>Event logging is a critical aspect of observability that involves recording and storing information about various events that occur within a system</li>
+<li>Dashboards are a key component for visualizing and understanding the data generated from an observable system</li>
+<li>Tracing provides detailed information about individual requests or transactions as they pass through various components of a distributed system, offering insights into the system's behavior and performance at a granular level</li>
+</ul>
+</ul>
+<br/>
+<div id="what_to_observe">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                        Metrics, Logs and Traces: What To Observe and Why
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Metrics</li>
+<ul>
+<li>Data that represents the health of the system</li>
+<li>Generally you would store this data in a time series database - see <a href="../../app_dev/databases/time_series.html" target="_blank">link</a> </li>
+<li>Common tools</li>
+<ul>
+<li><a href="https://prometheus.io/" target="_blank">Prometheus</a></li>
+<ul>
+<li>This is often tied with <a href="https://grafana.com/" target="_blank">Grafana</a></li>
+</ul>
+</ul>
+</ul>
+<li>Logs</li>
+<ul>
+<li>Due to the number of servers/VM's/containers, it is not feasible to search for logs on individual machines</li>
+<li>It is important to aggregate your logs from the individual servers and place them into a central location</li>
+<li>One popular tool set to accomplish this is the <a href="https://www.elastic.co/what-is/elk-stack" target="_blank">ELK stack</a></li>
+<ul>
+<li>ElasticSearch: Search and analytics engine designed for handling large volumes of data</li>
+<li>Logstash: A data processing pipeline that ingests, processes, and enriches log data from various sources before forwarding it to Elasticsearch for indexing and storage</li>
+<li>Kibana:  A web-based visualization and exploration tool for Elasticsearch data</li>
+</ul>
+<li>Other tools</li>
+<ul>
+<a href="" target="_blank">
+<li> <a href="https://www.splunk.com/" target="_blank">Splunk</a>: A powerful commercial log management and analysis platform that offers real-time search, monitoring, and analytics capabilities for various data types, including logs, metrics, and events</li>
+<li> <a href="https://www.graylog.org/" target="_blank">Graylog</a>: An open-source log management platform that centralizes, processes, and analyzes log data. Graylog uses Elasticsearch for search and storage, and its web interface allows users to create custom dashboards and visualizations</li>
+<li> <a href="https://www.sumologic.com/" target="_blank">Sumo Logic</a>: An open-source log management platform that centralizes, processes, and analyzes log data. Graylog uses Elasticsearch for search and storage, and its web interface allows users to create custom dashboards and visualizations</li>
+<li> <a href="https://www.papertrail.com/" target="_blank">Papertrail</a>: A cloud-based log management solution that aggregates logs from various sources, allowing users to search, monitor, and set up alerts. Papertrail offers a user-friendly interface and integrates with other tools like PagerDuty, Slack, and custom webhooks</li>
+<li> <a href="https://www.loggly.com/" target="_blank">Loggly</a>: A cloud-based log management and analysis service that offers features like log aggregation, search, visualization, and alerting. Loggly is designed for scalability and ease of use, providing insights into application performance, infrastructure monitoring, and security</li>
+<li> <a href="https://www.fluentd.org/" target="_blank">Fluentd</a>: An open-source data collector for unified logging layers. Fluentd helps in log aggregation and forwarding, providing a flexible plugin system that allows users to transform, enrich, and output log data to various destinations like Elasticsearch, S3, or other storage and analysis systems</li>
+</a></ul>
+</ul>
+<li>Traces</li>
+<ul>
+<li>Tracing provides detailed information about individual requests or transactions as they pass through various components of a distributed system</li>
+<li>Assists with the following</li>
+<ul>
+<li>End-to-end visibility</li>
+<li>Root cause analysis</li>
+<li>Correlation with other observability data</li>
+<li>Trace-driven dashboards</li>
+<li>Monitoring service-level objectives (SLOs)</li>
+</ul>
+<li>Tool set</li>
+<ul>
+<li>See DevOps History <a href="devops_history/#current_state" target="_blank">link</a></li>
+<li><a href="https://www.jaegertracing.io/" target="_blank">Jaeger</a>: open-source, end-to-end distributed tracing system developed by Uber. It supports the OpenTracing API and provides a rich set of features, including context propagation, span creation, and trace visualization</li>
+<li><a href="https://zipkin.io/" target="_blank">Zipkin</a>: open-source distributed tracing system inspired by Google's Dapper paper. Originally developed by Twitter, Zipkin provides the ability to trace requests across multiple services and visualize latency data, helping teams understand their application's behavior and identify performance bottlenecks</li>
+<li><a href="https://opentelemetry.io/" target="_blank">OpenTelemetry</a>: set of APIs, libraries, and agents that provide observability for applications by capturing and exporting telemetry data, including traces, metrics, and logs. OpenTelemetry is a CNCF project that aims to provide a unified observability framework, merging the efforts of OpenTracing and OpenCensus</li>
+<li><a href="https://www.datadoghq.com/product/apm/" target="_blank">Datadog APM</a>: commercial application performance monitoring (APM) and tracing solution offered by Datadog. It provides end-to-end request tracing, detailed flame graphs, and powerful analytics features to help teams understand the performance of their distributed applications and services</li>
+<li><a href="https://newrelic.com/platform/application-monitoring" target="_blank">New Relic APM</a>: Another commercial APM solution, New Relic APM offers distributed tracing capabilities to visualize and analyze request traces across multiple services. It also provides features like error analytics, custom metrics, and integrations with other observability tools</li>
+<li><a href="https://lightstep.com/" target="_blank">Lightstep</a>: commercial observability platform that provides distributed tracing and performance analysis for large-scale, complex systems. Lightstep uses a unique approach called "satellite architecture" for efficient data collection and analysis, allowing teams to gain insights into their applications' behavior in real-time</li>
+</ul>
+</ul>
+</ul>
+<br/>
+<div id="sla_slo_sli_observability">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                        SLAs, SLOs, SLIs and Observability
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>SLI</li>
+<ul>
+<li>Service Level Indicators (SLIs) are quantitative measures used to evaluate the performance and quality of a service</li>
+<li>SLIs are the metrics that are tracked to determine whether a service is meeting its defined Service Level Objectives (SLOs)</li>
+<li>They provide a way to measure specific aspects of the service, such as availability, latency, throughput, or error rates</li>
+<li>Common SLI's include</li>
+<ul>
+<li>Availability</li>Latencys
+                    <li>Throughput</li>
+<li>Error Rate</li>
+</ul>
+<li>Example: 95% latency of homepage requests in the last 5 min &lt; 300 ms</li>
+</ul>
+<li>SLO</li>
+<ul>
+<li>SLOs are the specific, measurable performance goals that a service provider aims to achieve for a particular service</li>
+<li>SLOs are typically expressed as target values or ranges for key performance metrics, such as availability, latency, or error rates</li>
+<li>Example: The SLI will be positive 99.9% of the trailing year</li>
+</ul>
+<li>SLA</li>
+<ul>
+<li>Service Level Agreements (SLAs) are formal, documented agreements between a service provider and a customer that define the expectations, performance metrics, and service quality standards the provider is expected to meet</li>
+<li>Commonly includes</li>
+<ul>
+<li>Scope of services</li>
+<li>Performance metrics</li>
+<li>Service level objectives (SLOs)</li>
+<li>Monitoring and reporting</li>
+<li>Escalation and remediation</li>
+<li>Review and revision</li>
+</ul>
+</ul>
+<li>Error Budgets</li>
+<ul>
+<li>Represents the acceptable level of unreliability or risk a service is allowed to have while still meeting its performance goals</li>
+<li>It is derived from the Service Level Objective (SLO) and serves as a buffer to balance reliability with the need for innovation and rapid development</li>
+<li>Example</li>
+<ul>
+<li>An error budget is calculated by subtracting the target reliability (SLO) from 100%</li>
+<li>If a service has an SLO of 99.9% availability, the error budget would be 0.1% (100% - 99.9%)</li>
+<li>This means that over a specific period, the service is allowed to have 0.1% downtime or unavailability without violating the SLO</li>
+</ul>
+<li>What happens when the error budget deviates in any direction?</li>
+<ul>
+<li>When the error budget is exhausted or near exhaustion, it is an indication that the focus should shift towards improving the service's reliability and stability</li>
+<li>If there is a significant amount of unused error budget, it could be a sign that the service is overly conservative and may benefit from faster innovation or deployment of new features</li>
+</ul>
+</ul>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../../javascript/script.js"></script>
+</body>

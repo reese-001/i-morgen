@@ -317,6 +317,18 @@
 <a href="javascript:;">
 <b class="caret"></b>
 <i class="fa fa-list-ol"></i>
+<span>Databases</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/databases/time_series.html';">Time Series</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
 <span>Data Structures</span>
 </a>
 <ul class="sub-menu">
@@ -327,6 +339,7 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/data_structures/big_o.html';">Big O</a>
 </li>
 </ul>
+</li>
 <li class="has-sub">
 <a href="javascript:;">
 <b class="caret"></b>
@@ -339,7 +352,7 @@
 </li>
 </ul>
 </li>
-</li></ul>
+</ul>
 </li>
 <li class="has-sub">
 <a href="javascript:;">
@@ -492,6 +505,21 @@
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/cloud_technologies.html';">Cloud Technologies</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/containers.html';">Containers</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/infrastructure_as_code.html';">Infra as Code</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/ci_cd.html';">CI/CD</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/observability.html';">Observability</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
 </li>
 </ul>
 </li>
@@ -646,7 +674,7 @@
 </a>
 <ul class="sub-menu">
 <li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/overview/what_is_sre.html';">What is SRE</a>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
 </li>
 </ul>
 </li>
@@ -740,6 +768,9 @@
                 Pipelines
             </h3>
 <br/>
+<a class="notes">Note: See devops/cicd page </a><a class="notes" href="../../devops/what_is_devops/ci_cd.html" target="_blank">here</a>
+<br/>
+<br/>
 <p>
 <span style="font-size: 18px">
 <strong>
@@ -785,13 +816,13 @@
 <ul>
 <li>
                         Software development practice that involves regularly merging code changes from multiple
-                    developers
-                    into a shared repository and then automatically building and testing the code
+                        developers
+                        into a shared repository and then automatically building and testing the code
                     </li>
 <li>
                         The goal of CI is to catch bugs and other issues as early as possible in the development
-                    process,
-                    making it easier and less expensive to fix them
+                        process,
+                        making it easier and less expensive to fix them
                     </li>
 <li>
                         Keep in mind the security aspect of this.
@@ -859,8 +890,8 @@
                             </li>
 <li>
                                 Can be more difficult to set up and configure than some other CI tools, and it may
-                            require
-                            more maintenance and resources to run
+                                require
+                                more maintenance and resources to run
                             </li>
 </ul>
 <li>
@@ -874,17 +905,17 @@
                             </li>
 <li>
                                 Cloud-based CI service that offers support for a wide variety of programming languages
-                            and
-                            platforms
+                                and
+                                platforms
                             </li>
 <li>
                                 Provides a variety of tools and integrations to help you automate your testing and
-                            deployment workflows, and it offers a free tier for open source projects
+                                deployment workflows, and it offers a free tier for open source projects
                             </li>
 <li>
                                 Can be more limited in terms of customization options and some users have reported
-                            issues
-                            with slow build times and unexpected behavior.
+                                issues
+                                with slow build times and unexpected behavior.
                             </li>
 </ul>
 <li>
@@ -898,16 +929,16 @@
                             </li>
 <li>
                                 Cloud-based CI service that allows you to build and test your code in a variety of
-                            environments
+                                environments
                             </li>
 <li>
                                 Known for its ease of use and fast setup, which can make it a good choice for small to
-                            medium-sized projects or teams with limited resources
+                                medium-sized projects or teams with limited resources
                             </li>
 <li>
                                 CircleCI can be more expensive than other CI tools, and some users have reported issues
-                            with
-                            slow build times and limited customization options
+                                with
+                                slow build times and limited customization options
                             </li>
 </ul>
 </ul>
@@ -955,16 +986,16 @@
 <ul>
 <li>
                         Extension of the Continuous Integration (CI) process that focuses on automating the software
-                    release
-                    process
+                        release
+                        process
                     </li>
 <li>
                         Enable the rapid and frequent release of high-quality software with minimal manual intervention
                     </li>
 <li>
                         Code changes are automatically built, tested, and deployed to production, allowing teams to
-                    release
-                    new features and fixes to customers quickly and with confidence
+                        release
+                        new features and fixes to customers quickly and with confidence
                     </li>
 <li>
                         Continuous delivery vs continuous deployment
@@ -1066,7 +1097,7 @@
 <li>
 <a href="https://azure.microsoft.com/en-us/products/devops/" target="_blank">
                                 Azure
-                            Devops
+                                Devops
                             </a>
 </li>
 <li>
@@ -1506,7 +1537,7 @@
                         </td>
 <td>
                             Use the register-on-premises-instance command (IAM Session ARN) to register an on-premises
-                        instance
+                            instance
                         </td>
 <td>
 <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/register-on-premises-instance-iam-session-arn.html" target="_blank">

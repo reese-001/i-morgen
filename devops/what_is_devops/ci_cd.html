@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-
-<html>
 <head>
 <meta charset="utf-8"/>
 <title>
-            i-morgen
-        </title>
+        i-morgen
+    </title>
 <link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
 <meta content="CodePen" name="apple-mobile-web-app-title"/>
 <link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
@@ -15,8 +12,8 @@
 <link href="../../css/style_menu.css" rel="stylesheet"/>
 <link href="../../css/styles.css" rel="stylesheet"/>
 <script>
-            var path_to_root = "../../" // data_science/sagemaker
-        </script>
+        var path_to_root = "../../" // data_science/sagemaker
+    </script>
 </head>
 <body>
 <div class="page-header-fixed page-sidebar-fixed" id="page-container">
@@ -317,6 +314,18 @@
 <a href="javascript:;">
 <b class="caret"></b>
 <i class="fa fa-list-ol"></i>
+<span>Databases</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/databases/time_series.html';">Time Series</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
 <span>Data Structures</span>
 </a>
 <ul class="sub-menu">
@@ -327,6 +336,7 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/data_structures/big_o.html';">Big O</a>
 </li>
 </ul>
+</li>
 <li class="has-sub">
 <a href="javascript:;">
 <b class="caret"></b>
@@ -339,7 +349,7 @@
 </li>
 </ul>
 </li>
-</li></ul>
+</ul>
 </li>
 <li class="has-sub">
 <a href="javascript:;">
@@ -492,6 +502,21 @@
 </li>
 <li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/cloud_technologies.html';">Cloud Technologies</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/containers.html';">Containers</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/infrastructure_as_code.html';">Infra as Code</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/ci_cd.html';">CI/CD</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/observability.html';">Observability</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
 </li>
 </ul>
 </li>
@@ -646,7 +671,7 @@
 </a>
 <ul class="sub-menu">
 <li>
-<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/overview/what_is_sre.html';">What is SRE</a>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
 </li>
 </ul>
 </li>
@@ -730,124 +755,250 @@
 </td>
 <td width="80%">
 <h1 style="color:hsl(241, 74%, 46%)">
-                            i morgen
-                        </h1>
+                        i morgen
+                    </h1>
 </td>
 </tr>
 </table>
+<br/>
 <h3 class="title" style="color:hsl(241, 74%, 46%)">
-<a href="../../index.html">
-                    home
-                </a>
-                :
-                <a href="../index.html">
-                    data science
-                </a>
-                : core concepts
-            </h3>
+            Continuous Integration/Continuous Delivery (CI/CD)
+        </h3>
+<br/>
+<a class="notes">Note: See aws/CI/CD page </a><a class="notes" href="../../aws/CI/CD/CI/CD.html" target="_blank">here</a>
 <br/>
 <br/>
-<table>
-<tr>
-<td>
-<a href="activation_functions.html">
-                            activation functions
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="bagging_vs_boosting.html">
-                            bagging vs boosting
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="cnn.html">
-                            cnn
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="confusion_matrix.html">
-                            confusion matrix
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="ensemble_methods.html">
-                            ensemble methods
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="eda_core.html">
-                            exploratory data analysis (core)
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="model_measurement.html">
-                            model measurement
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="nlp_bert_gpt.html">
-                            nlp with bert and gpt
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="regularization.html">
-                            regularization techniques
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="rnn.html">
-                            rnn
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="tuning_neural_networks.html">
-                            tuning neural networks
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="vanishing_gradient.html">
-                            vanishing gradients
-                        </a>
-</td>
-</tr>
-<tr>
-<td>
-<a href="misc_concepts.html">
-                            misc concepts
-                        </a>
-</td>
-</tr>
-</table>
+<span style="font-size: 18px;">
+<strong>
+                Contents
+            </strong>
+</span>
+<ul>
+<li>
+<a href="#why_bother">
+                    Why Bother?
+                </a>
+</li>
+<li>
+<a href="#what_is_ci">
+                    What is CI/CD
+                </a>
+</li>
+<li>
+<a href="#cicd_principles">
+                    CI/CD Principles and Practices
+                </a>
+</li>
+<li>
+<a href="#understanding_release_strategies">
+                    Understanding Release Strategies
+                </a>
+</li>
+</ul>
+<br/>
+<div id="why_bother">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       Why Bother?
+                    </strong>
+</span>
+</p>
 </div>
-<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-</script>
-<script src="../../javascript/script.js">
-</script>
+<ul>
+<li>One of the most important features of your application is reliability</li>
+<ul>
+<li>What does it mean to be reliable?</li>
+<ul>
+<li>The application must be available when your customers want it</li>
+<li>It must be scalable</li>
+<li>Software defects must be controlled</li>
+</ul>
+<li>To minimize defects, feedback must be given timely</li>
+<li>The ideal solution then is to initiate code testing/scans on merge requests and this is what CI provides</li>
+</ul>
+<li>CD automates the path to deployment</li>
+</ul>
+<br/>
+<div id="what_is_ci">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       What Is Continuous Integration
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>"Simple Testing Can Prevent Most Critical Failures" <a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf" target="_blank">link</a></li>
+<li>Process of ensuring that every change that gets integrated into the main line of the repository goes through enough checks that we are confident about its reliability</li>
+<li>Common workflow and integration scenario</li>
+<ul>
+<li>Work in teams but share the code base</li>
+<li>Everyone checks out the code from a common repo</li>
+<li>Maintain a mainline version of the code, typically a master or main branch</li>
+<li>Teams create their respective branches of development </li>
+<li>To support agile practices, work on smaller batches of changes, and integrated often by merging the code to master/main </li>
+</ul>
+<li>When do we run the tests?</li>
+<ul>
+<li>We run the tests whenever we integrate to the main line of the code </li>
+<li>Simply, whenever the code integrates, run the tests</li>
+<li>Note: that this is a simplified answer and in cases like security scans testing should be done more often</li>
+</ul>
+<li>What do we test</li>
+<ul>
+<li>Note: Not all of these are required. However build and unit tests should always be run</li>
+<li>Build tests</li>
+<li>Unit tests</li>
+<li>Static analysis (ie <a href="https://www.sonarsource.com/products/sonarqube/" target="_blank">sonarqube</a>)</li>
+<li>Integration tests</li>
+<li>Acceptance tests</li>
+<li>Load tests</li>
+<li>Compliance tests</li>
+</ul>
+<li>How do we do this</li>
+<ul>
+<li>Desired features of a CI tool</li>
+<ul>
+<li>Ability to create jobs to run build, tests, packaging, etc by integrating with various tools</li>
+<li>Connect those jobs to create a sequence of execution pipelines</li>
+<li>Run those pipelines in an automated way</li>
+<li>Ability to trigger these pipelines based on external events (ie pushing code to a git repo)</li>
+</ul>
+<li>Tools</li>
+<ul>
+<li>Jenkins</li>
+<li>Go</li>
+<li>Bamboo</li>
+<li>Web hosted platforms such as </li>
+<ul>
+<li>CircleCI</li>
+<li>TravisCI</li>
+</ul>
+</ul>
+</ul>
+</ul>
+<br/>
+<div id="what_is_ci">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       Continuous Deployment and Continuous Delivery
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Extends CI to potentially take every change directly to production</li>
+<li>You gain confidence to do that because your testing was comprehensive and complete</li>
+<li>There are two flavors here</li>
+<ul>
+<li>Continuous Deployment</li>
+<ul>
+<li>Code changes are automatically prepared for a release to production, but not deployed until they are manually approved by a human</li>
+</ul>
+<li>Continuous Delivery</li>
+<ul>
+<li>Code changes are automatically prepared and deployed to production as soon as they pass automated testing </li>
+<li>This is relevant to a large number of organizations</li>
+<li>Provides control and a safer approach to protecting production </li>
+<li>Allows for manual and exploratory testing</li>
+<li>Could accommodate hybrid deployments (e.g. update some schemes by hand then auto deploy)</li>
+<li>May make release managers happy</li>
+</ul>
+</ul>
+</ul>
+<br/>
+<div id="cicd_principles">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       CI/CD Principles
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Prerequisites</li>
+<ul>
+<li>Agile</li>
+<ul>
+<li>CI/CD requires you work in smaller batches and creating new features faster</li>
+<li>This is what Agile helps you with</li>
+</ul>
+<li>Build action needs to meet the following criteria</li>
+<ul>
+<li>Quick: You cant achieve continuous feedback if the build process takes hours (or more)</li>
+<li>Automated: <a href="https://maven.apache.org/" target="_blank">Maven (Java)</a>, <a href="https://www.npmjs.com/" target="_blank">NPM (Node.js)</a>, etc</li>
+</ul>
+<li>Tests</li>
+<ul>
+<li>Should be automated</li>
+<li>Refer to the <a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank">Test Pyramid</a></li>
+<ul>
+<li>Testing pyramid is a framework for designing and prioritizing different types of tests in a CI/CD pipeline</li>
+<li>The goal of the testing pyramid is to focus testing efforts on the most important and impactful areas of the codebase, while maintaining a balance between test coverage, speed, and reliability</li>
+</ul>
+</ul>
+<li>Deployments</li>
+<ul>
+<li>If your goal is to deliver the product, it is important to consider automated deployments</li>
+</ul>
+</ul>
+<li>Practices</li>
+<ul>
+<li>Revision control</li>
+<ul>
+<li>What should we control?</li>
+<ul>
+<li>Application code</li>
+<li>Build logic (pox.xml, package.json, makefiles)</li>
+<li>Configurations</li>
+<li>CI Pipelines (e.g. Jenkinsfile)</li>
+<li>Artifact build and packaging logic (e.g. Dockerfiles)</li>
+<li>Infrastructure as Code (IaC) (e.g. Ansible)</li>
+<li>Deployment logic (e.g. Kubernetes, deployment files)</li>
+</ul>
+</ul>
+<li>Development Workflow</li>
+<ul>
+<li>Defines how fast you can deliver and in which way are you delivering the product </li>
+<li>Simplest workflow is a trunk based model</li>
+<li>Alternatively you can use <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow" target="_blank">GitFlow</a></li>
+</ul>
+</ul>
+<li>Achieving CI/CD</li>
+<ul>
+<li>Foundation of CI/CD is the automated pipeline</li>
+<li>Achieving Continuous Delivery</li>
+<ul>
+<li>Setup revision control system</li>
+<li>Define development workflow</li>
+<li>Setup CI Platform</li>
+<li>Create CI Pipelines - Built/Test</li>
+<li>Build and manage artifacts - packaging jobs</li>
+<li>Setup deployment tools and create deployment pipelines</li>
+</ul>
+</ul>
+</ul>
+<br/>
+<div id="understanding_release_strategies">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                       Understanding Release Strategies
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>See AWS/Code Deploy <a href="../../aws/code_deploy/code_deploy.html" target="_blank">here</a></li>
+<li>See AWS/Beanstalk <a href="../../aws/beanstalk/beanstalk_v2.html#deployment_policies" target="_blank">here</a></li>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../../javascript/script.js"></script>
 </body>
-</html>

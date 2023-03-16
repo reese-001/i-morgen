@@ -1,1044 +1,983 @@
 <head>
-    <meta charset="utf-8" />
-    <title>
+<meta charset="utf-8"/>
+<title>
         i-morgen
     </title>
-    <link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png"
-          rel="apple-touch-icon"
-          type="image/png" />
-    <meta content="CodePen"
-          name="apple-mobile-web-app-title" />
-    <link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"
-          rel="shortcut icon"
-          type="image/x-icon" />
-    <link color="#111"
-          href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg"
-          rel="mask-icon"
-          type="image/x-icon" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-          rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"
-          rel="stylesheet" />
-    <link href="../../css/style_menu.css"
-          rel="stylesheet" />
-    <link href="../../css/styles.css"
-          rel="stylesheet" />
-    <script>
+<link href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" rel="apple-touch-icon" type="image/png"/>
+<meta content="CodePen" name="apple-mobile-web-app-title"/>
+<link href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" rel="shortcut icon" type="image/x-icon"/>
+<link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
+<link href="../../css/style_menu.css" rel="stylesheet"/>
+<link href="../../css/styles.css" rel="stylesheet"/>
+<script>
         var path_to_root = "../../" // data_science/sagemaker
     </script>
 </head>
-
 <body>
-    <div class="page-header-fixed page-sidebar-fixed"
-         id="page-container">
-        <div class="sidebar"
-             id="sidebar">
-            <!-- begin sidebar scrollbar -->
-            <div data-height="100%"
-                 data-scrollbar="true">
-                <!-- begin sidebar nav -->
-                <ul class="nav">
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-th-large"></i>
-                            <span>AWS Toolset</span>
-                        </a>
-                        <ul class="sub-menu active">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Analytics</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Compute</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Database</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Developer Tools</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>IaC</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Management</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/cloudwatch/cloudwatch.html';">CloudWatch</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Messaging</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/eventbridge/eventbridge.html';">EventBridge</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Network</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route 53</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>SIC</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate Manager</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Storage</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>Tutorials</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/actions/sam_rest_api.html';">REST API via SAM</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/actions/allow_internet_access_from_vpc.html';">Internet Access VPC</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/actions/static_s3_cloudfront.html';">Static S3 Site</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="fa fa-th-large"></i>
-                            <span>White Papers</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>6 Pillars</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/white_papers/overview.html';">Overview</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/white_papers/operational_excellence.html';">Operational Excellence</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/white_papers/reliability.html';">Reliability</a>
-                                    </li>
-                                </ul>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret"></b>
-                                    <i class="fa fa-list-ol"></i>
-                                    <span>General</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                           onclick="location.href = path_to_root + 'aws/white_papers/overview.html';">AWS Overview</a>
-                                    </li>
-                                </ul>
-                            </li>
-                    </li>
-                </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fa fa-th-large"></i>
-                        <span>App Dev</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Data Structures</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'app_dev/data_structures/complexity_analysis.html';">Complexity Analysis</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'app_dev/data_structures/big_o.html';">Big O</a>
-                                </li>
-                            </ul>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Python</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'app_dev/python/quick_commands.html';">Quick Commands</a>
-                                </li>
-                            </ul>
-                        </li>
-                </li>
-                </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fa fa-th-large"></i>
-                        <span>Data Science</span>
-                    </a>
-                    <ul class="sub-menu active">
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Core Functions</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation Functions</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs Boosting</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion Matrix</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble Methods</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model Measurement</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP BERT</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/supervised_learning.html';">Supervised Learning</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning Neural Networks</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing Gradients</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>ML Toolset</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing Text</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image Classification</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear Learner</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural Topic Modeling</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object Detection</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut Forest</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic Segmentation</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Analytics Toolset</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Data Ops</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fa fa-th-large"></i>
-                        <span>DevOps</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Overview</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/what_is_devops/devops_history.html';">Brief History</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/what_is_devops/cloud_technologies.html';">Cloud Technologies</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Git</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/git/overview.html';">Overview</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/git/branching.html';">Branching</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/git/checkout.html';">Checkout</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/git/merge.html';">Merge</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/git/rebase.html';">Rebase</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/git/scenarios.html';">Scenarios</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>DevSecOps</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/devsecops/overview.html';">Overview</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/devsecops/security_scanning_shift_left.html';">Security Scanning</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Infrastructure</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/infrastructure/understanding_performance.html';">Perf Engineering</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'devops/kubernetes/kubernetes.html';">Kubernetes</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'aws/docker/docker.html';">Docker</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Networking</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'aws/elb/ssl_basics.html';">SSL</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fa fa-th-large"></i>
-                        <span>Management</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Goal Setting</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'management/goal_setting/okr.html';">OKRs</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'management/goal_setting/mission_statements.html';">Mission Statements</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Books</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'management/books/joy.html';">Joy, Inc</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'management/books/first_90_days.html';">First 90 Days</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fa fa-th-large"></i>
-                        <span>Personal</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Professional Accomplishments</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'personal/professional_accomplishments/classes.html';">Classes</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fa fa-th-large"></i>
-                        <span>Site Reliability</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Overview</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'site_reliability/overview/what_is_sre.html';">What is SRE</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Activities</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'site_reliability/general_concepts/hiring_sre.html';">Hiring</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'site_reliability/general_concepts/monitoring.html';">Monitoring</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'site_reliability/general_concepts/shifts.html';">Shifts</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'site_reliability/general_concepts/toil.html';">Toil</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Observability</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'site_reliability/observability/foundations/index.html';">Foundations</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fa fa-th-large"></i>
-                        <span>System Design</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="has-sub">
-                            <a href="javascript:;">
-                                <b class="caret"></b>
-                                <i class="fa fa-list-ol"></i>
-                                <span>Infrastructure</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'system_design/caching.html';">Caching</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"
-                                       onclick="location.href = path_to_root + 'system_design/load_balancers.html';">Load Balancing</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);"
-                       onclick="location.href = path_to_root + 'index.html';">Home</a>
-                </li>
-                <!-- begin sidebar minify button -->
-                <!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
-                <!-- end sidebar minify button -->
-                <!-- end sidebar nav -->
-                </ul>
-            </div>
-            <!-- end sidebar scrollbar -->
-        </div>
-        <div class="sidebar-bg"></div>
-        <!-- end #sidebar -->
-    </div>
-    <div class="content"
-         id="content">
-        <table width="80%">
-            <tr>
-                <td width="5%">
-                    <img class="logo"
-                         src="../images/logo.png" />
-                </td>
-                <td width="80%">
-                    <h1 style="color:hsl(241, 74%, 46%)">
+<div class="page-header-fixed page-sidebar-fixed" id="page-container">
+<div class="sidebar" id="sidebar">
+<!-- begin sidebar scrollbar -->
+<div data-height="100%" data-scrollbar="true">
+<!-- begin sidebar nav -->
+<ul class="nav">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>AWS Toolset</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Compute</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/api_gateway/api_gateway.html';">API Gateway</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/asg/asg.html';">ASG</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/batch/batch.html';">*Batch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/beanstalk/beanstalk_v2.html';">Beanstalk</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2/ec.html';">EC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">ECS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eks/eks.html';">*EKS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ecs/ecs.html';">*Fargate</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/lambda/lambda.html';">Lambda</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Database</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/dynamo_db/dynamo_db.html';">DynamoDB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elastic_cache/elastic_cache.html';">ElastiCache</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/rds/rds.html';">RDS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/redshift/redshift.html';">*Redshift</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Developer Tools</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cdk/cdk.html';">CDK</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_commit/code_commit.html';">Code Commit</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_build/code_build.html';">Code Build</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/code_deploy/code_deploy.html';">Code Deploy</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cicd/cicd.html';">Pipelines</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>IaC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudformation/cloudformation.html';">CloudFormation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sam/sam.html';">SAM</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudtrail/cloudtrail.html';">CloudTrail</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudwatch/cloudwatch.html';">CloudWatch</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/parameter_store/parameter_store.html';">Parameter Store</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/xray/xray.html';">Xray</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Messaging</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/eventbridge/eventbridge.html';">EventBridge</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sns/sns.html';">SNS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/sqs/sqs.html';">SQS</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Network</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cloudfront/cloudfront.html';">CloudFront</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/elb.html';">ELB</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/vpc/vpc.html';">VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/route53/route53.html';">Route 53</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>SIC</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/certificate_manager/certificate_manager.html';">Certificate Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/cognito/cognito.html';">Cognito</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/kms/kms.html';">KMS</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/security_groups/security_groups.html';">Security Groups</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Storage</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/s3/s3.html';">S3</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/ec2_instance_storage/ec2_instance_storage.html';">Instance Storage</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Tutorials</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/sam_rest_api.html';">REST API via SAM</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/allow_internet_access_from_vpc.html';">Internet Access VPC</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/actions/static_s3_cloudfront.html';">Static S3 Site</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>White Papers</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>6 Pillars</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/operational_excellence.html';">Operational Excellence</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/reliability.html';">Reliability</a>
+</li>
+</ul>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>General</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/white_papers/overview.html';">AWS Overview</a>
+</li>
+</ul>
+</li>
+</li></ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>App Dev</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Databases</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/databases/time_series.html';">Time Series</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Structures</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/data_structures/complexity_analysis.html';">Complexity Analysis</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/data_structures/big_o.html';">Big O</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Python</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'app_dev/python/quick_commands.html';">Quick Commands</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Data Science</span>
+</a>
+<ul class="sub-menu active">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Core Functions</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/activation_functions.html';">Activation Functions</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/bagging_vs_boosting.html';">Bagging vs Boosting</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/cnn.html';">CNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/confusion_matrix.html';">Confusion Matrix</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/eda_core.html';">EDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/ensemble_methods.html';">Ensemble Methods</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/misc_concepts.html';">Misc Concepts</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/model_measurement.html';">Model Measurement</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/nlp_bert_gpt.html';">NLP BERT</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/regularization.html';">Regularization</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/rnn.html';">RNN</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/supervised_learning.html';">Supervised Learning</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/tuning_neural_networks.html';">Tuning Neural Networks</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/core/vanishing_gradient.html';">Vanishing Gradients</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>ML Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/blazing_text.html';">Blazing Text</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/deep_ar.html';">Deep AR</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/image_classification.html';">Image Classification</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/linear_learner.html';">Linear Learner</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/lda.html';">LDA</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/neural_topic_modeling.html';">Neural Topic Modeling</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object_detection.html';">Object Detection</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/object2vec.html';">Object2Vec</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/random_cut_forest.html';">Random Cut Forest</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/semantic_segmentation.html';">Semantic Segmentation</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/seq2seq.html';">Seq2Seq</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/sagemaker/xgboost.html';">XGBoost</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Analytics Toolset</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/glue.html';">Glue</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/etl/kinesis/kinesis.html';">Kinesis</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Data Ops</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'data_science/data_ops/overview.html';">Overview</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>DevOps</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Overview</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/devops_history.html';">Brief History</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/cloud_technologies.html';">Cloud Technologies</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/containers.html';">Containers</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/infrastructure_as_code.html';">Infra as Code</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/ci_cd.html';">CI/CD</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/observability.html';">Observability</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Git</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/branching.html';">Branching</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/checkout.html';">Checkout</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/merge.html';">Merge</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/rebase.html';">Rebase</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/git/scenarios.html';">Scenarios</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>DevSecOps</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/devsecops/overview.html';">Overview</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/devsecops/security_scanning_shift_left.html';">Security Scanning</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Infrastructure</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/infrastructure/understanding_performance.html';">Perf Engineering</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/kubernetes/kubernetes.html';">Kubernetes</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/docker/docker.html';">Docker</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Networking</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/elb/ssl_basics.html';">SSL</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Management</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Goal Setting</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/goal_setting/okr.html';">OKRs</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/goal_setting/mission_statements.html';">Mission Statements</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Books</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/books/joy.html';">Joy, Inc</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/books/first_90_days.html';">First 90 Days</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Personal</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Professional Accomplishments</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'personal/professional_accomplishments/classes.html';">Classes</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>Site Reliability</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Overview</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'devops/what_is_devops/site_reliability_engineering.html';">SRE</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Activities</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/hiring_sre.html';">Hiring</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/monitoring.html';">Monitoring</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/shifts.html';">Shifts</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/general_concepts/toil.html';">Toil</a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Observability</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'site_reliability/observability/foundations/index.html';">Foundations</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-th-large"></i>
+<span>System Design</span>
+</a>
+<ul class="sub-menu">
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
+<span>Infrastructure</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'system_design/caching.html';">Caching</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'system_design/load_balancers.html';">Load Balancing</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'index.html';">Home</a>
+</li>
+<!-- begin sidebar minify button -->
+<!-- <li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li> -->
+<!-- end sidebar minify button -->
+<!-- end sidebar nav -->
+</ul></div>
+<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+</div>
+<div class="content" id="content">
+<table width="80%">
+<tr>
+<td width="5%">
+<img class="logo" src="../images/logo.png"/>
+</td>
+<td width="80%">
+<h1 style="color:hsl(241, 74%, 46%)">
                         i morgen
                     </h1>
-                </td>
-            </tr>
-        </table>
-        <br />
-        <h3 class="title"
-            style="color:hsl(241, 74%, 46%)">
+</td>
+</tr>
+</table>
+<br/>
+<h3 class="title" style="color:hsl(241, 74%, 46%)">
             Cloud Technologies
         </h3>
-        <br />
-        <span style="font-size: 18px;">
-            <strong>
+<br/>
+<span style="font-size: 18px;">
+<strong>
                 Contents
             </strong>
-        </span>
-        <ul>
-            <li>
-                <a href="#why_bother">
+</span>
+<ul>
+<li>
+<a href="#why_bother">
                     Why Bother?
                 </a>
-            </li>
-            <li>
-                <a href="#brief_history">
+</li>
+<li>
+<a href="#brief_history">
                     Brief History of Cloud Computing
                 </a>
-            </li>
-            <li>
-                <a href="#types_of_cloud">
+</li>
+<li>
+<a href="#types_of_cloud">
                     Three Types of Clouds
                 </a>
-            </li>
-            <li>
-                <a href="#cloud_deployment_models">
+</li>
+<li>
+<a href="#cloud_deployment_models">
                     Cloud Deployment Models
                 </a>
-            </li>
-        </ul>
-        <br />
-        <div id="why_bother">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
+</li>
+<li>
+<a href="#major_cloud_providers">
+                    Major Cloud Providers
+                </a>
+</li>
+</ul>
+<br/>
+<div id="why_bother">
+<p>
+<span style="font-size: 18px;">
+<strong>
                         Why Bother?
                     </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>Utility computing model</li>
-            <ul>
-                <li>If you want electricity in your home, you dont build the power facilities from start</li>
-                <li>Rather, you pay the utility to use what has already been created</li>
-            </ul>
-            <li>Access to the global infrastructure</li>
-            <ul>
-                <li>Cloud providers have a worldwide presence</li>
-                <li>By leveraging this, you can go global yourself within a short time after creating an account</li>
-            </ul>
-            <li>Scalable platform</li>
-            <ul>
-                <li>For example, you could create a 1000+ node environment and never worry about where that infrastructure is coming from</li>
-            </ul>
-            <li>Opex vs Capex</li>
-            <ul>
-                <li>Trade long term expenses for low monthly fees</li>
-            </ul>
-            <li>Dynamic capacity provisioning and scalability</li>
-            <ul>
-                <li>Allows you to dynamically build a scalable and resilient environment</li>
-                <li>Regardless of the size of your company, if you are on-prem only you will be constrained and overpaying</li>
-                <li>Cloud aggregrates usage to achieve higher economies of scale</li>
-            </ul>
-            <li>Availability</li>
-            <ul>
-                <li>The cloud platforms will allow monitoring and restoration of impacted componentns </li>
-            </ul>
-            <li>Business continuity</li>
-            <ul>
-                <li>A natural disaster that hits a specific data center can be mitigated by distributing your work</li>
-            </ul>
-            <li>Managed services</li>
-            <ul>
-                <li>Allows you to skip to management of things like databases, servers, and other functions</li>
-            </ul>
-            <li>Automation</li>
-            <ul>
-                <li>You can do anything with code, such as IaC</li>
-            </ul>
-        </ul>
-
-        <br />
-        <div id="brief_history">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Utility computing model</li>
+<ul>
+<li>If you want electricity in your home, you dont build the power facilities from start</li>
+<li>Rather, you pay the utility to use what has already been created</li>
+</ul>
+<li>Access to the global infrastructure</li>
+<ul>
+<li>Cloud providers have a worldwide presence</li>
+<li>By leveraging this, you can go global yourself within a short time after creating an account</li>
+</ul>
+<li>Scalable platform</li>
+<ul>
+<li>For example, you could create a 1000+ node environment and never worry about where that infrastructure is coming from</li>
+</ul>
+<li>Opex vs Capex</li>
+<ul>
+<li>Trade long term expenses for low monthly fees</li>
+</ul>
+<li>Dynamic capacity provisioning and scalability</li>
+<ul>
+<li>Allows you to dynamically build a scalable and resilient environment</li>
+<li>Regardless of the size of your company, if you are on-prem only you will be constrained and overpaying</li>
+<li>Cloud aggregrates usage to achieve higher economies of scale</li>
+</ul>
+<li>Availability</li>
+<ul>
+<li>The cloud platforms will allow monitoring and restoration of impacted componentns </li>
+</ul>
+<li>Business continuity</li>
+<ul>
+<li>A natural disaster that hits a specific data center can be mitigated by distributing your work</li>
+</ul>
+<li>Managed services</li>
+<ul>
+<li>Allows you to skip to management of things like databases, servers, and other functions</li>
+</ul>
+<li>Automation</li>
+<ul>
+<li>You can do anything with code, such as IaC</li>
+</ul>
+</ul>
+<br/>
+<div id="brief_history">
+<p>
+<span style="font-size: 18px;">
+<strong>
                         Brief History of Cloud Computing
                     </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>In 1961, Professor John McCarthy said a "time sharing model will result in a future where computing power will be sold as a utility" - and this is what is happening</li>
-            <li>Around the same time, JCR Licklider from ARPANET conceptualized an "intergalatic network" where computers would be connected to a common network</li>
-            <li>The mainframes on the 1960's gave way to distributed computing in the 1970's</li>
-            <li>In 1991, Tim Berners Lee came up with the idea of a World Wide Web</li>
-            <li>In 1999, virtualization became a reality with VMware</li>
-            <li>Also in 1999, Salesforce.com deployed their CRM software over the web </li>
-            <li>2006 AWS introduced infrastructure as a service</li>
-            <li>Followed in 2008 with VPC, EBC, ELB, Autoscaling</li>
-            <li>Also in 2008 Google Computer Engine was made available</li>
-
-            <li>In 2009 Azure came online</li>
-        </ul>
-
-        <br />
-        <div id="types_of_cloud">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
+</span>
+</p>
+</div>
+<ul>
+<li>In 1961, Professor John McCarthy said a "time sharing model will result in a future where computing power will be sold as a utility" - and this is what is happening</li>
+<li>Around the same time, JCR Licklider from ARPANET conceptualized an "intergalatic network" where computers would be connected to a common network</li>
+<li>The mainframes on the 1960's gave way to distributed computing in the 1970's</li>
+<li>In 1991, Tim Berners Lee came up with the idea of a World Wide Web</li>
+<li>In 1999, virtualization became a reality with VMware</li>
+<li>Also in 1999, Salesforce.com deployed their CRM software over the web </li>
+<li>2006 AWS introduced infrastructure as a service</li>
+<li>Followed in 2008 with VPC, EBC, ELB, Autoscaling</li>
+<li>Also in 2008 Google Computer Engine was made available</li>
+<li>In 2009 Azure came online</li>
+</ul>
+<br/>
+<div id="types_of_cloud">
+<p>
+<span style="font-size: 18px;">
+<strong>
                         Three Types of Cloud
                     </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>Infrastructure as a Service (IaaS)</li>
-            <ul>
-                <li>Similar to a large company renting an empty office building and they will furnish it completely </li>
-                <li>Examples include bare metal AWS/GCP/Azure</li>
-
-            </ul>
-            <li>Platform as a Service (PaaS)</li>
-            <ul>
-                <li>Similar to smaller company needing a few floors of an existing office with carpet, cubicles and furniture already there </li>
-                <li>Examples include Elastic Beanstalk, Openshift </li>
-            </ul>
-            <li>Software as a Service (SaaS)</li>
-            <li>
-                <li>Similar to an individual looking for a "plug and play" type office space - you just being a laptop</li>
-                <li>Examples include Gmail, Dropbox, and anything you can access over the web without installing anything</li>
-            </li>
-        </ul>
-
-        <br/>
-        <div id="cloud_deployment_models">
-            <p>
-                <span style="font-size: 18px;">
-                    <strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Infrastructure as a Service (IaaS)</li>
+<ul>
+<li>Similar to a large company renting an empty office building and they will furnish it completely </li>
+<li>Examples include bare metal AWS/GCP/Azure</li>
+</ul>
+<li>Platform as a Service (PaaS)</li>
+<ul>
+<li>Similar to smaller company needing a few floors of an existing office with carpet, cubicles and furniture already there </li>
+<li>Examples include Elastic Beanstalk, Openshift </li>
+</ul>
+<li>Software as a Service (SaaS)</li>
+<li>
+<li>Similar to an individual looking for a "plug and play" type office space - you just being a laptop</li>
+<li>Examples include Gmail, Dropbox, and anything you can access over the web without installing anything</li>
+</li>
+</ul>
+<br/>
+<div id="cloud_deployment_models">
+<p>
+<span style="font-size: 18px;">
+<strong>
                         Cloud Deployment Models
                     </strong>
-                </span>
-            </p>
-        </div>
-        <ul>
-            <li>Public cloud</li>
-            <ul>
-                <li>AWS, GCP, Azure, Digital Ocean and others</li>
-                <li>Anyone can access if they create an account</li>
-                <li>Shared infrastructure</li>
-            </ul>
-            <li>Private cloud</li>
-            <ul>
-                <li>This is something you build and you own it</li>
-                <li>Why is it a cloud then? </li>
-                <ul>
-                    <li>It shares many features such as provisioning, automation, and other dynamic features </li>
-                    <li>But its available within your own datacenter/parameters</li>
-                </ul>
-                <li>Tools like OpenStack help build your own private cloud platform</li>
-                <li>Some public cloud providers are enabling you to create private clouds with their templates</li>
-            </ul>
-            <li>Hybrid cloud</li>
-            <ul>
-                <li>Companies that use both private and public</li>
-                <li>Example may be that some apps need to scale and will be hosted in the cloud for bursting</li>
-                <li>A virtual private link will connect private and public clouds</li>
-            </ul>
-        </ul>
-    </div>
-    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
-    <script src="../../javascript/script.js"></script>
+</span>
+</p>
+</div>
+<ul>
+<li>Public cloud</li>
+<ul>
+<li>AWS, GCP, Azure, Digital Ocean and others</li>
+<li>Anyone can access if they create an account</li>
+<li>Shared infrastructure</li>
+</ul>
+<li>Private cloud</li>
+<ul>
+<li>This is something you build and you own it</li>
+<li>Why is it a cloud then? </li>
+<ul>
+<li>It shares many features such as provisioning, automation, and other dynamic features </li>
+<li>But its available within your own datacenter/parameters</li>
+</ul>
+<li>Tools like OpenStack help build your own private cloud platform</li>
+<li>Some public cloud providers are enabling you to create private clouds with their templates</li>
+</ul>
+<li>Hybrid cloud</li>
+<ul>
+<li>Companies that use both private and public</li>
+<li>Example may be that some apps need to scale and will be hosted in the cloud for bursting</li>
+<li>A virtual private link will connect private and public clouds and even isolated from public access</li>
+</ul>
+</ul>
+<br/>
+<div id="major_cloud_providers">
+<p>
+<span style="font-size: 18px;">
+<strong>
+                        Major Cloud Providers
+                    </strong>
+</span>
+</p>
+</div>
+<ul>
+<li>Primary cloud providers</li>
+<ul>
+<li>AWS</li>
+<li>GCP</li>
+<li>Azure</li>
+</ul>
+<li>They all offer the following services</li>
+<ul>
+<li>Compute</li>
+<ul>
+<li>You will be able to create a unit of compute (container or server)</li>
+</ul>
+<li>Managed databases</li>
+<ul>
+<li>Both sql and nosql databases</li>
+</ul>
+<li>Storage</li>
+<ul>
+<li>Object storage: stores as objects and can be accessed via api or other process</li>
+<li>Block storage: similar to disk drives</li>
+</ul>
+<li>Network services</li>
+<ul>
+<li>Allows you to set bounds on your applications</li>
+<li>Can create firewall, load balancer, permissions, etc</li>
+</ul>
+<li>CI/CD tools</li>
+<li>User management</li>
+<li></li>
+</ul>
+</ul>
+</div>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+<script src="../../javascript/script.js"></script>
 </body>
