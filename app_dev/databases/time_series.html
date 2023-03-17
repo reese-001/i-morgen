@@ -228,6 +228,9 @@
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/iam/iam.html';">IAM</a>
 </li>
 <li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/nacl/nacl.html';">NACL</a>
+</li>
+<li>
 <a href="javascript:void(0);" onclick="location.href = path_to_root + 'aws/secrets_manager/secrets_manager.html';">Secrets Manager</a>
 </li>
 <li>
@@ -625,6 +628,18 @@
 <a href="javascript:;">
 <b class="caret"></b>
 <i class="fa fa-list-ol"></i>
+<span>Books</span>
+</a>
+<ul class="sub-menu">
+<li>
+<a href="javascript:void(0);" onclick="location.href = path_to_root + 'management/books/joy.html';">Joy, Inc. </a>
+</li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="javascript:;">
+<b class="caret"></b>
+<i class="fa fa-list-ol"></i>
 <span>Goal Setting</span>
 </a>
 <ul class="sub-menu">
@@ -808,21 +823,56 @@
 </span>
 <ul>
 <li>
-<a href="#first_item">
-                    First Item
+<a href="#background">
+                    Background
                 </a>
 </li>
 </ul>
 <br/>
-<div id="first_item">
+<div id="background">
 <p>
 <span style="font-size: 18px;">
 <strong>
-                        First Item
+                        Background
                     </strong>
 </span>
 </p>
 </div>
+<ul>
+<li>Time series databases are specialized databases designed to efficiently store and query time-stamped data</li>
+<li>Time-stamped data, also known as time series data, consists of a sequence of data points collected over time, usually at regular intervals</li>
+<li>This type of data is common in various domains, including financial markets, IoT devices, server monitoring, and scientific research</li>
+<li>Key characteristics</li>
+<ul>
+<li>High write and query performance</li>
+<ul>
+<li>Time series databases are optimized for handling large volumes of data</li>
+<li>They are designed for high-frequency data ingestion and fast, efficient querying of time-based data</li>
+</ul>
+<li>Data retention policies</li>
+<ul>
+<li>Time series databases often support configurable data retention policies, allowing you to automatically expire or downsample old data based on predefined rules</li>
+<li>This helps manage storage costs and ensure the database remains performant as data grows over time</li>
+</ul>
+<li>Time-based indexing</li>
+<ul>
+<li>Time series databases use time as the primary index, which enables quick and efficient querying of data points within a specific time range.</li>
+</ul>
+<li>Data compression</li>
+<ul>
+<li>Time series data often exhibits patterns and trends that can be compressed to save storage space</li>
+<li> Time series databases use various compression techniques to reduce storage requirements while maintaining query performance</li>
+</ul>
+<li>Aggregations and rollups</li>
+<ul>
+<li> Time series databases often provide built-in support for aggregating data points over specific time intervals (e.g., hourly, daily, weekly) and computing various statistical metrics, such as averages, sums, minimums, and maximums</li>
+</ul>
+<li>Scalability</li>
+<ul>
+<li>Many time series databases are designed to scale horizontally, allowing you to distribute data across multiple nodes or clusters to accommodate increasing data volumes and query loads.</li>
+</ul>
+</ul>
+</ul>
 </div>
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
