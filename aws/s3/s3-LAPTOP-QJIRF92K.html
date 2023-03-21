@@ -12,10 +12,10 @@
 <link color="#111" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" rel="mask-icon" type="image/x-icon"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" rel="stylesheet"/>
-<link href="../../css/style_menu.css" rel="stylesheet"/>
-<link href="../../css/styles.css" rel="stylesheet"/>
+<link href="../style_menu.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
 <script>
-            var path_to_root = "../../" // data_science/sagemaker
+            var path_to_root = "../../" // aws
         </script>
 </head>
 <body>
@@ -814,50 +814,763 @@
 </td>
 </tr>
 </table>
+<br/>
 <h3 class="title" style="color:hsl(241, 74%, 46%)">
-<a href="../index.html">
-                    home
-                </a>
-                :management
+                Simple Storage Service (S3)
             </h3>
+<br/>
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Contents
+                    </span>
+</strong>
+</p>
+<li>
+<a href="#buckets">
+                    Buckets
+                </a>
+</li>
+<li>
+<a href="#use_cases">
+                    Use Cases
+                </a>
+</li>
+<li>
+<a href="#use_cases">
+                    Security
+                </a>
+</li>
+<li>
+<a href="#versioning">
+                    Versioning
+                </a>
+</li>
+<li>
+<a href="#replication">
+                    Replication
+                </a>
+</li>
+<li>
+<a href="#storage_classes">
+                    Storage Classes
+                </a>
+</li>
+<li>
+<a href="#permissions">
+                    Permissions
+                </a>
+</li>
+<li>
+<a href="#object_lock">
+                    Object lock
+                </a>
+</li>
+<li>
+<a href="#analytics">
+                    Analytics
+                </a>
+</li>
+<li>
+<a href="#multi_part_uploads">
+                    Multi Part Uploads
+                </a>
+</li>
+<li>
+<a href="#event_notifications">
+                    Event Notifications
+                </a>
+</li>
+<li>
+<a href="#performance">
+                    Performance
+                </a>
+</li>
+<br/>
+<li>
+<a href="s3_lifecycle.html">
+                    Lifecycle (opens new page)
+                </a>
+</li>
+<li>
+<a href="s3_security.html">
+                    Security (opens new page)
+                </a>
+</li>
+<br/>
+<div id="buckets">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                            Buckets
+                        </span>
+</strong>
+</p>
+</div>
 <ul>
 <li>
-<a href="courses/inspiring_and_motivating_individuals/index.html">
-<div title="Books Summaries">
-                            inspiring and motivating individuals (university of michigan)
-                        </div>
-</a>
-</li>
+                    Allows people to store objects (files) in "buckets" (directories)
+                </li>
 <li>
-<a href="books/index.html">
-<div title="Books Summaries">
-                            book summaries
-                        </div>
-</a>
-</li>
+                    Must have globally unique name
+                </li>
 <li>
-<a href="goal_setting/index.html">
-<div title="Goal Setting">
-                            goal setting
-                        </div>
-</a>
-</li>
+                    Defined at the region level
+                </li>
 <li>
-<a href="be_the_manager_people_wont_leave/index.html">
-<div title="Be the Manager People Won't Leave">
-                            be the manager people wont leave
-                        </div>
-</a>
+                    Looks like a global service but regional
+                </li>
+<li>
+                    They appear to have directories, but in reality the directories are part of the key
+                </li>
+<li>
+                    Max size = 5TB (Standard). However the PUT operation maxes at 5 GB.
+                </li>
+<ul>
+<li>
+                        Use multi-part upload to transfer files greater then 5 GB in size
+                    </li>
+<li>
+                        See Multi-Part upload (anchor)
+                        <a href="#multi-part">
+                            Link
+                        </a>
 </li>
 </ul>
+</ul>
+<div id="use_cases">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                            Use Cases
+                        </span>
+</strong>
+</p>
 </div>
+<ul>
+<li>
+                    Backup and storage
+                </li>
+<li>
+                    Disaster Recovery
+                </li>
+<li>
+                    Archive
+                </li>
+<li>
+                    Hybrid Cloud Storage
+                </li>
+<li>
+                    Application Hosting
+                </li>
+</ul>
+<div id="security">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Security
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+                User based
+            </li>
+<ul>
+<li>
+                    IAM policies: which API calls should be allows for a specific user from IAM
+                </li>
+</ul>
+<li>
+                Resourced based
+            </li>
+<ul>
+<li>
+                    Bucket policies: bucket wide rules from the S3 console
+                </li>
+<li>
+                    Object ACL: finer grain and can be disabled
+                </li>
+<li>
+                    Bucket ACL: less common (can be disabled)
+                </li>
+</ul>
+<li>
+                An IAM principle can access an S3 object if:
+            </li>
+<ul>
+<li>
+                    The user IAM permissions allow it *or* the resource policy allows it
+                </li>
+<li>
+                    And there is not explicit deny
+                </li>
+</ul>
+<li>
+                Encryption: encrypts objects in S3 using encryption keys
+            </li>
+<li>
+                S3 Bucket Policies
+            </li>
+<ul>
+<li>
+                    JSON based policies
+                </li>
+</ul>
+</ul>
+<div id="versioning">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Versioning
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+                Enabled at the bucket level
+            </li>
+<li>
+                Same key overwrite will change the "version": 1, 2, 3, etc
+            </li>
+<li>
+                Best practice is to version
+            </li>
+<ul>
+<li>
+                    Protects against unintended deletes (you can restore)
+                </li>
+<li>
+                    Allows you to keep track of changes in a collaborative environment
+                </li>
+<li>
+                    Easy roll back
+                </li>
+</ul>
+<li>
+                Any file that is not versioned prior to enabling versioning will have version "null"
+            </li>
+<li>
+                Suspending versioning does not delete previous versions
+            </li>
+<li>
+                Delete markers
+            </li>
+<ul>
+<li>
+                    Special type of object that is used to mark a version of a file as deleted, without actually deleting the data from storage
+                </li>
+<li>
+                    When you delete a version of a file in S3 a delete marker is added to the file's version history
+                </li>
+<li>
+                    The file is no longer accessible or visible through the normal API operations.
+                </li>
+<li>
+                    However, the data associated with the file is still stored and can be recovered if necessary
+                </li>
+</ul>
+</ul>
+<div id="replication">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Replication
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+                Must enable versioning in source and destination buckets
+            </li>
+<li>
+                Two types of replication
+            </li>
+<ul>
+<li>
+                    Cross Region Replication (CRR)
+                </li>
+<li>
+                    Same Region Replication (SRR)
+                </li>
+</ul>
+<li>
+                Buckets can be in different AWS accounts
+            </li>
+<li>
+                Copying is asynchronous
+            </li>
+<li>
+                Use cases
+            </li>
+<ul>
+<li>
+                    CRR: complience, lower latency, replication across accounts
+                </li>
+<li>
+                    SRR: log aggregation, live replication between test and prod env's
+                </li>
+</ul>
+<li>
+                Notes:
+            </li>
+<ul>
+<li>
+                    After you enable replication, only new objects are replicated
+                </li>
+<li>
+                    To replicate existing objects use
+                    <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html" target="_blank">
+                        S3 Batch Replication
+                    </a>
+</li>
+<li>
+                    There is no chaining of replication (ie A -&gt; B -&gt; C. A != C)
+                </li>
+<li>
+                    Delete ops: can replicate delete markers from source to target (optional)
+                </li>
+<li>
+                    Delete ops: Deletes with version ID are not replicated
+                </li>
+</ul>
+</ul>
+<div id="storage_classes">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Storage Classes
+                    </span>
+</strong>
+</p>
+<ul>
+<li>
+                    Durability
+                </li>
+<ul>
+<li>
+                        How many times will AWS lose the data. This is 11 9's across multiple AZ's
+                    </li>
+<li>
+                        If you store 10 million objects on S3, you can expect to incur a lose of a single object once every 10k years
+                    </li>
+</ul>
+<li>
+                    Availability
+                </li>
+<ul>
+<li>
+                        Measures how readily available to service is
+                    </li>
+<li>
+                        Varies by storage class
+                    </li>
+<li>
+                        S3 Standard has 99.99% availability
+                    </li>
+</ul>
+<li>
+                    Storage Classes
+                </li>
+<ul>
+<li>
+                        Standard - General Purpose
+                    </li>
+<ul>
+<li>
+                            Availability: 99.99%
+                        </li>
+<li>
+                            Use case: Frequently used data - ie Big Data, mobile and gaming apps, content distribution
+                        </li>
+<li>
+                            Latency: low
+                        </li>
+<li>
+                            Throughput: high
+                        </li>
+<li>
+                            Sustain 2 concurrent facility failures
+                        </li>
+</ul>
+<li>
+                        Standard - Infrequent Access (IA)
+                    </li>
+<ul>
+<li>
+                            Availability: 99.9%
+                        </li>
+<li>
+                            Use case: DR, backups
+                        </li>
+</ul>
+<li>
+                        One Zone-Infrequent Access
+                    </li>
+<ul>
+<li>
+                            Availability: 99.5%
+                        </li>
+<li>
+                            Durability: 11 9's in single AZ
+                        </li>
+<li>
+                            Use case: secondary backups
+                        </li>
+</ul>
+<li>
+                        Glacier Instant Retrieval
+                    </li>
+<ul>
+<li>
+                            Purpose: Backup but need instant access
+                        </li>
+<li>
+                            Price for storage + cost for retrieval
+                        </li>
+<li>
+                            Min storage 90 days
+                        </li>
+</ul>
+<li>
+                        Glacier Flexible Retrieval
+                    </li>
+<ul>
+<li>
+                            Retrieval:
+                        </li>
+<ul>
+<li>
+                                Expedited (1-5 min)
+                            </li>
+<li>
+                                Standard (3-5 hours)
+                            </li>
+<li>
+                                Bulk (5-12 hours)
+                            </li>
+</ul>
+<li>
+                            Min storage 90 days
+                        </li>
+</ul>
+<li>
+                        Glacier Deep Archive
+                    </li>
+<ul>
+<li>
+                            Retrieval:
+                        </li>
+<ul>
+<li>
+                                Standard (12 hrs)
+                            </li>
+<li>
+                                Bulk (48 hours)
+                            </li>
+</ul>
+<li>
+                            Min storage 180 days
+                        </li>
+</ul>
+<li>
+                        Intelligent Tiering
+                    </li>
+<ul>
+<li>
+                            "Sit back annd relax" mode
+                        </li>
+<li>
+                            Small monitoring fee
+                        </li>
+<li>
+                            Moves objects automatically between tiers based on usage
+                        </li>
+<li>
+                            No retrieval charge
+                        </li>
+</ul>
+</ul>
+</ul>
+</div>
+<div id="permissions">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Permissions
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws-dates.html" target="_blank">
+                    Time Bound Constraints
+                </a>
+</li>
+</ul>
+<div id="object_lock">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Object Lock
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+                Amazon S3 Object Lock is a feature that enables customers to store objects in an immutable state, meaning that they cannot be deleted or overwritten for a specified retention period.
+            </li>
+<li>
+                Object Lock is designed to help customers meet regulatory requirements, such as those related to record retention and compliance with the General Data Protection Regulation (GDPR).
+            </li>
+<li>
+                With Object Lock, customers can store objects in one of two modes:
+            </li>
+<ol>
+<li>
+                    Governance mode: Objects stored in governance mode cannot be deleted or overwritten for a specified retention period, which can range from days to years.
+                </li>
+<li>
+                    Compliance mode: Objects stored in compliance mode cannot be deleted or overwritten until the end of a specified retention period, known as a legal hold
+                </li>
+</ol>
+</ul>
+<div id="analytics">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        S3 Analytics
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+                Amazon S3 Analytics is a feature that enables customers to collect, store, and analyze data stored in Amazon S3
+            </li>
+<li>
+                With S3 Analytics, customers can run SQL-like queries on their S3 data to extract insights and perform data analysis.
+            </li>
+<li>
+                S3 Analytics supports two types of data analysis:
+            </li>
+<ul>
+<li>
+                    Inventory: Inventory provides metadata about objects stored in an S3 bucket, such as the object's key, size, and last modified date.
+                </li>
+<li>
+                    Metrics: Metrics enable customers to collect and analyze data about how their objects are accessed, such as the number of reads and writes to an object, the source of the request, and the response status code
+                </li>
+</ul>
+</ul>
+<div id="multi_part_uploads">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Multi Part Uploads
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+                Amazon Simple Storage Service (S3) multi-part uploads allow you to upload large objects, such as videos or backups, more efficiently to S3.
+            </li>
+<li>
+                With multi-part uploads, you can upload parts of an object in parallel to improve the upload speed.
+            </li>
+<li>
+                Minimum part size is 5 MB, maximum part size is 5 GB.
+            </li>
+<li>
+                Recommended in the following scenarios
+            </li>
+<ul>
+<li>
+                    If you're uploading large objects over a stable high-bandwidth network, use multipart uploading to maximize the use of your available bandwidth by uploading object parts in parallel for multi-threaded performance.
+                </li>
+<li>
+                    If you're uploading large objects over a network with limited bandwidth, use multipart uploading to minimize the impact of network latency on your upload time.
+                </li>
+</ul>
+</ul>
+<div id="event_notifications">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Event Notifications
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+                You get notified by specific actions occuring in the S3 bucket, such as
+            </li>
+<ul>
+<li>
+                    S3:ObjectCreated
+                </li>
+<li>
+                    S3:ObjectRemoved
+                </li>
+<li>
+                    S3:ObjectRestore
+                </li>
+<li>
+                    S3:Replication
+                </li>
+</ul>
+<li>
+                Additionally you can use name filtering, for example:
+            </li>
+<ul>
+<li>
+                    Filter for *.jpg with the intent of creating thumbnail images
+                </li>
+</ul>
+<li>
+                Notification events typically deliver in seconds but can take a minute or longer
+            </li>
+<li>
+<a href="../images/s3_events_1.png" target="_blank">
+                    Illustration
+                </a>
+</li>
+<li>
+                Another recent option is using EventBridge
+            </li>
+<ul>
+<li>
+                    Provides advanced filtering options with JSON rules
+                </li>
+<li>
+                    Send to multiple destinations
+                </li>
+<li>
+                    EventBridge notifications (ie archive, replay, reliable delivery
+                </li>
+</ul>
+</ul>
+<div id="performance">
+<p>
+<strong>
+<span style="font-size: 18px;">
+                        Performance
+                    </span>
+</strong>
+</p>
+</div>
+<ul>
+<li>
+                Baseline
+            </li>
+<ul>
+<li>
+                    Automatically scales to high requests, low latency at 100-200ms
+                </li>
+<li>
+                    3,500 put, copy, post, delete requsts per second per prefix in bucket
+                </li>
+<li>
+                    5,500 get, head requests per second in a bucket
+                </li>
+<li>
+                    No limit to number of prefixes in your bucket
+                </li>
+<li>
+                    What is a prefix?
+                </li>
+<ul>
+<li>
+                        bucket/folder_a/sub_a/file -&gt; prefix is /folder_a/sub_a/
+                    </li>
+</ul>
+</ul>
+<li>
+                How to increase
+            </li>
+<ul>
+<li>
+<div id="multi-part">
+                        Multi-Part upload
+                    </div>
+</li>
+<ul>
+<li>
+                        Recommended for files over 100 MB
+                    </li>
+<li>
+                        Required for files over 5 GB
+                    </li>
+<li>
+                        Parallelize uploads for faster transfers
+                    </li>
+</ul>
+<li>
+                    S3 Transfer Acceleration
+                </li>
+<ul>
+<li>
+                        Increase transfer speed by transferring file to an AWS edge location
+                    </li>
+<li>
+                        Edge location will forward the data to the S3 bucket in target region
+                    </li>
+<li>
+                        Compatible with multi-part uploads
+                    </li>
+</ul>
+<li>
+                    S3 Byte-Range Fetches
+                </li>
+<ul>
+<li>
+                        Parallelize GETs by requesting specific byte ranges
+                    </li>
+<li>
+                        Better resilience in case of failures
+                    </li>
+<li>
+                        Use cases
+                    </li>
+<ul>
+<li>
+                            Speed up downloads by creating multiple requests for a single file
+                        </li>
+<li>
+                            Retreive partial data - for example if header information was contained in the first 50 bytes, just get that.
+                        </li>
+</ul>
+</ul>
+<li>
+                    S3 Select and Glacier Select
+                </li>
+<ul>
+<li>
+                        Retreive less data using SQL by performing server side filtering
+                    </li>
+<li>
+                        Filter by rows and columns (simple SQL statements)
+                    </li>
+<li>
+                        Less network transfer, less CPU cost client side
+                    </li>
+</ul>
+</ul>
+</ul>
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 </script>
-<script src="../../javascript/script.js">
+<script src="../script.js">
 </script>
-</body>
+</div></body>
 </html>

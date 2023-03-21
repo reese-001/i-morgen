@@ -1,0 +1,53 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    color: hsl(241, 74%, 46%);
+    margin-bottom: 1em;
+}
+
+.highlight {
+    background-color: #f5f5f5;
+    padding: 1em;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+
+.text {
+    display: block;
+    margin-bottom: 1em;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+td {
+    vertical-align: top;
+    padding: 0.5em;
+}
+
+h4 {
+    margin-bottom: 0.5em;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+.gsc-search-box .gsc-input {
+    height: 1em !important;
+    padding: 0 !important;
+}
