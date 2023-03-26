@@ -1,5 +1,6 @@
 document.getElementById('apiCallButton').addEventListener('click', async () => {
-    const apiURL = 'https://mdbmtinu7h.execute-api.us-east-2.amazonaws.com/prod'; // Replace with your API Gateway Invoke URL
+    apiCallButton.textContent = 'Loading...';
+    const apiURL = 'https://mdbmtinu7h.execute-api.us-east-2.amazonaws.com/prod'; 
     const response = await fetch(apiURL);
     const responseData = await response.json();
     const responseBody = JSON.parse(responseData.body);
@@ -23,6 +24,7 @@ document.getElementById('apiCallButton').addEventListener('click', async () => {
     document.getElementById('minDate').textContent = 'Based on the low temperature, today feels most similar to ' + minDate;
     document.getElementById('maxDate').textContent = 'Based on the high temperature, today feels most similar to ' + maxDate;
     document.getElementById('averageDate').textContent = 'Considering both the low and high temperatures, today feels most similar to ' + averageDate;
+    apiCallButton.textContent = 'Retreive Comparison Data';
   });
   
   
