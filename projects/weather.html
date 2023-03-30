@@ -71,7 +71,7 @@
 
                     all_time_min_temperature.textContent = `${(data.all_time_min_temperature * (9 / 5) + 32).toFixed(1)}°F`;
                     all_time_max_temperature.textContent = `${(data.all_time_max_temperature * (9 / 5) + 32).toFixed(1)}°F`;
-                    current_dewpoint.textContent = `${data.current_dewpoint * (9 / 5) + 32}°F`;
+                    current_dewpoint.textContent = `${data.current_dewpoint * (9 / 5) + 32}toFixed(1)}°F`;
                     current_heat_index.textContent = (!data.current_heat_index || data.current_heat_index === 0) ? 'Not calculated' : `${(data.current_heat_index * (9 / 5) + 32).toFixed(1)}°F`;
 
 
